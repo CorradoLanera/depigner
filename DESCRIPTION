@@ -17,6 +17,7 @@ Imports: rlang,
     rms,
     Hmisc,
     purrr
-Suggests: testthat
+Suggests: testthat,
+    survival
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
