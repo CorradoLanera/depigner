@@ -1,0 +1,16 @@
+Package: depigner
+Title: Utilities for _pigna_ stuffs at UBESP
+Version: 0.0.0.9000
+Authors@R: person("Corrado", "Lanera", email = "corrado.lanera@gmail.com", role = c("aut", "cre"))
+Description: This package collect usefull function frequently used at the Unit
+  of Biostatistics, Epidemiology and Public Health of the Department of Cardiac,
+  Thoracic and Vascular sciences at the university of Padova.
+Depends: R (>= 3.4.3)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: rlang,
+    dplyr,
+    tidyr,
+    rms,
+    Hmisc
