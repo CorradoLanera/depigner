@@ -34,7 +34,13 @@ Note: the \code{\link[rms]{datadist}} has to be defined for the data used in
 A data frame
 }
 \description{
-summary_interact
+`summary_interact()` produce a data frame with all the interested OR (with
+ the corresponding CI95%) for each (possibly selected) combination of the
+ interaction between a continuous variable (for which it is possible to set
+ the lower (reference/denominator of the OR) and the upper (target/numerator
+ of the OR) values; default is I vs III quartile) and a discrete
+ (categorical/factorial, ordinal, ...) one in a logistic model as provided
+ by \code{\link[rms]{lrm}}.
 }
 \examples{
 library(rms)

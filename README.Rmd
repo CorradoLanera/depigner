@@ -1,6 +1,7 @@
 ---
 title: "depigner: package of utilities for _pignas_."
 output: github_document
+bibliography: 'bib/doc-pkg.bib'
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -11,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment  = "#>"
 )
+library(magrittr)
+library(pander)
 ```
 
 ## Overview
@@ -28,15 +31,55 @@ devtools::install_github("CorradoLanera/depigner")
 ```
 
 Once the package is installed, simply load it
-```{r}
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE, eval = TRUE}
 library(depigner)
 ```
 
+## Provided function
+
+- **`summary_interact()`**: produce a data frame of OR (with the corresponding
+  CI95%) for the interactions between different combination of a continuous
+  variable (for which it is possible to define the reference and the target
+  values) and (every or a selection of levels of) a categorical one in a
+  logistic model provided by `lrm()` (from the `rms` package [@R-rms]).
+```{r message=FALSE, warning=FALSE, eval = TRUE, include = FALSE}
+library(rms)
+  options(datadist = 'dd')
+
+data('transplant')
+transplant <- transplant[transplant[['event']] != 'censored', , drop = FALSE]
+dd <- datadist(transplant)
+
+lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
+  data = transplant
+)
+```
+```{r echo=FALSE, message=FALSE, warning=FALSE, eval = TRUE}
+summary_interact(lrm_mod, age, abo) %>% pander
+```
+  
+
+## Provided data
+None at the moment.
 
 ## Feature request
 If you need some more features, please open an issue on
-[github](https://github.com/CorradoLanera/depigner/issues)
+[github](https://github.com/CorradoLanera/depigner/issues).
 
 
 ## Bug reports
-If you encounter a bug, please file a [reprex](https://github.com/tidyverse/reprex) (minimal reproducible example) on [github](https://github.com/CorradoLanera/depigner/issues)
+If you encounter a bug, please file a
+[reprex](https://github.com/tidyverse/reprex) (minimal reproducible example) on [github](https://github.com/CorradoLanera/depigner/issues).
+
+
+<!--=========================================================================-->
+
+## Reference
+
+```{r bib, include=FALSE, eval = TRUE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(
+  x    = c('rms'),
+  file = 'bib/doc-pkg.bib'
+)
+```
