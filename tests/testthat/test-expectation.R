@@ -33,6 +33,6 @@ test_that("expectation class", {
   expect_is(s_lev, 'data.frame')
 })
 
-test_that("expectation throws error if input not an rv", {
+test_that("expectation throws error if input not an lrm", {
   expect_error(summary_interact(ols_mod, age, sex), "model has to inherits to lrm class")
 })

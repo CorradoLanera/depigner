@@ -1,6 +1,6 @@
 Package: depigner
 Title: Utilities for _pigna_ stuffs at UBESP
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: person("Corrado", "Lanera", email = "corrado.lanera@gmail.com", role = c("aut", "cre"))
 Description: This package collect usefull function frequently used at the Unit
   of Biostatistics, Epidemiology and Public Health of the Department of Cardiac,
@@ -16,8 +16,11 @@ Imports: rlang,
     tidyr,
     rms,
     Hmisc,
-    purrr
+    purrr,
+    broom,
+    magrittr,
+    glue,
+    stringr
 Suggests: testthat,
     survival
 RoxygenNote: 6.0.1
-VignetteBuilder: knitr
