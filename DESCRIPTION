@@ -1,26 +1,28 @@
 Package: depigner
 Title: Utilities for _pigna_ stuffs at UBESP
-Version: 0.0.1.2
+Version: 0.0.1.3
 Authors@R: person("Corrado", "Lanera", email = "corrado.lanera@gmail.com", role = c("aut", "cre"))
 Description: This package collect usefull function frequently used at the Unit
   of Biostatistics, Epidemiology and Public Health of the Department of Cardiac,
   Thoracic and Vascular sciences at the university of Padova.
 URL: https://github.com/CorradoLanera/depigner
 BugReports: https://github.com/CorradoLanera/depigner/issues
-Depends: R (>= 3.4.3)
+Depends: R (>= 3.4.3),
+    magrittr,
+    rlang
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: rlang,
+Imports: 
     dplyr,
     tidyr,
     rms,
     Hmisc,
     purrr,
     broom,
-    magrittr,
     glue,
-    stringr
+    stringr,
+    stats
 Suggests: testthat,
     survival
 RoxygenNote: 6.0.1

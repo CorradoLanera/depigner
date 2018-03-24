@@ -5,7 +5,7 @@
 \title{summary_interact}
 \usage{
 summary_interact(model, ref, discrete, ref_min = NULL, ref_max = NULL,
-  level = NULL, digits = 3L)
+  level = NULL, ..., digits = 3L, p = FALSE)
 }
 \arguments{
 \item{model}{A model from \code{\link[rms]{lrm}}}
@@ -34,13 +34,7 @@ Note: the \code{\link[rms]{datadist}} has to be defined for the data used in
 A data frame
 }
 \description{
-`summary_interact()` produce a data frame with all the interested OR (with
- the corresponding CI95%) for each (possibly selected) combination of the
- interaction between a continuous variable (for which it is possible to set
- the lower (reference/denominator of the OR) and the upper (target/numerator
- of the OR) values; default is I vs III quartile) and a discrete
- (categorical/factorial, ordinal, ...) one in a logistic model as provided
- by \code{\link[rms]{lrm}}.
+summary_interact
 }
 \examples{
 library(rms)
@@ -63,7 +57,4 @@ summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L)
 
 summary_interact(lrm_mod, age, abo)
 summary_interact(lrm_mod, age, abo, level = c('A', 'AB'))
-}
-\seealso{
-\code{\link[rms]{lrm}}, \code{\link[rms]{datadist}}
 }

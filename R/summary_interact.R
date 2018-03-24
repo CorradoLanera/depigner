@@ -1,13 +1,5 @@
 #' summary_interact
 #'
-#' `summary_interact()` produce a data frame with all the interested OR (with
-#'  the corresponding CI95%) for each (possibly selected) combination of the
-#'  interaction between a continuous variable (for which it is possible to set
-#'  the lower (reference/denominator of the OR) and the upper (target/numerator
-#'  of the OR) values; default is I vs III quartile) and a discrete
-#'  (categorical/factorial, ordinal, ...) one in a logistic model as provided
-#'  by \code{\link[rms]{lrm}}.
-#'
 #' @param model    A model from \code{\link[rms]{lrm}}
 #' @param ref      A continuous variable for which we are interested in the
 #'   estimation of the OR for the various level of interaction with a discrete
@@ -24,12 +16,7 @@
 #' Note: the \code{\link[rms]{datadist}} has to be defined for the data used in
 #'  the model
 #'
-#' @importFrom rlang !!
-#' @importFrom magrittr %>%
-#'
 #' @return A data frame
-#' @seealso \code{\link[rms]{lrm}}, \code{\link[rms]{datadist}}
-#'
 #' @export
 #'
 #' @examples
@@ -56,7 +43,9 @@
 summary_interact <- function(model, ref, discrete,
   ref_min  = NULL, ref_max = NULL,
   level    = NULL,
-  digits   = 3L
+  ...,
+  digits   = 3L,
+  p        = FALSE
 ) {
 
   if (!inherits(model, 'lrm')) stop('model has to inherits to lrm class')
@@ -80,7 +69,7 @@ summary_interact <- function(model, ref, discrete,
   if (is.null(level)) { level <- dd[['values']][[discrete_name]]}
 
   suppressWarnings(
-    purrr::map_df(.x = level, ~ {
+    res <- purrr::map_df(.x = level, ~ {
       interact <- .x
       eval(parse(text = glue::glue(
         'summary(model, {discrete_name} = interact, {ref_name} = c(ref_min, ref_max))'
@@ -99,11 +88,18 @@ summary_interact <- function(model, ref, discrete,
           .rownames = stringr::str_replace(.rownames, ' -+.*$', '')
         ) %>%
         dplyr::mutate(.rownames = glue::glue('{.rownames} - {interact}')) %>%
-        dplyr::mutate_if(is.double, round, digits = digits) %>%
         dplyr::rename(
           `&nbsp;`     = .rownames,
-          `Odds Ratio` = Effect
+          `Odds Ratio` = Effect,
+          Lower_0.95   = Lower.0.95,
+          Upper_0.95   = Upper.0.95
         )
     })
   )
+  if (p) {
+    res <- res %>%
+      mutate(p_val = ci2p(`Odds Ratio`, Lower_0.95, Upper_0.95, log_trasform = TRUE))
+  }
+  res %>%
+    dplyr::mutate_if(is.double, round, digits = digits)
 }
