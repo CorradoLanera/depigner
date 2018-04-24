@@ -4,7 +4,7 @@
 \alias{check_pkg}
 \title{Check basic installed packages}
 \usage{
-check_pkg()
+check_pkg(interested = ubesp_pkg, dependencies = TRUE)
 }
 \value{
 invisible character vector with missing package

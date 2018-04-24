@@ -33,7 +33,7 @@ please_install <- function(pkgs, install_fun = install.packages, ...) {
   ok_upd <- menu(c("Yes", "No"), title = title_upd) == 1
 
   if (!ok_upd) {
-    return(invisible(pkgs))
+    return(invisible())
   }
 
   update.packages(ask = FALSE)
@@ -41,22 +41,15 @@ please_install <- function(pkgs, install_fun = install.packages, ...) {
   invisible(pkgs)
 }
 
-interested <- c(
-  'testthat', 'rms', 'tidyverse', 'caret', 'janitor', 'glue', 'tm',
-  'RTextTools', 'Matrix', 'SuperLearner', 'assertive', 'usethis',
-  'parallel', 'snow', 'foreach', 'knitr', 'rmarkdown', 'pander', 'here',
-  'installr', 'fortunes', 'beepr', 'RCurl', 'DT', 'covr', 'devtools',
-  'rlang', 'roxygen2', 'stats', 'survival', 'yaml', 'docopt'
-)
 
 #' Check basic installed packages
 #'
 #' @return invisible character vector with missing package
 #' @export
-check_pkg <- function() {
+check_pkg <- function(interested = ubesp_pkg, dependencies = TRUE) {
   have   <- rownames(installed.packages())
   needed <- setdiff(interested, have)
 
-  please_install(needed, dependencies = TRUE)
+  please_install(needed, dependencies = dependencies)
   invisible(needed)
 }
