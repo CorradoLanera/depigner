@@ -6,6 +6,11 @@
 \usage{
 check_pkg(interested = ubesp_pkg, dependencies = TRUE)
 }
+\arguments{
+\item{interested}{[chr] packages' name}
+
+\item{dependencies}{do you want to install the dependencies?}
+}
 \value{
 invisible character vector with missing package
 }

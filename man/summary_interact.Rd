@@ -25,10 +25,14 @@ variable interacting with it}
 \item{level}{A character vector of levels to show. Default (NULL) means to
 show all the possible levels for the discrete variable}
 
+\item{...}{for possible future development}
+
 \item{digits}{number of significant digits to print. Default is 3
 
 Note: the \code{\link[rms]{datadist}} has to be defined for the data used in
  the model}
+
+\item{p}{do you want also the P-value (default = FALSE)}
 }
 \value{
 A data frame
@@ -42,7 +46,9 @@ library(rms)
 
 data('transplant')
 
-transplant <- transplant[transplant[['event']] != 'censored', , drop = FALSE]
+transplant <- transplant[
+    transplant[['event']] != 'censored', , drop = FALSE
+]
 dd <- datadist(transplant)
 
 lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
@@ -53,7 +59,9 @@ lrm_mod
 summary(lrm_mod)
 summary_interact(lrm_mod, age, sex)
 summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
-summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L)
+summary_interact(lrm_mod, age, sex,
+    ref_min = 60, ref_max = 80, digits = 5L
+)
 
 summary_interact(lrm_mod, age, abo)
 summary_interact(lrm_mod, age, abo, level = c('A', 'AB'))

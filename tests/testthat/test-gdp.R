@@ -1,0 +1,12 @@
+context("test-gdp")
+
+test_that("time is correct", {
+  tmp <- tempfile()
+  sink(tmp)
+  running_time <- system.time(gdp(0.5))[[3]]
+  sink()
+  unlink(tmp)
+
+  expect_gt(running_time, 0.5)
+  expect_lt(running_time, 1)
+})

@@ -1,7 +1,7 @@
 ---
 title: "depigner: package of utilities for _pignas_."
 output: github_document
-bibliography: 'bib/doc-pkg.bib'
+bibliography: 'inst/bib/doc-pkg.bib'
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -51,7 +51,7 @@ library(rms)
 
 data('transplant')
 censor_rows <- transplant[['event']] != 'censored' 
-transplant <- transplant[censor_row, , drop = FALSE]
+transplant <- transplant[censor_rows, , drop = FALSE]
 
 dd <- datadist(transplant)
 
@@ -59,8 +59,10 @@ lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
   data = transplant
 )
 ```
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE, eval = TRUE}
-summary_interact(lrm_mod, age, abo) %>% pander
+summary_interact(lrm_mod, age, abo) %>%
+  pander()
 ```
   
 
@@ -85,6 +87,6 @@ If you encounter a bug, please file a
 # create a bib file for the R packages used in this document
 knitr::write_bib(
   x    = c('rms'),
-  file = 'bib/doc-pkg.bib'
+  file = 'inst/bib/doc-pkg.bib'
 )
 ```

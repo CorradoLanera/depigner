@@ -15,6 +15,8 @@
 #'
 #' Note: the \code{\link[rms]{datadist}} has to be defined for the data used in
 #'  the model
+#' @param ... for possible future development
+#' @param p do you want also the P-value (default = FALSE)
 #'
 #' @return A data frame
 #' @export
@@ -25,7 +27,9 @@
 #'
 #' data('transplant')
 #'
-#' transplant <- transplant[transplant[['event']] != 'censored', , drop = FALSE]
+#' transplant <- transplant[
+#'     transplant[['event']] != 'censored', , drop = FALSE
+#' ]
 #' dd <- datadist(transplant)
 #'
 #' lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
@@ -36,7 +40,9 @@
 #' summary(lrm_mod)
 #' summary_interact(lrm_mod, age, sex)
 #' summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
-#' summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L)
+#' summary_interact(lrm_mod, age, sex,
+#'     ref_min = 60, ref_max = 80, digits = 5L
+#' )
 #'
 #' summary_interact(lrm_mod, age, abo)
 #' summary_interact(lrm_mod, age, abo, level = c('A', 'AB'))
@@ -53,13 +59,17 @@ summary_interact <- function(model, ref, discrete,
 
   discrete      <- rlang::enquo(discrete)
   discrete_name <- rlang::quo_name(discrete)
+  # print(discrete_name)
   # print(level)
 
   ref <- rlang::enquo(ref)
   ref_name <- rlang::quo_name(ref)
   # print(ref_name)
 
-  dd <- getOption('datadist') %>% as.name %>% eval
+  dd <- getOption('datadist') %>%
+    as.name() %>%
+    eval()
+
   if (!ref_name %in% names(dd[['limits']])) stop('ref isn\'t in datadist')
   if (!discrete_name %in% names(dd[['limits']])) stop('discrete isn\'t in datadist')
 
@@ -75,7 +85,7 @@ summary_interact <- function(model, ref, discrete,
         'summary(model, {discrete_name} = interact, {ref_name} = c(ref_min, ref_max))'
       ))) %>%
         broom::tidy() %>%
-        dplyr::mutate(.rownames = lag(.rownames)) %>%
+        dplyr::mutate(.rownames = Hmisc::Lag(.rownames)) %>%
         dplyr::filter(Type == 2) %>%
         dplyr::select(-Type, - S.E.) %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
@@ -98,7 +108,11 @@ summary_interact <- function(model, ref, discrete,
   )
   if (p) {
     res <- res %>%
-      mutate(p_val = ci2p(`Odds Ratio`, Lower_0.95, Upper_0.95, log_trasform = TRUE))
+      dplyr::mutate(
+        p_val = ci2p(
+          `Odds Ratio`, Lower_0.95, Upper_0.95, log_trasform = TRUE
+        )
+      )
   }
   res %>%
     dplyr::mutate_if(is.double, round, digits = digits)

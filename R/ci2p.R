@@ -19,8 +19,9 @@
 #' @return a p-value
 #'
 #' @examples
-#' ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
-#' ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
+#'
+#' depigner:::ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
+#' depigner:::ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
 
 ci2p <- function(
   est, lower, upper,

@@ -1,6 +1,6 @@
 library(testthat)
 # This loads the version being checked, not the version
-# you have installedlibrary(depigner)
+# you have installed
 library(depigner)
 
 

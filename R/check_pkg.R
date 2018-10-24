@@ -44,6 +44,10 @@ please_install <- function(pkgs, install_fun = install.packages, ...) {
 
 #' Check basic installed packages
 #'
+#' @param interested [chr] packages' name
+#' @param dependencies do you want to install the dependencies?
+#'
+#' @importFrom utils install.packages installed.packages menu update.packages
 #' @return invisible character vector with missing package
 #' @export
 check_pkg <- function(interested = ubesp_pkg, dependencies = TRUE) {
