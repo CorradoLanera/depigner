@@ -4,11 +4,11 @@
 \name{ubesp_pkg}
 \alias{ubesp_pkg}
 \title{Package used at UBESP.}
-\format{An object of class \code{character} of length 42.}
+\format{A character vector}
 \usage{
 ubesp_pkg
 }
 \description{
-Character vector of the main packages uses at UBESP
+Main packages uses at UBESP
 }
 \keyword{datasets}

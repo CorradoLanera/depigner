@@ -5,5 +5,5 @@
 #' Thoracic and Vascular sciences at the university of Padova.
 #'
 #' @docType package
-#' @name depigner
-NULL
+#' @keywords internal
+"_PACKAGE"

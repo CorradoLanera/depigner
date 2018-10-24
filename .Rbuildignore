@@ -1,3 +1,7 @@
+^codecov\.yml$
+^\.travis\.yml$
+^revdep$
+^\.github$
 ^README\.Rmd$
 ^.*\.Rproj$
 ^\.Rproj\.user$

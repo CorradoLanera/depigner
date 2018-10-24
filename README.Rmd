@@ -6,6 +6,11 @@ bibliography: 'inst/bib/doc-pkg.bib'
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)
+[![Travis build status](https://travis-ci.org/CorradoLanera/depigner.svg?branch=master)](https://travis-ci.org/CorradoLanera/depigner)
+[![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master)
+
 ```{r include = FALSE}
 knitr::opts_chunk$set(
   eval     = FALSE,
@@ -22,18 +27,13 @@ Biostatistics, Epidemiology and Public Health of the Department of Cardiac,
 Thoracic and Vascular sciences at the university of Padova.
 
 
-## Install and usage
-To install the development version (the only one for the moment) from
-GitHub:
+## Install
+You can install the development version from
+[GitHub](https://github.com/) with the following procedure:
 
-```{r}
+```{r, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("CorradoLanera/depigner")
-```
-
-Once the package is installed, simply load it
-```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE, eval = TRUE}
-library(depigner)
 ```
 
 ## Provided function
@@ -46,6 +46,7 @@ library(depigner)
   package [@R-rms]).
 
 ```{r message=FALSE, warning=FALSE, eval = TRUE, include = FALSE}
+library(depigner)
 library(rms)
   options(datadist = 'dd')
 
@@ -76,8 +77,14 @@ If you need some more features, please open an issue on
 
 ## Bug reports
 If you encounter a bug, please file a
-[reprex](https://github.com/tidyverse/reprex) (minimal reproducible example) on [github](https://github.com/CorradoLanera/depigner/issues).
+[reprex](https://github.com/tidyverse/reprex)
+(minimal reproducible example) on
+[github](https://github.com/CorradoLanera/depigner/issues).
 
+## Code of Conduct
+Please note that the 'depigner' project is released with a
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
 
 <!--=========================================================================-->
 

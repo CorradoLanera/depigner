@@ -47,10 +47,19 @@ please_install <- function(pkgs, install_fun = install.packages, ...) {
 #' @param interested [chr] packages' name
 #' @param dependencies do you want to install the dependencies?
 #'
-#' @importFrom utils install.packages installed.packages menu update.packages
+#' @importFrom utils data install.packages installed.packages menu
+#' @importFrom utils update.packages
 #' @return invisible character vector with missing package
 #' @export
-check_pkg <- function(interested = ubesp_pkg, dependencies = TRUE) {
+check_pkg <- function(interested = NULL, dependencies = TRUE) {
+  if (is.null(interested)) {
+    data("ubesp_pkg",
+        package = "depigner",
+        envir   = environment()
+    )
+    interested <- eval(parse(text = "ubesp_pkg"))
+  }
+
   have   <- rownames(installed.packages())
   needed <- setdiff(interested, have)
 

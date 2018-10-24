@@ -4,7 +4,7 @@
 \alias{check_pkg}
 \title{Check basic installed packages}
 \usage{
-check_pkg(interested = ubesp_pkg, dependencies = TRUE)
+check_pkg(interested = NULL, dependencies = TRUE)
 }
 \arguments{
 \item{interested}{[chr] packages' name}

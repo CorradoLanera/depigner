@@ -54,7 +54,9 @@ summary_interact <- function(model, ref, discrete,
   p        = FALSE
 ) {
 
-  if (!inherits(model, 'lrm')) stop('model has to inherits to lrm class')
+  if (!inherits(model, 'lrm')) {
+    stop('model has to inherits to lrm class')
+  }
   if (is.null(getOption('datadist'))) stop('datadist non defined')
 
   discrete      <- rlang::enquo(discrete)
@@ -70,8 +72,12 @@ summary_interact <- function(model, ref, discrete,
     as.name() %>%
     eval()
 
-  if (!ref_name %in% names(dd[['limits']])) stop('ref isn\'t in datadist')
-  if (!discrete_name %in% names(dd[['limits']])) stop('discrete isn\'t in datadist')
+  if (!ref_name %in% names(dd[['limits']])) {
+    stop('ref isn\'t in datadist')
+  }
+  if (!discrete_name %in% names(dd[['limits']])) {
+    stop('discrete isn\'t in datadist')
+  }
 
 
   if (is.null(ref_min))  { ref_min  <- dd[['limits']][[ref_name]][[1]]}
@@ -82,7 +88,10 @@ summary_interact <- function(model, ref, discrete,
     res <- purrr::map_df(.x = level, ~ {
       interact <- .x
       eval(parse(text = glue::glue(
-        'summary(model, {discrete_name} = interact, {ref_name} = c(ref_min, ref_max))'
+        'summary(model,',
+        '    {discrete_name} = interact,',
+        '    {ref_name}      = c(ref_min, ref_max)',
+        ')'
       ))) %>%
         broom::tidy() %>%
         dplyr::mutate(.rownames = Hmisc::Lag(.rownames)) %>%
@@ -93,11 +102,13 @@ summary_interact <- function(model, ref, discrete,
           Low       = ifelse(is.na(Diff.), NA, Low),
           High      = ifelse(is.na(Diff.), NA, High),
           Diff.     = ifelse(!is.na(Diff.), Diff.,
-                             stringr::str_extract(.rownames, ' - .*$') %>%
-                               stringr::str_replace(' - ', '')),
+                          stringr::str_extract(.rownames, ' - .*$') %>%
+                              stringr::str_replace(' - ', '')),
           .rownames = stringr::str_replace(.rownames, ' -+.*$', '')
         ) %>%
-        dplyr::mutate(.rownames = glue::glue('{.rownames} - {interact}')) %>%
+        dplyr::mutate(
+          .rownames = glue::glue('{.rownames} - {interact}')
+        ) %>%
         dplyr::rename(
           `&nbsp;`     = .rownames,
           `Odds Ratio` = Effect,

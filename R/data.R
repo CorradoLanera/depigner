@@ -1,5 +1,6 @@
 #' Package used at UBESP.
 #'
-#' Character vector of the main packages uses at UBESP
+#' Main packages uses at UBESP
 #'
+#' @format A character vector
 "ubesp_pkg"
