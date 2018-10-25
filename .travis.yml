@@ -9,15 +9,11 @@ r:
   - 3.3
   - oldrel
   - release
-  - devel
 
-# osx for 3.2, 3.3 and devel have issues to install devtools
+# devel have issues to install devtools
 matrix:
-  include:
-  - r: oldrel
-    os: osx
-  - r: release
-    os: osx
+  - r: devel
+    warnings_are_errors: false
 
 after_success:
   - Rscript -e 'covr::codecov()'
