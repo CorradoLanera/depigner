@@ -3,17 +3,24 @@
 \name{tidy_summary}
 \alias{tidy_summary}
 \alias{tidy_summary.summary.formula.reverse}
+\alias{tidy_summary.summary.rms}
 \title{tidy_summary}
 \usage{
 tidy_summary(x, ...)
 
 \method{tidy_summary}{summary.formula.reverse}(x, ...)
+
+\method{tidy_summary}{summary.rms}(x, diff_digits = 2, ...)
 }
 \arguments{
 \item{x}{an object used to select a method, output of some summary
-by \code{\link{Hmisc}}.}
+by \code{Hmisc}.}
 
 \item{...}{further arguments passed to or from other methods}
+
+\item{diff_digits}{number of significant digits to use (default 2)
+for the step-difference between continuous variable HR
+computation.}
 }
 \value{
 a [tibble][tibble::tibble-package]
@@ -26,9 +33,17 @@ by \code{rms} packages to a tidy data frame ready to be
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{summary.formula.reverse}: tidy a summary reverse output from the
+\item \code{summary.formula.reverse}: Tidies a summary reverse output from the
 \code{\link[Hmisc]{summary.formula}} called with
 \code{method = "reverse"}.
+
+\item \code{summary.rms}: Convert the output of the
+\code{\link[rms]{summary.rms}} into a data frame,
+reporting only the Hazard Ratio with the .95 CI and the
+incremental step (for continuous variables) reference
+(for categorical variables) for which the Hazard is
+refered to (i.e. without \eqn{\beta}s, Low, High, S.E.
+and Type).
 }}
 
 \note{
@@ -38,5 +53,29 @@ print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 \examples{
 library(Hmisc)
 my_summary <- summary(Species ~., data = iris, method = "reverse")
+tidy_summary(my_summary)
+library(rms)
+options(datadist='dd')
+
+n <- 1000
+set.seed(731)
+age <- 50 + 12*rnorm(n)
+label(age) <- "Age"
+sex <- factor(sample(c('Male','Female'), n,
+                     rep=TRUE, prob=c(.6, .4)))
+cens <- 15*runif(n)
+h <- .02*exp(.04*(age-50)+.8*(sex=='Female'))
+dt <- -log(runif(n))/h
+label(dt) <- 'Follow-up Time'
+e <- ifelse(dt <= cens,1,0)
+dt <- pmin(dt, cens)
+units(dt) <- "Year"
+
+dd <- datadist(age, sex)
+S <- Surv(dt,e)
+f <- cph(S ~ rcs(age,4) + sex, x=TRUE, y=TRUE)
+
+
+my_summary <- summary(f)
 tidy_summary(my_summary)
 }
