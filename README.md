@@ -34,8 +34,14 @@ devtools::install_github("CorradoLanera/depigner")
     combination of a continuous variable (for which it is possible to
     define the reference and the target values) and (every or a
     selection of levels of) a categorical one in a logistic model
-    provided by `lrm()` (from the `rms` package (Harrell, Jr.
-2018)).
+    provided by `lrm()` (from the `rms` package (Harrell, Jr. 2018)).
+
+<!-- end list -->
+
+``` r
+summary_interact(lrm_mod, age, abo) %>%
+  pander()
+```
 
 |          | Low | High | Diff. | Odds Ratio | Lower\_0.95 | Upper\_0.95 |
 | :------: | :-: | :--: | :---: | :--------: | :---------: | :---------: |
@@ -43,6 +49,26 @@ devtools::install_github("CorradoLanera/depigner")
 | age - B  | 43  |  58  |  15   |   1.817    |    0.74     |    4.463    |
 | age - AB | 43  |  58  |  15   |   0.635    |    0.186    |    2.169    |
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352    |    1.182    |
+
+  - **`tidy_reverse()`**: produces a data frame from the `summary()`
+    functions provided by **Hmisc** and **rms** packages. At the moment
+    it is tested only for method *reverse*
+
+<!-- end list -->
+
+``` r
+dd <- datadist(iris)
+my_summary <- summary(Species ~., data = iris, method = "reverse")
+tidy_summary(my_summary) %>% 
+  pander()
+```
+
+|              |   setosa (N=50)   | versicolor (N=50) | virginica (N=50)  |
+| :----------: | :---------------: | :---------------: | :---------------: |
+| Sepal.Length | 4.800/5.000/5.200 | 5.600/5.900/6.300 | 6.225/6.500/6.900 |
+| Sepal.Width  | 3.200/3.400/3.675 | 2.525/2.800/3.000 | 2.800/3.000/3.175 |
+| Petal.Length | 1.400/1.500/1.575 | 4.000/4.350/4.600 | 5.100/5.550/5.875 |
+| Petal.Width  |    0.2/0.2/0.3    |    1.2/1.3/1.5    |    1.8/2.0/2.3    |
 
 ## Provided data
 
