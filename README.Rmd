@@ -13,7 +13,7 @@ bibliography: 'inst/bib/doc-pkg.bib'
 
 ```{r include = FALSE}
 knitr::opts_chunk$set(
-  eval     = FALSE,
+  eval     = TRUE,
   collapse = TRUE,
   comment  = "#>"
 )
@@ -39,17 +39,19 @@ devtools::install_github("CorradoLanera/depigner")
 ## Provided function
 
 - **`summary_interact()`**: produce a data frame of OR (with the
-  corresponding CI95%) for the interactions between different combination of
-  a continuous variable (for which it is possible to define the reference
-  and the target values) and (every or a selection of levels of) a
-  categorical one in a logistic model provided by `lrm()` (from the `rms`
-  package [@R-rms]).
+  corresponding CI95%) for the interactions between different
+  combination of a continuous variable (for which it is possible to
+  define the reference and the target values) and (every or a selection
+  of levels of) a categorical one in a logistic model provided by
+  `lrm()` (from the `rms` package [@R-rms]).
 
-```{r message=FALSE, warning=FALSE, eval = TRUE, include = FALSE}
+```{r, include = FALSE}
 library(depigner)
 library(rms)
   options(datadist = 'dd')
-
+library(survival)
+library(pander)
+  
 data('transplant')
 censor_rows <- transplant[['event']] != 'censored' 
 transplant <- transplant[censor_rows, , drop = FALSE]
@@ -61,14 +63,36 @@ lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
 )
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, eval = TRUE}
+```{r}
 summary_interact(lrm_mod, age, abo) %>%
   pander()
+
+summary_interact(lrm_mod, age, abo, p = TRUE) %>%
+  pander()
+
 ```
   
 
+- **`tidy_summary()`**: produces a data frame from the `summary()`
+  functions provided by **Hmisc** and **rms** packages. 
+  At the moment it is tested only for method _reverse_
+
+```{r}
+dd <- datadist(iris)
+my_summary <- summary(Species ~., data = iris, method = "reverse")
+tidy_summary(my_summary) %>% 
+  pander()
+
+
+dd <- datadist(heart)
+surv <- Surv(heart$start, heart$stop, heart$event)
+f    <- cph(surv ~ age + year + surgery, data = heart)
+my_summary <- summary(f)
+tidy_summary(my_summary) %>% 
+  pander()
+```
 ## Provided data
-None at the moment.
+- **`ubesp_pkg`**: main packages uses at UBESP
 
 ## Feature request
 If you need some more features, please open an issue on

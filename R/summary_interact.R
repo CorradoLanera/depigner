@@ -46,6 +46,7 @@
 #'
 #' summary_interact(lrm_mod, age, abo)
 #' summary_interact(lrm_mod, age, abo, level = c('A', 'AB'))
+#' summary_interact(lrm_mod, age, abo, level = c('A', 'AB'), p = TRUE)
 summary_interact <- function(model, ref, discrete,
   ref_min  = NULL, ref_max = NULL,
   level    = NULL,
@@ -110,20 +111,24 @@ summary_interact <- function(model, ref, discrete,
           .rownames = glue::glue('{.rownames} - {interact}')
         ) %>%
         dplyr::rename(
-          `&nbsp;`     = .rownames,
-          `Odds Ratio` = Effect,
-          Lower_0.95   = Lower.0.95,
-          Upper_0.95   = Upper.0.95
+          `&nbsp;`       = .rownames,
+          `Odds Ratio`   = Effect,
+          `Lower 95% CI` = Lower.0.95,
+          `Upper 95% CI` = Upper.0.95
         )
     })
   )
   if (p) {
-    res <- res %>%
-      dplyr::mutate(
-        p_val = ci2p(
-          `Odds Ratio`, Lower_0.95, Upper_0.95, log_trasform = TRUE
-        )
-      )
+    res["P-value"] <- purrr::pmap_dbl(
+        list(
+            or   = res[["Odds Ratio"]],
+            low  = res[["Lower 95% CI"]],
+            high = res[["Upper 95% CI"]]
+        ),
+        function(or, low, high) {
+            ci2p(or, low, high, log_trasform = TRUE)
+        }
+    )
   }
   res %>%
     dplyr::mutate_if(is.double, round, digits = digits)

@@ -65,4 +65,5 @@ summary_interact(lrm_mod, age, sex,
 
 summary_interact(lrm_mod, age, abo)
 summary_interact(lrm_mod, age, abo, level = c('A', 'AB'))
+summary_interact(lrm_mod, age, abo, level = c('A', 'AB'), p = TRUE)
 }

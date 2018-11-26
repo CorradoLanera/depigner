@@ -7,6 +7,6 @@ test_that("time is correct", {
   sink()
   unlink(tmp)
 
-  expect_gt(running_time, 0.5)
+  expect_gt(running_time, 0.49)
   expect_lt(running_time, 1)
 })
