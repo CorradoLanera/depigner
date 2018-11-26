@@ -49,6 +49,7 @@ devtools::install_github("CorradoLanera/depigner")
 library(depigner)
 library(rms)
   options(datadist = 'dd')
+library(survival)
 library(pander)
   
 data('transplant')
@@ -65,10 +66,14 @@ lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
 ```{r}
 summary_interact(lrm_mod, age, abo) %>%
   pander()
+
+summary_interact(lrm_mod, age, abo, p = TRUE) %>%
+  pander()
+
 ```
   
 
-- **`tidy_reverse()`**: produces a data frame from the `summary()`
+- **`tidy_summary()`**: produces a data frame from the `summary()`
   functions provided by **Hmisc** and **rms** packages. 
   At the moment it is tested only for method _reverse_
 
@@ -77,9 +82,17 @@ dd <- datadist(iris)
 my_summary <- summary(Species ~., data = iris, method = "reverse")
 tidy_summary(my_summary) %>% 
   pander()
+
+
+dd <- datadist(heart)
+surv <- Surv(heart$start, heart$stop, heart$event)
+f    <- cph(surv ~ age + year + surgery, data = heart)
+my_summary <- summary(f)
+tidy_summary(my_summary) %>% 
+  pander()
 ```
 ## Provided data
-None at the moment.
+- **`ubesp_pkg`**: main packages uses at UBESP
 
 ## Feature request
 If you need some more features, please open an issue on

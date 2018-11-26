@@ -71,25 +71,24 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'
 #' @examples
 #' library(rms)
-#' options(datadist='dd')
-#'
+#' options(dd = "datadist")
 #' n <- 1000
 #' set.seed(731)
 #' age <- 50 + 12*rnorm(n)
-#' label(age) <- "Age"
 #' sex <- factor(sample(c('Male','Female'), n,
-#'                      rep=TRUE, prob=c(.6, .4)))
+#'     rep  = TRUE,
+#'     prob = c(.6, .4)
+#' ))
 #' cens <- 15*runif(n)
-#' h <- .02*exp(.04*(age-50)+.8*(sex=='Female'))
+#' h <- .02*exp(.04*(age - 50) + .8*(sex == 'Female'))
 #' dt <- -log(runif(n))/h
-#' label(dt) <- 'Follow-up Time'
-#' e <- ifelse(dt <= cens,1,0)
+#' e <- ifelse(dt <= cens, 1, 0)
 #' dt <- pmin(dt, cens)
-#' units(dt) <- "Year"
 #'
 #' dd <- datadist(age, sex)
-#' S <- Surv(dt,e)
-#' f <- cph(S ~ rcs(age,4) + sex, x=TRUE, y=TRUE)
+#'
+#' S <- survival::Surv(dt,e)
+#' f <- rms::cph(S ~ age + sex)
 #'
 #'
 #' my_summary <- summary(f)
