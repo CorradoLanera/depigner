@@ -11,9 +11,11 @@ paired_test_continuous(group, x)
 
 \item{x}{(num) vector of observations. Note: lenght of `x` is
 considered equal to the number of subjects by the number of
-groups. Observation can be provided by subject (e.g.
-c(a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4) or by group
-(e.g. c(a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4)).}
+groups. Observation must be provided by subject
+(e.g. c(a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4), where
+the letters, a, b, c, and d represents the groups and the
+numbers represents the patien's ids). Note only patient with
+observation in all the levels considered will be used.}
 }
 \value{
 A list with components
@@ -46,6 +48,12 @@ This function could be used as `conTest` option in the
 \examples{
 library(Hmisc)
 
+
+iris <- dplyr::group_by(iris, Species) \%>\%
+  dplyr::mutate(id = dplyr::row_number()) \%>\%
+  dplyr::ungroup() \%>\%
+  dplyr::arrange(id)
+
 ## two groups
 summary(Species ~.,
     data    = iris[iris$Species != "setosa",],
@@ -63,12 +71,12 @@ summary(Species ~.,
 )
 
 ## without Hmisc
+two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
+two_groups <- iris$Species[iris$Species != "setosa"]
+
+paired_test_continuous(two_groups, two_obs)
+
 obs <- iris$Sepal.Length
 many_groups <- iris$Species
 paired_test_continuous(many_groups, obs)
-
-no_setosa <- iris$Species != "setosa"
-obs_two    <- iris$Sepal.Length[no_setosa]
-two_groups <- droplevels(iris$Species[no_setosa])
-paired_test_continuous(two_groups, obs_two)
 }

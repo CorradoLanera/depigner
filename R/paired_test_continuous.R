@@ -16,9 +16,11 @@
 #' @param group (fct) vector of groups
 #' @param x (num) vector of observations. Note: lenght of `x` is
 #'        considered equal to the number of subjects by the number of
-#'        groups. Observation can be provided by subject (e.g.
-#'        c(a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4) or by group
-#'        (e.g. c(a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4)).
+#'        groups. Observation must be provided by subject
+#'        (e.g. c(a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4), where
+#'        the letters, a, b, c, and d represents the groups and the
+#'        numbers represents the patien's ids). Note only patient with
+#'        observation in all the levels considered will be used.
 #'
 #' @return A list with components
 #'         `P` (the computed P-value),
@@ -35,6 +37,12 @@
 #'
 #' @examples
 #' library(Hmisc)
+#'
+#'
+#' iris <- dplyr::group_by(iris, Species) %>%
+#'   dplyr::mutate(id = dplyr::row_number()) %>%
+#'   dplyr::ungroup() %>%
+#'   dplyr::arrange(id)
 #'
 #' ## two groups
 #' summary(Species ~.,
@@ -53,105 +61,150 @@
 #' )
 #'
 #' ## without Hmisc
+#' two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
+#' two_groups <- iris$Species[iris$Species != "setosa"]
+#'
+#' paired_test_continuous(two_groups, two_obs)
+#'
 #' obs <- iris$Sepal.Length
 #' many_groups <- iris$Species
 #' paired_test_continuous(many_groups, obs)
-#'
-#' no_setosa <- iris$Species != "setosa"
-#' obs_two    <- iris$Sepal.Length[no_setosa]
-#' two_groups <- droplevels(iris$Species[no_setosa])
-#' paired_test_continuous(two_groups, obs_two)
 paired_test_continuous <- function(group, x) {
+  # Imput adjustment and checks -------------------------------------
+  len_g <- length(group)
+  len_x <- length(x)
+  n_lev <- length(levels(group))
 
+  if (len_g != len_x) {
+    stop(paste(
+      "The lenght of the variable group has to be the same of",
+      "the lenght of the variable x. They aren't equal."
+    ))
+  }
 
-# Imput adjustment and checks -------------------------------------
-
-    if (length(group) != length(x)) {
-        stop(paste(
-            "The lenght of the variable group has to be the same of",
-            "the lenght of the variable x. They aren't equal."
-        ))
-    }
-
-    if (!is.factor(group)) {
-        message(
-            "Grouping variable converted to factor to compute test."
-        )
-        # explicit set levels to avoid reordering
-        group <- factor(group, levels = unique(group))
-    }
-
-
-# main constants --------------------------------------------------
-
-    group_names <- levels(group)
-    group_n     <- length(group_names)
-    n_subjects  <- length(x) / group_n
-    subj_ids    <- rep(seq_len(n_subjects), group_n)
-
-    if (n_subjects != as.integer(n_subjects)) {
-        warning(paste(
-            "The number of observations is not a multiple of",
-            "the number of groups. Something wrong could be happen",
-            "for in the computation of the number of subjects.\n",
-            "Please, do not trust continuous variable tests."
-        ))
-    }
-
-
-# Two groups ------------------------------------------------------
-
-    if (group_n == 2) {
-        test_out <- stats::t.test(
-            x[group == group_names[[1]]],
-            x[group == group_names[[2]]],
-            paired    = TRUE,
-            var.equal = TRUE
-        )
-
-
-        # `return()` exits from the function here!
-        return(list(
-            # values (mandatory)
-            P    = c(P = test_out[["p.value"]]),
-            stat = test_out[["statistic"]],
-            df   = test_out[["parameter"]],
-
-            # names (mandatory)
-            testname = "Paired t-test",
-            statname = "t",
-            namefun  = "paired_tstat",
-
-            # special labels (optional)
-            latexstat    = "t_{df}",
-            plotmathstat = "t[df]",
-            note = "Two groups: t-test for paired values is done."
-        ))
-    }
-
-
-# More than two groups --------------------------------------------
-
-    test_out <- summary(
-        stats::aov(x ~ group + Error(subj_ids/group))
-    )[["Error: Within"]][[1]]
-
-    list(
-        # values (mandatory)
-        P    = stats::setNames(test_out[1, "Pr(>F)"], "P"),
-        stat = stats::setNames(test_out[1, "F value"], "F"),
-        df   = stats::setNames(test_out[1, "Df"], "df"),
-
-        # names (mandatory)
-        testname = "Repeated-measure AOV",
-        statname = "F",
-        namefun  = "rep_aov",
-
-        # special labels (optional)
-        latexstat    = "F_{df}",
-        plotmathstat = "F[df]",
-        note = {
-            "More than two groups: ANOVA for repeated measure is used."
-        }
+  if (!is.factor(group)) {
+    message(
+      "Grouping variable converted to factor to compute test."
     )
+    # explicit set levels to avoid reordering
+    group <- factor(group, levels = unique(group))
+  }
+
+
+  # main constants --------------------------------------------------
+
+  # x     <- sf.db$Circonferenza.braccio..cm.
+  # group <- sf.db$Visita
+  original_levels <- levels(group)
+
+
+  ids <- vector("integer", len_g)
+  id  <- 0L
+  for (i in seq_along(group)) {
+
+    actual_lev <- which(original_levels == group[[i]])
+    is_new_id <- (i == 1) ||
+      (group[[i - 1]] %in% original_levels[actual_lev:n_lev])
+    id <- id + is_new_id
+
+    ids[[i]] <- id
+  }
+
+  data_db <- dplyr::tibble(ids, x, group) %>%
+    dplyr::distinct() %>%
+    tidyr::spread("group", "x") %>%
+    janitor::remove_empty("cols") %>%
+    ggplot2::remove_missing() %>%
+    tidyr::gather("group", "x", -ids) %>%
+    dplyr::mutate(group = factor(group,
+      levels = original_levels[original_levels %in% unique(group)]
+    ))
+
+  group_names <- levels(data_db$group)
+  group_n     <- length(group_names)
+  n_subjects  <- max(data_db$ids, na.rm = TRUE)
+
+
+  # Less Than Two groups --------------------------------------------
+
+  if (group_n < 2) {
+    cat("few here\n")
+
+    # `return()` exits from the function here!
+    return(list(
+      # values (mandatory)
+      P    = stats::setNames(1, "P"),
+      stat = stats::setNames(Inf, "XXX"),
+      df   = stats::setNames(0, "df"),
+
+      # names (mandatory)
+      testname = "notestname",
+      statname = "nostatname",
+      namefun  = "nonamefun",
+
+      # special labels (optional)
+      note = "Only one group with data, no paired test is done."
+    ))
+  }
+
+
+  # Two groups ------------------------------------------------------
+
+  if (group_n == 2) {
+    data_two <- data_db %>%
+      tidyr::spread("group", "x")
+    cat("two here\n")
+
+    test_out <- stats::t.test(data_two[[2]], data_two[[3]],
+      paired    = TRUE,
+      var.equal = TRUE
+    )
+
+
+    # `return()` exits from the function here!
+    return(list(
+      # values (mandatory)
+      P    = c(P = test_out[["p.value"]]),
+      stat = test_out[["statistic"]],
+      df   = test_out[["parameter"]],
+
+      # names (mandatory)
+      testname = "Paired t-test",
+      statname = "t",
+      namefun  = "paired_tstat",
+
+      # special labels (optional)
+      latexstat    = "t_{df}",
+      plotmathstat = "t[df]",
+      note = "Two groups: t-test for paired values is done."
+    ))
+  }
+
+
+  # More than two groups --------------------------------------------
+  cat("more here\n")
+
+  test_out <- summary(
+    stats::aov(x ~ group + Error(ids/group), data = data_db)
+  )[["Error: Within"]][[1]]
+
+  list(
+    # values (mandatory)
+    P    = stats::setNames(test_out[1, "Pr(>F)"], "P"),
+    stat = stats::setNames(test_out[1, "F value"], "F"),
+    df   = stats::setNames(test_out[1, "Df"], "df"),
+
+    # names (mandatory)
+    testname = "Repeated-measure AOV",
+    statname = "F",
+    namefun  = "rep_aov",
+
+    # special labels (optional)
+    latexstat    = "F_{df}",
+    plotmathstat = "F[df]",
+    note = {
+      "More than two groups: ANOVA for repeated measure is used."
+    }
+  )
 }
+

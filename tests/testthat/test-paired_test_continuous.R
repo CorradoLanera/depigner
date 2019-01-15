@@ -1,5 +1,10 @@
 context("test-paired_test_continuous")
 
+iris <- dplyr::group_by(iris, Species) %>%
+  dplyr::mutate(id = dplyr::row_number()) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(id)
+
 which_selected <- iris$Species != "setosa"
 two_obs    <- iris$Sepal.Length[which_selected]
 two_groups <- iris$Species[which_selected] %>% droplevels()
