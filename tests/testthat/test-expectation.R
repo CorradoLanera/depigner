@@ -1,4 +1,4 @@
-context("Expectation about class of input and output")
+context("test-summary_interact")
 
 old_opt <- options(datadist = 'dd')
 on.exit(options(old_opt))
