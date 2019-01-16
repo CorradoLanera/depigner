@@ -1,3 +1,7 @@
+* added `paired_test_categorical()` function to implement paired test
+  for categorical variable accordingly to the number of groups, in a 
+  suitable way to be used in the **Hmisc** `summary()` with
+  `method = "reverse"`.
 * added `paired_test_continuous()` function to implement paired test
   for continuous variable accordingly to the number of groups, in a 
   suitable way to be used in the **Hmisc** `summary()` with

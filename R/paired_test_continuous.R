@@ -68,6 +68,7 @@ paired_test_continuous <- function(group, x) {
   len_x <- length(x)
   n_lev <- length(levels(group))
 
+
   if (len_g != len_x) {
     stop(paste(
       "The lenght of the variable group has to be the same of",
@@ -90,18 +91,47 @@ paired_test_continuous <- function(group, x) {
   # group <- sf.db$Visita
   original_levels <- levels(group)
 
+
+  # Recreate ids (if possible) --------------------------------------
+
+  rle_g <- rle(as.integer(group))$lengths
+
   ids <- vector("integer", len_g)
   id  <- 0L
-  for (i in seq_along(group)) {
 
-    actual_lev <- which(original_levels == group[[i]])
-
-    is_new_id <- (i == 1) ||
-      (group[[i - 1]] %in% original_levels[actual_lev:n_lev])
-
-    id <- id + is_new_id
-    ids[[i]] <- id
+  if (length(rle_g) == length(original_levels)) {
+    # this means that observation are sorted by group
+    if (diff(range(rle_g)) >= .Machine$double.eps ^ 0.5) {
+      warning(paste(
+        "Data passed by groups and incomplete:\n",
+        "    not same umber of observation among the groups.\n",
+        "P returned is the standard F statistics.\n",
+        "(9 is added to this P to identify the cases).\n\n"
+      ))
+      res <- Hmisc::conTestkw(group, x)
+      res$P <- res$P + 9
+      return(res)
+    }
+    # observation sorted by groups with the same length
+    ids <- rep(seq_len(rle_g[[1]]), length(rle_g))
   }
+
+  if (length(rle_g) != length(original_levels)) {
+    # this means observation are sorted by ids
+    for (i in seq_along(group)) {
+
+      actual_lev <- which(original_levels == group[[i]])
+
+      is_new_id <- (i == 1) ||
+        (group[[i - 1]] %in% original_levels[actual_lev:n_lev])
+
+      id <- id + is_new_id
+      ids[[i]] <- id
+    }
+  }
+
+
+  # main data frame creation ----------------------------------------
 
   data_db <- dplyr::tibble(ids, x, group) %>%
     dplyr::distinct() %>%
@@ -113,6 +143,7 @@ paired_test_continuous <- function(group, x) {
                                  levels = original_levels[original_levels %in% unique(group)]
     )) %>%
     dplyr::arrange(ids, group)
+
 
   group_names <- levels(data_db$group)
   group_n     <- length(group_names)
@@ -146,6 +177,7 @@ paired_test_continuous <- function(group, x) {
   if (group_n == 2) {
     data_two <- data_db %>%
       tidyr::spread("group", "x")
+
 
     test_out <- t.test(data_two[[2]], data_two[[3]],
                        paired    = TRUE,
