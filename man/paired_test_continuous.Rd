@@ -48,12 +48,6 @@ This function could be used as `conTest` option in the
 \examples{
 library(Hmisc)
 
-
-iris <- dplyr::group_by(iris, Species) \%>\%
-  dplyr::mutate(id = dplyr::row_number()) \%>\%
-  dplyr::ungroup() \%>\%
-  dplyr::arrange(id)
-
 ## two groups
 summary(Species ~.,
     data    = iris[iris$Species != "setosa",],
@@ -73,7 +67,6 @@ summary(Species ~.,
 ## without Hmisc
 two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
 two_groups <- iris$Species[iris$Species != "setosa"]
-
 paired_test_continuous(two_groups, two_obs)
 
 obs <- iris$Sepal.Length

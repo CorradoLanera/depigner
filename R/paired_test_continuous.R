@@ -38,12 +38,6 @@
 #' @examples
 #' library(Hmisc)
 #'
-#'
-#' iris <- dplyr::group_by(iris, Species) %>%
-#'   dplyr::mutate(id = dplyr::row_number()) %>%
-#'   dplyr::ungroup() %>%
-#'   dplyr::arrange(id)
-#'
 #' ## two groups
 #' summary(Species ~.,
 #'     data    = iris[iris$Species != "setosa",],
@@ -63,7 +57,6 @@
 #' ## without Hmisc
 #' two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
 #' two_groups <- iris$Species[iris$Species != "setosa"]
-#'
 #' paired_test_continuous(two_groups, two_obs)
 #'
 #' obs <- iris$Sepal.Length
@@ -97,16 +90,16 @@ paired_test_continuous <- function(group, x) {
   # group <- sf.db$Visita
   original_levels <- levels(group)
 
-
   ids <- vector("integer", len_g)
   id  <- 0L
   for (i in seq_along(group)) {
 
     actual_lev <- which(original_levels == group[[i]])
+
     is_new_id <- (i == 1) ||
       (group[[i - 1]] %in% original_levels[actual_lev:n_lev])
-    id <- id + is_new_id
 
+    id <- id + is_new_id
     ids[[i]] <- id
   }
 
@@ -117,25 +110,25 @@ paired_test_continuous <- function(group, x) {
     ggplot2::remove_missing() %>%
     tidyr::gather("group", "x", -ids) %>%
     dplyr::mutate(group = factor(group,
-      levels = original_levels[original_levels %in% unique(group)]
-    ))
+                                 levels = original_levels[original_levels %in% unique(group)]
+    )) %>%
+    dplyr::arrange(ids, group)
 
   group_names <- levels(data_db$group)
   group_n     <- length(group_names)
-  n_subjects  <- max(data_db$ids, na.rm = TRUE)
+  n_subjects  <- length(unique(data_db$ids))
 
 
   # Less Than Two groups --------------------------------------------
 
-  if (group_n < 2) {
-    cat("few here\n")
+  if (group_n < 2 || n_subjects <= group_n) {
 
     # `return()` exits from the function here!
     return(list(
       # values (mandatory)
-      P    = stats::setNames(1, "P"),
-      stat = stats::setNames(Inf, "XXX"),
-      df   = stats::setNames(0, "df"),
+      P    = setNames(1, "P"),
+      stat = setNames(Inf, "XXX"),
+      df   = setNames(0, "df"),
 
       # names (mandatory)
       testname = "notestname",
@@ -153,11 +146,10 @@ paired_test_continuous <- function(group, x) {
   if (group_n == 2) {
     data_two <- data_db %>%
       tidyr::spread("group", "x")
-    cat("two here\n")
 
-    test_out <- stats::t.test(data_two[[2]], data_two[[3]],
-      paired    = TRUE,
-      var.equal = TRUE
+    test_out <- t.test(data_two[[2]], data_two[[3]],
+                       paired    = TRUE,
+                       var.equal = TRUE
     )
 
 
@@ -182,17 +174,16 @@ paired_test_continuous <- function(group, x) {
 
 
   # More than two groups --------------------------------------------
-  cat("more here\n")
 
   test_out <- summary(
-    stats::aov(x ~ group + Error(ids/group), data = data_db)
+    aov(x ~ group + Error(ids/group), data = data_db)
   )[["Error: Within"]][[1]]
 
   list(
     # values (mandatory)
-    P    = stats::setNames(test_out[1, "Pr(>F)"], "P"),
-    stat = stats::setNames(test_out[1, "F value"], "F"),
-    df   = stats::setNames(test_out[1, "Df"], "df"),
+    P    = setNames(test_out[1, "Pr(>F)"], "P"),
+    stat = setNames(test_out[1, "F value"], "F"),
+    df   = setNames(test_out[1, "Df"], "df"),
 
     # names (mandatory)
     testname = "Repeated-measure AOV",
