@@ -135,8 +135,6 @@ paired_test_categorical <- function(tab) {
       dplyr::mutate(prop = n/sum(n)) %>%
       dplyr::ungroup()
 
-    cat(str(tab))
-
     st <- summary(glm(prop ~ var_levels*group_id,
       data   = tab_df,
       family = "quasibinomial"
