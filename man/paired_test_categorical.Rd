@@ -40,7 +40,7 @@ This function could be used as `catTest` option in the
 \examples{
 library(Hmisc)
 
-data(Arthritis, package = "vcd")
+data(Arthritis)
 
 ## two groups
 summary(Treatment ~ Sex,

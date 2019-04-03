@@ -1,6 +1,6 @@
 context("test-paired_test_categorical")
 
-data(Arthritis, package = "vcd")
+data(Arthritis)
 
 tab_two  <- table(Arthritis$Sex, Arthritis$Treatment)
 tab_more <- table(Arthritis$Sex, Arthritis$Improved)

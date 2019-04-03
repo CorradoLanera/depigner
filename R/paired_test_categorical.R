@@ -31,7 +31,7 @@
 #' @examples
 #' library(Hmisc)
 #'
-#' data(Arthritis, package = "vcd")
+#' data(Arthritis)
 #'
 #' ## two groups
 #' summary(Treatment ~ Sex,
