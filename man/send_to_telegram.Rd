@@ -10,12 +10,12 @@ send_to_telegram(x, ..., chat_id, bot)
 
 \method{send_to_telegram}{character}(x, type = c("message", "photo",
   "document", "audio", "animation", "video", "voice", "sticker",
-  "location", "videonote"), ..., chat_id = .depigner_chat_id,
-  bot = .depigner_bot)
+  "location", "videonote"), ..., chat_id = getOption("depigner.chat_id"),
+  bot = getOption("depigner.bot"))
 
 \method{send_to_telegram}{gg}(x, fileext = c("png", "pdf", "jpeg",
-  "tiff", "bmp"), ..., chat_id = .depigner_chat_id,
-  bot = .depigner_bot)
+  "tiff", "bmp"), ..., chat_id = getOption("depigner.chat_id"),
+  bot = getOption("depigner.bot"))
 }
 \arguments{
 \item{x}{object to send (often a character string)}
@@ -25,11 +25,11 @@ send_to_telegram(x, ..., chat_id, bot)
 
 \item{chat_id}{chat_id in which send the object. By default all the
 methods consider the chat_id defined in the previous run of
-\code{\link{prepare_telegram_bot}}.}
+\code{\link{start_bot_for_chat}}.}
 
 \item{bot}{(\code{\link[telegram.bot]{Bot}}) the bot object.
 By default all the methods consider the bot created by a
-previous run of \code{\link{prepare_telegram_bot}}.}
+previous run of \code{\link{start_bot_for_chat}}.}
 
 \item{type}{(chr, default = "message") the type of text represent
 \code{x}. I.e., if not "message", it is normally considered as
@@ -47,7 +47,7 @@ This is a generic function to send some object to telegram.
 }
 \details{
 By dafault it use the bot and chat_id configured by
-\code{\link{prepare_telegram_bot}}. The user can pass a custom bot or
+\code{\link{start_bot_for_chat}}. The user can pass a custom bot or
 chat_id providing them to the corresponding argument.
 }
 \examples{
@@ -55,7 +55,7 @@ chat_id providing them to the corresponding argument.
     library(depigner)
     library(ggplot2)
 
-    prepare_telegram_bot()
+    start_bot_for_chat()
     send_to_telegram("hello world")
 
     gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +

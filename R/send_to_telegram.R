@@ -3,19 +3,19 @@
 #' This is a generic function to send some object to telegram.
 #'
 #' By dafault it use the bot and chat_id configured by
-#' \code{\link{prepare_telegram_bot}}. The user can pass a custom bot or
+#' \code{\link{start_bot_for_chat}}. The user can pass a custom bot or
 #' chat_id providing them to the corresponding argument.
 #'
 #'
 #' @param chat_id chat_id in which send the object. By default all the
 #'        methods consider the chat_id defined in the previous run of
-#'        \code{\link{prepare_telegram_bot}}.
+#'        \code{\link{start_bot_for_chat}}.
 #' @param x object to send (often a character string)
 #' @param ... further argument to pass to the sending methotds (see
 #'        \code{\link[telegram.bot]{Bot}} for specifications.)
 #' @param bot (\code{\link[telegram.bot]{Bot}}) the bot object.
 #'        By default all the methods consider the bot created by a
-#'        previous run of \code{\link{prepare_telegram_bot}}.
+#'        previous run of \code{\link{start_bot_for_chat}}.
 #'
 #' @return invisible the object x.
 #' @export
@@ -24,7 +24,7 @@
 #'     library(depigner)
 #'     library(ggplot2)
 #'
-#'     prepare_telegram_bot()
+#'     start_bot_for_chat()
 #'     send_to_telegram("hello world")
 #'
 #'     gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +
@@ -58,8 +58,8 @@ send_to_telegram.character <- function(
       "voice", "sticker", "location", "videonote"
     ),
     ...,
-    chat_id = .depigner_chat_id,
-    bot = .depigner_bot
+    chat_id = getOption("depigner.chat_id"),
+    bot     = getOption("depigner.bot")
 ) {
   check_for_bot_options(chat_id, bot)
 
@@ -82,56 +82,16 @@ send_to_telegram.gg <- function(
     x,
     fileext = c("png", "pdf", "jpeg", "tiff", "bmp"),
     ...,
-    chat_id = .depigner_chat_id,
-    bot = .depigner_bot
+    chat_id = getOption("depigner.chat_id"),
+    bot     = getOption("depigner.bot")
 ) {
   check_for_bot_options(chat_id, bot)
 
   fileext <- match.arg(fileext)
   tmp     <- tempfile(fileext = paste0(".", fileext))
 
-  ggsave(tmp, x)
+  ggplot2::ggsave(tmp, x)
   bot$send_photo(chat_id = chat_id, photo = tmp)
   unlink(tmp)
   invisible(x)
-}
-
-
-#' Check if a bot is set up
-#'
-#' \code{\link{check_for_bot_options}} check if a telegram bot and
-#' corresponding chat, exist.
-#'
-#' @param bot a bot
-#' @param chat_id  a chat id
-#' @return invisible lgl indicating if check pass (TRUE) or not (FALSE)
-check_for_bot_options <- function(chat_id, bot) {
-  stop_to_warning_function <- function(what) {
-    warning(glue::glue(
-      "`{what}` is missing.
-      Pass it directly to `send_message_to_telegram()` or
-      set it up automatically by `prepare_telegram_bot()`."
-    ), call. = FALSE)
-
-    return(invisible(FALSE))
-  }
-
-  is_bot_ok <- tryCatch(
-    {
-      force(bot)
-      TRUE
-    },
-    error = function(e) stop_to_warning_function("bot")
-  )
-
-  is_chat_id_ok <- tryCatch(
-    {
-      force(chat_id)
-      TRUE
-    },
-    error = function(e) stop_to_warning_function("chat id")
-  )
-
-  invisible(is_bot_ok & is_chat_id_ok)
-
 }
