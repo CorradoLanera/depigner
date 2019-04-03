@@ -30,9 +30,9 @@ tidy_summary <- function(x, ...) {
 #'
 #' @export
 #' @examples
-#' library(Hmisc)
-#' my_summary <- summary(Species ~., data = iris, method = "reverse")
-#' tidy_summary(my_summary)
+#'   library(Hmisc)
+#'   my_summary <- summary(Species ~., data = iris, method = "reverse")
+#'   tidy_summary(my_summary)
 tidy_summary.summary.formula.reverse <- function(x, ...) {
   invisible(utils::capture.output(
     printed <- print(x, ...)
@@ -70,29 +70,29 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #' @export
 #'
 #' @examples
-#' library(rms)
-#' options(dd = "datadist")
-#' n <- 1000
-#' set.seed(731)
-#' age <- 50 + 12*rnorm(n)
-#' sex <- factor(sample(c('Male','Female'), n,
-#'     rep  = TRUE,
-#'     prob = c(.6, .4)
-#' ))
-#' cens <- 15*runif(n)
-#' h <- .02*exp(.04*(age - 50) + .8*(sex == 'Female'))
-#' dt <- -log(runif(n))/h
-#' e <- ifelse(dt <= cens, 1, 0)
-#' dt <- pmin(dt, cens)
+#'   library(rms)
+#'   options(dd = "datadist")
+#'   n <- 1000
+#'   set.seed(731)
+#'   age <- 50 + 12*rnorm(n)
+#'   sex <- factor(sample(c('Male','Female'), n,
+#'       rep  = TRUE,
+#'       prob = c(.6, .4)
+#'   ))
+#'   cens <- 15*runif(n)
+#'   h <- .02*exp(.04*(age - 50) + .8*(sex == 'Female'))
+#'   dt <- -log(runif(n))/h
+#'   e <- ifelse(dt <= cens, 1, 0)
+#'   dt <- pmin(dt, cens)
 #'
-#' dd <- datadist(age, sex)
+#'   dd <- datadist(age, sex)
 #'
-#' S <- survival::Surv(dt,e)
-#' f <- rms::cph(S ~ age + sex)
+#'   S <- survival::Surv(dt,e)
+#'   f <- rms::cph(S ~ age + sex)
 #'
 #'
-#' my_summary <- summary(f)
-#' tidy_summary(my_summary)
+#'   my_summary <- summary(f)
+#'   tidy_summary(my_summary)
 tidy_summary.summary.rms <- function(x, diff_digits = 2, ...){
 
   as.data.frame(x) %>%

@@ -29,25 +29,25 @@
 #' @export
 #'
 #' @examples
-#' library(Hmisc)
+#'   library(Hmisc)
 #'
-#' data(Arthritis)
+#'   data(Arthritis)
 #'
-#' ## two groups
-#' summary(Treatment ~ Sex,
-#'     data    = Arthritis,
-#'     method  = "reverse",
-#'     test    = TRUE,
-#'     catTest = paired_test_categorical
-#' )
+#'   ## two groups
+#'   summary(Treatment ~ Sex,
+#'       data    = Arthritis,
+#'       method  = "reverse",
+#'       test    = TRUE,
+#'       catTest = paired_test_categorical
+#'   )
 #'
-#' ## more than two groups
-#' summary(Improved ~ Sex,
-#'     data    = Arthritis,
-#'     method  = "reverse",
-#'     test    = TRUE,
-#'     catTest = paired_test_categorical
-#' )
+#'   ## more than two groups
+#'   summary(Improved ~ Sex,
+#'       data    = Arthritis,
+#'       method  = "reverse",
+#'       test    = TRUE,
+#'       catTest = paired_test_categorical
+#'   )
 #'
 paired_test_categorical <- function(tab) {
 

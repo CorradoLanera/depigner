@@ -1,3 +1,4 @@
+* moved **rms** and **hmisc** from Imports to Suggests
 * added `start_bot_for_chat()` function, `send_to_telegram()` generics
   with methods for string and ggplot plots, and not exported
   funcitonalities as a wrapers to the main funcitons of the

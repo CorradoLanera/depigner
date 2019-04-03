@@ -36,23 +36,23 @@
 #' @export
 #'
 #' @examples
-#' library(Hmisc)
+#'   library(Hmisc)
 #'
-#' ## two groups
-#' summary(Species ~.,
-#'     data    = iris[iris$Species != "setosa",],
-#'     method  = "reverse",
-#'     test    = TRUE,
-#'     conTest = paired_test_continuous
-#' )
+#'   ## two groups
+#'   summary(Species ~.,
+#'       data    = iris[iris$Species != "setosa",],
+#'       method  = "reverse",
+#'       test    = TRUE,
+#'       conTest = paired_test_continuous
+#'   )
 #'
-#' ## more than two groups
-#' summary(Species ~.,
-#'     data    = iris,
-#'     method  = "reverse",
-#'     test    = TRUE,
-#'     conTest = paired_test_continuous
-#' )
+#'   ## more than two groups
+#'   summary(Species ~.,
+#'       data    = iris,
+#'       method  = "reverse",
+#'       test    = TRUE,
+#'       conTest = paired_test_continuous
+#'   )
 #'
 #' ## without Hmisc
 #' two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
