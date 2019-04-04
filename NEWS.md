@@ -1,3 +1,5 @@
+# depigner 0.3.0
+
 * Introduce dependency from R >= 3.5 because of the package **mvtnorm**
   which is in the tree of **rms** and **Hmisc** and depends on the
   version of R 3.5.
