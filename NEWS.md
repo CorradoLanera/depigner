@@ -1,5 +1,8 @@
-* moved **rms** and **hmisc** from Imports to Suggests
-* added `start_bot_for_chat()` function, `send_to_telegram()` generics
+* Introduce dependency from R >= 3.5 because of the package **mvtnorm**
+  which is in the tree of **rms** and **Hmisc** and depends on the
+  version of R 3.5.
+* Moved **survival**, **rms** and **Hmisc** from Imports to Suggests
+* Added `start_bot_for_chat()` function, `send_to_telegram()` generics
   with methods for string and ggplot plots, and not exported
   funcitonalities as a wrapers to the main funcitons of the
   **telegram.bot** package.
