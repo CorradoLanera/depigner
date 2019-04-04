@@ -75,6 +75,7 @@ paired_test_categorical <- function(tab) {
   rowcounts <- tab %*% rep(1, ncol(tab))
   tab <- tab[rowcounts > 0, ]
   if (!is.matrix(tab) || nrow(tab) < 2) {
+    warning("tab is not a proper matrix. No test is done")
     return(list(
       # values (mandatory)
       P    = NA,

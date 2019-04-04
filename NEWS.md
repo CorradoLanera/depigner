@@ -3,6 +3,7 @@
   with methods for string and ggplot plots, and not exported
   funcitonalities as a wrapers to the main funcitons of the
   **telegram.bot** package.
+* Added tests to paired tests functions' tests
 * remove dependencies from **vcd** package
 
 # depigner 0.2.0

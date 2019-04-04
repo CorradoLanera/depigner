@@ -7,9 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "corrado.lanera@gmail.com")
 Description: This package collect usefull function
-    frequently used at the Unit of Biostatistics, Epidemiology and Public
-    Health of the Department of Cardiac, Thoracic and Vascular sciences at
-    the University of Padova.
+    frequently used at the Unit of Biostatistics, Epidemiology and
+    Public Health of the Department of Cardiac, Thoracic and Vascular
+    sciences at the University of Padova.
 License: GPL-3
 URL: https://github.com/CorradoLanera/depigner
 BugReports: https://github.com/CorradoLanera/depigner/issues

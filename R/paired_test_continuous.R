@@ -77,7 +77,7 @@ paired_test_continuous <- function(group, x) {
   }
 
   if (!is.factor(group)) {
-    message(
+    warning(
       "Grouping variable converted to factor to compute test."
     )
     # explicit set levels to avoid reordering
@@ -154,6 +154,7 @@ paired_test_continuous <- function(group, x) {
 
   if (group_n < 2 || n_subjects <= group_n) {
 
+    warning("Only one group with data, no paired test is done")
     # `return()` exits from the function here!
     return(list(
       # values (mandatory)

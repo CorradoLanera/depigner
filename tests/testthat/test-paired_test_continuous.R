@@ -27,3 +27,40 @@ test_that("output structure is correct", {
     names(paired_test_continuous(many_groups, obs))
   ))
 })
+
+
+test_that("wrong input are managed", {
+  expect_error(paired_test_continuous(factor(c(1, 2)), 1), "lenght")
+  expect_warning(paired_test_continuous(c(1, 2), c(1, 2)), "factor")
+})
+
+
+test_that("data by groups are managed", {
+  ord <- order(two_groups)
+
+  expect_is(
+    paired_test_continuous(two_groups[ord], two_obs[ord]),
+    "list"
+  )
+
+  expect_warning(
+    paired_test_continuous(two_groups[ord][-1], two_obs[ord][-1]),
+    "incomplete"
+  )
+
+  expect_gte(
+    suppressWarnings(
+      paired_test_continuous(two_groups[ord][-1], two_obs[ord][-1])
+    )[["P"]],
+    9
+  )
+})
+
+
+
+test_that("one group is managed", {
+  expect_warning(
+    paired_test_continuous(factor(c("a", "a", "a")), c(1, 2, 3)),
+    "Only one group with data, no paired test is done"
+  )
+})
