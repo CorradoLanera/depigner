@@ -5,14 +5,12 @@ sudo: false
 cache: packages
 
 r:
-  - 3.2
-  - 3.3
-  - oldrel
   - release
 
 # devel have issues to install devtools
 matrix:
   - r: devel
+    os: linux
     warnings_are_errors: false
 
 after_success:
