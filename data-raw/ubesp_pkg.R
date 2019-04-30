@@ -1,9 +1,11 @@
 ubesp_pkg <- c(
-  "assertive", "beepr", "caret", "caTools", "covr", "devtools",
-  "digest", "docopt", "DT", "foreach", "fortunes", "glmnet", "glue",
-  "here", "installr", "janitor", "knitr", "magrittr", "Matrix", "maxent",
-  "pander", "parallel", "progress", "profvis", "pryr", "RCurl", "rlang", "rmarkdown", "rms",
-  "roxygen2", "RTextTools", "slam", "snow", "SparseM", "stats",
-  "SuperLearner", "survival", "testthat", "tidyverse", "tm", "usethis", "yaml"
+  "beepr", "blogdown", "bookdown", "caret", "caTools", "clisymbols",
+  "clipr",  "covr", "crayon", "digest", "docopt", "DT", "foreach",
+  "fortunes", "fs", "future", "glmnet", "here", "installr", "knitr",
+  "lobstr", "Matrix", "pander", "parallel", "polynom", "profvis",
+  "pryr", "RCurl", "rmarkdown", "rms", "roxygen2", "rvest", "shiny",
+  "shinyjs", "slam", "snow", "SparseM", "spelling", "stats",
+  "SuperLearner", "survival", "svDialogs", "testthat", "tidyverse",
+  "tm", "usethis", "wavethresh", "xml2", "yaml"
 )
-# devtools::use_data(ubesp_pkg, overwrite = TRUE)
+devtools::use_data(ubesp_pkg, overwrite = TRUE)
