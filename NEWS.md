@@ -1,3 +1,7 @@
+
+
+* Update `ubesp_pckg` (#5)
+
 # depigner 0.3.0
 
 * Introduce dependency from R >= 3.5 because of the package **mvtnorm**

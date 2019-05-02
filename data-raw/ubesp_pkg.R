@@ -1,11 +1,13 @@
 ubesp_pkg <- c(
-  "beepr", "blogdown", "bookdown", "caret", "caTools", "clisymbols",
-  "clipr",  "covr", "crayon", "digest", "docopt", "DT", "foreach",
-  "fortunes", "fs", "future", "glmnet", "here", "installr", "knitr",
-  "lobstr", "Matrix", "pander", "parallel", "polynom", "profvis",
-  "pryr", "RCurl", "rmarkdown", "rms", "roxygen2", "rvest", "shiny",
-  "shinyjs", "slam", "snow", "SparseM", "spelling", "stats",
-  "SuperLearner", "survival", "svDialogs", "testthat", "tidyverse",
-  "tm", "usethis", "wavethresh", "xml2", "yaml"
+    'bayesplot', 'beepr', 'blogdown', 'bookdown', 'brms', 'caret',
+    'caTools', 'CBPS', 'clipr', 'clisymbols', 'CMatching', 'cobalt',
+    'covr', 'crayon', 'digest', 'docopt', 'DT', 'foreach', 'fortunes',
+    'fs', 'future', 'glmnet', 'here', 'installr', 'knitr', 'lobstr',
+    'loo', 'Matching', 'MatchIt', 'Matrix', 'msm', 'mstate', 'pander',
+    'parallel', 'polynom', 'profvis', 'pryr', 'RCurl', 'rmarkdown',
+    'rms', 'roxygen2', 'rstan', 'rstanarm', 'rvest', 'shiny', 'shinyjs',
+    'slam', 'snow', 'SparseM', 'spelling', 'stats', 'SuperLearner',
+    'survival', 'svDialogs', 'testthat', 'tidyverse', 'tm', 'twang',
+    'usethis', 'wavethresh', 'WeightIt', 'xml2', 'yaml'
 )
-devtools::use_data(ubesp_pkg, overwrite = TRUE)
+usethis::use_data(ubesp_pkg, overwrite = TRUE)
