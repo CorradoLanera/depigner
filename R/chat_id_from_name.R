@@ -1,7 +1,7 @@
 chat_id_from_name <- function(.title = NA) {
 
   if (is.null(getOption("depigner.bot"))) stop(
-    "Bot not set up. Please run `prepare_telegram_bot` first"
+    "Bot not set up. Please run `start_bot_for_chat()` first"
   )
 
   bot_updates <- getOption("depigner.bot")$get_updates()
