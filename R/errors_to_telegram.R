@@ -18,7 +18,9 @@ errors_to_telegram <- function(
 ) {
     stopifnot(interactive())
 
-    start_bot_for_chat(chat_name, bot_name)
+    if (is.null(getOption("depigner.bot"))) {
+      start_bot_for_chat(chat_name, bot_name)
+    }
 
     if (!is.null(x = op <- getOption("error"))) {
       usethis::ui_warn(
