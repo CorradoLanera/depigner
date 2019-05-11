@@ -53,7 +53,7 @@ You need to insert two lines, namely the one for your bot's name:
 
 and one for its token:
 
-`R_TELEGRAM_BOT_clr_telegram_bot="1234567879:AbcDeF_GH1IlM_nmoP2rSTUvzyABCDefG5"
+`R_TELEGRAM_BOT_<name_of_my_bot>="1234567879:AbcDeF_GH1IlM_nmoP2rSTUvzyABCDefG5"
 
 Next, restart R and you are ready to use al the (simple)
 functionality of the \code{\link{depigner}} package, or the flexible

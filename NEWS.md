@@ -1,3 +1,6 @@
+* Add `errors_to_telegram()` function to automatically parrot all the
+  error messages to a chat from a Telegram bot
+
 # depigner 0.3.2
 
 # depigner 0.3.1

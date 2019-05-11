@@ -30,6 +30,7 @@ Imports:
     telegram.bot (>= 2.3.0),
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1),
+    usethis (>= 1.5.0),
     utils
 Suggests: 
     covr (>= 3.1.0),
