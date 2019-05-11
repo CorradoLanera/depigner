@@ -33,5 +33,12 @@ errors_to_telegram <- function(
       send_to_telegram(msg())
     }
 
-    options(error = telegram_error)
+    original_error_handler <- getOption("error")
+
+    new_error_handler <- function() {
+      eval(telegram_error, parent.frame(2))
+      eval(original_error_handler, parent.frame(2))
+    }
+
+    options(error = new_error_handler)
 }
