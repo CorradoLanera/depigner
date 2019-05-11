@@ -56,7 +56,7 @@
 #'     start_bot_for_chat()
 #' }
 start_bot_for_chat <- function(
-    chat_name = NA,
+    chat_name = Sys.getenv("R_telegram_default_chat_name"),
     bot_name  = getOption("depigner.bot_name")
 ) {
 
@@ -89,7 +89,7 @@ start_bot_for_chat <- function(
 
     chat_name <- ifelse(is.na(chat_name), "default", chat_name)
     message(glue::glue(
-      "Bot {bot_name} linked to the {chat_name} chat (ID: {chat_id})."
+      "Bot {bot_name} linked to the '{chat_name}' chat (ID: {chat_id})."
     ))
 
   invisible()

@@ -11,12 +11,19 @@ chat_id_from_name <- function(.title = NA) {
       title = ifelse(is.null(.x[["chat"]][["title"]]),
         NA_character_,
         .x[["chat"]][["title"]]
+      ),
+      first_name = ifelse(is.null(.x[["chat"]][["first_name"]]),
+        NA_character_,
+        .x[["chat"]][["first_name"]]
       )
   ))
 
 
   if (is.na(.title)) {
-    return(dplyr::filter(bot_chats, is.na(.title))[["id"]])
+    return(
+      dplyr::filter(bot_chats, is.na(.title))[["id"]] %>%
+        unique()
+    )
   }
 
   res <- dplyr::filter(bot_chats, title == .title)[["id"]] %>%
