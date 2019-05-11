@@ -31,7 +31,7 @@ errors_to_telegram <- function(
 
     new_error_handler <- function() {
       telegram_error()
-      if (has_error_handler) op()
+      if (has_error_handler) eval(op)
     }
 
     options(error = new_error_handler)
