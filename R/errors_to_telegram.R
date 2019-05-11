@@ -22,11 +22,7 @@ errors_to_telegram <- function(
       start_bot_for_chat(chat_name, bot_name)
     }
 
-    if (!is.null(x = op <- getOption("error"))) {
-      usethis::ui_warn(
-        "Error handler is changed\nfrom: {op}\n to: depigner::send_to_telegram(geterrmessage())"
-      )
-    }
+    warn <- !is.null(x = op <- getOption("error"))
 
     telegram_error <- function() {
       msg <- function() .Internal(geterrmessage())
@@ -41,4 +37,9 @@ errors_to_telegram <- function(
     }
 
     options(error = new_error_handler)
+
+    if (warn) usethis::ui_warn(
+        "Error handler is changed\nfrom: {op}\n to: {getOption('error')}"
+    )
+
 }
