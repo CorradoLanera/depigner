@@ -16,13 +16,11 @@ errors_to_telegram <- function(
     bot_name  = getOption("depigner.bot_name")
 
 ) {
-    stopifnot(interactive())
-
     if (is.null(getOption("depigner.bot"))) {
       start_bot_for_chat(chat_name, bot_name)
     }
 
-    has_error_handler <- !is.null(op <- getOption("error"))
+    has_error_handler <- !is.null({op <- getOption("error")})
 
     telegram_error <- function() {
       msg <- function() .Internal(geterrmessage())
