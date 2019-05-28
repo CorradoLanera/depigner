@@ -96,7 +96,7 @@ paired_test_categorical <- function(tab) {
 # due = McNemar ---------------------------------------------------
 
   if (nrow(tab) == 2 && ncol(tab) == 2) {
-    mn_test <- mcnemar.test(tab)
+    mn_test <- stats::mcnemar.test(tab)
 
     return(list(
       # values (mandatory)
@@ -119,13 +119,13 @@ paired_test_categorical <- function(tab) {
 #  molti = glm ---------------------------------
 
   if (nrow(tab) > 2 || ncol(tab) > 2) {
-    dimnames(tab) <- setNames(
+    dimnames(tab) <- stats::setNames(
       dimnames(tab),
       c("var_levels", "grouping_var")
     )
 
-    group_id <- setNames(seq_along(colnames(tab)), colnames(tab))
-    lev_id   <- setNames(seq_along(rownames(tab)), rownames(tab))
+    group_id <- stats::setNames(seq_along(colnames(tab)), colnames(tab))
+    lev_id   <- stats::setNames(seq_along(rownames(tab)), rownames(tab))
 
     tab_df <- dplyr::as_tibble(tab) %>%
       dplyr::mutate(
@@ -136,16 +136,16 @@ paired_test_categorical <- function(tab) {
       dplyr::mutate(prop = n/sum(n)) %>%
       dplyr::ungroup()
 
-    st <- summary(glm(prop ~ var_levels*group_id,
+    st <- summary(stats::glm(prop ~ var_levels*group_id,
       data   = tab_df,
       family = "quasibinomial"
     ))
 
     return(list(
       # values (mandatory)
-      P    = setNames(st$coefficients["group_id", "Pr(>|t|)"], "P"),
-      stat = setNames(st$coefficients["group_id", "t value"], "t"),
-      df   = setNames(st$df.residual, "df"),
+      P    = stats::setNames(st$coefficients["group_id", "Pr(>|t|)"], "P"),
+      stat = stats::setNames(st$coefficients["group_id", "t value"], "t"),
+      df   = stats::setNames(st$df.residual, "df"),
 
       # names (mandatory)
       testname = "t test for group in a GLM",

@@ -140,7 +140,7 @@ paired_test_continuous <- function(group, x) {
     ggplot2::remove_missing() %>%
     tidyr::gather("group", "x", -ids) %>%
     dplyr::mutate(group = factor(group,
-                                 levels = original_levels[original_levels %in% unique(group)]
+        levels = original_levels[original_levels %in% unique(group)]
     )) %>%
     dplyr::arrange(ids, group)
 
@@ -158,9 +158,9 @@ paired_test_continuous <- function(group, x) {
     # `return()` exits from the function here!
     return(list(
       # values (mandatory)
-      P    = setNames(1, "P"),
-      stat = setNames(Inf, "XXX"),
-      df   = setNames(0, "df"),
+      P    = stats::setNames(1, "P"),
+      stat = stats::setNames(Inf, "XXX"),
+      df   = stats::setNames(0, "df"),
 
       # names (mandatory)
       testname = "notestname",
@@ -180,9 +180,9 @@ paired_test_continuous <- function(group, x) {
       tidyr::spread("group", "x")
 
 
-    test_out <- t.test(data_two[[2]], data_two[[3]],
-                       paired    = TRUE,
-                       var.equal = TRUE
+    test_out <- stats::t.test(data_two[[2]], data_two[[3]],
+         paired    = TRUE,
+         var.equal = TRUE
     )
 
 
@@ -209,14 +209,14 @@ paired_test_continuous <- function(group, x) {
   # More than two groups --------------------------------------------
 
   test_out <- summary(
-    aov(x ~ group + Error(ids/group), data = data_db)
+    stats::aov(x ~ group + Error(ids/group), data = data_db)
   )[["Error: Within"]][[1]]
 
   list(
     # values (mandatory)
-    P    = setNames(test_out[1, "Pr(>F)"], "P"),
-    stat = setNames(test_out[1, "F value"], "F"),
-    df   = setNames(test_out[1, "Df"], "df"),
+    P    = stats::setNames(test_out[1, "Pr(>F)"], "P"),
+    stat = stats::setNames(test_out[1, "F value"], "F"),
+    df   = stats::setNames(test_out[1, "Df"], "df"),
 
     # names (mandatory)
     testname = "Repeated-measure AOV",
