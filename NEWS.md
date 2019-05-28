@@ -1,3 +1,5 @@
+# depigner 0.4.0
+
 * Minor (warnings) fixes to the tests
 * Add `adjust_p()` function to adjust the P-values from a
   `tidy_summary` summary using methods provided by `p.adjust()`.
