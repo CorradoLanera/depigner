@@ -1,3 +1,7 @@
+* Add `tick()` as a wrapper to update a progress bar
+* Add `pb_len()` as a wrapper to `progress::progress_bar()` for a quick
+  and ready to use progress bar with default options
+
 # depigner 0.4.0
 
 * Minor (warnings) fixes to the tests
