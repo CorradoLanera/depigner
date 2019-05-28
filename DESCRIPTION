@@ -31,13 +31,15 @@ Imports:
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1),
     usethis (>= 1.5.0),
-    utils
+    utils,
+    stats,
+    graphics
 Suggests: 
     covr (>= 3.1.0),
     Hmisc (>= 4.2.0),
     rms (>= 5.1.2),
     survival,
-    testthat (>= 2.0.0)
+    testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

@@ -23,7 +23,7 @@ errors_to_telegram <- function(
     has_error_handler <- !is.null({op <- getOption("error")})
 
     telegram_error <- function() {
-      msg <- function() .Internal(geterrmessage())
+      msg <- function() geterrmessage()
       send_to_telegram(msg())
     }
 

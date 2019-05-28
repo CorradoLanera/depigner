@@ -1,3 +1,6 @@
+* Minor (warnings) fixes to the tests
+* Add `adjust_p()` function to adjust the P-values from a
+  `tidy_summary` summary using methods provided by `p.adjust()`.
 * Add `errors_to_telegram()` function to automatically parrot all the
   error messages to a chat from a Telegram bot
 

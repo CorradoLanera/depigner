@@ -40,14 +40,16 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 
   colnames(printed) <- printed[1, ]
 
-  dplyr::as_data_frame(printed) %>%
+  res <- dplyr::as_tibble(printed) %>%
     dplyr::mutate(
       `&nbsp;` = row.names(printed) %>%
         stringr::str_replace_all(' ', '&nbsp;')
     ) %>%
     dplyr::select(`&nbsp;`, dplyr::everything()) %>%
-    dplyr::filter(dplyr::row_number() !=1)
+    dplyr::filter(dplyr::row_number() != 1)
 
+  class(res) <- c("tidy_summary", class(res))
+  res
 }
 
 

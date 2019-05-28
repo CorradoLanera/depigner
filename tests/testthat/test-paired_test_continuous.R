@@ -18,11 +18,11 @@ test_that("output class is correct", {
 })
 
 test_that("output structure is correct", {
-  expect(all(
+  expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
     names(paired_test_continuous(two_groups, two_obs))
   ))
-  expect(all(
+  expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
     names(paired_test_continuous(many_groups, obs))
   ))

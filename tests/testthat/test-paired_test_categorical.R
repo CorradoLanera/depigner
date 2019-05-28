@@ -11,11 +11,11 @@ test_that("output class is correct", {
 })
 
 test_that("output structure is correct", {
-  expect(all(
+  expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
       names(paired_test_categorical(tab_two))
   ))
-  expect(all(
+  expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
       names(paired_test_categorical(tab_more))
   ))
@@ -23,16 +23,16 @@ test_that("output structure is correct", {
 
 test_that("wrong input return NA list", {
   expect_is(paired_test_categorical(c(1, 2)), "list")
-  expect(is.na(paired_test_categorical(c(1, 2))[["P"]]))
+  expect_true(is.na(paired_test_categorical(c(1, 2))[["P"]]))
 
   expect_is(paired_test_categorical(matrix(c(1, 2))), "list")
-  expect(is.na(paired_test_categorical(matrix(c(1, 2)))[["P"]]))
+  expect_true(is.na(paired_test_categorical(matrix(c(1, 2)))[["P"]]))
 
   expect_is(
     paired_test_categorical(matrix(c(1, 2), ncol = 2)),
     "list"
   )
-  expect(
+  expect_true(
     is.na(paired_test_categorical(matrix(c(1, 2), ncol = 2))[["P"]])
   )
 
@@ -50,7 +50,7 @@ test_that("singular matrix were managed", {
     ),
     "list"
   )
-  expect(is.na(
+  expect_true(is.na(
     suppressWarnings(
       paired_test_categorical(matrix(c(1, 0, 2, 0), ncol = 2))[["P"]]
     )
