@@ -8,14 +8,22 @@
 \usage{
 send_to_telegram(x, ..., chat_id, bot)
 
-\method{send_to_telegram}{character}(x, type = c("message", "photo",
-  "document", "audio", "animation", "video", "voice", "sticker",
-  "location", "videonote"), ..., chat_id = getOption("depigner.chat_id"),
-  bot = getOption("depigner.bot"))
+\method{send_to_telegram}{character}(
+  x,
+  type = c("message", "photo", "document", "audio", "animation", "video", "voice",
+    "sticker", "location", "videonote"),
+  ...,
+  chat_id = getOption("depigner.chat_id"),
+  bot = getOption("depigner.bot")
+)
 
-\method{send_to_telegram}{gg}(x, fileext = c("png", "pdf", "jpeg",
-  "tiff", "bmp"), ..., chat_id = getOption("depigner.chat_id"),
-  bot = getOption("depigner.bot"))
+\method{send_to_telegram}{gg}(
+  x,
+  fileext = c("png", "pdf", "jpeg", "tiff", "bmp"),
+  ...,
+  chat_id = getOption("depigner.chat_id"),
+  bot = getOption("depigner.bot")
+)
 }
 \arguments{
 \item{x}{object to send (often a character string)}
