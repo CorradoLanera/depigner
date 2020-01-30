@@ -21,14 +21,13 @@
 #' }
 use_ui <- function() {
   usethis:::check_is_package("use_ui()")
-  check_uses_roxygen("use_ui()")
+  usethis:::check_uses_roxygen("use_ui()")
 
-
-  use_dependency("usethis", "Imports")
+  usethis::use_dependency("usethis", "Imports")
 
   # Paste is needed because rexygen2 reads those lines as roxygen-comments!
   # this way they start with '"' and the problem is avoided.
-  roxygen_ns_append(paste(
+  usethis:::roxygen_ns_append(paste(
     # The first roxygen comment tag is added by `roxygen_ns_append()` itself
     "@importFrom usethis ui_line ui_todo ui_done ui_todo ui_oops ui_info",
     "#' @importFrom usethis ui_code_block",
@@ -36,5 +35,5 @@ use_ui <- function() {
     "#' @importFrom usethis ui_yeah ui_nope",
     "#' @importFrom usethis ui_field ui_value ui_path ui_code",
     sep = "\n"
-  )) && roxygen_update()
+  )) && usethis:::roxygen_update()
 }

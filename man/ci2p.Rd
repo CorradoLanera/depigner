@@ -4,8 +4,15 @@
 \alias{ci2p}
 \title{ci2p}
 \usage{
-ci2p(est, lower, upper, log_trasform = FALSE, conf = 0.95,
-  qdist = stats::qnorm, pdist = stats::pnorm)
+ci2p(
+  est,
+  lower,
+  upper,
+  log_trasform = FALSE,
+  conf = 0.95,
+  qdist = stats::qnorm,
+  pdist = stats::pnorm
+)
 }
 \arguments{
 \item{est}{estimated value}
