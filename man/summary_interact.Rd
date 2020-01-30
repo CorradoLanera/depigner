@@ -4,8 +4,17 @@
 \alias{summary_interact}
 \title{summary_interact}
 \usage{
-summary_interact(model, ref, discrete, ref_min = NULL, ref_max = NULL,
-  level = NULL, ..., digits = 3L, p = FALSE)
+summary_interact(
+  model,
+  ref,
+  discrete,
+  ref_min = NULL,
+  ref_max = NULL,
+  level = NULL,
+  ...,
+  digits = 3L,
+  p = FALSE
+)
 }
 \arguments{
 \item{model}{A model from \code{\link[rms]{lrm}}}

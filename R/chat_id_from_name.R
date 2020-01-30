@@ -6,6 +6,7 @@ chat_id_from_name <- function(.title = NA) {
 
   bot_updates <- getOption("depigner.bot")$get_updates()
   bot_message <- purrr::map(bot_updates, "message")
+  bot_message <- bot_message[!purrr::map_lgl(bot_message, is.null)]
   bot_chats   <- purrr::map_df(bot_message, ~ dplyr::tibble(
       id    = .x[["chat"]][["id"]],
       title = ifelse(is.null(.x[["chat"]][["title"]]),
