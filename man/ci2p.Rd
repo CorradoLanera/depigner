@@ -44,6 +44,6 @@ possible to apply a log trasformation in case of proportions.
 }
 \examples{
 
-depigner:::ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
-depigner:::ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
+ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
+ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
 }

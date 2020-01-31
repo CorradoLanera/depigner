@@ -22,8 +22,8 @@ tidy_summary <- function(x, ...) {
 #'             \code{\link[Hmisc]{summary.formula}} called with
 #'             \code{method = "reverse"}.
 #'
-#' @inheritParams tidy_summary
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @note to see the options you can pass to \code{...} for a custom
 #' print, see the print section in \code{\link[Hmisc]{summary.formula}}.
@@ -45,7 +45,7 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
       `&nbsp;` = row.names(printed) %>%
         stringr::str_replace_all(' ', '&nbsp;')
     ) %>%
-    dplyr::select(`&nbsp;`, dplyr::everything()) %>%
+    dplyr::select(.data$`&nbsp;`, dplyr::everything()) %>%
     dplyr::filter(dplyr::row_number() != 1)
 
   class(res) <- c("tidy_summary", class(res))
@@ -62,12 +62,12 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'             refered to (i.e. without \eqn{\beta}s, Low, High, S.E.
 #'             and Type).
 #'
-#' @inheritParams tidy_summary
 #' @param diff_digits number of significant digits to use (default 2)
 #'        for the step-difference between continuous variable HR
 #'        computation.
 #'
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -97,24 +97,25 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'   tidy_summary(my_summary)
 tidy_summary.summary.rms <- function(x, diff_digits = 2, ...){
 
-  as.data.frame(x) %>%
+  res <- as.data.frame(x) %>%
     tibble::as_tibble(rownames = ".rownames") %>%
-    dplyr::mutate(.rownames = dplyr::lag(.rownames)) %>%
-    dplyr::filter(Type == 2) %>%
-    .[!names(.) %in% c("Low", "High", "S.E.", "Type")] %>%
+    dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
+    dplyr::filter("Type" == 2)
+
+  res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
   dplyr::mutate(
-    Diff.     = round(Diff., digits = diff_digits),
-    Diff.     = ifelse(!is.na(Diff.), Diff.,
-                  stringr::str_extract(.rownames, '\\.\\.\\..*$') %>%
-                  stringr::str_replace('\\.\\.\\.', '') %>%
-                  stringr::str_replace('\\.', ':')
-                ),
-    .rownames = stringr::str_replace(.rownames, '\\.\\.\\..*$', '')
+    Diff. = round(.data$Diff., digits = diff_digits),
+    Diff. = ifelse(!is.na(.data$Diff.), .data$Diff.,
+              stringr::str_extract(.data$.rownames, '\\.\\.\\..*$') %>%
+              stringr::str_replace('\\.\\.\\.', '') %>%
+              stringr::str_replace('\\.', ':')
+            ),
+    .rownames = stringr::str_replace(.data$.rownames, '\\.\\.\\..*$', '')
   ) %>%
   dplyr::rename(
-    `&nbsp;`       = .rownames,
-    `HR` = Effect,
-    `Lower 95% CI`   = `Lower 0.95`,
-    `Upper 95% CI`   = `Upper 0.95`
+    `&nbsp;`       = .data$.rownames,
+    `HR`           = .data$Effect,
+    `Lower 95% CI` = .data$`Lower 0.95`,
+    `Upper 95% CI` = .data$`Upper 0.95`
   )
 }

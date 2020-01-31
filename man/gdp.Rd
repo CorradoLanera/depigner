@@ -13,7 +13,7 @@ gdp(time = 4, freq = 0.05)
 \item{freq}{[num] rotating frequency (default = 0.05/s)}
 }
 \value{
-nothing
+invisible()
 }
 \description{
 A wrapper to relax

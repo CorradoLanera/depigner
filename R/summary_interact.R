@@ -21,6 +21,8 @@
 #' @return A data frame
 #' @export
 #'
+#' @importFrom rlang .data
+#'
 #' @examples
 #'   library(rms)
 #'     options(datadist = 'dd')
@@ -56,9 +58,9 @@ summary_interact <- function(model, ref, discrete,
 ) {
 
   if (!inherits(model, 'lrm')) {
-    stop('model has to inherits to lrm class')
+    ui_stop('model has to inherits to lrm class')
   }
-  if (is.null(getOption('datadist'))) stop('datadist non defined')
+  if (is.null(getOption('datadist'))) ui_stop('datadist non defined')
 
   discrete      <- rlang::enquo(discrete)
   discrete_name <- rlang::quo_name(discrete)
@@ -74,10 +76,10 @@ summary_interact <- function(model, ref, discrete,
     eval()
 
   if (!ref_name %in% names(dd[['limits']])) {
-    stop('ref isn\'t in datadist')
+    ui_stop('ref isn\'t in datadist')
   }
   if (!discrete_name %in% names(dd[['limits']])) {
-    stop('discrete isn\'t in datadist')
+    ui_stop('discrete isn\'t in datadist')
   }
 
 
@@ -95,26 +97,27 @@ summary_interact <- function(model, ref, discrete,
         ')'
       ))) %>%
         broom::tidy() %>%
-        dplyr::mutate(.rownames = Hmisc::Lag(.rownames)) %>%
+        dplyr::mutate(.rownames = Hmisc::Lag(.data$.rownames)) %>%
         dplyr::filter(Type == 2) %>%
-        dplyr::select(-Type, - S.E.) %>%
+        dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
         dplyr::mutate(
-          Low       = ifelse(is.na(Diff.), NA, Low),
-          High      = ifelse(is.na(Diff.), NA, High),
-          Diff.     = ifelse(!is.na(Diff.), Diff.,
-                          stringr::str_extract(.rownames, ' - .*$') %>%
-                              stringr::str_replace(' - ', '')),
-          .rownames = stringr::str_replace(.rownames, ' -+.*$', '')
+          Low   = ifelse(is.na(Diff.), NA, Low),
+          High  = ifelse(is.na(Diff.), NA, High),
+          Diff. = ifelse(!is.na(Diff.), Diff.,
+                    stringr::str_extract(.data$.rownames, ' - .*$') %>%
+                      stringr::str_replace(' - ', '')
+                  ),
+          .rownames = stringr::str_replace(.data$.rownames, ' -+.*$', '')
         ) %>%
         dplyr::mutate(
           .rownames = glue::glue('{.rownames} - {interact}')
         ) %>%
         dplyr::rename(
-          `&nbsp;`       = .rownames,
-          `Odds Ratio`   = Effect,
-          `Lower 95% CI` = Lower.0.95,
-          `Upper 95% CI` = Upper.0.95
+          `&nbsp;`       = .data$.rownames,
+          `Odds Ratio`   = .data$Effect,
+          `Lower 95% CI` = .data$Lower.0.95,
+          `Upper 95% CI` = .data$Upper.0.95
         )
     })
   )

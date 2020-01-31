@@ -30,7 +30,10 @@ test_that("output structure is correct", {
 
 
 test_that("wrong input are managed", {
-  expect_error(paired_test_continuous(factor(c(1, 2)), 1), "lenght")
+  expect_usethis_error(
+    paired_test_continuous(factor(c(1, 2)), 1),
+    "lenght"
+  )
   expect_warning(paired_test_continuous(c(1, 2), c(1, 2)), "factor")
 })
 

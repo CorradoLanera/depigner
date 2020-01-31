@@ -10,32 +10,32 @@
 #'
 #' @return invisible
 please_install <- function(pkgs, install_fun = install.packages, ...) {
-  if (length(pkgs) == 0) {
+  if (!length(pkgs)) {
     return(invisible())
   }
+
   if (!interactive()) {
-    stop("Please run in interactive session", call. = FALSE)
+    ui_stop("Please run in interactive session")
   }
 
-  title_pkg <- paste0(
-    "Ok to install these packges (among the corresponding dependencies)?\n",
-    paste("* ", pkgs, collapse = "\n")
-  )
-  ok_pkg <- menu(c("Yes", "No"), title = title_pkg) == 1
+  q_pkg_title <- "Do you agree to install the following packges?"
+  q_pkg_tale <- "(among the corresponding dependencies)"
 
-  if (!ok_pkg) {
+  ko_pkg <- ui_nope(c(q_pkg_title, paste('* ', pkgs), q_pkg_tale))
+
+
+  if (ko_pkg) {
     return(invisible())
   }
-
   install_fun(pkgs, ...)
 
-  title_upd <- "Ok to check and update all your packages?"
-  ok_upd <- menu(c("Yes", "No"), title = title_upd) == 1
 
-  if (!ok_upd) {
+  q_upd_title <- "Ok to check and update all your packages?"
+  ko_upd <- ui_nope(q_upd_title)
+
+  if (ko_upd) {
     return(invisible())
   }
-
   update.packages(ask = FALSE)
 
   invisible(pkgs)
