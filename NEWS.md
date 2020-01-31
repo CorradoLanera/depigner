@@ -1,3 +1,10 @@
+* Introduce `rlang::.data` to remove notes on CMD check for tidyeval 
+  missing variables
+* Update all the UIs to usethis' ones.
+* Exported `ci2p()` (issue #6)
+* Add `use_ui()` to add what is nessary to use the usethis' user
+  interfaces in a package.
+
 # depigner 0.4.1
 
 * Add `tick()` as a wrapper to update a progress bar
