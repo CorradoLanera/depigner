@@ -36,7 +36,7 @@ ci2p <- function(
     lower   <- upper
     upper   <- `*tmp*`
     rm(`*tmp*`)
-    warning('upper < lower: they are considered reversed', call. = FALSE)
+    ui_warn('upper < lower: they are considered reversed')
   }
 
   if (log_trasform) {

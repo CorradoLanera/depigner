@@ -22,7 +22,6 @@ tidy_summary <- function(x, ...) {
 #'             \code{\link[Hmisc]{summary.formula}} called with
 #'             \code{method = "reverse"}.
 #'
-#' @inheritParams tidy_summary
 #' @importFrom magrittr %>%
 #'
 #' @note to see the options you can pass to \code{...} for a custom
@@ -62,7 +61,6 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'             refered to (i.e. without \eqn{\beta}s, Low, High, S.E.
 #'             and Type).
 #'
-#' @inheritParams tidy_summary
 #' @param diff_digits number of significant digits to use (default 2)
 #'        for the step-difference between continuous variable HR
 #'        computation.

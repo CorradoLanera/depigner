@@ -70,14 +70,14 @@ paired_test_continuous <- function(group, x) {
 
 
   if (len_g != len_x) {
-    stop(paste(
+    ui_stop(paste(
       "The lenght of the variable group has to be the same of",
       "the lenght of the variable x. They aren't equal."
     ))
   }
 
   if (!is.factor(group)) {
-    warning(
+    ui_warn(
       "Grouping variable converted to factor to compute test."
     )
     # explicit set levels to avoid reordering
@@ -102,7 +102,7 @@ paired_test_continuous <- function(group, x) {
   if (length(rle_g) == length(original_levels)) {
     # this means that observation are sorted by group
     if (diff(range(rle_g)) >= .Machine$double.eps ^ 0.5) {
-      warning(paste(
+      ui_warn(paste(
         "Data passed by groups and incomplete:\n",
         "    not same umber of observation among the groups.\n",
         "P returned is the standard F statistics.\n",
@@ -154,7 +154,7 @@ paired_test_continuous <- function(group, x) {
 
   if (group_n < 2 || n_subjects <= group_n) {
 
-    warning("Only one group with data, no paired test is done")
+    ui_warn("Only one group with data, no paired test is done")
     # `return()` exits from the function here!
     return(list(
       # values (mandatory)

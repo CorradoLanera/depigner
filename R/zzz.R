@@ -1,6 +1,6 @@
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
-    "Welcome to depigner: we are here to un-stress you!"
+    ui_line("Welcome to depigner: we are here to un-stress you!")
   )
 }
 
@@ -18,7 +18,7 @@
 
   toset <- !(names(op.depigner) %in% names(op))
 
-  if(any(toset)) options(op.depigner[toset])
+  if (any(toset)) options(op.depigner[toset])
 
-  invisible()
+  invisible(TRUE)
 }

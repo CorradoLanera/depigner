@@ -56,9 +56,9 @@ summary_interact <- function(model, ref, discrete,
 ) {
 
   if (!inherits(model, 'lrm')) {
-    stop('model has to inherits to lrm class')
+    ui_stop('model has to inherits to lrm class')
   }
-  if (is.null(getOption('datadist'))) stop('datadist non defined')
+  if (is.null(getOption('datadist'))) ui_stop('datadist non defined')
 
   discrete      <- rlang::enquo(discrete)
   discrete_name <- rlang::quo_name(discrete)
@@ -74,10 +74,10 @@ summary_interact <- function(model, ref, discrete,
     eval()
 
   if (!ref_name %in% names(dd[['limits']])) {
-    stop('ref isn\'t in datadist')
+    ui_stop('ref isn\'t in datadist')
   }
   if (!discrete_name %in% names(dd[['limits']])) {
-    stop('discrete isn\'t in datadist')
+    ui_stop('discrete isn\'t in datadist')
   }
 
 

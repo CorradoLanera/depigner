@@ -6,7 +6,7 @@
 #'        (default = 4)
 #' @param freq [num] rotating frequency (default = 0.05/s)
 #'
-#' @return nothing
+#' @return invisible()
 #' @export
 #'
 #' @examples
@@ -25,6 +25,11 @@ gdp <- function(time = 4, freq = 0.05) {
     pb$tick(tokens = list(what = "giramento di"))
     Sys.sleep(freq)
   })
+
   cat("\014")
-  message("Ahh... relaxed!\nFeel free to continue working")
+
+  ui_done("Ahh... relaxed!")
+  ui_todo("Now, feel free to continue working.")
+
+  invisible("You are the power!")
 }

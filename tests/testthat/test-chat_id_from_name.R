@@ -1,7 +1,7 @@
 context("test-chat_id_from_name")
 
 test_that("it stops if bot is not setup", {
-  expect_error(chat_id_from_name(), "bot")
+  expect_usethis_error(chat_id_from_name(), "bot")
 })
 
 test_that("it stops on inexistent chats name", {
@@ -10,7 +10,7 @@ test_that("it stops on inexistent chats name", {
 
   start_bot_for_chat("Depigner test")
 
-  expect_error(chat_id_from_name("this chat will never exists"),
+  expect_usethis_error(chat_id_from_name("this chat will never exists"),
     "does not exist"
   )
 })

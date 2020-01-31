@@ -1,6 +1,6 @@
 chat_id_from_name <- function(.title = NA) {
 
-  if (is.null(getOption("depigner.bot"))) stop(
+  if (is.null(getOption("depigner.bot"))) ui_stop(
     "Bot not set up. Please run `start_bot_for_chat()` first"
   )
 
@@ -30,10 +30,10 @@ chat_id_from_name <- function(.title = NA) {
   res <- dplyr::filter(bot_chats, title == .title)[["id"]] %>%
       unique()
 
-  if (length(res) == 0) stop(glue::glue(
+  if (length(res) == 0) ui_stop(
     "The chat name {.title} provided does not exist in the chat for ",
     "which your bot has access."
-  ))
+  )
 
   res
 }

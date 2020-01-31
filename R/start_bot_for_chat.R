@@ -60,37 +60,38 @@ start_bot_for_chat <- function(
     bot_name  = getOption("depigner.bot_name")
 ) {
 
-    if (is.null(bot_name)) {
-        if (Sys.getenv("R_telegram_bot_name") == "") {
-            stop(paste(
-                ".Renviron variable 'R_telegram_bot_name' is required ",
-                "if `bot_name` argument is not provided directly from ",
-                "the user.\n",
-                "Please, set it up, or pass the name of your bot ",
-                "directly to the function `prepare_telegram_bot()`."
-            ), call. = FALSE)
-        }
-        bot_name <- Sys.getenv("R_telegram_bot_name")
+  if (is.null(bot_name)) {
+    if (Sys.getenv("R_telegram_bot_name") == "") {
+      ui_stop(
+      ".Renviron variable {ui_field('R_telegram_bot_name')} is required
+        if {ui_field('bot_name')} argument is not provided directly from
+        the user.
+
+        Please, set it up, or pass the name of your bot, directly
+        to the function {ui_code('prepare_telegram_bot()')}.
+      ")
     }
+    bot_name <- Sys.getenv("R_telegram_bot_name")
+  }
 
-    bot <- telegram.bot::Bot(token = telegram.bot::bot_token(bot_name))
-    options(depigner.bot = bot)
+  bot <- telegram.bot::Bot(token = telegram.bot::bot_token(bot_name))
+  options(depigner.bot = bot)
 
-    chat_id <- tryCatch(chat_id_from_name(chat_name),
-        error = function(e) stop(glue::glue(
-            "The bot {bot_name} do not have a chat named ",
-            "{chat_name}.\n",
-            "Have you provided a chat_name of a chat in which the ",
-            "bot is a member?"
-        ), call. = FALSE)
-    )
+  chat_id <- tryCatch(chat_id_from_name(chat_name),
+    error = function(e) ui_stop(
+    "The bot {ui_field(bot_name)} do not have a chat named {ui_value(chat_name)}.
+      Have you provided a {ui_field(chat_name)} of a chat in which
+      the, bot is a member?
+    ")
+  )
 
-    options(depigner.chat_id = chat_id)
+  options(depigner.chat_id = chat_id)
 
-    chat_name <- ifelse(is.na(chat_name), "default", chat_name)
-    message(glue::glue(
-      "Bot {bot_name} linked to the '{chat_name}' chat (ID: {chat_id})."
-    ))
+  chat_name <- ifelse(is.na(chat_name), "default", chat_name)
+  ui_line(
+    "Bot {ui_value(bot_name)} is now linked to the {ui_value(chat_name)}
+      chat (ID: {ui_value(chat_id)})."
+  )
 
   invisible()
 }

@@ -37,11 +37,11 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
 
 
   if (is.null(x$`P-value`)) {
-    usethis::ui_oops(
-      "The object {usethis::ui_code('x')} does not have a {usethis::ui_field('P-value')} column.
-      Have you select {usethis::ui_code('test = TRUE')} in the {usethis::ui_code('summary')} call?"
+    ui_oops(
+      "The object {ui_code('x')} does not have a {ui_field('P-value')} column.
+      Have you select {ui_code('test = TRUE')} in the {ui_code('summary')} call?"
     )
-    usethis::ui_oops("{usethis::ui_code('x')} is returned without changes.")
+    ui_oops("{ui_code('x')} is returned without changes.")
     return(x)
   }
 
@@ -49,9 +49,9 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
     "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr",
     "none"
   )
-  if (!method %in% adj_methods) usethis::ui_stop(
-    "method selected is {usethis::ui_value(method)}.
-    It must be one of {usethis::ui_value(adj_methods)}.
+  if (!method %in% adj_methods) ui_stop(
+    "method selected is {ui_value(method)}.
+    It must be one of {ui_value(adj_methods)}.
     Please, provide a valid method."
   )
 
@@ -78,6 +78,6 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
 
   x$`P-value`[are_ps] <- ps_adj
 
-  usethis::ui_done("P adjusted with {method} method.")
+  ui_done("P adjusted with {method} method.")
   x
 }
