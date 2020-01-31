@@ -1,3 +1,5 @@
+# depigner 0.5.0
+
 * Introduce `rlang::.data` to remove notes on CMD check for tidyeval 
   missing variables
 * Update all the UIs to usethis' ones.
