@@ -23,7 +23,7 @@ use_ui <- function() {
   usethis:::check_is_package("use_ui()")
   usethis:::check_uses_roxygen("use_ui()")
 
-  usethis::use_dependency("usethis", "Imports")
+  usethis:::use_dependency("usethis", "Imports")
 
   # Paste is needed because rexygen2 reads those lines as roxygen-comments!
   # this way they start with '"' and the problem is avoided.

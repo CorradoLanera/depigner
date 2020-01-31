@@ -21,6 +21,8 @@
 #' @return A data frame
 #' @export
 #'
+#' @importFrom rlang .data
+#'
 #' @examples
 #'   library(rms)
 #'     options(datadist = 'dd')
@@ -95,26 +97,27 @@ summary_interact <- function(model, ref, discrete,
         ')'
       ))) %>%
         broom::tidy() %>%
-        dplyr::mutate(.rownames = Hmisc::Lag(.rownames)) %>%
+        dplyr::mutate(.rownames = Hmisc::Lag(.data$.rownames)) %>%
         dplyr::filter(Type == 2) %>%
-        dplyr::select(-Type, - S.E.) %>%
+        dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
         dplyr::mutate(
-          Low       = ifelse(is.na(Diff.), NA, Low),
-          High      = ifelse(is.na(Diff.), NA, High),
-          Diff.     = ifelse(!is.na(Diff.), Diff.,
-                          stringr::str_extract(.rownames, ' - .*$') %>%
-                              stringr::str_replace(' - ', '')),
-          .rownames = stringr::str_replace(.rownames, ' -+.*$', '')
+          Low   = ifelse(is.na(Diff.), NA, Low),
+          High  = ifelse(is.na(Diff.), NA, High),
+          Diff. = ifelse(!is.na(Diff.), Diff.,
+                    stringr::str_extract(.data$.rownames, ' - .*$') %>%
+                      stringr::str_replace(' - ', '')
+                  ),
+          .rownames = stringr::str_replace(.data$.rownames, ' -+.*$', '')
         ) %>%
         dplyr::mutate(
           .rownames = glue::glue('{.rownames} - {interact}')
         ) %>%
         dplyr::rename(
-          `&nbsp;`       = .rownames,
-          `Odds Ratio`   = Effect,
-          `Lower 95% CI` = Lower.0.95,
-          `Upper 95% CI` = Upper.0.95
+          `&nbsp;`       = .data$.rownames,
+          `Odds Ratio`   = .data$Effect,
+          `Lower 95% CI` = .data$Lower.0.95,
+          `Upper 95% CI` = .data$Upper.0.95
         )
     })
   )

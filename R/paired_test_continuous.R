@@ -35,6 +35,8 @@
 #'         `note` (contains a character string note about the test).
 #' @export
 #'
+#' @importFrom rlang .data
+#'
 #' @examples
 #'   library(Hmisc)
 #'

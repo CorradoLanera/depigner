@@ -27,7 +27,7 @@ chat_id_from_name <- function(.title = NA) {
     )
   }
 
-  res <- dplyr::filter(bot_chats, title == .title)[["id"]] %>%
+  res <- dplyr::filter(bot_chats, "title" == .title)[["id"]] %>%
       unique()
 
   if (length(res) == 0) ui_stop(
