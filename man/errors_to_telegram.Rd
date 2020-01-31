@@ -4,8 +4,10 @@
 \alias{errors_to_telegram}
 \title{Title}
 \usage{
-errors_to_telegram(chat_name = Sys.getenv("R_telegram_error_chat_name"),
-  bot_name = getOption("depigner.bot_name"))
+errors_to_telegram(
+  chat_name = Sys.getenv("R_telegram_error_chat_name"),
+  bot_name = getOption("depigner.bot_name")
+)
 }
 \arguments{
 \item{chat_name}{a}

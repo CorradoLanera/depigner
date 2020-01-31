@@ -34,7 +34,7 @@ errors_to_telegram <- function(
 
     options(error = new_error_handler)
 
-    if (has_error_handler) usethis::ui_warn(
+    if (has_error_handler) ui_warn(
         "Error handler is changed\nfrom: {op}\n to: {getOption('error')}"
     )
 

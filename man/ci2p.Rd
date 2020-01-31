@@ -4,8 +4,15 @@
 \alias{ci2p}
 \title{ci2p}
 \usage{
-ci2p(est, lower, upper, log_trasform = FALSE, conf = 0.95,
-  qdist = stats::qnorm, pdist = stats::pnorm)
+ci2p(
+  est,
+  lower,
+  upper,
+  log_trasform = FALSE,
+  conf = 0.95,
+  qdist = stats::qnorm,
+  pdist = stats::pnorm
+)
 }
 \arguments{
 \item{est}{estimated value}
@@ -37,6 +44,6 @@ possible to apply a log trasformation in case of proportions.
 }
 \examples{
 
-depigner:::ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
-depigner:::ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
+ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
+ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
 }

@@ -1,6 +1,6 @@
 Package: depigner
 Title: Utilities for _pigna_ stuffs at UBESP
-Version: 0.4.1
+Version: 0.5.0
 Authors@R: 
     person(given = "Corrado",
            family = "Lanera",
@@ -33,13 +33,18 @@ Imports:
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1),
     usethis (>= 1.5.0),
-    utils
+    utils,
+    desc
 Suggests: 
     covr (>= 3.1.0),
     Hmisc (>= 4.2.0),
     rms (>= 5.1.2),
     survival,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    curl,
+    fs,
+    git2r,
+    withr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

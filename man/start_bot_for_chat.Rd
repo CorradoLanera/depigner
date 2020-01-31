@@ -4,9 +4,10 @@
 \alias{start_bot_for_chat}
 \title{Set up a Telegram bot}
 \usage{
-
-  start_bot_for_chat(chat_name = Sys.getenv("R_telegram_default_chat_name"),
-  bot_name = getOption("depigner.bot_name"))
+start_bot_for_chat(
+  chat_name = Sys.getenv("R_telegram_default_chat_name"),
+  bot_name = getOption("depigner.bot_name")
+)
 }
 \arguments{
 \item{chat_name}{(chr, NA) The name of the chat you want to the bot
