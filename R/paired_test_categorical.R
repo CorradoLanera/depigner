@@ -28,6 +28,7 @@
 #'         `note` (contains a character string note about the test).
 #' @export
 #'
+#' @importFrom rlang .data
 #' @examples
 #'   library(Hmisc)
 #'
@@ -75,7 +76,7 @@ paired_test_categorical <- function(tab) {
   rowcounts <- tab %*% rep(1, ncol(tab))
   tab <- tab[rowcounts > 0, ]
   if (!is.matrix(tab) || nrow(tab) < 2) {
-    warning("tab is not a proper matrix. No test is done")
+    ui_warn("tab is not a proper matrix. No test is done")
     return(list(
       # values (mandatory)
       P    = NA,
@@ -129,16 +130,17 @@ paired_test_categorical <- function(tab) {
 
     tab_df <- dplyr::as_tibble(tab) %>%
       dplyr::mutate(
-        lev_id   = lev_id[var_levels],
-        group_id = group_id[grouping_var]
+        lev_id   = lev_id[.data$var_levels],
+        group_id = group_id[.data$grouping_var]
       ) %>%
-      dplyr::group_by(grouping_var) %>%
-      dplyr::mutate(prop = n/sum(n)) %>%
+      dplyr::group_by(.data$grouping_var) %>%
+      dplyr::mutate(prop = .data$n/sum(.data$n)) %>%
       dplyr::ungroup()
 
-    st <- summary(stats::glm(prop ~ var_levels*group_id,
-      data   = tab_df,
-      family = "quasibinomial"
+    st <- summary(stats::glm(
+      formula = stats::as.formula("prop ~ var_levels*group_id"),
+      data    = tab_df,
+      family  = "quasibinomial"
     ))
 
     return(list(

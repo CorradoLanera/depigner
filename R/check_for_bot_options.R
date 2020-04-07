@@ -8,11 +8,11 @@
 #' @return invisible lgl indicating if check pass (TRUE) or not (FALSE)
 check_for_bot_options <- function(chat_id, bot) {
   stop_to_warning_function <- function(what) {
-    warning(glue::glue(
-      "`{what}` is missing.
-      Pass it directly to `send_message_to_telegram()` or
-      set it up automatically by `start_bot_for_chat()`."
-    ), call. = FALSE)
+    ui_warn(
+      "{ui_field(what)} is missing.
+      Pass it directly to {ui_code('send_message_to_telegram()')} or
+      set it up automatically by {ui_code('start_bot_for_chat()')}."
+    )
 
     return(invisible(FALSE))
   }

@@ -17,11 +17,12 @@
 #' @param pdist (default `pnorm`) distribution function
 #'
 #' @return a p-value
+#' @export
 #'
 #' @examples
 #'
-#' depigner:::ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
-#' depigner:::ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
+#' ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
+#' ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
 
 ci2p <- function(
   est, lower, upper,
@@ -35,7 +36,7 @@ ci2p <- function(
     lower   <- upper
     upper   <- `*tmp*`
     rm(`*tmp*`)
-    warning('upper < lower: they are considered reversed', call. = FALSE)
+    ui_warn('upper < lower: they are considered reversed')
   }
 
   if (log_trasform) {
@@ -44,6 +45,6 @@ ci2p <- function(
     upper <- log(upper)
   }
 
-  se <- (upper - lower)/ (2 * qdist(conf))
+  se <- (upper - lower) / (2 * qdist(conf))
   1 - pdist(est / se)
 }

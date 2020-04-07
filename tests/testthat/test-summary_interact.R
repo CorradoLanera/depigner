@@ -1,5 +1,3 @@
-context("test-summary_interact")
-
 old_opt <- options(datadist = 'dd')
 on.exit(options(old_opt))
 
@@ -36,20 +34,20 @@ test_that("expectation class", {
 })
 
 test_that("expectation throws error if input not an lrm", {
-  expect_error(
+  expect_usethis_error(
     summary_interact(ols_mod, age, sex),
     "model has to inherits to lrm class"
   )
 })
 
 test_that("Without refname in datadist it trows an error", {
-  expect_error(summary_interact(lrm_mod, age, sexx), "datadist")
-  expect_error(summary_interact(lrm_mod, agee, sex), "datadist")
+  expect_usethis_error(summary_interact(lrm_mod, age, sexx), "datadist")
+  expect_usethis_error(summary_interact(lrm_mod, agee, sex), "datadist")
 })
 
 
 options(datadist = NULL)
 
 test_that("Without datadist it trows an error", {
-    expect_error(summary_interact(lrm_mod, age, sex), "datadist")
+  expect_usethis_error(summary_interact(lrm_mod, age, sex), "datadist")
 })

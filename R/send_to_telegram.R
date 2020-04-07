@@ -44,7 +44,6 @@ send_to_telegram <- function(x, ..., chat_id, bot) {
 #' Send message or general object to telegram
 #'
 #' @rdname send_to_telegram
-#' @inheritParams send_to_telegram
 #' @param type (chr, default = "message") the type of text represent
 #'       \code{x}. I.e., if not "message", it is normally considered as
 #'       a path to the corresponding object. For further clarification
@@ -73,7 +72,6 @@ send_to_telegram.character <- function(
 #' Send ggplot plots to telegram
 #'
 #' @rdname send_to_telegram
-#' @inheritParams send_to_telegram
 #' @param fileext (chr, default "png") one of the possible file format
 #'        supported: "png", "pdf", "jpeg", "tiff" or "bmp"
 #'
