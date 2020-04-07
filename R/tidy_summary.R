@@ -100,7 +100,7 @@ tidy_summary.summary.rms <- function(x, diff_digits = 2, ...){
   res <- as.data.frame(x) %>%
     tibble::as_tibble(rownames = ".rownames") %>%
     dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
-    dplyr::filter("Type" == 2)
+    dplyr::filter(.data$Type == 2)
 
   res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
   dplyr::mutate(
