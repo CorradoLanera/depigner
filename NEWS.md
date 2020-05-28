@@ -1,3 +1,5 @@
+# depigner 0.5.2
+
 # depigner 0.5.1
 
 # depigner 0.5.0
