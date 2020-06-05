@@ -139,10 +139,14 @@ Htypes <- function(x, n.unique = 10) {
 #' #   carb = "none"
 #' # )
 Htypes.describe <- function(x, n.unique = 10) {
-  stopifnot(
-    `x must be an Hmisc::describe() object (or one of its elements)` =
-      is_Hdesc(x)
-  )
+  if (as.integer(R.Version()$major) < 4) {
+    stopifnot(is_Hdesc(x))
+  } else {
+    stopifnot(
+      `x must be an Hmisc::describe() object (or one of its elements)` =
+        is_Hdesc(x)
+    )
+  }
 
   if (is_single_Hdesc(x)) {
     return(Htype(x, n.unique = n.unique))
@@ -170,11 +174,14 @@ Htypes.default <- function(x, n.unique = 10) {
 #' is_Hcat(desc[["vs"]]) # TRUE
 #' is_Hcat(desc[["mpg"]]) # FALSE
 is_Hcat <- function(x) {
-  # Note: the following syntax for `stopifnot()` require R4.0.0+
-  stopifnot(
-    `x must be a single (sub)element of an Hmisc::describe() output` =
-      is_single_Hdesc(x)
-  )
+  if (as.integer(R.Version()$major) < 4) {
+    stopifnot(is_Hdesc(x))
+  } else {
+    stopifnot(
+      `x must be an Hmisc::describe() object (or one of its elements)` =
+        is_Hdesc(x)
+    )
+  }
 
   s <- x$counts
   v <- x$values
