@@ -1,3 +1,6 @@
+# depigner (development version)
+
+* Update gh-actions to tidy ones
 * Update `README`
 
 # depigner 0.6.1
