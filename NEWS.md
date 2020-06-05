@@ -1,4 +1,11 @@
+* Update `README`
+
 # depigner 0.6.1
+
+* Switch to GH-action for CI
+* Activate spellcheck
+* Activate lint
+* Activate gh-pages with packagedown
 
 # depigner 0.6.0
 

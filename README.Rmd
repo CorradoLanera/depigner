@@ -11,6 +11,7 @@ bibliography: 'inst/bib/doc-pkg.bib'
 [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)
 [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions)
 [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/gh/CorradoLanera/depigner?branch=master)
 <!-- badges: end -->
 
 ```{r include = FALSE}

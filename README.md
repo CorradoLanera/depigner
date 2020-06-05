@@ -287,7 +287,7 @@ for (i in 1:100) {
 use_ui()
 ```
 
-  - **Wrappers to simple use of Telegram’s bots**: wrapers from the
+  - **Wrappers to simple use of Telegram’s bots**: wrappers from the
     `{telegram.bot}` package (Benedito 2019):
 
 <!-- end list -->
@@ -350,13 +350,13 @@ gdp(7)
 ## Feature request
 
 If you need some more features, please open an issue on
-[github](https://github.com/CorradoLanera/depigner/issues).
+[GitHub](https://github.com/CorradoLanera/depigner/issues).
 
 ## Bug reports
 
 If you encounter a bug, please file a
 [reprex](https://github.com/tidyverse/reprex) (minimal reproducible
-example) on [github](https://github.com/CorradoLanera/depigner/issues).
+example) on [GitHub](https://github.com/CorradoLanera/depigner/issues).
 
 ## Code of Conduct
 
