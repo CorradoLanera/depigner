@@ -1,3 +1,5 @@
+# depigner 0.6.1
+
 # depigner 0.6.0
 
 * update `README` including examples for all the exported functions

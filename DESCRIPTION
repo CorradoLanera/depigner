@@ -1,6 +1,6 @@
 Package: depigner
 Title: Utilities for _pigna_ stuffs at UBESP
-Version: 0.6.0
+Version: 0.6.1
 Authors@R: 
     person(given = "Corrado",
            family = "Lanera",
