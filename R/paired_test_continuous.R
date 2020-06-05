@@ -89,8 +89,6 @@ paired_test_continuous <- function(group, x) {
 
   # main constants --------------------------------------------------
 
-  # x     <- sf.db$Circonferenza.braccio..cm.
-  # group <- sf.db$Visita
   original_levels <- levels(group)
 
 

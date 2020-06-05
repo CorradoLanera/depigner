@@ -51,14 +51,15 @@ send_to_telegram <- function(x, ..., chat_id, bot) {
 #'
 #' @export
 send_to_telegram.character <- function(
-                                       x,
-                                       type = c(
-                                         "message", "photo", "document", "audio", "animation", "video",
-                                         "voice", "sticker", "location", "videonote"
-                                       ),
-                                       ...,
-                                       chat_id = getOption("depigner.chat_id"),
-                                       bot = getOption("depigner.bot")) {
+  x,
+  type = c(
+    "message", "photo", "document", "audio", "animation", "video",
+    "voice", "sticker", "location", "videonote"
+  ),
+  ...,
+  chat_id = getOption("depigner.chat_id"),
+  bot = getOption("depigner.bot")
+) {
   check_for_bot_options(chat_id, bot)
 
   type <- match.arg(type)
@@ -76,11 +77,12 @@ send_to_telegram.character <- function(
 #'
 #' @export
 send_to_telegram.gg <- function(
-                                x,
-                                fileext = c("png", "pdf", "jpeg", "tiff", "bmp"),
-                                ...,
-                                chat_id = getOption("depigner.chat_id"),
-                                bot = getOption("depigner.bot")) {
+  x,
+  fileext = c("png", "pdf", "jpeg", "tiff", "bmp"),
+  ...,
+  chat_id = getOption("depigner.chat_id"),
+  bot = getOption("depigner.bot")
+) {
   check_for_bot_options(chat_id, bot)
 
   fileext <- match.arg(fileext)

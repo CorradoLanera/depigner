@@ -27,8 +27,8 @@ dt <- pmin(dt, cens)
 
 dd <- rms::datadist(age, sex)
 options(datadist = "dd")
-S <- survival::Surv(dt, e)
-f <- rms::cph(S ~ rms::rcs(age, 4) + sex)
+s <- survival::Surv(dt, e)
+f <- rms::cph(s ~ rms::rcs(age, 4) + sex)
 
 my_summary <- summary(f)
 

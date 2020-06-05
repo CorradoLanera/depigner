@@ -30,10 +30,10 @@ ci2p <- function(
                  qdist = stats::qnorm,
                  pdist = stats::pnorm) {
   if (upper < lower) {
-    `*tmp*` <- lower
+    tmp <- lower
     lower <- upper
-    upper <- `*tmp*`
-    rm(`*tmp*`)
+    upper <- tmp
+    rm(tmp)
     ui_warn("upper < lower: they are considered reversed")
   }
 

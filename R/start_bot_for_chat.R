@@ -56,8 +56,9 @@
 #' start_bot_for_chat()
 #' }
 start_bot_for_chat <- function(
-                               chat_name = Sys.getenv("R_telegram_default_chat_name"),
-                               bot_name = getOption("depigner.bot_name")) {
+  chat_name = Sys.getenv("R_telegram_default_chat_name"),
+  bot_name = getOption("depigner.bot_name")
+) {
   if (is.null(bot_name)) {
     if (Sys.getenv("R_telegram_bot_name") == "") {
       ui_stop(

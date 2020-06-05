@@ -11,13 +11,16 @@ lrm_mod <- rms::lrm(event ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
   data = transplant, model = TRUE, x = TRUE, y = TRUE
 )
 
-ols_mod <- rms::ols(futime ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
+ols_mod <- rms::ols(
+  futime ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
   data = transplant, model = TRUE, x = TRUE, y = TRUE
 )
 
 s_sex <- summary_interact(lrm_mod, age, sex)
 s_ref <- summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
-s_digits <- summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L)
+s_digits <- summary_interact(
+  lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L
+)
 s_abo <- summary_interact(lrm_mod, age, abo)
 s_abo_p <- summary_interact(lrm_mod, age, abo, p = TRUE)
 s_lev <- summary_interact(lrm_mod, age, abo, level = c("A", "AB"))
