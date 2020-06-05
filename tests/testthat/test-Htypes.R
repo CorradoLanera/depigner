@@ -36,7 +36,7 @@ testthat::test_that("original check works", {
   )
   
   skip_if(as.integer(R.Version()$major) < 4)
-  testthat::expect_error(is_Hcat(test_desc), "must be a single")
+  testthat::expect_error(is_Hcon(test_desc), "must be a single")
 })
 
 
