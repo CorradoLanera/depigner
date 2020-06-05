@@ -1,4 +1,4 @@
-#' Title
+#' Divert output errors to the telegram bot
 #'
 #' @param chat_name a
 #' @param bot_name a

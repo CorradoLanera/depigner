@@ -1,3 +1,10 @@
+# depigner 0.6.0
+
+* update `README` including examples for all the exported functions
+* Added `Htypes()`, `Htype()` and complementary functions and relative
+  tests, to get/check when a variable is considered catgorical or
+  continuous by the `Hmisc` ecosystem.
+
 # depigner 0.5.2
 
 # depigner 0.5.1

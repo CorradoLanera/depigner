@@ -43,7 +43,7 @@ devtools::install_github("CorradoLanera/depigner")
   combination of a continuous variable (for which it is possible to
   define the reference and the target values) and (every or a selection
   of levels of) a categorical one in a logistic model provided by
-  `lrm()` (from the `rms` package [@R-rms]).
+  `lrm()` (from the `{rms}` package [@R-rms]):
 
 ```{r, include = FALSE}
 library(depigner)
@@ -74,8 +74,10 @@ summary_interact(lrm_mod, age, abo, p = TRUE) %>%
   
 
 - **`tidy_summary()`**: produces a data frame from the `summary()`
-  functions provided by **Hmisc** and **rms** packages. 
-  At the moment it is tested only for method _reverse_
+  functions provided by `{Hmisc}` [@R-Hmisc] and `{rms}` [@R-rms]
+  packages. 
+  
+  At the moment it is tested only for method _reverse_:
 
 ```{r}
 dd <- datadist(iris)
@@ -91,6 +93,123 @@ my_summary <- summary(f)
 tidy_summary(my_summary) %>% 
   pander()
 ```
+
+- **`adjust_p()`**: Adjust P-values of a `tidy_summary` objects:
+```{r}
+my_summary <- summary(Species ~., data = iris, method = "reverse")
+
+  tidy_summary(my_summary) %>%
+      adjust_p()
+```
+
+
+- **`ci2p()`**: compute the p-value related with a provided confidence
+  interval:
+```{r}
+ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
+```
+  
+
+- **`paired_test_*()`**: Paired test for categorical/continuous 
+  variables to be used in the `summary()` of the `{Hmisc}` [@R-Hmisc]
+  package:
+```{r}
+data(Arthritis)
+# categorical -------------------------
+## two groups
+summary(Treatment ~ Sex,
+    data    = Arthritis,
+    method  = "reverse",
+    test    = TRUE,
+    catTest = paired_test_categorical
+)
+## more than two groups
+summary(Improved ~ Sex,
+    data    = Arthritis,
+    method  = "reverse",
+    test    = TRUE,
+    catTest = paired_test_categorical
+)
+
+# continuous --------------------------
+## two groups
+summary(Species ~.,
+    data    = iris[iris$Species != "setosa",],
+    method  = "reverse",
+    test    = TRUE,
+    conTest = paired_test_continuous
+)
+## more than two groups
+summary(Species ~.,
+    data    = iris,
+    method  = "reverse",
+    test    = TRUE,
+    conTest = paired_test_continuous
+)
+```
+  
+
+- **`pb_len()`**: Progress bar of given length, wrapper from the 
+  `{progress_bar}` [@R-progress_bar] package:
+```{r, eval=FALSE}
+pb <- pb_len(100)
+
+for (i in 1:100) {
+    Sys.sleep(0.1)
+    tick(pb, paste("i = ", i))
+}
+```
+
+- **`use_ui()`**: Use `{usethis}`' ui(s) [@R-usethis] in your package
+```{r, eval=FALSE}
+# in the initial setup steps of the development of a package
+use_ui()
+```
+
+
+- **Wrappers to simple use of Telegram's bots**: wrapers from the
+  `{telegram.bot}` package [@R-telegram.bot]:
+```{r, eval=FALSE}
+# Set up a Telegram bot. read `?start_bot_for_chat`
+start_bot_for_chat()
+
+# Send something to telegram
+send_to_telegram("hello world")
+
+library(ggplot2)
+gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +
+    geom_point()
+send_to_telegram(
+  "following an `mtcars` coloured plot",
+  parse_mode = "Markdown"
+)
+send_to_telegram(gg)
+
+# Divert output errors to the telegram bot
+errors_to_telegram()
+```
+
+
+- **`Htypes()`** and friends: get/check types of variable with respect 
+  to the `{Hmisc}` ecosystem [@R-Hmisc].
+  
+```{r}
+Htypes(mtcars)
+
+desc <- Hmisc::describe(mtcars)
+Htypes(desc)
+Htype(desc[[1]])
+is_Hcat(desc[[1]])
+is_Hcon(desc[[1]])
+```
+
+
+- **`gdp()`**: A wrapper to relax
+```{r, eval=FALSE}
+gdp(7)
+```
+
+
 ## Provided data
 - **`ubesp_pkg`**: main packages uses at UBESP
 
@@ -110,14 +229,14 @@ Please note that the 'depigner' project is released with a
 [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
-<!--=========================================================================-->
+<!--=================================================================-->
 
 ## Reference
 
 ```{r bib, include=FALSE, eval = TRUE}
 # create a bib file for the R packages used in this document
 knitr::write_bib(
-  x    = c('rms'),
+  x    = c('rms', 'Hmisc', 'telegram.bot', 'progress_bar', 'usethis'),
   file = 'inst/bib/doc-pkg.bib'
 )
 ```
