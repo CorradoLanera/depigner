@@ -4,7 +4,9 @@
 \name{ubesp_pkg}
 \alias{ubesp_pkg}
 \title{Package used at UBESP.}
-\format{A character vector}
+\format{
+A character vector
+}
 \usage{
 ubesp_pkg
 }

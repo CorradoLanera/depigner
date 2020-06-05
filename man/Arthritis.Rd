@@ -4,7 +4,9 @@
 \name{Arthritis}
 \alias{Arthritis}
 \title{Data for example}
-\format{A data.frame with 84 obs. and 5 var.}
+\format{
+A data.frame with 84 obs. and 5 var.
+}
 \usage{
 Arthritis
 }
