@@ -208,10 +208,14 @@ is_Hcat <- function(x) {
 #' is_Hcon(desc[["vs"]]) # FALSE
 #' is_Hcon(desc[["mpg"]]) # TRUE
 is_Hcon <- function(x, n.unique = 10) {
-  stopifnot(
-    `x must be a single (sub)element of an Hmisc::describe() output` =
-      is_single_Hdesc(x)
-  )
+  if (as.integer(R.Version()$major) < 4) {
+    stopifnot(is_Hdesc(x))
+  } else {
+    stopifnot(
+      `x must be an Hmisc::describe() object (or one of its elements)` =
+        is_Hdesc(x)
+    )
+  }
 
   s <- x$counts
   v <- x$values
