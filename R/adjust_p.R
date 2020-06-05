@@ -10,12 +10,11 @@
 #' @export
 #'
 #' @examples
-#'   library(Hmisc)
-#'   my_summary <- summary(Species ~., data = iris, method = "reverse")
+#' library(Hmisc)
+#' my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'
-#'   tidy_summary(my_summary) %>%
-#'       adjust_p()
-#'
+#' tidy_summary(my_summary) %>%
+#'   adjust_p()
 adjust_p <- function(x, method) {
   UseMethod("adjust_p")
 }
@@ -34,8 +33,6 @@ adjust_p <- function(x, method) {
 #' @rdname adjust_p
 #' @export
 adjust_p.tidy_summary <- function(x, method = "BH") {
-
-
   if (is.null(x$`P-value`)) {
     ui_oops(
       "The object {ui_code('x')} does not have a {ui_field('P-value')} column.
@@ -49,11 +46,13 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
     "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr",
     "none"
   )
-  if (!method %in% adj_methods) ui_stop(
-    "method selected is {ui_value(method)}.
+  if (!method %in% adj_methods) {
+    ui_stop(
+      "method selected is {ui_value(method)}.
     It must be one of {ui_value(adj_methods)}.
     Please, provide a valid method."
-  )
+    )
+  }
 
 
   # The first one is not empty because it is the header

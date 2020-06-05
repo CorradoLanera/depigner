@@ -26,19 +26,19 @@ related to the bot).}
 invisible()
 }
 \description{
-This function set up what is necesary to \code{\link{telegram.bot}}
+This function set up what is necessary to \code{\link{telegram.bot}}
 package to be used in a more easy way by the function provided by
 the depigner.
 }
 \details{
 Before you can use the \code{\link{depigner}} facilities (or the
-\code{\link{telegram.bot}} ones) to use your bot to chat whith
+\code{\link{telegram.bot}} ones) to use your bot to chat with
 Telegram from R, you have to set the bot up.
 
 To set up a bot in telegram, find \code{@BotFather} on telegram. Send
 the message \code{\\start} to it, and then send the message
 \code{\\newbot} to it too. Next you have to follow the very simple
-istruction it gives you. At the end of the process, save your bot
+instruction it gives you. At the end of the process, save your bot
 token and never share it publicly!!
 
 After your bot is created, go to your bot default chat profile and
@@ -63,7 +63,7 @@ and complete ones from the \code{\link{telegram.bot}} package.
 }
 \examples{
 \dontrun{
-    library(depigner)
-    start_bot_for_chat()
+library(depigner)
+start_bot_for_chat()
 }
 }

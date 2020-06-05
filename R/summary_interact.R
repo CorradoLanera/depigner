@@ -24,45 +24,44 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#'   library(rms)
-#'     options(datadist = 'dd')
+#' library(rms)
+#' options(datadist = "dd")
 #'
-#'   data('transplant')
+#' data("transplant")
 #'
-#'   transplant <- transplant[
-#'       transplant[['event']] != 'censored', , drop = FALSE
-#'   ]
-#'   dd <- datadist(transplant)
+#' transplant <- transplant[
+#'   transplant[["event"]] != "censored", ,
+#'   drop = FALSE
+#' ]
+#' dd <- datadist(transplant)
 #'
-#'   lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
-#'     data = transplant
-#'   )
+#' lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
+#'   data = transplant
+#' )
 #'
-#'   lrm_mod
-#'   summary(lrm_mod)
-#'   summary_interact(lrm_mod, age, sex)
-#'   summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
-#'   summary_interact(lrm_mod, age, sex,
-#'       ref_min = 60, ref_max = 80, digits = 5L
-#'   )
+#' lrm_mod
+#' summary(lrm_mod)
+#' summary_interact(lrm_mod, age, sex)
+#' summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
+#' summary_interact(lrm_mod, age, sex,
+#'   ref_min = 60, ref_max = 80, digits = 5L
+#' )
 #'
-#'   summary_interact(lrm_mod, age, abo)
-#'   summary_interact(lrm_mod, age, abo, level = c('A', 'AB'))
-#'   summary_interact(lrm_mod, age, abo, level = c('A', 'AB'), p = TRUE)
+#' summary_interact(lrm_mod, age, abo)
+#' summary_interact(lrm_mod, age, abo, level = c("A", "AB"))
+#' summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE)
 summary_interact <- function(model, ref, discrete,
-  ref_min  = NULL, ref_max = NULL,
-  level    = NULL,
-  ...,
-  digits   = 3L,
-  p        = FALSE
-) {
-
-  if (!inherits(model, 'lrm')) {
-    ui_stop('model has to inherits to lrm class')
+                             ref_min = NULL, ref_max = NULL,
+                             level = NULL,
+                             ...,
+                             digits = 3L,
+                             p = FALSE) {
+  if (!inherits(model, "lrm")) {
+    ui_stop("model has to inherits to lrm class")
   }
-  if (is.null(getOption('datadist'))) ui_stop('datadist non defined')
+  if (is.null(getOption("datadist"))) ui_stop("datadist non defined")
 
-  discrete      <- rlang::enquo(discrete)
+  discrete <- rlang::enquo(discrete)
   discrete_name <- rlang::quo_name(discrete)
   # print(discrete_name)
   # print(level)
@@ -71,30 +70,36 @@ summary_interact <- function(model, ref, discrete,
   ref_name <- rlang::quo_name(ref)
   # print(ref_name)
 
-  dd <- getOption('datadist') %>%
+  dd <- getOption("datadist") %>%
     as.name() %>%
     eval()
 
-  if (!ref_name %in% names(dd[['limits']])) {
-    ui_stop('ref isn\'t in datadist')
+  if (!ref_name %in% names(dd[["limits"]])) {
+    ui_stop("ref isn't in datadist")
   }
-  if (!discrete_name %in% names(dd[['limits']])) {
-    ui_stop('discrete isn\'t in datadist')
+  if (!discrete_name %in% names(dd[["limits"]])) {
+    ui_stop("discrete isn't in datadist")
   }
 
 
-  if (is.null(ref_min))  { ref_min  <- dd[['limits']][[ref_name]][[1]]}
-  if (is.null(ref_max))  { ref_max  <- dd[['limits']][[ref_name]][[3]]}
-  if (is.null(level)) { level <- dd[['values']][[discrete_name]]}
+  if (is.null(ref_min)) {
+    ref_min <- dd[["limits"]][[ref_name]][[1]]
+  }
+  if (is.null(ref_max)) {
+    ref_max <- dd[["limits"]][[ref_name]][[3]]
+  }
+  if (is.null(level)) {
+    level <- dd[["values"]][[discrete_name]]
+  }
 
   suppressWarnings(
     res <- purrr::map_df(.x = level, ~ {
       interact <- .x
       eval(parse(text = glue::glue(
-        'summary(model,',
-        '    {discrete_name} = interact,',
-        '    {ref_name}      = c(ref_min, ref_max)',
-        ')'
+        "summary(model,",
+        "    {discrete_name} = interact,",
+        "    {ref_name}      = c(ref_min, ref_max)",
+        ")"
       ))) %>%
         broom::tidy() %>%
         dplyr::mutate(.rownames = Hmisc::Lag(.data$.rownames)) %>%
@@ -102,20 +107,20 @@ summary_interact <- function(model, ref, discrete,
         dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
         dplyr::mutate(
-          Low   = ifelse(is.na(Diff.), NA, Low),
-          High  = ifelse(is.na(Diff.), NA, High),
+          Low = ifelse(is.na(Diff.), NA, Low),
+          High = ifelse(is.na(Diff.), NA, High),
           Diff. = ifelse(!is.na(Diff.), Diff.,
-                    stringr::str_extract(.data$.rownames, ' - .*$') %>%
-                      stringr::str_replace(' - ', '')
-                  ),
-          .rownames = stringr::str_replace(.data$.rownames, ' -+.*$', '')
+            stringr::str_extract(.data$.rownames, " - .*$") %>%
+              stringr::str_replace(" - ", "")
+          ),
+          .rownames = stringr::str_replace(.data$.rownames, " -+.*$", "")
         ) %>%
         dplyr::mutate(
-          .rownames = glue::glue('{.rownames} - {interact}')
+          .rownames = glue::glue("{.rownames} - {interact}")
         ) %>%
         dplyr::rename(
-          `&nbsp;`       = .data$.rownames,
-          `Odds Ratio`   = .data$Effect,
+          `&nbsp;` = .data$.rownames,
+          `Odds Ratio` = .data$Effect,
           `Lower 95% CI` = .data$Lower.0.95,
           `Upper 95% CI` = .data$Upper.0.95
         )
@@ -123,14 +128,14 @@ summary_interact <- function(model, ref, discrete,
   )
   if (p) {
     res["P-value"] <- purrr::pmap_dbl(
-        list(
-            or   = res[["Odds Ratio"]],
-            low  = res[["Lower 95% CI"]],
-            high = res[["Upper 95% CI"]]
-        ),
-        function(or, low, high) {
-            ci2p(or, low, high, log_trasform = TRUE)
-        }
+      list(
+        or = res[["Odds Ratio"]],
+        low = res[["Lower 95% CI"]],
+        high = res[["Upper 95% CI"]]
+      ),
+      function(or, low, high) {
+        ci2p(or, low, high, log_transform = TRUE)
+      }
     )
   }
   res %>%

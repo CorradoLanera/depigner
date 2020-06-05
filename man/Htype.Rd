@@ -23,7 +23,7 @@ is_Hcon(x, n.unique = 10)
 }
 \arguments{
 \item{x}{an instance of the class [describe][Hmisc::describe], in the
-cases of "singoular" functions (ie `is_*()` or `Htype()`) it must
+cases of "singular" functions (ie `is_*()` or `Htype()`) it must
 be a single-variable [describe][Hmisc::describe] object.}
 
 \item{n.unique}{(int, 10) the minimum number of distinct values a
@@ -36,7 +36,7 @@ continuous variable plot.}
   (if `x` will be not considered categorical nor continuous, and
   hence it will be not plotted), or "both" (with a warning, if the
   variable will be considered both categorical and continuous. This
-  would possibly nevere happen).
+  would possibly never happen).
 
 (chr) character vector of the types identified by [Htype] for
   every variable represented in (each element of) `x`.
@@ -85,21 +85,20 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
 library(Hmisc)
 desc <- describe(mtcars)
 
-Htype(desc[["vs"]])  # "cat"
+Htype(desc[["vs"]]) # "cat"
 Htype(desc[["mpg"]]) # "con"
 Htype(desc[["cyl"]]) # "none"
-
-Htypes(desc)  # c(
-              #   mpg = "con", cyl = "none", disp = "con",
-              #   hp = "con", drat = "con", wt = "con", qsec = "con",
-              #   vs = "cat", am = "cat", gear = "none",
-              #   carb = "none"
-              # )
-Htypes(mtcars)  # Htypes(desc)
+Htypes(desc) # c(
+#   mpg = "con", cyl = "none", disp = "con",
+#   hp = "con", drat = "con", wt = "con", qsec = "con",
+#   vs = "cat", am = "cat", gear = "none",
+#   carb = "none"
+# )
+Htypes(mtcars) # Htypes(desc)
 Htypes(letters) # "none"
-is_Hcat(desc[["vs"]])  # TRUE
+is_Hcat(desc[["vs"]]) # TRUE
 is_Hcat(desc[["mpg"]]) # FALSE
-is_Hcon(desc[["vs"]])  # FALSE
+is_Hcon(desc[["vs"]]) # FALSE
 is_Hcon(desc[["mpg"]]) # TRUE
 }
 \seealso{

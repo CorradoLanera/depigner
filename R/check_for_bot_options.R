@@ -34,5 +34,4 @@ check_for_bot_options <- function(chat_id, bot) {
   )
 
   invisible(is_bot_ok & is_chat_id_ok)
-
 }

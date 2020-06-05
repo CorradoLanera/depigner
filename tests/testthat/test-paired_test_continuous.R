@@ -6,7 +6,7 @@ iris <- dplyr::group_by(iris, Species) %>%
   dplyr::arrange(id)
 
 which_selected <- iris$Species != "setosa"
-two_obs    <- iris$Sepal.Length[which_selected]
+two_obs <- iris$Sepal.Length[which_selected]
 two_groups <- iris$Species[which_selected] %>% droplevels()
 
 obs <- iris$Sepal.Length
@@ -20,11 +20,11 @@ test_that("output class is correct", {
 test_that("output structure is correct", {
   expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
-    names(paired_test_continuous(two_groups, two_obs))
+      names(paired_test_continuous(two_groups, two_obs))
   ))
   expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
-    names(paired_test_continuous(many_groups, obs))
+      names(paired_test_continuous(many_groups, obs))
   ))
 })
 
@@ -32,7 +32,7 @@ test_that("output structure is correct", {
 test_that("wrong input are managed", {
   expect_usethis_error(
     paired_test_continuous(factor(c(1, 2)), 1),
-    "lenght"
+    "length"
   )
   expect_warning(paired_test_continuous(c(1, 2), c(1, 2)), "factor")
 })

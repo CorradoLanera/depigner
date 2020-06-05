@@ -1,18 +1,18 @@
 #' Set up a Telegram bot
 #'
-#' This function set up what is necesary to \code{\link{telegram.bot}}
+#' This function set up what is necessary to \code{\link{telegram.bot}}
 #' package to be used in a more easy way by the function provided by
 #' the depigner.
 #'
 #' @details
 #' Before you can use the \code{\link{depigner}} facilities (or the
-#' \code{\link{telegram.bot}} ones) to use your bot to chat whith
+#' \code{\link{telegram.bot}} ones) to use your bot to chat with
 #' Telegram from R, you have to set the bot up.
 #'
 #' To set up a bot in telegram, find \code{@BotFather} on telegram. Send
 #' the message \code{\\start} to it, and then send the message
 #' \code{\\newbot} to it too. Next you have to follow the very simple
-#' istruction it gives you. At the end of the process, save your bot
+#' instruction it gives you. At the end of the process, save your bot
 #' token and never share it publicly!!
 #'
 #' After your bot is created, go to your bot default chat profile and
@@ -52,24 +52,23 @@
 #'
 #' @examples
 #' \dontrun{
-#'     library(depigner)
-#'     start_bot_for_chat()
+#' library(depigner)
+#' start_bot_for_chat()
 #' }
 start_bot_for_chat <- function(
-    chat_name = Sys.getenv("R_telegram_default_chat_name"),
-    bot_name  = getOption("depigner.bot_name")
-) {
-
+                               chat_name = Sys.getenv("R_telegram_default_chat_name"),
+                               bot_name = getOption("depigner.bot_name")) {
   if (is.null(bot_name)) {
     if (Sys.getenv("R_telegram_bot_name") == "") {
       ui_stop(
-      ".Renviron variable {ui_field('R_telegram_bot_name')} is required
+        ".Renviron variable {ui_field('R_telegram_bot_name')} is required
         if {ui_field('bot_name')} argument is not provided directly from
         the user.
 
         Please, set it up, or pass the name of your bot, directly
         to the function {ui_code('prepare_telegram_bot()')}.
-      ")
+      "
+      )
     }
     bot_name <- Sys.getenv("R_telegram_bot_name")
   }
@@ -78,11 +77,14 @@ start_bot_for_chat <- function(
   options(depigner.bot = bot)
 
   chat_id <- tryCatch(chat_id_from_name(chat_name),
-    error = function(e) ui_stop(
-    "The bot {ui_field(bot_name)} do not have a chat named {ui_value(chat_name)}.
+    error = function(e) {
+      ui_stop(
+        "The bot {ui_field(bot_name)} do not have a chat named {ui_value(chat_name)}.
       Have you provided a {ui_field(chat_name)} of a chat in which
       the, bot is a member?
-    ")
+    "
+      )
+    }
   )
 
   options(depigner.chat_id = chat_id)

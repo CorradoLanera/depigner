@@ -108,7 +108,7 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
 - **`ci2p()`**: compute the p-value related with a provided confidence
   interval:
 ```{r}
-ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
+ci2p(1.125, 0.634,	1.999, log_transform = TRUE)
 ```
   
 
@@ -169,7 +169,7 @@ use_ui()
 ```
 
 
-- **Wrappers to simple use of Telegram's bots**: wrapers from the
+- **Wrappers to simple use of Telegram's bots**: wrappers from the
   `{telegram.bot}` package [@R-telegram.bot]:
 ```{r, eval=FALSE}
 # Set up a Telegram bot. read `?start_bot_for_chat`
@@ -217,14 +217,14 @@ gdp(7)
 
 ## Feature request
 If you need some more features, please open an issue on
-[github](https://github.com/CorradoLanera/depigner/issues).
+[GitHub](https://github.com/CorradoLanera/depigner/issues).
 
 
 ## Bug reports
 If you encounter a bug, please file a
 [reprex](https://github.com/tidyverse/reprex)
 (minimal reproducible example) on
-[github](https://github.com/CorradoLanera/depigner/issues).
+[GitHub](https://github.com/CorradoLanera/depigner/issues).
 
 ## Code of Conduct
 Please note that the depigner project is released with a [Contributor

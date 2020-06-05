@@ -160,7 +160,7 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
 <!-- end list -->
 
 ``` r
-ci2p(1.125, 0.634,  1.999, log_trasform = TRUE)
+ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
 #> [1] 0.367902
 ```
 

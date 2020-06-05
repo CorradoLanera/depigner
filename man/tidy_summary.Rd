@@ -42,7 +42,7 @@ by \code{rms} packages to a tidy data frame ready to be
 reporting only the Hazard Ratio with the .95 CI and the
 incremental step (for continuous variables) reference
 (for categorical variables) for which the Hazard is
-refered to (i.e. without \eqn{\beta}s, Low, High, S.E.
+referred to (i.e. without \eqn{\beta}s, Low, High, S.E.
 and Type).
 }}
 
@@ -51,30 +51,30 @@ to see the options you can pass to \code{...} for a custom
 print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 }
 \examples{
-  library(Hmisc)
-  my_summary <- summary(Species ~., data = iris, method = "reverse")
-  tidy_summary(my_summary)
-  library(rms)
-  options(dd = "datadist")
-  n <- 1000
-  set.seed(731)
-  age <- 50 + 12*rnorm(n)
-  sex <- factor(sample(c('Male','Female'), n,
-      rep  = TRUE,
-      prob = c(.6, .4)
-  ))
-  cens <- 15*runif(n)
-  h <- .02*exp(.04*(age - 50) + .8*(sex == 'Female'))
-  dt <- -log(runif(n))/h
-  e <- ifelse(dt <= cens, 1, 0)
-  dt <- pmin(dt, cens)
+library(Hmisc)
+my_summary <- summary(Species ~ ., data = iris, method = "reverse")
+tidy_summary(my_summary)
+library(rms)
+options(dd = "datadist")
+n <- 1000
+set.seed(731)
+age <- 50 + 12 * rnorm(n)
+sex <- factor(sample(c("Male", "Female"), n,
+  rep = TRUE,
+  prob = c(.6, .4)
+))
+cens <- 15 * runif(n)
+h <- .02 * exp(.04 * (age - 50) + .8 * (sex == "Female"))
+dt <- -log(runif(n)) / h
+e <- ifelse(dt <= cens, 1, 0)
+dt <- pmin(dt, cens)
 
-  dd <- datadist(age, sex)
+dd <- datadist(age, sex)
 
-  S <- survival::Surv(dt,e)
-  f <- rms::cph(S ~ age + sex)
+S <- survival::Surv(dt, e)
+f <- rms::cph(S ~ age + sex)
 
 
-  my_summary <- summary(f)
-  tidy_summary(my_summary)
+my_summary <- summary(f)
+tidy_summary(my_summary)
 }
