@@ -25,6 +25,7 @@ Imports:
     graphics,
     Hmisc (>= 4.2.0),
     janitor (>= 1.1.1),
+    lattice,
     magrittr (>= 1.5),
     progress (>= 1.2.0),
     purrr (>= 0.2.5),
@@ -34,7 +35,6 @@ Imports:
     telegram.bot (>= 2.3.0),
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1),
-    lattice,
     usethis (>= 1.5.0),
     utils
 Suggests: 
