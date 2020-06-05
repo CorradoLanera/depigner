@@ -17,16 +17,14 @@ check_for_bot_options <- function(chat_id, bot) {
     return(invisible(FALSE))
   }
 
-  is_bot_ok <- tryCatch(
-    {
+  is_bot_ok <- tryCatch({
       force(bot)
       TRUE
     },
     error = function(e) stop_to_warning_function("bot")
   )
 
-  is_chat_id_ok <- tryCatch(
-    {
+  is_chat_id_ok <- tryCatch({
       force(chat_id)
       TRUE
     },
@@ -34,5 +32,4 @@ check_for_bot_options <- function(chat_id, bot) {
   )
 
   invisible(is_bot_ok & is_chat_id_ok)
-
 }

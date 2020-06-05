@@ -2,7 +2,7 @@
 % Please edit documentation in R/errors_to_telegram.R
 \name{errors_to_telegram}
 \alias{errors_to_telegram}
-\title{Title}
+\title{Divert output errors to the telegram bot}
 \usage{
 errors_to_telegram(
   chat_name = Sys.getenv("R_telegram_error_chat_name"),
@@ -18,11 +18,11 @@ errors_to_telegram(
 a
 }
 \description{
-Title
+Divert output errors to the telegram bot
 }
 \examples{
 \dontrun{
-    library(depigner)
-    errors_to_telegram()
+library(depigner)
+errors_to_telegram()
 }
 }

@@ -85,5 +85,3 @@ testthat::test_that("Htypes works", {
   # Note: `plot(describe(letters))` throws an error
   testthat::expect_equal(Htypes(letters), "none")
 })
-
-

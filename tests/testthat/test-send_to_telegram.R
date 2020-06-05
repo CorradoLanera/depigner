@@ -12,7 +12,6 @@ test_that("returns the message sent", {
 
   options(depigner.bot = "")
   options(depigner.chat_id = "")
-
 })
 
 test_that("returns the ggplot sent", {

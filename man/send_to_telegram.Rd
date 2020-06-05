@@ -28,7 +28,7 @@ send_to_telegram(x, ..., chat_id, bot)
 \arguments{
 \item{x}{object to send (often a character string)}
 
-\item{...}{further argument to pass to the sending methotds (see
+\item{...}{further argument to pass to the sending methods (see
 \code{\link[telegram.bot]{Bot}} for specifications.)}
 
 \item{chat_id}{chat_id in which send the object. By default all the
@@ -54,25 +54,25 @@ invisible the object x.
 This is a generic function to send some object to telegram.
 }
 \details{
-By dafault it use the bot and chat_id configured by
+By default it use the bot and chat_id configured by
 \code{\link{start_bot_for_chat}}. The user can pass a custom bot or
 chat_id providing them to the corresponding argument.
 }
 \examples{
 \dontrun{
-    library(depigner)
-    library(ggplot2)
+library(depigner)
+library(ggplot2)
 
-    start_bot_for_chat()
-    send_to_telegram("hello world")
+start_bot_for_chat()
+send_to_telegram("hello world")
 
-    gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +
-        geom_point()
+gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +
+  geom_point()
 
-    send_to_telegram(
-    "following an `mtcars` coloured plot",
-    parse_mode = "Markdown"
-    )
-    send_to_telegram(gg)
+send_to_telegram(
+  "following an `mtcars` coloured plot",
+  parse_mode = "Markdown"
+)
+send_to_telegram(gg)
 }
 }

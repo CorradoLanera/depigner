@@ -3,13 +3,16 @@ depigner: package of utilities for *pignas*.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)
-[![Travis build
-status](https://travis-ci.org/CorradoLanera/depigner.svg?branch=master)](https://travis-ci.org/CorradoLanera/depigner)
+[![R build
+status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions)
 [![Coverage
 status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master)
+<!-- badges: end -->
 
 ## Overview
 
@@ -157,7 +160,7 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
 <!-- end list -->
 
 ``` r
-ci2p(1.125, 0.634,  1.999, log_trasform = TRUE)
+ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
 #> [1] 0.367902
 ```
 
@@ -357,9 +360,10 @@ example) on [github](https://github.com/CorradoLanera/depigner/issues).
 
 ## Code of Conduct
 
-Please note that the ‘depigner’ project is released with a [Contributor
-Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
-project, you agree to abide by its terms.
+Please note that the depigner project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 <!--=================================================================-->
 

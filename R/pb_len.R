@@ -16,14 +16,13 @@
 #'
 #' @examples
 #' \dontrun{
-#'     pb <- pb_len(100)
-#'     for (i in 1:100) {
-#'         Sys.sleep(0.1)
-#'         tick(pb, paste("i = ", i))
-#'     }
+#' pb <- pb_len(100)
+#' for (i in 1:100) {
+#'   Sys.sleep(0.1)
+#'   tick(pb, paste("i = ", i))
+#' }
 #' }
 pb_len <- function(.x, width = 76, show_after = 2, clear = FALSE) {
-
   if (!is.numeric(.x) || (.x != trunc(.x))) {
     ui_stop("{ui_code('.x')} must be an integer.")
   }

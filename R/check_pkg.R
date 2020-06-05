@@ -4,8 +4,8 @@
 #' from a function used by Hadley Wickham at
 #' `RStudio::conf 2018 - San Diego`.
 #'
-#' @param pkgs charachter vector of package(s) to install
-#' @param install_fun fuction to use for installing package(s)
+#' @param pkgs character vector of package(s) to install
+#' @param install_fun function to use for installing package(s)
 #' @param ... further options for install_fun
 #'
 #' @return invisible
@@ -21,7 +21,7 @@ please_install <- function(pkgs, install_fun = install.packages, ...) {
   q_pkg_title <- "Do you agree to install the following packges?"
   q_pkg_tale <- "(among the corresponding dependencies)"
 
-  ko_pkg <- ui_nope(c(q_pkg_title, paste('* ', pkgs), q_pkg_tale))
+  ko_pkg <- ui_nope(c(q_pkg_title, paste("* ", pkgs), q_pkg_tale))
 
 
   if (ko_pkg) {
@@ -54,13 +54,13 @@ please_install <- function(pkgs, install_fun = install.packages, ...) {
 check_pkg <- function(interested = NULL, dependencies = TRUE) {
   if (is.null(interested)) {
     data("ubesp_pkg",
-        package = "depigner",
-        envir   = environment()
+      package = "depigner",
+      envir = environment()
     )
     interested <- eval(parse(text = "ubesp_pkg"))
   }
 
-  have   <- rownames(installed.packages())
+  have <- rownames(installed.packages())
   needed <- setdiff(interested, have)
 
   please_install(needed, dependencies = dependencies)

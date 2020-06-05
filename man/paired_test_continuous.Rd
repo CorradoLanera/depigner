@@ -9,12 +9,12 @@ paired_test_continuous(group, x)
 \arguments{
 \item{group}{(fct) vector of groups}
 
-\item{x}{(num) vector of observations. Note: lenght of `x` is
+\item{x}{(num) vector of observations. Note: length of `x` is
 considered equal to the number of subjects by the number of
 groups. Observation must be provided by subject
 (e.g. c(a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4), where
 the letters, a, b, c, and d represents the groups and the
-numbers represents the patien's ids). Note only patient with
+numbers represents the patients' ids). Note only patient with
 observation in all the levels considered will be used.}
 }
 \value{
@@ -46,23 +46,23 @@ This function could be used as `conTest` option in the
 \code{\link[Hmisc]{summary.formula}} with method `reverse`.
 }
 \examples{
-  library(Hmisc)
+library(Hmisc)
 
-  ## two groups
-  summary(Species ~.,
-      data    = iris[iris$Species != "setosa",],
-      method  = "reverse",
-      test    = TRUE,
-      conTest = paired_test_continuous
-  )
+## two groups
+summary(Species ~ .,
+  data = iris[iris$Species != "setosa", ],
+  method = "reverse",
+  test = TRUE,
+  conTest = paired_test_continuous
+)
 
-  ## more than two groups
-  summary(Species ~.,
-      data    = iris,
-      method  = "reverse",
-      test    = TRUE,
-      conTest = paired_test_continuous
-  )
+## more than two groups
+summary(Species ~ .,
+  data = iris,
+  method = "reverse",
+  test = TRUE,
+  conTest = paired_test_continuous
+)
 
 ## without Hmisc
 two_obs <- iris$Sepal.Length[iris$Species != "setosa"]

@@ -2,7 +2,7 @@
 
 * update `README` including examples for all the exported functions
 * Added `Htypes()`, `Htype()` and complementary functions and relative
-  tests, to get/check when a variable is considered catgorical or
+  tests, to get/check when a variable is considered categorical or
   continuous by the `Hmisc` ecosystem.
 
 # depigner 0.5.2
@@ -15,7 +15,7 @@
   missing variables
 * Update all the UIs to usethis' ones.
 * Exported `ci2p()` (issue #6)
-* Add `use_ui()` to add what is nessary to use the usethis' user
+* Add `use_ui()` to add what is necessary to use the usethis' user
   interfaces in a package.
 
 # depigner 0.4.1
@@ -48,7 +48,7 @@
 * Moved **survival**, **rms** and **Hmisc** from Imports to Suggests
 * Added `start_bot_for_chat()` function, `send_to_telegram()` generics
   with methods for string and ggplot plots, and not exported
-  funcitonalities as a wrapers to the main funcitons of the
+  functionalities as a wrappers to the main functions of the
   **telegram.bot** package.
 * Added tests to paired tests functions' tests
 * remove dependencies from **vcd** package
@@ -77,4 +77,4 @@
 
 * Fixed `summary_interact()` function.
 * Added `gdp()` function.
-* Added basic infrastrcture to the package.
+* Added basic infrastructure to the package.

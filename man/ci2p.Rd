@@ -8,7 +8,7 @@ ci2p(
   est,
   lower,
   upper,
-  log_trasform = FALSE,
+  log_transform = FALSE,
   conf = 0.95,
   qdist = stats::qnorm,
   pdist = stats::pnorm
@@ -21,8 +21,8 @@ ci2p(
 
 \item{upper}{upper bound of the confidence level}
 
-\item{log_trasform}{(default `FALSE`) flag indicating if a log
-trasformation as to apply to the data}
+\item{log_transform}{(default `FALSE`) flag indicating if a log
+transformation as to apply to the data}
 
 \item{conf}{(default `95\%`) confidence level}
 
@@ -35,15 +35,15 @@ a p-value
 }
 \description{
 \code{ci2p} compute the p-value related with a provided confidence
-interval. It considers a simmetric distribution (by default standard
+interval. It considers a symmetric distribution (by default standard
 normal).
 }
 \details{
 Confidence level can be customize (by default 95%) and it is also
-possible to apply a log trasformation in case of proportions.
+possible to apply a log transformation in case of proportions.
 }
 \examples{
 
-ci2p(1.125, 0.634,	1.999, log_trasform = TRUE)
-ci2p(1.257, 1.126,	1.403, log_trasform = TRUE)
+ci2p(1.125, 0.634, 1.999, log_transform = TRUE)
+ci2p(1.257, 1.126, 1.403, log_transform = TRUE)
 }

@@ -8,10 +8,10 @@ tryCatch(usethis::proj_set("."), error = function(e) NULL)
 ## Delete such files manually.
 session_temp_proj <- usethis:::proj_find(path_temp())
 if (!is.null(session_temp_proj)) {
-  Rproj_files <- fs::dir_ls(session_temp_proj, glob = "*.Rproj")
+  rproj_files <- fs::dir_ls(session_temp_proj, glob = "*.Rproj")
   ui_line(c(
     "Rproj file(s) found at or above session temp dir:",
-    paste0("* ", Rproj_files),
+    paste0("* ", rproj_files),
     "Expect this to cause spurious test failures."
   ))
 }
@@ -54,20 +54,24 @@ scoped_temporary_thing <- function(dir = fs::file_temp(pattern = pattern),
     }
   } else {
     withr::defer({
-      withr::with_options(
-        list(usethis.quiet = TRUE),
-        usethis::proj_set(old_project, force = TRUE)
-      )
-      setwd(old_project)
-      fs::dir_delete(dir)
-    }, envir = env)
+        withr::with_options(
+          list(usethis.quiet = TRUE),
+          usethis::proj_set(old_project, force = TRUE)
+        )
+        setwd(old_project)
+        fs::dir_delete(dir)
+      },
+      envir = env
+    )
   }
 
   withr::local_options(list(usethis.quiet = TRUE))
   switch(
     thing,
-    package = usethis::create_package(dir, rstudio = rstudio, open = FALSE,
-                             check_name = FALSE),
+    package = usethis::create_package(dir,
+      rstudio = rstudio, open = FALSE,
+      check_name = FALSE
+    ),
     project = usethis::create_project(dir, rstudio = rstudio, open = FALSE)
   )
   usethis::proj_set(dir)

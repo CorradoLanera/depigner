@@ -2,7 +2,7 @@ context("test-paired_test_categorical")
 
 data(Arthritis)
 
-tab_two  <- table(Arthritis$Sex, Arthritis$Treatment)
+tab_two <- table(Arthritis$Sex, Arthritis$Treatment)
 tab_more <- table(Arthritis$Sex, Arthritis$Improved)
 
 test_that("output class is correct", {
@@ -35,7 +35,6 @@ test_that("wrong input return NA list", {
   expect_true(
     is.na(paired_test_categorical(matrix(c(1, 2), ncol = 2))[["P"]])
   )
-
 })
 
 
@@ -55,5 +54,4 @@ test_that("singular matrix were managed", {
       paired_test_categorical(matrix(c(1, 0, 2, 0), ncol = 2))[["P"]]
     )
   ))
-
 })

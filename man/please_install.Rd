@@ -7,9 +7,9 @@
 please_install(pkgs, install_fun = install.packages, ...)
 }
 \arguments{
-\item{pkgs}{charachter vector of package(s) to install}
+\item{pkgs}{character vector of package(s) to install}
 
-\item{install_fun}{fuction to use for installing package(s)}
+\item{install_fun}{function to use for installing package(s)}
 
 \item{...}{further options for install_fun}
 }

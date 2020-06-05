@@ -29,17 +29,16 @@ of them are of class `describe`. In particular, even if
 
 `is_Hdesc()` test for general inheritance.
 
-`is_single_Hdesc()` test for single istance of a
-  `descibe` object.
+`is_single_Hdesc()` test for single instance of a
+  `describe` object.
 }
 \examples{
 library(Hmisc)
 desc <- describe(mtcars)
 
-is_Hdesc(desc)      # TRUE
+is_Hdesc(desc) # TRUE
 is_Hdesc(desc[[1]]) # TRUE
-
-is_single_Hdesc(desc)      # FALSE
+is_single_Hdesc(desc) # FALSE
 is_single_Hdesc(desc[[1]]) # TRUE
 }
 \seealso{

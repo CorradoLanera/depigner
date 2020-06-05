@@ -25,20 +25,19 @@
 #' library(Hmisc)
 #' desc <- describe(mtcars)
 #'
-#' is_Hdesc(desc)      # TRUE
+#' is_Hdesc(desc) # TRUE
 #' is_Hdesc(desc[[1]]) # TRUE
-#'
 is_Hdesc <- function(x) {
   inherits(x, "describe")
 }
 
 #' @rdname is_Hdesc
-#' @details `is_single_Hdesc()` test for single istance of a
-#'   `descibe` object.
+#' @details `is_single_Hdesc()` test for single instance of a
+#'   `describe` object.
 #'
 #' @export
 #' @examples
-#' is_single_Hdesc(desc)      # FALSE
+#' is_single_Hdesc(desc) # FALSE
 #' is_single_Hdesc(desc[[1]]) # TRUE
 is_single_Hdesc <- function(x) {
   (class(x) == "describe") && (class(x[[1L]]) != "describe")
@@ -73,7 +72,7 @@ is_single_Hdesc <- function(x) {
 #'   names/code/logic that I found there.
 #'
 #' @param x an instance of the class [describe][Hmisc::describe], in the
-#'   cases of "singoular" functions (ie `is_*()` or `Htype()`) it must
+#'   cases of "singular" functions (ie `is_*()` or `Htype()`) it must
 #'   be a single-variable [describe][Hmisc::describe] object.
 #' @param n.unique (int, 10) the minimum number of distinct values a
 #'   numeric variable must have before plot.describe uses it in a
@@ -84,7 +83,7 @@ is_single_Hdesc <- function(x) {
 #'   (if `x` will be not considered categorical nor continuous, and
 #'   hence it will be not plotted), or "both" (with a warning, if the
 #'   variable will be considered both categorical and continuous. This
-#'   would possibly nevere happen).
+#'   would possibly never happen).
 #'
 #' @seealso [describe][Hmisc::describe],
 #' @seealso [is_Hdesc], [is_single_Hdesc]
@@ -95,24 +94,29 @@ is_single_Hdesc <- function(x) {
 #' library(Hmisc)
 #' desc <- describe(mtcars)
 #'
-#' Htype(desc[["vs"]])  # "cat"
+#' Htype(desc[["vs"]]) # "cat"
 #' Htype(desc[["mpg"]]) # "con"
 #' Htype(desc[["cyl"]]) # "none"
-#'
 Htype <- function(x, n.unique = 10) {
   is_con <- is_Hcon(x, n.unique = n.unique)
   is_cat <- is_Hcat(x)
 
   htype <- c("cat", "con")[c(is_cat, is_con)]
 
-  if (length(htype) == 0) return("none")
-  if (length(htype) == 1) return(htype)
-  if (length(htype) == 2) return({
-    warning(
-      "Strange behaviour: both cat and con! (this would never happen)"
-    )
-    "both"
-  })
+  if (length(htype) == 0) {
+    return("none")
+  }
+  if (length(htype) == 1) {
+    return(htype)
+  }
+  if (length(htype) == 2) {
+    return({
+      warning(
+        "Strange behaviour: both cat and con! (this would never happen)"
+      )
+      "both"
+    })
+  }
 }
 
 
@@ -128,19 +132,21 @@ Htypes <- function(x, n.unique = 10) {
 #' @method Htypes describe
 #' @export
 #' @examples
-#' Htypes(desc)  # c(
-#'               #   mpg = "con", cyl = "none", disp = "con",
-#'               #   hp = "con", drat = "con", wt = "con", qsec = "con",
-#'               #   vs = "cat", am = "cat", gear = "none",
-#'               #   carb = "none"
-#'               # )
+#' Htypes(desc) # c(
+#' #   mpg = "con", cyl = "none", disp = "con",
+#' #   hp = "con", drat = "con", wt = "con", qsec = "con",
+#' #   vs = "cat", am = "cat", gear = "none",
+#' #   carb = "none"
+#' # )
 Htypes.describe <- function(x, n.unique = 10) {
   stopifnot(
     `x must be an Hmisc::describe() object (or one of its elements)` =
       is_Hdesc(x)
   )
 
-  if (is_single_Hdesc(x)) return(Htype(x, n.unique = n.unique))
+  if (is_single_Hdesc(x)) {
+    return(Htype(x, n.unique = n.unique))
+  }
   vapply(x, Htype, FUN.VALUE = character(1))
 }
 
@@ -148,7 +154,7 @@ Htypes.describe <- function(x, n.unique = 10) {
 #' @method Htypes default
 #' @export
 #' @examples
-#' Htypes(mtcars)  # Htypes(desc)
+#' Htypes(mtcars) # Htypes(desc)
 #' Htypes(letters) # "none"
 Htypes.default <- function(x, n.unique = 10) {
   Htypes(Hmisc::describe(x))
@@ -161,7 +167,7 @@ Htypes.default <- function(x, n.unique = 10) {
 #'
 #' @export
 #' @examples
-#' is_Hcat(desc[["vs"]])  # TRUE
+#' is_Hcat(desc[["vs"]]) # TRUE
 #' is_Hcat(desc[["mpg"]]) # FALSE
 is_Hcat <- function(x) {
   # Note: the following syntax for `stopifnot()` require R4.0.0+
@@ -192,7 +198,7 @@ is_Hcat <- function(x) {
 #' @export
 #'
 #' @examples
-#' is_Hcon(desc[["vs"]])  # FALSE
+#' is_Hcon(desc[["vs"]]) # FALSE
 #' is_Hcon(desc[["mpg"]]) # TRUE
 is_Hcon <- function(x, n.unique = 10) {
   stopifnot(

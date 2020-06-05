@@ -13,7 +13,6 @@ test_that("stops on wrong chat name", {
 
   options(depigner.bot = "")
   options(depigner.chat_id = "")
-
 })
 
 
@@ -28,7 +27,6 @@ test_that("stops on wrong bot name", {
 
   options(depigner.bot = "")
   options(depigner.chat_id = "")
-
 })
 
 

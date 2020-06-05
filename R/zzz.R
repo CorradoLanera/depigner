@@ -6,14 +6,13 @@
 
 
 .onLoad <- function(libname, pkgname) {
-
   op <- options()
 
   op.depigner <- list(
     depigner.dev.test_telegram_bot = FALSE,
 
     depigner.bot_name = NULL,
-    depigner.chat_id  = NULL
+    depigner.chat_id = NULL
   )
 
   toset <- !(names(op.depigner) %in% names(op))
