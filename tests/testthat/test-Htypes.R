@@ -18,7 +18,7 @@ testthat::test_that("cat check works", {
   test_desc <- Hmisc::describe(mtcars)
   testthat::expect_true(is_Hcat(test_desc[["vs"]]))
   testthat::expect_false(is_Hcat(test_desc[["mpg"]]))
-  
+
   skip_if(as.integer(R.Version()$major) < 4)
   testthat::expect_error(is_Hcat(test_desc), "must be a single")
 })
@@ -34,13 +34,13 @@ testthat::test_that("original check works", {
   testthat::expect_true(
     is_Hcon(test_nunique[["Month"]], n.unique = 4)
   )
-  
+
   skip_if(as.integer(R.Version()$major) < 4)
   testthat::expect_error(is_Hcon(test_desc), "must be a single")
 })
 
 
-testthat::test_that("Htypes works", {
+testthat::test_that("Htype works", {
   test_desc <- Hmisc::describe(mtcars)
   testthat::expect_equal(Htype(test_desc[["vs"]]), "cat")
   testthat::expect_equal(Htype(test_desc[["mpg"]]), "con")
@@ -49,7 +49,7 @@ testthat::test_that("Htypes works", {
     Htype(test_desc[["carb"]], n.unique = 4),
     "con"
   )
-   
+
   skip_if(as.integer(R.Version()$major) < 4)
   testthat::expect_error(Htype(test_desc), "must be a single")
 })

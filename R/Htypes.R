@@ -28,7 +28,7 @@
 #' is_Hdesc(desc) # TRUE
 #' is_Hdesc(desc[[1]]) # TRUE
 is_Hdesc <- function(x) {
-  inherits(x, "describe")
+  class(x) == "describe"
 }
 
 #' @rdname is_Hdesc
@@ -175,11 +175,11 @@ Htypes.default <- function(x, n.unique = 10) {
 #' is_Hcat(desc[["mpg"]]) # FALSE
 is_Hcat <- function(x) {
   if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_Hdesc(x))
+    stopifnot(is_single_Hdesc(x))
   } else {
     stopifnot(
-      `x must be an Hmisc::describe() object (or one of its elements)` =
-        is_Hdesc(x)
+      `x must be a single Hmisc::describe() object` =
+        is_single_Hdesc(x)
     )
   }
 
@@ -209,11 +209,11 @@ is_Hcat <- function(x) {
 #' is_Hcon(desc[["mpg"]]) # TRUE
 is_Hcon <- function(x, n.unique = 10) {
   if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_Hdesc(x))
+    stopifnot(is_single_Hdesc(x))
   } else {
     stopifnot(
-      `x must be an Hmisc::describe() object (or one of its elements)` =
-        is_Hdesc(x)
+      `x must be a single Hmisc::describe() object` =
+        is_single_Hdesc(x)
     )
   }
 
