@@ -1,5 +1,6 @@
 # depigner (development version)
 
+* (Fix) restore compatibility with R3.5+
 * Update gh-actions to tidy ones
 * Update `README`
 
