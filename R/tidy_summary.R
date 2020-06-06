@@ -34,18 +34,21 @@ tidy_summary <- function(x, ...) {
 #' my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #' tidy_summary(my_summary)
 tidy_summary.summary.formula.reverse <- function(x, ...) {
+
   invisible(utils::capture.output(
     printed <- print(x, ...)
   ))
 
   colnames(printed) <- printed[1, ]
+  printed <- dplyr::as_tibble(printed)
 
-  res <- dplyr::as_tibble(printed) %>%
-    dplyr::mutate(
-      `&nbsp;` = row.names(printed) %>%
-        stringr::str_replace_all(" ", "&nbsp;")
-    ) %>%
-    dplyr::select(.data$`&nbsp;`, dplyr::everything()) %>%
+  printed[["&nbsp;"]] <- stringr::str_replace_all(
+    row.names(printed), " ", "&nbsp;"
+  )
+
+  ordered_cols <- c("&nbsp;", setdiff(names(printed), "&nbsp;"))
+
+  res <- printed[ordered_cols] %>%
     dplyr::filter(dplyr::row_number() != 1)
 
   class(res) <- c("tidy_summary", class(res))
