@@ -1,6 +1,9 @@
 # depigner (development version)
 
-* (Fix) restore compatibility with R3.5+
+# depigner 0.7.0
+
+* Change compatibility requiring R3.6+ (because of package
+  `{latticeExtra}`, required by `{Hmisc}`, which depends on it)
 * Update gh-actions to tidy ones
 * Update `README`
 
