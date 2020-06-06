@@ -32,8 +32,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages('vctrs')
-          install.packages('rms')
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_dev("pkgdown")
