@@ -66,6 +66,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          install.packages(c("vctrs"))
+          install.packages(c("rms"))
+          install.packages(c("remotes"))
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
