@@ -1,5 +1,3 @@
-depigner: package of utilities for *pignas*.
-================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -14,11 +12,23 @@ status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.sv
 status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master)
 <!-- badges: end -->
 
+# depigner <img src='man/figures/logo.png' align="right" height="120" />
+
+A utility package to help you deal with ***pignas***
+
+> **Pigna** is the Italian word for *pine cone*, in jargon it’s used to
+> identify something (like a task…) boring, banal, annoying, difficult,
+> frustrating and maybe even with a not so beautiful or rewarding
+> result, just like the obstinate act of trying to challenge yourself in
+> extracting pine nuts from a pine cone, provided that at the end you
+> will find at least one inside it…
+
 ## Overview
 
-This package collect usefull function frequently used at the Unit of
-Biostatistics, Epidemiology and Public Health of the Department of
-Cardiac, Thoracic and Vascular sciences at the university of Padova.
+This package aims to provide some useful functions to be used to solve
+small everyday problems of coding or analyzing data with R. The hope is
+to provide solutions to that kind of problems which are normally would
+be solved by quick-and-dirty (ugly and maybe even wrong) patches.
 
 ## Install
 

@@ -21,10 +21,6 @@
   tests, to get/check when a variable is considered categorical or
   continuous by the `Hmisc` ecosystem.
 
-# depigner 0.5.2
-
-# depigner 0.5.1
-
 # depigner 0.5.0
 
 * Introduce `rlang::.data` to remove notes on CMD check for tidyeval 
@@ -48,10 +44,7 @@
 * Add `errors_to_telegram()` function to automatically parrot all the
   error messages to a chat from a Telegram bot
 
-# depigner 0.3.2
-
 # depigner 0.3.1
-
 
 * Update `ubesp_pckg` (#4)
 * Update `ubesp_pckg` (#5)
