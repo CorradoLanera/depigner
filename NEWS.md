@@ -1,8 +1,12 @@
 # depigner (development version)
 
+* isolate `use_ui` from unexported functions of `usethis` package.
+* reformat `DESCRIPTION` purging some unused imports dependencies, and
+  rewriting pkg title and description accordingly to the new
+  corresponding entries in the `README`
 * Fixed a typo in the call of the generic `tidy_summary()`, and refactor
   it `tidy_summary.summary.formula.reverse()` method.
-
+ 
 # depigner 0.7.0
 
 * Change compatibility requiring R3.6+ (because of package
