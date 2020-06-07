@@ -15,12 +15,15 @@ ci
 CMD
 conf
 conTest
+Csárdi
 df
 Dupont
 fct
+FitzJohn
+Gábor
 ggplot
+gh
 GH
-github
 Hadley
 Haenzen
 Hcat
@@ -43,7 +46,9 @@ nmoP
 num
 Padova
 pigna
+Pigna
 pignas
+pkgedown
 plotmath
 plotmathstat
 png
@@ -75,5 +80,4 @@ vcd
 versicolor
 virginica
 Wickham
-wrapers
 yourbotname

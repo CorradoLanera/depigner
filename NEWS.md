@@ -20,7 +20,7 @@
 * Switch to GH-action for CI
 * Activate spellcheck
 * Activate lint
-* Activate gh-pages with packagedown
+* Activate gh-pages with pkgedown
 
 # depigner 0.6.0
 
