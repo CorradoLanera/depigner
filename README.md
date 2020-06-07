@@ -271,9 +271,7 @@ summary(Species ~.,
 ```
 
   - **`pb_len()`**: Progress bar of given length, wrapper from the
-    `{progress_bar}`
-    (<span class="citeproc-not-found" data-reference-id="R-progress_bar">**???**</span>)
-    package:
+    `{progress}` (Csárdi and FitzJohn 2019) package:
 
 <!-- end list -->
 
@@ -384,6 +382,13 @@ By contributing to this project, you agree to abide by its terms.
 
 Benedito, Ernest. 2019. *Telegram.bot: Develop a ’Telegram Bot’ with R*.
 <https://CRAN.R-project.org/package=telegram.bot>.
+
+</div>
+
+<div id="ref-R-progress">
+
+Csárdi, Gábor, and Rich FitzJohn. 2019. *Progress: Terminal Progress
+Bars*. <https://CRAN.R-project.org/package=progress>.
 
 </div>
 

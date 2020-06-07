@@ -1,6 +1,7 @@
 # depigner (development version)
 
-* isolate `use_ui` from unexported functions of `usethis` package.
+* fix `{progress}` reference into `README`.
+* isolate `use_ui` from unexported functions of `{usethis}` package.
 * reformat `DESCRIPTION` purging some unused imports dependencies, and
   rewriting pkg title and description accordingly to the new
   corresponding entries in the `README`
@@ -26,7 +27,7 @@
 * update `README` including examples for all the exported functions
 * Added `Htypes()`, `Htype()` and complementary functions and relative
   tests, to get/check when a variable is considered categorical or
-  continuous by the `Hmisc` ecosystem.
+  continuous by the `{Hmisc}` ecosystem.
 
 # depigner 0.5.0
 

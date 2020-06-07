@@ -163,7 +163,7 @@ summary(Species ~.,
   
 
 - **`pb_len()`**: Progress bar of given length, wrapper from the 
-  `{progress_bar}` [@R-progress_bar] package:
+  `{progress}` [@R-progress] package:
 ```{r, eval=FALSE}
 pb <- pb_len(100)
 
@@ -250,7 +250,7 @@ By contributing to this project, you agree to abide by its terms.
 ```{r bib, include=FALSE, eval = TRUE}
 # create a bib file for the R packages used in this document
 knitr::write_bib(
-  x    = c('rms', 'Hmisc', 'telegram.bot', 'progress_bar', 'usethis'),
+  x    = c('rms', 'Hmisc', 'telegram.bot', 'progress', 'usethis'),
   file = 'inst/bib/doc-pkg.bib'
 )
 ```
