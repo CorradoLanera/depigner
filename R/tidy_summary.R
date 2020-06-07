@@ -12,7 +12,7 @@
 #' @return a [tibble][tibble::tibble-package]
 #' @export
 tidy_summary <- function(x, ...) {
-  UseMethod("tidy_summary")
+  UseMethod("tidy_summary", x)
 }
 
 
@@ -35,16 +35,15 @@ tidy_summary <- function(x, ...) {
 #' tidy_summary(my_summary)
 tidy_summary.summary.formula.reverse <- function(x, ...) {
 
-  invisible(utils::capture.output(
+  invisible(utils::capture.output({
     printed <- print(x, ...)
-  ))
+  }))
 
   colnames(printed) <- printed[1, ]
   printed <- dplyr::as_tibble(printed)
 
-  printed[["&nbsp;"]] <- stringr::str_replace_all(
-    row.names(printed), " ", "&nbsp;"
-  )
+  printed[["&nbsp;"]] <- row.names(printed) %>%
+    stringr::str_replace_all(" ", "&nbsp;")
 
   ordered_cols <- c("&nbsp;", setdiff(names(printed), "&nbsp;"))
 
