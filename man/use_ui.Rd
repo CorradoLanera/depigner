@@ -20,6 +20,11 @@ This function requires the use roxygen.
   - inline styles: \code{\link{ui_field}}, \code{\link{ui_value}}
       \code{\link{ui_path}}, \code{\link{ui_code}}) user interfaces
 }
+\details{
+Attribution: most of the source content of this function is
+  taken and/or adapted from the corresponding unexported function in
+  the `usethis` package.
+}
 \examples{
 \dontrun{
 use_ui()

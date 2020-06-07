@@ -1,5 +1,13 @@
 # depigner (development version)
 
+* fix `{progress}` reference into `README`.
+* isolate `use_ui` from unexported functions of `{usethis}` package.
+* reformat `DESCRIPTION` purging some unused imports dependencies, and
+  rewriting pkg title and description accordingly to the new
+  corresponding entries in the `README`
+* Fixed a typo in the call of the generic `tidy_summary()`, and refactor
+  it `tidy_summary.summary.formula.reverse()` method.
+ 
 # depigner 0.7.0
 
 * Change compatibility requiring R3.6+ (because of package
@@ -19,11 +27,7 @@
 * update `README` including examples for all the exported functions
 * Added `Htypes()`, `Htype()` and complementary functions and relative
   tests, to get/check when a variable is considered categorical or
-  continuous by the `Hmisc` ecosystem.
-
-# depigner 0.5.2
-
-# depigner 0.5.1
+  continuous by the `{Hmisc}` ecosystem.
 
 # depigner 0.5.0
 
@@ -48,10 +52,7 @@
 * Add `errors_to_telegram()` function to automatically parrot all the
   error messages to a chat from a Telegram bot
 
-# depigner 0.3.2
-
 # depigner 0.3.1
-
 
 * Update `ubesp_pckg` (#4)
 * Update `ubesp_pckg` (#5)

@@ -15,25 +15,74 @@
 #'
 #' @export
 #'
+#' @details Attribution: most of the source content of this function is
+#'   taken and/or adapted from the corresponding unexported function in
+#'   the `usethis` package.
+#'
 #' @examples
 #' \dontrun{
 #' use_ui()
 #' }
 use_ui <- function() {
-  usethis:::check_is_package("use_ui()")
-  usethis:::check_uses_roxygen("use_ui()")
+  # check if package (adapted from usethis:::is_package())
+  tryCatch({
+    this_proj <- usethis::proj_get()
+    rprojroot::find_package_root_file(path = this_proj)
+  },
+    error = function(e) ui_stop(
+      "{ui_code('use_ui')} is designed to work with packages.",
+    )
+  )
 
-  usethis:::use_dependency("usethis", "Imports")
+  # check if package (adapted from usethis:::uses_roxygen())
+  if (!desc::desc_has_fields("RoxygenNote", this_proj)) {
+    ui_stop("
+      {ui_code('use_ui')} can not find roxygen2 active.
+      You might just need to run {ui_code('devtools::document()')} once,
+      then try again.
 
-  # Paste is needed because rexygen2 reads those lines as roxygen-comments!
-  # this way they start with '"' and the problem is avoided.
-  usethis:::roxygen_ns_append(paste(
-    # The first roxygen comment tag is added by `roxygen_ns_append()` itself
-    "@importFrom usethis ui_line ui_todo ui_done ui_todo ui_oops ui_info",
+    ")
+  }
+
+  # add usethis to Imports (adapted from usethis:::use_dependency())
+  deps <- desc::desc_get_deps(this_proj)
+  existing_dep  <- deps$package == "usethis"
+  existing_type <- deps$type[existing_dep]
+  if (!any(existing_dep) || any(existing_type == "LinkingTo")) {
+    ui_done("
+      Adding {ui_value('usethis')} to {ui_field('Imports')} field
+      in DESCRIPTION.
+    ")
+    desc::desc_set_dep('usethis', 'imports', file = this_proj)
+  }
+
+  existing_type <- setdiff(existing_type, "LinkingTo")
+  types <- c("Depends", "Imports", "Suggests", "Enhances", "LinkingTo")
+  if (sign(match(existing_type, types) - match('Imports', types)) > 0) {
+    ui_done("
+      Moving {ui_value('usethis)} from {ui_field(existing_type)}
+      to {ui_field('Imports')} field in DESCRIPTION.
+    ")
+    desc::desc_del_dep('usethis', existing_type, file = this_proj)
+    desc::desc_set_dep('usethis', 'Imports', file = this_proj)
+  }
+
+  # Paste is needed because roxygen2 reads those lines as
+  # roxygen-comments! This way they start with '"' and the problem is
+  # avoided.
+  tag <- paste(
+    "#' @importFrom usethis ui_line ui_todo ui_done ui_todo ui_oops ui_info",
     "#' @importFrom usethis ui_code_block",
     "#' @importFrom usethis ui_stop ui_warn",
     "#' @importFrom usethis ui_yeah ui_nope",
     "#' @importFrom usethis ui_field ui_value ui_path ui_code",
     sep = "\n"
-  )) && usethis:::roxygen_update()
+  )
+
+  success <- block_append(tag, path = usethis::proj_path())
+  if (success) ui_todo("
+    Run {ui_code('devtools::document()')} to update {ui_path('NAMESPACE')}
+  ")
+
+  success
 }
