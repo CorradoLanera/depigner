@@ -1,6 +1,6 @@
 Package: depigner
 Title: A utility package to help you deal with _pignas_
-Version: 0.7.0.9000
+Version: 0.8.0
 Authors@R: 
     person(given = "Corrado",
            family = "Lanera",

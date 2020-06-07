@@ -1,4 +1,4 @@
-# depigner (development version)
+# depigner 0.8.0
 
 * fix `{progress}` reference into `README`.
 * isolate `use_ui` from unexported functions of `{usethis}` package.
