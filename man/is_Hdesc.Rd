@@ -40,8 +40,10 @@ of them are of class `describe`. In particular, even if
   is_Hdesc(desc) # TRUE
   is_Hdesc(desc[[1]]) # TRUE
 }
-is_single_Hdesc(desc) # FALSE
-is_single_Hdesc(desc[[1]]) # TRUE
+\dontrun{
+  is_single_Hdesc(desc) # FALSE
+  is_single_Hdesc(desc[[1]]) # TRUE
+}
 }
 \seealso{
 [describe][Hmisc::describe]

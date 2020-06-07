@@ -90,18 +90,26 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
   Htype(desc[["mpg"]]) # "con"
   Htype(desc[["cyl"]]) # "none"
 }
-Htypes(desc) # c(
-#   mpg = "con", cyl = "none", disp = "con",
-#   hp = "con", drat = "con", wt = "con", qsec = "con",
-#   vs = "cat", am = "cat", gear = "none",
-#   carb = "none"
-# )
-Htypes(mtcars) # Htypes(desc)
-Htypes(letters) # "none"
-is_Hcat(desc[["vs"]]) # TRUE
-is_Hcat(desc[["mpg"]]) # FALSE
-is_Hcon(desc[["vs"]]) # FALSE
-is_Hcon(desc[["mpg"]]) # TRUE
+\dontrun{
+  Htypes(desc) # c(
+  #   mpg = "con", cyl = "none", disp = "con",
+  #   hp = "con", drat = "con", wt = "con", qsec = "con",
+  #   vs = "cat", am = "cat", gear = "none",
+  #   carb = "none"
+  # )
+}
+\dontrun{
+  Htypes(mtcars) # Htypes(desc)
+  Htypes(letters) # "none"
+}
+\dontrun{
+  is_Hcat(desc[["vs"]]) # TRUE
+  is_Hcat(desc[["mpg"]]) # FALSE
+}
+\dontrun{
+  is_Hcon(desc[["vs"]]) # FALSE
+  is_Hcon(desc[["mpg"]]) # TRUE
+}
 }
 \seealso{
 [describe][Hmisc::describe],

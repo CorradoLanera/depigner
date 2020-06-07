@@ -39,8 +39,10 @@ is_Hdesc <- function(x) {
 #'
 #' @export
 #' @examples
-#' is_single_Hdesc(desc) # FALSE
-#' is_single_Hdesc(desc[[1]]) # TRUE
+#' \dontrun{
+#'   is_single_Hdesc(desc) # FALSE
+#'   is_single_Hdesc(desc[[1]]) # TRUE
+#' }
 is_single_Hdesc <- function(x) {
   (class(x) == "describe") && (class(x[[1L]]) != "describe")
 }
@@ -136,12 +138,14 @@ Htypes <- function(x, n.unique = 10) {
 #' @method Htypes describe
 #' @export
 #' @examples
-#' Htypes(desc) # c(
-#' #   mpg = "con", cyl = "none", disp = "con",
-#' #   hp = "con", drat = "con", wt = "con", qsec = "con",
-#' #   vs = "cat", am = "cat", gear = "none",
-#' #   carb = "none"
-#' # )
+#' \dontrun{
+#'   Htypes(desc) # c(
+#'   #   mpg = "con", cyl = "none", disp = "con",
+#'   #   hp = "con", drat = "con", wt = "con", qsec = "con",
+#'   #   vs = "cat", am = "cat", gear = "none",
+#'   #   carb = "none"
+#'   # )
+#' }
 Htypes.describe <- function(x, n.unique = 10) {
   if (as.integer(R.Version()$major) < 4) {
     stopifnot(is_Hdesc(x))
@@ -162,8 +166,10 @@ Htypes.describe <- function(x, n.unique = 10) {
 #' @method Htypes default
 #' @export
 #' @examples
-#' Htypes(mtcars) # Htypes(desc)
-#' Htypes(letters) # "none"
+#' \dontrun{
+#'   Htypes(mtcars) # Htypes(desc)
+#'   Htypes(letters) # "none"
+#' }
 Htypes.default <- function(x, n.unique = 10) {
   Htypes(Hmisc::describe(x))
 }
@@ -175,8 +181,10 @@ Htypes.default <- function(x, n.unique = 10) {
 #'
 #' @export
 #' @examples
-#' is_Hcat(desc[["vs"]]) # TRUE
-#' is_Hcat(desc[["mpg"]]) # FALSE
+#' \dontrun{
+#'   is_Hcat(desc[["vs"]]) # TRUE
+#'   is_Hcat(desc[["mpg"]]) # FALSE
+#' }
 is_Hcat <- function(x) {
   if (as.integer(R.Version()$major) < 4) {
     stopifnot(is_single_Hdesc(x))
@@ -209,8 +217,10 @@ is_Hcat <- function(x) {
 #' @export
 #'
 #' @examples
-#' is_Hcon(desc[["vs"]]) # FALSE
-#' is_Hcon(desc[["mpg"]]) # TRUE
+#' \dontrun{
+#'   is_Hcon(desc[["vs"]]) # FALSE
+#'   is_Hcon(desc[["mpg"]]) # TRUE
+#' }
 is_Hcon <- function(x, n.unique = 10) {
   if (as.integer(R.Version()$major) < 4) {
     stopifnot(is_single_Hdesc(x))
