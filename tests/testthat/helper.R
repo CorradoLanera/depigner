@@ -6,7 +6,8 @@ tryCatch(usethis::proj_set("."), error = function(e) NULL)
 ## The IDE sometimes leaves .Rproj files behind in session temp directory or
 ## one of its parents.
 ## Delete such files manually.
-session_temp_proj <- usethis:::proj_find(path_temp())
+session_temp_proj <- proj_find(path_temp())
+
 if (!is.null(session_temp_proj)) {
   rproj_files <- fs::dir_ls(session_temp_proj, glob = "*.Rproj")
   ui_line(c(
@@ -124,12 +125,3 @@ test_file <- function(fname) testthat::test_path("ref", fname)
 
 expect_proj_file <- function(...) expect_true(file_exists(proj_path(...)))
 expect_proj_dir <- function(...) expect_true(dir_exists(proj_path(...)))
-
-## use from testthat once > 2.0.0 is on CRAN
-skip_if_offline <- function(host = "r-project.org") {
-  skip_if_not_installed("curl")
-  has_internet <- !is.null(curl::nslookup(host, error = FALSE))
-  if (!has_internet) {
-    skip("offline")
-  }
-}
