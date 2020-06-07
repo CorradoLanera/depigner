@@ -10,11 +10,13 @@
 #' @export
 #'
 #' @examples
-#' library(Hmisc)
-#' my_summary <- summary(Species ~ ., data = iris, method = "reverse")
+#' \dontrun{
+#'   library(Hmisc)
+#'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'
-#' tidy_summary(my_summary) %>%
-#'   adjust_p()
+#'   tidy_summary(my_summary) %>%
+#'     adjust_p()
+#' }
 adjust_p <- function(x, method) {
   UseMethod("adjust_p")
 }

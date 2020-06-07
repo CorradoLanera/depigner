@@ -92,17 +92,17 @@ summary_interact <- function(model, ref, discrete,
     level <- dd[["values"]][[discrete_name]]
   }
 
-  suppressWarnings(
+  suppressWarnings({
     res <- purrr::map_df(.x = level, ~ {
       interact <- .x
-      eval(parse(text = glue::glue(
-        "summary(model,",
-        "    {discrete_name} = interact,",
-        "    {ref_name}      = c(ref_min, ref_max)",
+      eval(parse(text = paste0(
+        "summary(model, ",
+          discrete_name, " = interact, ",
+          ref_name, " = c(ref_min, ref_max)",
         ")"
       ))) %>%
         broom::tidy() %>%
-        dplyr::mutate(.rownames = Hmisc::Lag(.data$.rownames)) %>%
+        dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
         dplyr::filter(Type == 2) %>%
         dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
@@ -116,7 +116,7 @@ summary_interact <- function(model, ref, discrete,
           .rownames = stringr::str_replace(.data$.rownames, " -+.*$", "")
         ) %>%
         dplyr::mutate(
-          .rownames = glue::glue("{.rownames} - {interact}")
+          .rownames = paste0(.data$.rownames, " - ", interact)
         ) %>%
         dplyr::rename(
           `&nbsp;` = .data$.rownames,
@@ -125,7 +125,7 @@ summary_interact <- function(model, ref, discrete,
           `Upper 95% CI` = .data$Upper.0.95
         )
     })
-  )
+  })
   if (p) {
     res["P-value"] <- purrr::pmap_dbl(
       list(

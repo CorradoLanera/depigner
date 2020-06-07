@@ -82,12 +82,14 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
 }}
 
 \examples{
-library(Hmisc)
-desc <- describe(mtcars)
+\dontrun{
+  library(Hmisc)
+  desc <- describe(mtcars)
 
-Htype(desc[["vs"]]) # "cat"
-Htype(desc[["mpg"]]) # "con"
-Htype(desc[["cyl"]]) # "none"
+  Htype(desc[["vs"]]) # "cat"
+  Htype(desc[["mpg"]]) # "con"
+  Htype(desc[["cyl"]]) # "none"
+}
 Htypes(desc) # c(
 #   mpg = "con", cyl = "none", disp = "con",
 #   hp = "con", drat = "con", wt = "con", qsec = "con",

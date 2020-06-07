@@ -38,32 +38,34 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' library(Hmisc)
+#' \dontrun{
+#'   library(Hmisc)
 #'
-#' ## two groups
-#' summary(Species ~ .,
-#'   data = iris[iris$Species != "setosa", ],
-#'   method = "reverse",
-#'   test = TRUE,
-#'   conTest = paired_test_continuous
-#' )
+#'   ## two groups
+#'   summary(Species ~ .,
+#'     data = iris[iris$Species != "setosa", ],
+#'     method = "reverse",
+#'     test = TRUE,
+#'     conTest = paired_test_continuous
+#'   )
 #'
-#' ## more than two groups
-#' summary(Species ~ .,
-#'   data = iris,
-#'   method = "reverse",
-#'   test = TRUE,
-#'   conTest = paired_test_continuous
-#' )
+#'   ## more than two groups
+#'   summary(Species ~ .,
+#'     data = iris,
+#'     method = "reverse",
+#'     test = TRUE,
+#'     conTest = paired_test_continuous
+#'   )
 #'
-#' ## without Hmisc
-#' two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
-#' two_groups <- iris$Species[iris$Species != "setosa"]
-#' paired_test_continuous(two_groups, two_obs)
+#'   ## without Hmisc
+#'   two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
+#'   two_groups <- iris$Species[iris$Species != "setosa"]
+#'   paired_test_continuous(two_groups, two_obs)
 #'
-#' obs <- iris$Sepal.Length
-#' many_groups <- iris$Species
-#' paired_test_continuous(many_groups, obs)
+#'   obs <- iris$Sepal.Length
+#'   many_groups <- iris$Species
+#'   paired_test_continuous(many_groups, obs)
+#' }
 paired_test_continuous <- function(group, x) {
   # Imput adjustment and checks -------------------------------------
   len_g <- length(group)
@@ -135,7 +137,6 @@ paired_test_continuous <- function(group, x) {
   data_db <- dplyr::tibble(ids, x, group) %>%
     dplyr::distinct() %>%
     tidyr::spread("group", "x") %>%
-    janitor::remove_empty("cols") %>%
     ggplot2::remove_missing() %>%
     tidyr::gather("group", "x", -ids) %>%
     dplyr::mutate(group = factor(group,

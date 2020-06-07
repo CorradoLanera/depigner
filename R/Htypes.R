@@ -22,11 +22,13 @@
 #' @seealso [is_Hcat], [is_Hcon], [Htype], [Htypes]
 #'
 #' @examples
-#' library(Hmisc)
-#' desc <- describe(mtcars)
+#' \dontrun{
+#'   library(Hmisc)
+#'   desc <- describe(mtcars)
 #'
-#' is_Hdesc(desc) # TRUE
-#' is_Hdesc(desc[[1]]) # TRUE
+#'   is_Hdesc(desc) # TRUE
+#'   is_Hdesc(desc[[1]]) # TRUE
+#' }
 is_Hdesc <- function(x) {
   class(x) == "describe"
 }
@@ -91,12 +93,14 @@ is_single_Hdesc <- function(x) {
 #'
 #' @export
 #' @examples
-#' library(Hmisc)
-#' desc <- describe(mtcars)
+#' \dontrun{
+#'   library(Hmisc)
+#'   desc <- describe(mtcars)
 #'
-#' Htype(desc[["vs"]]) # "cat"
-#' Htype(desc[["mpg"]]) # "con"
-#' Htype(desc[["cyl"]]) # "none"
+#'   Htype(desc[["vs"]]) # "cat"
+#'   Htype(desc[["mpg"]]) # "con"
+#'   Htype(desc[["cyl"]]) # "none"
+#' }
 Htype <- function(x, n.unique = 10) {
   is_con <- is_Hcon(x, n.unique = n.unique)
   is_cat <- is_Hcat(x)

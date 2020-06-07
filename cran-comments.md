@@ -3,7 +3,7 @@
 * macOS 10.15.5, R 4.0.1, R devel
 * ubuntu 16.04 (on travis-ci), R 4.0.1, R 3.6.3
 * windows 10.0.17763, R 4.0.1
-* win-builder (devel)
+
 
 ## R CMD check results
 

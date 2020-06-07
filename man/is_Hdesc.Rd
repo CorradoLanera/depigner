@@ -33,11 +33,13 @@ of them are of class `describe`. In particular, even if
   `describe` object.
 }
 \examples{
-library(Hmisc)
-desc <- describe(mtcars)
+\dontrun{
+  library(Hmisc)
+  desc <- describe(mtcars)
 
-is_Hdesc(desc) # TRUE
-is_Hdesc(desc[[1]]) # TRUE
+  is_Hdesc(desc) # TRUE
+  is_Hdesc(desc[[1]]) # TRUE
+}
 is_single_Hdesc(desc) # FALSE
 is_single_Hdesc(desc[[1]]) # TRUE
 }

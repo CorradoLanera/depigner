@@ -1,5 +1,7 @@
 # depigner 0.8.0
 
+* added dependencies from packages `lattice`, `survival`, `Formula`,
+  which `Hmisc` depends on (require for checks).
 * fix `{progress}` reference into `README`.
 * isolate `use_ui` from unexported functions of `{usethis}` package.
 * reformat `DESCRIPTION` purging some unused imports dependencies, and
