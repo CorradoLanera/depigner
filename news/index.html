@@ -8,6 +8,13 @@
 
 <title>Changelog • depigner</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,6 +47,7 @@
 
 
 <meta property="og:title" content="Changelog" />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -117,6 +125,13 @@
     <div id="depigner-development-version" class="section level1">
 <h1 class="page-header" data-toc-text="development version">
 <a href="#depigner-development-version" class="anchor"></a>depigner (development version)</h1>
+<ul>
+<li>fix <code>{progress}</code> reference into <code>README</code>.</li>
+<li>isolate <code>use_ui</code> from unexported functions of <code>{usethis}</code> package.</li>
+<li>reformat <code>DESCRIPTION</code> purging some unused imports dependencies, and rewriting pkg title and description accordingly to the new corresponding entries in the <code>README</code>
+</li>
+<li>Fixed a typo in the call of the generic <code><a href="../reference/tidy_summary.html">tidy_summary()</a></code>, and refactor it <code><a href="../reference/tidy_summary.html">tidy_summary.summary.formula.reverse()</a></code> method.</li>
+</ul>
 </div>
     <div id="depigner-070" class="section level1">
 <h1 class="page-header" data-toc-text="0.7.0">
@@ -143,16 +158,8 @@
 <a href="#depigner-060" class="anchor"></a>depigner 0.6.0</h1>
 <ul>
 <li>update <code>README</code> including examples for all the exported functions</li>
-<li>Added <code><a href="../reference/Htype.html">Htypes()</a></code>, <code><a href="../reference/Htype.html">Htype()</a></code> and complementary functions and relative tests, to get/check when a variable is considered categorical or continuous by the <code>Hmisc</code> ecosystem.</li>
+<li>Added <code><a href="../reference/Htype.html">Htypes()</a></code>, <code><a href="../reference/Htype.html">Htype()</a></code> and complementary functions and relative tests, to get/check when a variable is considered categorical or continuous by the <code>{Hmisc}</code> ecosystem.</li>
 </ul>
-</div>
-    <div id="depigner-052" class="section level1">
-<h1 class="page-header" data-toc-text="0.5.2">
-<a href="#depigner-052" class="anchor"></a>depigner 0.5.2</h1>
-</div>
-    <div id="depigner-051" class="section level1">
-<h1 class="page-header" data-toc-text="0.5.1">
-<a href="#depigner-051" class="anchor"></a>depigner 0.5.1</h1>
 </div>
     <div id="depigner-050" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.0">
@@ -180,10 +187,6 @@
 <li>Add <code><a href="../reference/adjust_p.html">adjust_p()</a></code> function to adjust the P-values from a <code>tidy_summary</code> summary using methods provided by <code><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust()</a></code>.</li>
 <li>Add <code><a href="../reference/errors_to_telegram.html">errors_to_telegram()</a></code> function to automatically parrot all the error messages to a chat from a Telegram bot</li>
 </ul>
-</div>
-    <div id="depigner-032" class="section level1">
-<h1 class="page-header" data-toc-text="0.3.2">
-<a href="#depigner-032" class="anchor"></a>depigner 0.3.2</h1>
 </div>
     <div id="depigner-031" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.1">
