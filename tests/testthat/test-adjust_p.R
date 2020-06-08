@@ -1,4 +1,6 @@
-test_that("p_adjust return the correct class", {
+test_that("adjust_p return the correct class", {
+  skip_on_cran()
+
   adj <- Hmisc:::summary.formula(Species ~ .,
     data = iris,
     method = "reverse",
@@ -11,6 +13,8 @@ test_that("p_adjust return the correct class", {
 })
 
 test_that("warning and return if test is not set", {
+  skip_on_cran()
+
   expect_warning(
     no_test_adj <- Hmisc:::summary.formula(Species ~ .,
       data = iris,

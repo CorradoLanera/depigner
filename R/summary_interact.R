@@ -24,32 +24,34 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' library(rms)
-#' options(datadist = "dd")
+#' \dontrun{
+#'   library(rms)
+#'   options(datadist = "dd")
 #'
-#' data("transplant")
+#'   data("transplant")
 #'
-#' transplant <- transplant[
-#'   transplant[["event"]] != "censored", ,
-#'   drop = FALSE
-#' ]
-#' dd <- datadist(transplant)
+#'   transplant <- transplant[
+#'     transplant[["event"]] != "censored", ,
+#'     drop = FALSE
+#'   ]
+#'   dd <- datadist(transplant)
 #'
-#' lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
-#'   data = transplant
-#' )
+#'   lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
+#'     data = transplant
+#'   )
 #'
-#' lrm_mod
-#' summary(lrm_mod)
-#' summary_interact(lrm_mod, age, sex)
-#' summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
-#' summary_interact(lrm_mod, age, sex,
-#'   ref_min = 60, ref_max = 80, digits = 5L
-#' )
+#'   lrm_mod
+#'   summary(lrm_mod)
+#'   summary_interact(lrm_mod, age, sex)
+#'   summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
+#'   summary_interact(lrm_mod, age, sex,
+#'     ref_min = 60, ref_max = 80, digits = 5L
+#'   )
 #'
-#' summary_interact(lrm_mod, age, abo)
-#' summary_interact(lrm_mod, age, abo, level = c("A", "AB"))
-#' summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE)
+#'   summary_interact(lrm_mod, age, abo)
+#'   summary_interact(lrm_mod, age, abo, level = c("A", "AB"))
+#'   summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE)
+#' }
 summary_interact <- function(model, ref, discrete,
                              ref_min = NULL, ref_max = NULL,
                              level = NULL,
