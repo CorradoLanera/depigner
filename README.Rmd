@@ -6,7 +6,7 @@ bibliography: 'inst/bib/doc-pkg.bib'
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # depigner  [![](https://img.shields.io/badge/WEB%20site-click%20me-orange.svg)](https://corradolanera.github.io/depigner/) <img src='man/figures/logo.png' align="right" height="120" />
-A utility package to help you deal with _**pignas**_
+A utility package to help you deal with _**pigne**_
 
 <!-- badges: start -->
 |  |   |   |   |
@@ -17,12 +17,17 @@ A utility package to help you deal with _**pignas**_
 <!-- badges: end -->
 
 
-> **Pigna** is the Italian word for _pine cone_. In jargon, it's used to
-identify something (like a task...) boring, banal, annoying, painful,
-frustrating and maybe even with a not so beautiful or rewarding result,
-just like the obstinate act of trying to challenge yourself in
-extracting pine nuts from a pine cone, provided that at the end you will
-find at least one inside it...
+> **Pigna** [_pìn'n'a_] is the Italian word for _pine cone_.^[You can
+find all the possible meanings of _pigna_
+[here](http://www.treccani.it/vocabolario/pigna/), and you can listen
+how to pronounciate it
+[here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
+Note: the italian plural for "pigna" is "pigne" [_pìn'n'e_].] In jargon,
+it's used to identify something (like a task...) boring, banal,
+annoying, painful, frustrating and maybe even with a not so beautiful or
+rewarding result, just like the obstinate act of trying to challenge
+yourself in extracting pine nuts from a pine cone, provided that at the
+end you will find at least one inside it...
 
 ```{r include = FALSE}
 knitr::opts_chunk$set(

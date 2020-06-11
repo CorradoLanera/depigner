@@ -3,7 +3,7 @@
 
 # depigner [![](https://img.shields.io/badge/WEB%20site-click%20me-orange.svg)](https://corradolanera.github.io/depigner/) <img src='man/figures/logo.png' align="right" height="120" />
 
-A utility package to help you deal with ***pignas***
+A utility package to help you deal with ***pigne***
 
 <!-- badges: start -->
 
@@ -15,12 +15,12 @@ A utility package to help you deal with ***pignas***
 
 <!-- badges: end -->
 
-> **Pigna** is the Italian word for *pine cone*. In jargon, it’s used to
-> identify something (like a task…) boring, banal, annoying, painful,
-> frustrating and maybe even with a not so beautiful or rewarding
-> result, just like the obstinate act of trying to challenge yourself in
-> extracting pine nuts from a pine cone, provided that at the end you
-> will find at least one inside it…
+> **Pigna** \[*pìn’n’a*\] is the Italian word for *pine cone*.\[1\] In
+> jargon, it’s used to identify something (like a task…) boring, banal,
+> annoying, painful, frustrating and maybe even with a not so beautiful
+> or rewarding result, just like the obstinate act of trying to
+> challenge yourself in extracting pine nuts from a pine cone, provided
+> that at the end you will find at least one inside it…
 
 # Overview
 
@@ -516,3 +516,9 @@ and Project Setup*.
 </div>
 
 </div>
+
+1.  You can find all the possible meanings of *pigna*
+    [here](http://www.treccani.it/vocabolario/pigna/), and you can
+    listen how to pronounciate it
+    [here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
+    Note: the italian plural for “pigna” is “pigne” \[*pìn’n’e*\].
