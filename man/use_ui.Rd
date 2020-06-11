@@ -27,6 +27,8 @@ Attribution: most of the source content of this function is
 }
 \examples{
 \dontrun{
-use_ui()
+  if (interactive()) { # when developing a package
+    use_ui()
+  }
 }
 }

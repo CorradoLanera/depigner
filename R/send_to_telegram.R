@@ -21,20 +21,22 @@
 #' @export
 #' @examples
 #' \dontrun{
-#'   library(depigner)
-#'   library(ggplot2)
+#'   if (interactive()) { # this is only to skip this on CRAN
+#'     library(depigner)
+#'     library(ggplot2)
 #'
-#'   start_bot_for_chat()
-#'   send_to_telegram("hello world")
+#'     start_bot_for_chat()
+#'     send_to_telegram("hello world")
 #'
-#'   gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +
-#'     geom_point()
+#'     gg <- ggplot(mtcars, aes(x = mpg, y = hp, colour = cyl)) +
+#'       geom_point()
 #'
-#'   send_to_telegram(
-#'     "following an `mtcars` coloured plot",
-#'     parse_mode = "Markdown"
-#'   )
-#'   send_to_telegram(gg)
+#'     send_to_telegram(
+#'       "following an `mtcars` coloured plot",
+#'       parse_mode = "Markdown"
+#'     )
+#'     send_to_telegram(gg)
+#'   }
 #' }
 send_to_telegram <- function(x, ..., chat_id, bot) {
   UseMethod("send_to_telegram", x)

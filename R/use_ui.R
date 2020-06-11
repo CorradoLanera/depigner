@@ -21,7 +21,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' use_ui()
+#'   if (interactive()) { # when developing a package
+#'     use_ui()
+#'   }
 #' }
 use_ui <- function() {
   # check if package (adapted from usethis:::is_package())

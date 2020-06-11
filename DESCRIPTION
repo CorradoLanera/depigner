@@ -4,10 +4,28 @@ Version: 0.8.0
 Authors@R: 
     person(given = "Corrado",
            family = "Lanera",
-           role = c("aut", "cre"),
+           role = c("aut", "cre", "cph"),
            email = "corrado.lanera@gmail.com")
-Description: Backpack of useful functions to be used to solve small
-  everyday problems of coding or analyzing data with R.
+Description: Pigna [_pìn'n'a_] is the Italian word for pine cone.
+  In jargon, it is used to identify a task which is boring, banal,
+  annoying, painful, frustrating and maybe even with a not so beautiful
+  or rewarding result, just like the obstinate act of trying to 
+  challenge yourself in extracting pine nuts from a pine cone, provided
+  that, in the end, you will find at least one inside it. Here you can
+  find a backpack of functions to be used to solve small everyday
+  problems of coding or analyzing (clinical) data, which would be
+  normally solved using quick-and-dirty patches. You will be able to
+  convert 'Hmisc' and 'rms' summary()es into data.frames ready to be 
+  rendered by 'pander' and 'knitr'. You can access easy-to-use wrappers
+  to activate essential but useful progress bars (from 'progress') into
+  your loops or functionals. Easy setup and control Telegram's bots
+  (from 'telegram.bot') to send messages or to divert error messages to
+  a Telegram's chat. You also have some utilities helping you in the
+  development of packages, like the activation of the same user
+  interface of 'usethis' into your package, or call polite functions to
+  ask a user to install other packages. Finally, you find a set of
+  thematic sets of packages you may use to set up new environments
+  quickly, installing them in a single call.
 License: GPL-3
 URL: https://github.com/CorradoLanera/depigner
 BugReports: https://github.com/CorradoLanera/depigner/issues

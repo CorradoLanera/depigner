@@ -519,6 +519,6 @@ and Project Setup*.
 
 1.  You can find all the possible meanings of *pigna*
     [here](http://www.treccani.it/vocabolario/pigna/), and you can
-    listen how to pronounciate it
+    listen how to pronounce it
     [here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
-    Note: the italian plural for “pigna” is “pigne” \[*pìn’n’e*\].
+    Note: the Italian plural for “pigna” is “pigne” \[*pìn’n’e*\].

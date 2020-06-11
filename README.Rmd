@@ -20,9 +20,9 @@ A utility package to help you deal with _**pigne**_
 > **Pigna** [_pìn'n'a_] is the Italian word for _pine cone_.^[You can
 find all the possible meanings of _pigna_
 [here](http://www.treccani.it/vocabolario/pigna/), and you can listen
-how to pronounciate it
+how to pronounce it
 [here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
-Note: the italian plural for "pigna" is "pigne" [_pìn'n'e_].] In jargon,
+Note: the Italian plural for "pigna" is "pigne" [_pìn'n'e_].] In jargon,
 it's used to identify something (like a task...) boring, banal,
 annoying, painful, frustrating and maybe even with a not so beautiful or
 rewarding result, just like the obstinate act of trying to challenge

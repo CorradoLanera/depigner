@@ -19,7 +19,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Corrado Lanera \email{corrado.lanera@gmail.com}
+\strong{Maintainer}: Corrado Lanera \email{corrado.lanera@gmail.com} [copyright holder]
 
 }
 \keyword{internal}

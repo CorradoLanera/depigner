@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' if (interactive()) {
 #'   library(depigner)
 #'   errors_to_telegram()
 #' }

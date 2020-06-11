@@ -7,7 +7,7 @@
 * changed interface to package installers and sets of packages.
   Introduced `pkg_*` sets, changed `check_pkg()` to `install_pkg_set()`,
   exported `please_install()`
-* updated `README` including a table of contents, sopme badges, and
+* updated `README` including a table of contents, some badges, and
   reordering the sections
 * moved `fs` to Imports
 * added dependencies from packages `lattice`, `survival`, `Formula`,

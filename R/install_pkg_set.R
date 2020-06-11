@@ -25,7 +25,9 @@
 #' @export
 #' @examples
 #' \dontrun{
-#'   install_pkg_set() # to install all the `?pkg_all`
+#'   if (interactive()) {
+#'     install_pkg_set() # to install all the `?pkg_all`
+#'   }
 #' }
 install_pkg_set <- function(set = pkg_all, dependencies = TRUE) {
 
