@@ -7,7 +7,8 @@
 * changed interface to package installers and sets of packages.
   Introduced `pkg_*` sets, changed `check_pkg()` to `install_pkg_set()`,
   exported `please_install()`
-* updated `README` including TOC and reordering the sections
+* updated `README` including a table of contents, and reordering the
+  sections
 * moved `fs` to Imports
 * added dependencies from packages `lattice`, `survival`, `Formula`,
   which `Hmisc` depends on (require for checks).

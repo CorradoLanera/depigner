@@ -30,7 +30,7 @@ small everyday problems of coding or analyzing data with R. The hope is
 to provide solutions to that kind of problems which would be normally
 solved using quick-and-dirty (ugly and maybe even wrong) patches.
 
-| Tools Cathegory                          | Function(s)               | Aim                                                                      |
+| Tools Category                           | Function(s)               | Aim                                                                      |
 | :--------------------------------------- | :------------------------ | :----------------------------------------------------------------------- |
 | [Harrell’s verse](#harrells-verse-tools) | `tidy_summary()`          | *`pander`-ready* data frame from `Hmisc::sumamry()`                      |
 |                                          | `paired_test_continuous`  | Paired test for continuous variable into `Hmisc::summary`                |
