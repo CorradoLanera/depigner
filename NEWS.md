@@ -1,5 +1,7 @@
 # depigner 0.8.0
 
+* Removed usethis interface for message startup to make it able to be
+  suppressed
 * added `imported_from()` function to get the list of imported packages
   by a package.
 * changed interface to package installers and sets of packages.

@@ -1,6 +1,6 @@
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(
-    ui_line("Welcome to depigner: we are here to un-stress you!")
+    "Welcome to depigner: we are here to un-stress you!"
   )
 }
 
