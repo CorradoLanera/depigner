@@ -1,14 +1,14 @@
 # depigner 0.8.0
 
-* Removed usethis interface for message startup to make it able to be
+* removed usethis interface for message startup to make it able to be
   suppressed
 * added `imported_from()` function to get the list of imported packages
   by a package.
 * changed interface to package installers and sets of packages.
   Introduced `pkg_*` sets, changed `check_pkg()` to `install_pkg_set()`,
   exported `please_install()`
-* updated `README` including a table of contents, and reordering the
-  sections
+* updated `README` including a table of contents, sopme badges, and
+  reordering the sections
 * moved `fs` to Imports
 * added dependencies from packages `lattice`, `survival`, `Formula`,
   which `Hmisc` depends on (require for checks).
