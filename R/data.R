@@ -1,11 +1,3 @@
-#' Package used at UBESP.
-#'
-#' Main packages uses at UBESP
-#'
-#' @format A character vector
-"ubesp_pkg"
-
-
 #' Data for example
 #'
 #' This data are imported from the package vcd, which depends on a
