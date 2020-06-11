@@ -63,7 +63,7 @@ and complete ones from the \code{\link{telegram.bot}} package.
 }
 \examples{
 \dontrun{
-library(depigner)
-start_bot_for_chat()
+  library(depigner)
+  start_bot_for_chat()
 }
 }

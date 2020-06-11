@@ -8,8 +8,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' library(depigner)
-#' errors_to_telegram()
+#'   library(depigner)
+#'   errors_to_telegram()
 #' }
 errors_to_telegram <- function(
    chat_name = Sys.getenv("R_telegram_error_chat_name"),

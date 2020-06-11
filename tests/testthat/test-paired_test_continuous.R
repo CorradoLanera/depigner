@@ -13,11 +13,15 @@ obs <- iris$Sepal.Length
 many_groups <- iris$Species
 
 test_that("output class is correct", {
+  skip_on_cran()
+
   expect_is(paired_test_continuous(two_groups, two_obs), "list")
   expect_is(paired_test_continuous(many_groups, obs), "list")
 })
 
 test_that("output structure is correct", {
+  skip_on_cran()
+
   expect_true(all(
     c("P", "stat", "df", "testname", "statname", "namefun") %in%
       names(paired_test_continuous(two_groups, two_obs))
@@ -30,6 +34,8 @@ test_that("output structure is correct", {
 
 
 test_that("wrong input are managed", {
+  skip_on_cran()
+
   expect_usethis_error(
     paired_test_continuous(factor(c(1, 2)), 1),
     "length"
@@ -39,6 +45,8 @@ test_that("wrong input are managed", {
 
 
 test_that("data by groups are managed", {
+  skip_on_cran()
+
   ord <- order(two_groups)
 
   expect_is(
@@ -62,6 +70,8 @@ test_that("data by groups are managed", {
 
 
 test_that("one group is managed", {
+  skip_on_cran()
+
   expect_warning(
     paired_test_continuous(factor(c("a", "a", "a")), c(1, 2, 3)),
     "Only one group with data, no paired test is done"
