@@ -19,5 +19,13 @@ invisible()
 A wrapper to relax
 }
 \examples{
-gdp()
+if (interactive()) {
+  gdp()
+
+  gdp(5)
+
+  required_seconds_of_relax <- 10 # AKA: "conta fino a dieci!"
+  rate_of_anxiety <- 1/1000       # AKA: "mi girano a mille!"
+  gdp(required_seconds_of_relax, rate_of_anxiety)
+}
 }
