@@ -78,11 +78,13 @@ pkg_stan <- purrr::set_names(c(
   "brms"
 ))
 
-#' @describeIn pkg_sets Develop stuff in R. This includes `{covr}`,
-#'   `{lintr}`, `{fs}`, `{profvis}`, `{pryr}`, `{renv}`, `{roxygen2}`,
-#'   `{styler}`, `{testthat}`, `{spelling}`, and `{usethis}`.
+#' @describeIn pkg_sets Develop stuff in R. This includes `{assertive}`,
+#'   `{covr}`, `{lintr}`, `{fs}`, `{profvis}`, `{pryr}`, `{renv}`,
+#'   `{roxygen2}`, `{styler}`, `{testthat}`, `{spelling}`, and
+#'   `{usethis}`.
 #' @export
 pkg_devel <- purrr::set_names(c(
+  "assertive",
   "covr",
   "lintr",
   "fs",

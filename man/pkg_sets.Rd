@@ -27,13 +27,13 @@ An object of class \code{character} of length 7.
 
 An object of class \code{character} of length 2.
 
-An object of class \code{character} of length 11.
+An object of class \code{character} of length 12.
 
 An object of class \code{character} of length 4.
 
 An object of class \code{character} of length 4.
 
-An object of class \code{character} of length 43.
+An object of class \code{character} of length 44.
 }
 \usage{
 pkg_misc
@@ -89,9 +89,10 @@ This includes `{CBPS}`, `{cobalt}`, `{MatchIt}`, `{mice}`, `{rms}`,
 require `stan` be installed into the system. They are not included
 into `pkg_all`). This includes `{rstanarm}`, and `{brms}`.
 
-\item \code{pkg_devel}: Develop stuff in R. This includes `{covr}`,
-`{lintr}`, `{fs}`, `{profvis}`, `{pryr}`, `{renv}`, `{roxygen2}`,
-`{styler}`, `{testthat}`, `{spelling}`, and `{usethis}`.
+\item \code{pkg_devel}: Develop stuff in R. This includes `{assertive}`,
+`{covr}`, `{lintr}`, `{fs}`, `{profvis}`, `{pryr}`, `{renv}`,
+`{roxygen2}`, `{styler}`, `{testthat}`, `{spelling}`, and
+`{usethis}`.
 
 \item \code{pkg_docs}: Write and render things in R. This includes
 `{blogdown}`, `{DT}`, `{pander}`, and `{pkgdown}`.
