@@ -147,14 +147,7 @@ Htypes <- function(x, n.unique = 10) {
 #'   # )
 #' }
 Htypes.describe <- function(x, n.unique = 10) {
-  if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_Hdesc(x))
-  } else {
-    stopifnot(
-      `x must be an Hmisc::describe() object (or one of its elements)` =
-        is_Hdesc(x)
-    )
-  }
+  assert_is_h_desc(x)
 
   if (is_single_Hdesc(x)) {
     return(Htype(x, n.unique = n.unique))
@@ -186,26 +179,18 @@ Htypes.default <- function(x, n.unique = 10) {
 #'   is_Hcat(desc[["mpg"]]) # FALSE
 #' }
 is_Hcat <- function(x) {
-  if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_single_Hdesc(x))
-  } else {
-    stopifnot(
-      `x must be a single Hmisc::describe() object` =
-        is_single_Hdesc(x)
-    )
-  }
+  assert_is_single_h_desc(x)
 
   s <- x$counts
   v <- x$values
 
-  (("Sum" %in% names(s)) && (as.numeric(s["Sum"]) > 0)) ||
-    (
-      length(v) &&
-        is.list(v) &&
-        all(names(v) == c("value", "frequency")) &&
-        length(v$frequency) &&
-        is.character(v$value) && (length(v$value) <= 20)
-    )
+  ok_counts <- ("Sum" %in% names(s)) && (as.numeric(s["Sum"]) > 0)
+  ok_values <- is_val_freq_list(v) &&
+    length(v$frequency) &&
+    is.character(v$value) &&
+    (length(v$value) <= 20)
+
+  ok_counts || ok_values
 }
 
 
@@ -222,21 +207,12 @@ is_Hcat <- function(x) {
 #'   is_Hcon(desc[["mpg"]]) # TRUE
 #' }
 is_Hcon <- function(x, n.unique = 10) {
-  if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_single_Hdesc(x))
-  } else {
-    stopifnot(
-      `x must be a single Hmisc::describe() object` =
-        is_single_Hdesc(x)
-    )
-  }
+  assert_is_single_h_desc(x)
 
   s <- x$counts
   v <- x$values
 
-  length(v) &&
-    is.list(v) &&
-    all(names(v) == c("value", "frequency")) &&
+  is_val_freq_list(v) &&
     ("distinct" %in% names(s)) &&
     (as.numeric(s["distinct"]) >= n.unique) &&
     (is.numeric(v$value) || Hmisc::testDateTime(v$value, "either"))
