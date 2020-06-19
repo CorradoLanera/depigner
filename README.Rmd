@@ -53,7 +53,7 @@ solved using quick-and-dirty (ugly and maybe even wrong) patches.
 &nbsp;                                  | `paired_test_categorical`| Paired test for categorical variable into `Hmisc::summary`              |
 &nbsp;                                  | `adjust_p()`             | Adjusts P-values for multiplicity of tests at `tidy_summary()`          |
 &nbsp;                                  | `summary_interact()`     | data frame of OR for interaction from `rms::lrm()`                      |
-&nbsp;                                  | `Htypes()`               | Will be your variables continuous or categorical in `Hmisc::describe()`?|
+&nbsp;                                  | `htypes()`               | Will be your variables continuous or categorical in `Hmisc::describe()`?|
 [Statistical](#statistical-tools)       | `ci2p()`                 | Get P-value form estimation and confidence interval                     |
 [Programming](#programming-tools)       | `pb_len()`               | Quick set-up of a `progress::progress_bar()` progress bar               |
 &nbsp;                                  | `install_pkg_set()`      | Politely install set of packages (topic-related sets at `?pkg_sets`)    |
@@ -193,17 +193,17 @@ summary_interact(lrm_mod, age, abo, p = TRUE) %>%
 
 
 
-- **`Htypes()`** and friends: get/check types of variable with respect 
+- **`htypes()`** and friends: get/check types of variable with respect 
   to the `{Hmisc}` ecosystem [@R-Hmisc].
   
 ```{r}
-Htypes(mtcars)
+htypes(mtcars)
 
 desc <- Hmisc::describe(mtcars)
-Htypes(desc)
-Htype(desc[[1]])
-is_Hcat(desc[[1]])
-is_Hcon(desc[[1]])
+htypes(desc)
+htype(desc[[1]])
+is_hcat(desc[[1]])
+is_hcon(desc[[1]])
 ```
 
 

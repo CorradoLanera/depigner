@@ -2,9 +2,9 @@ test_that("single check works", {
   skip_on_cran()
 
   test_desc <- Hmisc::describe(mtcars)
-  expect_false(is_single_Hdesc(test_desc))
-  expect_true(is_single_Hdesc(test_desc[[1]]))
-  expect_false(is_single_Hdesc(mtcars))
+  expect_false(is_single_hdesc(test_desc))
+  expect_true(is_single_hdesc(test_desc[[1]]))
+  expect_false(is_single_hdesc(mtcars))
 })
 
 
@@ -12,9 +12,9 @@ test_that("original check works", {
   skip_on_cran()
 
   test_desc <- Hmisc::describe(mtcars)
-  expect_true(is_Hdesc(test_desc))
-  expect_true(is_Hdesc(test_desc[[1]]))
-  expect_false(is_Hdesc(mtcars))
+  expect_true(is_hdesc(test_desc))
+  expect_true(is_hdesc(test_desc[[1]]))
+  expect_false(is_hdesc(mtcars))
 })
 
 
@@ -22,11 +22,11 @@ test_that("cat check works", {
   skip_on_cran()
 
   test_desc <- Hmisc::describe(mtcars)
-  expect_true(is_Hcat(test_desc[["vs"]]))
-  expect_false(is_Hcat(test_desc[["mpg"]]))
+  expect_true(is_hcat(test_desc[["vs"]]))
+  expect_false(is_hcat(test_desc[["mpg"]]))
 
   skip_if(as.integer(R.Version()$major) < 4)
-  expect_error(is_Hcat(test_desc), "must be a single")
+  expect_error(is_hcat(test_desc), "must be a single")
 })
 
 
@@ -34,38 +34,38 @@ test_that("original check works", {
   skip_on_cran()
 
   test_desc <- Hmisc::describe(mtcars)
-  expect_false(is_Hcon(test_desc[["vs"]]))
-  expect_true(is_Hcon(test_desc[["mpg"]]))
+  expect_false(is_hcon(test_desc[["vs"]]))
+  expect_true(is_hcon(test_desc[["mpg"]]))
 
   test_nunique <- Hmisc::describe(airquality)
-  expect_false(is_Hcon(test_nunique[["Month"]]))
+  expect_false(is_hcon(test_nunique[["Month"]]))
   expect_true(
-    is_Hcon(test_nunique[["Month"]], n.unique = 4)
+    is_hcon(test_nunique[["Month"]], n.unique = 4)
   )
 
   skip_if(as.integer(R.Version()$major) < 4)
-  expect_error(is_Hcon(test_desc), "must be a single")
+  expect_error(is_hcon(test_desc), "must be a single")
 })
 
 
-test_that("Htype works", {
+test_that("htype works", {
   skip_on_cran()
 
   test_desc <- Hmisc::describe(mtcars)
-  expect_equal(Htype(test_desc[["vs"]]), "cat")
-  expect_equal(Htype(test_desc[["mpg"]]), "con")
-  expect_equal(Htype(test_desc[["carb"]]), "none")
+  expect_equal(htype(test_desc[["vs"]]), "cat")
+  expect_equal(htype(test_desc[["mpg"]]), "con")
+  expect_equal(htype(test_desc[["carb"]]), "none")
   expect_equal(
-    Htype(test_desc[["carb"]], n.unique = 4),
+    htype(test_desc[["carb"]], n.unique = 4),
     "con"
   )
 
   skip_if(as.integer(R.Version()$major) < 4)
-  expect_error(Htype(test_desc), "must be a single")
+  expect_error(htype(test_desc), "must be a single")
 })
 
 
-test_that("Htypes works", {
+test_that("htypes works", {
   skip_on_cran()
 
   test_desc <- Hmisc::describe(mtcars)
@@ -83,22 +83,22 @@ test_that("Htypes works", {
   # Note: `expect_setequal()` because the order would be probabily
   #       different.
   expect_equal(
-    Htypes(test_desc)[order(names(Htypes(test_desc)))],
+    htypes(test_desc)[order(names(htypes(test_desc)))],
     expected[order(names(expected))]
   )
 
   ## one at time
-  expect_equal(Htypes(test_desc[["mpg"]]), "con")
-  expect_equal(Htypes(test_desc[["vs"]]), "cat")
-  expect_equal(Htypes(test_desc[["cyl"]]), "none")
+  expect_equal(htypes(test_desc[["mpg"]]), "con")
+  expect_equal(htypes(test_desc[["vs"]]), "cat")
+  expect_equal(htypes(test_desc[["cyl"]]), "none")
 
   ## input directly a data.frame
   expect_equal(
-    Htypes(mtcars)[order(names(Htypes(test_desc)))],
+    htypes(mtcars)[order(names(htypes(test_desc)))],
     expected[order(names(expected))]
   )
 
   ## input a single vector
   # Note: `plot(describe(letters))` throws an error
-  expect_equal(Htypes(letters), "none")
+  expect_equal(htypes(letters), "none")
 })

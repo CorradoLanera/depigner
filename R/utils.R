@@ -1,10 +1,10 @@
 assert_is_single_h_desc <- function(x) {
   if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_single_Hdesc(x))
+    stopifnot(is_single_hdesc(x))
   } else {
     stopifnot(
       `x must be a single Hmisc::describe() object` =
-        is_single_Hdesc(x)
+        is_single_hdesc(x)
     )
   }
   invisible(TRUE)
@@ -13,11 +13,11 @@ assert_is_single_h_desc <- function(x) {
 
 assert_is_h_desc <- function(x) {
   if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_Hdesc(x))
+    stopifnot(is_hdesc(x))
   } else {
     stopifnot(
       `x must be an Hmisc::describe() object (or one of its elements)` =
-        is_Hdesc(x)
+        is_hdesc(x)
     )
   }
   invisible(TRUE)
