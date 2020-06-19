@@ -21,12 +21,6 @@ if (!is.null(session_temp_proj)) {
 ## suspending the nested project check during testing
 pattern <- "aaa"
 
-scoped_temporary_package <- function(dir = fs::file_temp(pattern = pattern),
-                                     env = parent.frame(),
-                                     rstudio = FALSE) {
-  scoped_temporary_thing(dir, env, rstudio, "package")
-}
-
 scoped_temporary_project <- function(dir = fs::file_temp(pattern = pattern),
                                      env = parent.frame(),
                                      rstudio = FALSE) {
@@ -59,7 +53,8 @@ scoped_temporary_thing <- function(dir = fs::file_temp(pattern = pattern),
           list(usethis.quiet = TRUE),
           usethis::proj_set(old_project, force = TRUE)
         )
-        setwd(old_project)
+        old <- setwd(old_project)
+        on.exit(setwd(old), add = TRUE)
         fs::dir_delete(dir)
       },
       envir = env
@@ -76,52 +71,11 @@ scoped_temporary_thing <- function(dir = fs::file_temp(pattern = pattern),
     project = usethis::create_project(dir, rstudio = rstudio, open = FALSE)
   )
   usethis::proj_set(dir)
-  setwd(dir)
+  old <- setwd(dir)
+  on.exit(setwd(old), add = TRUE)
   invisible(dir)
-}
-
-test_mode <- function() {
-  before <- Sys.getenv("TESTTHAT")
-  after <- if (before == "true") "false" else "true"
-  Sys.setenv(TESTTHAT = after)
-  cat("TESTTHAT:", before, "-->", after, "\n")
-  invisible()
-}
-
-skip_if_not_ci <- function() {
-  ci <- any(toupper(Sys.getenv(c("TRAVIS", "APPVEYOR"))) == "TRUE")
-  if (ci) {
-    return(invisible(TRUE))
-  }
-  skip("Not on Travis or Appveyor")
-}
-
-skip_if_no_git_config <- function() {
-  cfg <- git2r::config()
-  user_name <- cfg$local$`user.name` %||% cfg$global$`user.name`
-  user_email <- cfg$local$`user.email` %||% cfg$global$`user.email`
-  user_name_exists <- !is.null(user_name)
-  user_email_exists <- !is.null(user_email)
-  if (user_name_exists && user_email_exists) {
-    return(invisible(TRUE))
-  }
-  skip("No Git user configured")
 }
 
 expect_usethis_error <- function(...) {
   expect_error(..., class = "usethis_error")
 }
-
-expect_error_free <- function(...) {
-  expect_error(..., regexp = NA)
-}
-
-is_build_ignored <- function(pattern, ..., base_path = proj_get()) {
-  lines <- readLines(path(base_path, ".Rbuildignore"), warn = FALSE)
-  length(grep(pattern, x = lines, fixed = TRUE, ...)) > 0
-}
-
-test_file <- function(fname) testthat::test_path("ref", fname)
-
-expect_proj_file <- function(...) expect_true(file_exists(proj_path(...)))
-expect_proj_dir <- function(...) expect_true(dir_exists(proj_path(...)))
