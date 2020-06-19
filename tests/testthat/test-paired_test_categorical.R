@@ -27,21 +27,21 @@ test_that("output structure is correct", {
 
 test_that("wrong input return NA list", {
   expect_warning(
-    {out <- paired_test_categorical(c(1, 2))},
+    out <- paired_test_categorical(c(1, 2)),
     "not a proper matrix"
   )
   expect_is(out, "list")
   expect_true(is.na(out[["P"]]))
 
   expect_warning(
-    {out <- paired_test_categorical(matrix(c(1, 2)))},
+    out <- paired_test_categorical(matrix(c(1, 2))),
     "not a proper matrix"
   )
   expect_is(out, "list")
   expect_true(is.na(out[["P"]]))
 
   expect_warning(
-    {out <- paired_test_categorical(matrix(c(1, 2), ncol = 2))},
+    out <- paired_test_categorical(matrix(c(1, 2), ncol = 2)),
     "not a proper matrix"
   )
   expect_is(out, "list")
@@ -51,7 +51,7 @@ test_that("wrong input return NA list", {
 
 test_that("singular matrix were managed", {
   expect_warning(
-    {out <- paired_test_categorical(matrix(c(1, 0, 2, 0), ncol = 2))},
+    out <- paired_test_categorical(matrix(c(1, 0, 2, 0), ncol = 2)),
     "is not a proper matrix"
   )
 

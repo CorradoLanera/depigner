@@ -35,7 +35,7 @@ test_that("is_proper_matrix works", {
 
 test_that("empty_h_test works", {
   expect_warning(
-    {out <- empty_h_test()},
+    out <- empty_h_test(),
     "not a proper matrix"
   )
   expect_is(out, "list")
@@ -44,7 +44,7 @@ test_that("empty_h_test works", {
 
 test_that("fake_h_group_test works", {
   expect_warning(
-    {out <- fake_h_group_test()},
+    out <- fake_h_group_test(),
     "Only one group"
   )
   expect_is(out, "list")
