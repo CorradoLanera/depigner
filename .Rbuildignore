@@ -9,3 +9,4 @@
 ^LICENSE\.md$
 ^pkgdown$
 ^cran-comments\.md$
+^dev$
