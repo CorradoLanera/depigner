@@ -47,6 +47,7 @@
 #'     `R_TELEGRAM_BOT_<yourbotname>=......` containing the token
 #'     related to the bot).
 #'
+#' @importFrom usethis edit_r_environ
 #' @return invisible()
 #' @export
 #'
