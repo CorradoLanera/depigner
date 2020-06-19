@@ -468,6 +468,10 @@ By contributing to this project, you agree to abide by its terms.
 
 <!--=================================================================-->
 
+# Acknowledge
+
+The `{depigner}`’s logo was designed by E. Sovrano.
+
 # Reference
 
 <div id="refs" class="references">
