@@ -28,7 +28,7 @@ a [tibble][tibble::tibble-package]
 \description{
 Converts a \code{summary()} object produced by \code{Hmisc} or
 by \code{rms} packages to a tidy data frame ready to be
-\code{\link[pander]{pander}}ed (e.g. printed on a word document after
+`{pander}`ed (e.g. printed on a word document after
 \code{\link[knitr]{knit}} the source.
 }
 \section{Methods (by class)}{

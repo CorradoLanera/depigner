@@ -20,8 +20,8 @@
 #'
 #' Now you can return to R and put both the bot's name and token into
 #' the .Renviron file. To access to it you can use
-#' [edit_r_environ][usethis::edit_r_environ] which will open the `.Renviron`
-#' file, ready to be modified.
+#' \code{\link[usethis]{edit}_r_environ} which will open the
+#' `.Renviron` file, ready to be modified.
 #'
 #' You need to insert two lines, namely the one for your bot's name:
 #'
@@ -29,7 +29,7 @@
 #'
 #' and one for its token:
 #'
-#' `R_TELEGRAM_BOT_<name_of_my_bot>="1234567879:AbcDeF_GH1IlM_nmoP2rSTUvzyABCDefG5"
+#' `R_TELEGRAM_BOT_<name_of_my_bot>="1234567879:AbcD..."
 #'
 #' Next, restart R and you are ready to use al the (simple)
 #' functionality of the \code{\link{depigner}} package, or the flexible
@@ -81,12 +81,11 @@ start_bot_for_chat <- function(
 
   chat_id <- tryCatch(chat_id_from_name(chat_name),
     error = function(e) {
-      ui_stop(
-        "The bot {ui_field(bot_name)} do not have a chat named {ui_value(chat_name)}.
-      Have you provided a {ui_field(chat_name)} of a chat in which
-      the, bot is a member?
-    "
-      )
+      ui_stop("
+  The bot {ui_field(bot_name)} does not have a {ui_value(chat_name)} chat.
+  Have you provided a {ui_field(chat_name)} of a chat in which the bot is
+  a member?
+      ")
     }
   )
 

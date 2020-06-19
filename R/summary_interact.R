@@ -65,12 +65,9 @@ summary_interact <- function(model, ref, discrete,
 
   discrete <- rlang::enquo(discrete)
   discrete_name <- rlang::quo_name(discrete)
-  # print(discrete_name)
-  # print(level)
 
   ref <- rlang::enquo(ref)
   ref_name <- rlang::quo_name(ref)
-  # print(ref_name)
 
   dd <- getOption("datadist") %>%
     as.name() %>%

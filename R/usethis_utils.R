@@ -56,7 +56,6 @@ platform_line_ending <- function() {
 
 detect_line_ending <- function(path) {
   # copy-pasted from usethis::detect_line_ending() to be used in
-  # pkg_line_ending()
   samp <- suppressWarnings(readChar(path, nchars = 500))
   if (isTRUE(grepl("\r\n", samp))) "\r\n" else "\n"
 }

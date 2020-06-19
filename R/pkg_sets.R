@@ -127,6 +127,3 @@ pkg_all <- sort(unique(c(
   pkg_misc, pkg_utils, pkg_speed, pkg_mlt, pkg_stat, pkg_devel,
   pkg_docs, pkg_prod
 )))
-
-
-
