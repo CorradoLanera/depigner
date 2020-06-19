@@ -31,13 +31,19 @@ test_that("is_proper_matrix works", {
 
 
 test_that("empty_h_test works", {
-  expect_warning(empty_h_test(), "not a proper matrix")
-  expect_is(empty_h_test(), "list")
-  expect_equal(empty_h_test()[["P"]], NA)
+  expect_warning(
+    {out <- empty_h_test()},
+    "not a proper matrix"
+  )
+  expect_is(out, "list")
+  expect_equal(out[["P"]], NA)
 })
 
 test_that("fake_h_group_test works", {
-  expect_warning(fake_h_group_test(), "Only one group")
-  expect_is(fake_h_group_test(), "list")
-  expect_equal(fake_h_group_test()[["P"]], c(P = 1))
+  expect_warning(
+    {out <- fake_h_group_test()},
+    "Only one group"
+  )
+  expect_is(out, "list")
+  expect_equal(out[["P"]], c(P = 1))
 })
