@@ -34,3 +34,9 @@ test_that("empty_h_test works", {
   expect_is(empty_h_test(), "list")
   expect_equal(empty_h_test()[["P"]], NA)
 })
+
+test_that("fake_h_group_test works", {
+  expect_warning(fake_h_group_test(), "Only one group")
+  expect_is(fake_h_group_test(), "list")
+  expect_equal(fake_h_group_test()[["P"]], c(P = 1))
+})
