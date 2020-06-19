@@ -107,7 +107,8 @@ tidy_summary(my_summary) %>%
   pander()
 
 
-dd <- datadist(heart)
+dd <<- datadist(heart) # this to face a package build issue,
+                       # use standard `<-` into analyses
 surv <- Surv(heart$start, heart$stop, heart$event)
 f    <- cph(surv ~ age + year + surgery, data = heart)
 my_summary <- summary(f)
@@ -173,7 +174,8 @@ data('transplant')
 censor_rows <- transplant[['event']] != 'censored' 
 transplant <- transplant[censor_rows, , drop = FALSE]
 
-dd <- datadist(transplant)
+dd <<- datadist(transplant) # this to face a package build issue,
+                            # use standard `<-` into analyses
 
 lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
   data = transplant

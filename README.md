@@ -117,7 +117,8 @@ tidy_summary(my_summary) %>%
 ``` r
 
 
-dd <- datadist(heart)
+dd <<- datadist(heart) # this to face a package build issue,
+                       # use standard `<-` into analyses
 surv <- Surv(heart$start, heart$stop, heart$event)
 f    <- cph(surv ~ age + year + surgery, data = heart)
 #> Warning in seq.default(length = n): partial argument match of 'length' to
