@@ -1,4 +1,5 @@
 test_that("assert_is_single_h_desc works", {
+  skip_on_cran()
   test_desc <- Hmisc::describe(mtcars)
 
   expect_error(assert_is_single_h_desc(test_desc), "must be a single")
