@@ -1,10 +1,11 @@
 ## Before pushes
 usethis::use_tidy_description()
 spelling::spell_check_package()
-
+spelling::update_wordlist()
 
 ## Before pull requests
 devtools::test()
+# devtools::test() # from RStudio button, ie non interactive session!
 covr::report()
 
 lintr::lint_package()

@@ -53,3 +53,27 @@ empty_h_test <- function() {
     note = "tab is not a proper matrix. No test is done"
   )
 }
+
+
+has_multiple_proper_groups <- function(n_grouup, n_subject) {
+
+}
+
+fake_h_group_test <- function() {
+  ui_warn("Only one group with data, no paired test is done")
+  # `return()` exits from the function here!
+  list(
+    # values (mandatory)
+    P = stats::setNames(1, "P"),
+    stat = stats::setNames(Inf, "XXX"),
+    df = stats::setNames(0, "df"),
+
+    # names (mandatory)
+    testname = "notestname",
+    statname = "nostatname",
+    namefun = "nonamefun",
+
+    # special labels (optional)
+    note = "Only one group with data, no paired test is done."
+  )
+}
