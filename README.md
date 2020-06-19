@@ -102,8 +102,6 @@ dd <- datadist(iris)
 my_summary <- summary(Species ~., data = iris, method = "reverse")
 tidy_summary(my_summary) %>% 
   pander()
-#> Warning in seq.default(along = mat.names.width): partial argument match of
-#> 'along' to 'along.with'
 ```
 
 |   |   setosa (N=50)   | versicolor (N=50) | virginica (N=50)  |
@@ -120,29 +118,7 @@ dd <<- datadist(heart) # this to face a package build issue,
                        # use standard `<-` into analyses
 surv <- Surv(heart$start, heart$stop, heart$event)
 f    <- cph(surv ~ age + year + surgery, data = heart)
-#> Warning in seq.default(length = n): partial argument match of 'length' to
-#> 'length.out'
-#> Warning in seq.default(1L, by = 2L, length = lastrow.length): partial argument
-#> match of 'length' to 'length.out'
-#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
-#> 'length' to 'length.out'
-
-#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
-#> 'length' to 'length.out'
-
-#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
-#> 'length' to 'length.out'
-
-#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
-#> 'length' to 'length.out'
-
-#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
-#> 'length' to 'length.out'
-
-#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
-#> 'length' to 'length.out'
 my_summary <- summary(f)
-#> Warning: partial match of 'coef' to 'coefficients'
 tidy_summary(my_summary) %>% 
   pander()
 ```
@@ -172,8 +148,7 @@ summary(Treatment ~ Sex,
 #> 
 #> 
 #> Descriptive Statistics by Treatment
-#> Warning in seq.default(along = mat.names.width): partial argument match of
-#> 'along' to 'along.with'
+#> 
 #> +----------+--------------------+--------------------+------------------------------+
 #> |          |Placebo             |Treated             |  Test                        |
 #> |          |(N=43)              |(N=41)              |Statistic                     |
@@ -190,8 +165,7 @@ summary(Improved ~ Sex,
 #> 
 #> 
 #> Descriptive Statistics by Improved
-#> Warning in seq.default(along = mat.names.width): partial argument match of
-#> 'along' to 'along.with'
+#> 
 #> +----------+---------------+---------------+---------------+---------------------+
 #> |          |None           |Some           |Marked         |  Test               |
 #> |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |
@@ -210,8 +184,7 @@ summary(Species ~.,
 #> 
 #> 
 #> Descriptive Statistics by Species
-#> Warning in seq.default(along = mat.names.width): partial argument match of
-#> 'along' to 'along.with'
+#> 
 #> +------------+---------------------+---------------------+------------------------+
 #> |            |versicolor           |virginica            |  Test                  |
 #> |            |(N=50)               |(N=50)               |Statistic               |
@@ -234,8 +207,7 @@ summary(Species ~.,
 #> 
 #> 
 #> Descriptive Statistics by Species
-#> Warning in seq.default(along = mat.names.width): partial argument match of
-#> 'along' to 'along.with'
+#> 
 #> +------------+--------------------+--------------------+--------------------+-----------------------+
 #> |            |setosa              |versicolor          |virginica           |  Test                 |
 #> |            |(N=50)              |(N=50)              |(N=50)              |Statistic              |
@@ -259,8 +231,6 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
 
   tidy_summary(my_summary) %>%
       adjust_p()
-#> Warning in seq.default(along = mat.names.width): partial argument match of
-#> 'along' to 'along.with'
 #> Warning: Unknown or uninitialised column: `P-value`.
 #> x   The object `x` does not have a P-value column.
 #>     Have you select `test = TRUE` into `summary()`?
