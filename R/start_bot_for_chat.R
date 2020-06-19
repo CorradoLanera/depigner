@@ -20,7 +20,7 @@
 #'
 #' Now you can return to R and put both the bot's name and token into
 #' the .Renviron file. To access to it you can use
-#' \code{\link[usethis]{edit_r_environ}} which will open the `.Renviron`
+#' [edit_r_environ][usethis::edit_r_environ] which will open the `.Renviron`
 #' file, ready to be modified.
 #'
 #' You need to insert two lines, namely the one for your bot's name:
@@ -47,7 +47,6 @@
 #'     `R_TELEGRAM_BOT_<yourbotname>=......` containing the token
 #'     related to the bot).
 #'
-#' @importFrom usethis edit_r_environ
 #' @return invisible()
 #' @export
 #'

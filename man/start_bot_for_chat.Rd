@@ -46,7 +46,7 @@ send the message \code{\\start}.
 
 Now you can return to R and put both the bot's name and token into
 the .Renviron file. To access to it you can use
-\code{\link[usethis]{edit_r_environ}} which will open the `.Renviron`
+[edit_r_environ][usethis::edit_r_environ] which will open the `.Renviron`
 file, ready to be modified.
 
 You need to insert two lines, namely the one for your bot's name:
