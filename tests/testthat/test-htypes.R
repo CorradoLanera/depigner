@@ -26,7 +26,7 @@ test_that("cat check works", {
   expect_false(is_hcat(test_desc[["mpg"]]))
 
   skip_if(as.integer(R.Version()$major) < 4)
-  expect_error(is_hcat(test_desc), "must be a single")
+  expect_error(is_hcat(test_desc), "must be a single|is not TRUE")
 })
 
 
@@ -44,7 +44,7 @@ test_that("original check works", {
   )
 
   skip_if(as.integer(R.Version()$major) < 4)
-  expect_error(is_hcon(test_desc), "must be a single")
+  expect_error(is_hcon(test_desc), "must be a single|is not TRUE")
 })
 
 
@@ -61,7 +61,7 @@ test_that("htype works", {
   )
 
   skip_if(as.integer(R.Version()$major) < 4)
-  expect_error(htype(test_desc), "must be a single")
+  expect_error(htype(test_desc), "must be a single|is not TRUE")
 })
 
 
