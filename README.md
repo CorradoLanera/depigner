@@ -36,7 +36,7 @@ solved using quick-and-dirty (ugly and maybe even wrong) patches.
 |                                          | `paired_test_categorical` | Paired test for categorical variable into `Hmisc::summary`               |
 |                                          | `adjust_p()`              | Adjusts P-values for multiplicity of tests at `tidy_summary()`           |
 |                                          | `summary_interact()`      | data frame of OR for interaction from `rms::lrm()`                       |
-|                                          | `Htypes()`                | Will be your variables continuous or categorical in `Hmisc::describe()`? |
+|                                          | `htypes()`                | Will be your variables continuous or categorical in `Hmisc::describe()`? |
 | [Statistical](#statistical-tools)        | `ci2p()`                  | Get P-value form estimation and confidence interval                      |
 | [Programming](#programming-tools)        | `pb_len()`                | Quick set-up of a `progress::progress_bar()` progress bar                |
 |                                          | `install_pkg_set()`       | Politely install set of packages (topic-related sets at `?pkg_sets`)     |
@@ -63,7 +63,6 @@ Next, you can attach it to your session by:
 ``` r
 library(depigner)
 #> Welcome to depigner: we are here to un-stress you!
-#> 
 ```
 
 # Provided Tools
@@ -263,8 +262,8 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
 #> Warning in seq.default(along = mat.names.width): partial argument match of
 #> 'along' to 'along.with'
 #> Warning: Unknown or uninitialised column: `P-value`.
-#> x The object `x` does not have a P-value column.
-#>   Have you select `test = TRUE` in the `summary` call?
+#> x   The object `x` does not have a P-value column.
+#>     Have you select `test = TRUE` into `summary()`?
 #> x `x` is returned without changes.
 #> # A tibble: 4 x 4
 #>   `&nbsp;` `setosa \n(N=50)`   `versicolor \n(N=50)` `virginica \n(N=50)`
@@ -309,26 +308,26 @@ summary_interact(lrm_mod, age, abo, p = TRUE) %>%
 | age - AB | 43  |  58  |  15   |   0.635    |    0.186     |    2.169     |  0.728  |
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |  0.883  |
 
-  - **`Htypes()`** and friends: get/check types of variable with respect
+  - **`htypes()`** and friends: get/check types of variable with respect
     to the `{Hmisc}` ecosystem (Harrell Jr, Charles Dupont, and others.
     2020).
 
 <!-- end list -->
 
 ``` r
-Htypes(mtcars)
+htypes(mtcars)
 #>    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
 #>  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"
 
 desc <- Hmisc::describe(mtcars)
-Htypes(desc)
+htypes(desc)
 #>    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
 #>  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"
-Htype(desc[[1]])
+htype(desc[[1]])
 #> [1] "con"
-is_Hcat(desc[[1]])
+is_hcat(desc[[1]])
 #> [1] FALSE
-is_Hcon(desc[[1]])
+is_hcon(desc[[1]])
 #> [1] TRUE
 ```
 
