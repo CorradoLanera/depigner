@@ -13,6 +13,7 @@ Thoracic and Vascular sciences at the university of Padova.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://corradolanera.github.io/depigner/}
   \item \url{https://github.com/CorradoLanera/depigner}
   \item Report bugs at \url{https://github.com/CorradoLanera/depigner/issues}
 }

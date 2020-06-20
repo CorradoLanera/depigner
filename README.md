@@ -438,9 +438,10 @@ By contributing to this project, you agree to abide by its terms.
 
 <!--=================================================================-->
 
-# Acknowledge
+# Acknowledgements
 
-The `{depigner}`’s logo was designed by E. Sovrano.
+The `{depigner}`’s logo was designed by [Elisa
+Sovrano](https://elisasovrano.it).
 
 # Reference
 
