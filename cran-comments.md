@@ -1,3 +1,17 @@
+## Resubmission
+This is a resubmission. In this version I have not change anything:
+
+The error:
+
+    Found the following (possibly) invalid URLs:
+      URL: https://elisasovrano.it
+        From: README.md
+        Status: Error
+        Message: libcurl error code 6:
+             Could not resolve host: elisasovrano.it
+
+It was caused by the fact that https://elisasovrano.it had not yet been activated. It is now, and the link is working properly.
+
 ## Test environments
 
 ### provided by
