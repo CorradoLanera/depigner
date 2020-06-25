@@ -52,10 +52,8 @@
 #'
 #' @examples
 #' \dontrun{
-#'   if (interactive()) {
-#'     library(depigner)
-#'     start_bot_for_chat()
-#'   }
+#'   library(depigner)
+#'   start_bot_for_chat()
 #' }
 start_bot_for_chat <- function(
   chat_name = Sys.getenv("R_telegram_default_chat_name"),

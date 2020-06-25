@@ -38,7 +38,7 @@ This function could be used as `catTest` option in the
 \code{\link[Hmisc]{summary.formula}} with method `reverse`.
 }
 \examples{
-\dontrun{
+\donttest{
   library(Hmisc)
 
   data(Arthritis)

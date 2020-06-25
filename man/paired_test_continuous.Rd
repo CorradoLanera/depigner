@@ -46,7 +46,7 @@ This function could be used as `conTest` option in the
 \code{\link[Hmisc]{summary.formula}} with method `reverse`.
 }
 \examples{
-\dontrun{
+\donttest{
   library(Hmisc)
 
   ## two groups

@@ -22,7 +22,7 @@
 #' @seealso [is_hcat], [is_hcon], [htype], [htypes]
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(Hmisc)
 #'   desc <- describe(mtcars)
 #'
@@ -39,7 +39,7 @@ is_hdesc <- function(x) {
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   is_single_hdesc(desc) # FALSE
 #'   is_single_hdesc(desc[[1]]) # TRUE
 #' }
@@ -95,7 +95,7 @@ is_single_hdesc <- function(x) {
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(Hmisc)
 #'   desc <- describe(mtcars)
 #'
@@ -138,7 +138,7 @@ htypes <- function(x, n.unique = 10) {
 #' @method htypes describe
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   htypes(desc) # c(
 #'   #   mpg = "con", cyl = "none", disp = "con",
 #'   #   hp = "con", drat = "con", wt = "con", qsec = "con",
@@ -159,7 +159,7 @@ htypes.describe <- function(x, n.unique = 10) {
 #' @method htypes default
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   htypes(mtcars) # htypes(desc)
 #'   htypes(letters) # "none"
 #' }
@@ -174,7 +174,7 @@ htypes.default <- function(x, n.unique = 10) {
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   is_hcat(desc[["vs"]]) # TRUE
 #'   is_hcat(desc[["mpg"]]) # FALSE
 #' }
@@ -202,7 +202,7 @@ is_hcat <- function(x) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   is_hcon(desc[["vs"]]) # FALSE
 #'   is_hcon(desc[["mpg"]]) # TRUE
 #' }

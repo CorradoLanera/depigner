@@ -33,14 +33,14 @@ of them are of class `describe`. In particular, even if
   `describe` object.
 }
 \examples{
-\dontrun{
+\donttest{
   library(Hmisc)
   desc <- describe(mtcars)
 
   is_hdesc(desc) # TRUE
   is_hdesc(desc[[1]]) # TRUE
 }
-\dontrun{
+\donttest{
   is_single_hdesc(desc) # FALSE
   is_single_hdesc(desc[[1]]) # TRUE
 }

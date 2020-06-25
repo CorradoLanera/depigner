@@ -50,7 +50,7 @@ A data frame
 summary_interact
 }
 \examples{
-\dontrun{
+\donttest{
   library(rms)
   options(datadist = "dd")
 

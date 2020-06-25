@@ -22,7 +22,7 @@ a \code{\link{tidy_summary}} object with the Ps adjusted
 Adjust P-values of a \code{\link{tidy_summary}} object
 }
 \examples{
-\dontrun{
+\donttest{
   library(Hmisc)
   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 

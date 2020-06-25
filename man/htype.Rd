@@ -82,7 +82,7 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
 }}
 
 \examples{
-\dontrun{
+\donttest{
   library(Hmisc)
   desc <- describe(mtcars)
 
@@ -90,7 +90,7 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
   htype(desc[["mpg"]]) # "con"
   htype(desc[["cyl"]]) # "none"
 }
-\dontrun{
+\donttest{
   htypes(desc) # c(
   #   mpg = "con", cyl = "none", disp = "con",
   #   hp = "con", drat = "con", wt = "con", qsec = "con",
@@ -98,15 +98,15 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
   #   carb = "none"
   # )
 }
-\dontrun{
+\donttest{
   htypes(mtcars) # htypes(desc)
   htypes(letters) # "none"
 }
-\dontrun{
+\donttest{
   is_hcat(desc[["vs"]]) # TRUE
   is_hcat(desc[["mpg"]]) # FALSE
 }
-\dontrun{
+\donttest{
   is_hcon(desc[["vs"]]) # FALSE
   is_hcon(desc[["mpg"]]) # TRUE
 }

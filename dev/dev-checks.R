@@ -4,6 +4,7 @@ spelling::spell_check_package()
 spelling::update_wordlist()
 
 ## Before pull requests
+devtools::check_man()
 devtools::test()
 # devtools::test() # from RStudio button too: non interactive session!
 covr::report()

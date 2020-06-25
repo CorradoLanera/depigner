@@ -31,9 +31,7 @@ By default this function install all the packages listed in
 }
 \examples{
 \dontrun{
-  if (interactive()) {
-    install_pkg_set() # to install all the `?pkg_all`
-  }
+  install_pkg_set() # to install all the `?pkg_all`
 }
 }
 \seealso{

@@ -24,7 +24,7 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(rms)
 #'   options(datadist = "dd")
 #'

@@ -1,3 +1,9 @@
+* Changed `\dontrun{}` with `\donttest{}` in the examples which can 
+  "run" but should not be tested. Telegram's related examples and the
+  `use_ui()` one still report `\dontrun{}` because they require special
+  environments (Telegram configuration and package-like project) to be
+  executed without errors (#16)
+
 # depigner 0.8.0
 
 * Reduced cyclocomp up to 15.

@@ -38,7 +38,7 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(Hmisc)
 #'
 #'   ## two groups

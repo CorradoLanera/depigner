@@ -30,7 +30,7 @@
 #'
 #' @importFrom rlang .data
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(Hmisc)
 #'
 #'   data(Arthritis)

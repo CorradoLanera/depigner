@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(Hmisc)
 #'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'

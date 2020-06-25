@@ -51,12 +51,12 @@ to see the options you can pass to \code{...} for a custom
 print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 }
 \examples{
-\dontrun{
+\donttest{
   library(Hmisc)
   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
   tidy_summary(my_summary)
 }
-\dontrun{
+\donttest{
   library(rms)
   options(dd = "datadist")
   n <- 1000

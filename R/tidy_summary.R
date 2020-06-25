@@ -30,7 +30,7 @@ tidy_summary <- function(x, ...) {
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(Hmisc)
 #'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'   tidy_summary(my_summary)
@@ -76,7 +76,7 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   library(rms)
 #'   options(dd = "datadist")
 #'   n <- 1000
