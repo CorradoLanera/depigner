@@ -1,3 +1,8 @@
+* Changed `installed.packages()` using `find.package()` to speed up 
+  the evaluation considerably, especially when thousand of packages are
+  installed into the system. In the `README`'s example is still used
+  `installed.packages()` because that example have to know all the 
+  names of the installed packages.
 * Changed `\dontrun{}` with `\donttest{}` in the examples which can 
   "run" but should not be tested. Telegram's related examples and the
   `use_ui()` one still report `\dontrun{}` because they require special

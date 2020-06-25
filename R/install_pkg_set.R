@@ -29,9 +29,15 @@
 #' }
 install_pkg_set <- function(set = pkg_all, dependencies = TRUE) {
 
-  have <- rownames(installed.packages())
-  needed <- setdiff(set, have)
+   are_missing <- purrr::map_lgl(set, ~{
+     identical(find.package(.x, quiet = TRUE), character())
+   })
 
-  please_install(needed, dependencies = dependencies)
+  needed <- set[are_missing]
+
+  if (length(needed) > 0) {
+    please_install(needed, dependencies = dependencies)
+  }
+
   invisible(needed)
 }

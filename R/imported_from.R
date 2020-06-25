@@ -11,8 +11,10 @@
 #' imported_from("depigner")
 imported_from <- function(x, include_self = FALSE) {
 
-  miss <- setdiff(x, installed.packages())
-  if (length(miss) > 0) {
+  find.package("depigner")
+  miss <- identical(find.package(x, quiet = TRUE), character())
+
+  if (miss) {
     ui_stop("
       The packages {usethis::ui_field(x)} must be installed.
       Please install it and retry."
