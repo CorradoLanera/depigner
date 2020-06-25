@@ -1,3 +1,5 @@
+# depigner 0.8.1
+
 * Changed `installed.packages()` using `find.package()` to speed up 
   the evaluation considerably, especially when thousand of packages are
   installed into the system. In the `README`'s example is still used
