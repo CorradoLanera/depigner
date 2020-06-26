@@ -57,7 +57,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1.9000</span>
       </span>
     </div>
 
@@ -214,13 +214,17 @@
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
-<p>You can install the development version from <a href="https://github.com/">GitHub</a> calling:</p>
+<p>You can install the released version of <code>{depigner}</code> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"depigner"</span>)
+</pre></div>
+<p>You can install the development version from <a href="https://github.com/">GitHub</a> calling:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="co"># install.packages("devtools")</span>
 <span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"CorradoLanera/depigner"</span>)
 </pre></div>
 <p>Next, you can attach it to your session by:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
+<div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://corradolanera.github.io/depigner">depigner</a></span>)
 <span class="co">#&gt; Welcome to depigner: we are here to un-stress you!</span>
 </pre></div>
@@ -236,7 +240,7 @@
 <strong><code><a href="reference/tidy_summary.html">tidy_summary()</a></code></strong>: produces a data frame from the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> functions provided by <code>{Hmisc}</code> (Harrell Jr, Charles Dupont, and others. 2020) and <code>{rms}</code> (Harrell Jr 2020) packages ready to be <code>pander::pander()</code>ed (Daróczi and Tsegelskyi 2018).</li>
 </ul>
 <p>Currently it is tested for method <em>reverse</em> only:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
+<div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://hbiostat.org/R/rms">rms</a></span>)
 <span class="co">#&gt; Loading required package: Hmisc</span>
 <span class="co">#&gt; Loading required package: lattice</span>
@@ -262,6 +266,8 @@
 <span class="kw">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">Species</span> <span class="op">~</span><span class="kw">.</span>, data = <span class="kw">iris</span>, method = <span class="st">"reverse"</span>)
 <span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span>(<span class="kw">my_summary</span>) <span class="op">%&gt;%</span> 
   <span class="fu">pander</span>()
+<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
+<span class="co">#&gt; 'along' to 'along.with'</span>
 </pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -297,14 +303,36 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb4"><pre class="downlit">
+<div class="sourceCode" id="cb5"><pre class="downlit">
 
 
 <span class="kw">dd</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html">datadist</a></span>(<span class="kw">heart</span>) <span class="co"># this to face a package build issue,</span>
                        <span class="co"># use standard `&lt;-` into analyses</span>
 <span class="kw">surv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span>(<span class="kw">heart</span><span class="op">$</span><span class="kw">start</span>, <span class="kw">heart</span><span class="op">$</span><span class="kw">stop</span>, <span class="kw">heart</span><span class="op">$</span><span class="kw">event</span>)
 <span class="kw">f</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/cph.html">cph</a></span>(<span class="kw">surv</span> <span class="op">~</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">year</span> <span class="op">+</span> <span class="kw">surgery</span>, data = <span class="kw">heart</span>)
+<span class="co">#&gt; Warning in seq.default(length = n): partial argument match of 'length' to</span>
+<span class="co">#&gt; 'length.out'</span>
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = lastrow.length): partial argument</span>
+<span class="co">#&gt; match of 'length' to 'length.out'</span>
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
+<span class="co">#&gt; 'length' to 'length.out'</span>
+
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
+<span class="co">#&gt; 'length' to 'length.out'</span>
+
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
+<span class="co">#&gt; 'length' to 'length.out'</span>
+
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
+<span class="co">#&gt; 'length' to 'length.out'</span>
+
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
+<span class="co">#&gt; 'length' to 'length.out'</span>
+
+<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
+<span class="co">#&gt; 'length' to 'length.out'</span>
 <span class="kw">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">f</span>)
+<span class="co">#&gt; Warning: partial match of 'coef' to 'coefficients'</span>
 <span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span>(<span class="kw">my_summary</span>) <span class="op">%&gt;%</span> 
   <span class="fu">pander</span>()
 </pre></div>
@@ -344,7 +372,7 @@
 <li>
 <strong><code>paired_test_*()</code></strong>: Paired test for categorical/continuous variables to be used in the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of the <code>{Hmisc}</code> (Harrell Jr, Charles Dupont, and others. 2020) package:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb5"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">Arthritis</span>)
 <span class="co"># categorical -------------------------</span>
 <span class="co">## two groups</span>
@@ -357,7 +385,8 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Treatment</span>
-<span class="co">#&gt; </span>
+<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
+<span class="co">#&gt; 'along' to 'along.with'</span>
 <span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span>
 <span class="co">#&gt; |          |Placebo             |Treated             |  Test                        |</span>
 <span class="co">#&gt; |          |(N=43)              |(N=41)              |Statistic                     |</span>
@@ -374,7 +403,8 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Improved</span>
-<span class="co">#&gt; </span>
+<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
+<span class="co">#&gt; 'along' to 'along.with'</span>
 <span class="co">#&gt; +----------+---------------+---------------+---------------+---------------------+</span>
 <span class="co">#&gt; |          |None           |Some           |Marked         |  Test               |</span>
 <span class="co">#&gt; |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |</span>
@@ -393,7 +423,8 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Species</span>
-<span class="co">#&gt; </span>
+<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
+<span class="co">#&gt; 'along' to 'along.with'</span>
 <span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
 <span class="co">#&gt; |            |versicolor           |virginica            |  Test                  |</span>
 <span class="co">#&gt; |            |(N=50)               |(N=50)               |Statistic               |</span>
@@ -416,7 +447,8 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Species</span>
-<span class="co">#&gt; </span>
+<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
+<span class="co">#&gt; 'along' to 'along.with'</span>
 <span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
 <span class="co">#&gt; |            |setosa              |versicolor          |virginica           |  Test                 |</span>
 <span class="co">#&gt; |            |(N=50)              |(N=50)              |(N=50)              |Statistic              |</span>
@@ -434,11 +466,13 @@
 <li>
 <strong><code><a href="reference/adjust_p.html">adjust_p()</a></code></strong>: Adjust P-values of a <code>tidy_summary</code> objects:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb6"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="kw">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">Species</span> <span class="op">~</span><span class="kw">.</span>, data = <span class="kw">iris</span>, method = <span class="st">"reverse"</span>)
 
   <span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span>(<span class="kw">my_summary</span>) <span class="op">%&gt;%</span>
       <span class="fu"><a href="reference/adjust_p.html">adjust_p</a></span>()
+<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
+<span class="co">#&gt; 'along' to 'along.with'</span>
 <span class="co">#&gt; Warning: Unknown or uninitialised column: `P-value`.</span>
 <span class="co">#&gt; x   The object `x` does not have a P-value column.</span>
 <span class="co">#&gt;     Have you select `test = TRUE` into `summary()`?</span>
@@ -455,7 +489,7 @@
 <li>
 <strong><code><a href="reference/summary_interact.html">summary_interact()</a></code></strong>: Produce a data frame of OR (with the corresponding CI95%) for the interactions between different combination of a continuous variable (for which it is possible to define the reference and the target values) and (every or a selection of levels of) a categorical one in a logistic model provided by <code><a href="https://rdrr.io/pkg/rms/man/lrm.html">lrm()</a></code> (from the <code>{rms}</code> package (Harrell Jr 2020)):</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb7"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="fu"><a href="reference/summary_interact.html">summary_interact</a></span>(<span class="kw">lrm_mod</span>, <span class="kw">age</span>, <span class="kw">abo</span>) <span class="op">%&gt;%</span>
   <span class="fu">pander</span>()
 </pre></div>
@@ -508,7 +542,7 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="downlit">
+<div class="sourceCode" id="cb9"><pre class="downlit">
 
 <span class="fu"><a href="reference/summary_interact.html">summary_interact</a></span>(<span class="kw">lrm_mod</span>, <span class="kw">age</span>, <span class="kw">abo</span>, p = <span class="fl">TRUE</span>) <span class="op">%&gt;%</span>
   <span class="fu">pander</span>()
@@ -571,7 +605,7 @@
 <li>
 <strong><code><a href="reference/htype.html">htypes()</a></code></strong> and friends: get/check types of variable with respect to the <code>{Hmisc}</code> ecosystem (Harrell Jr, Charles Dupont, and others. 2020).</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb9"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="fu"><a href="reference/htype.html">htypes</a></span>(<span class="kw">mtcars</span>)
 <span class="co">#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb </span>
 <span class="co">#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"</span>
@@ -595,7 +629,7 @@
 <li>
 <strong><code><a href="reference/ci2p.html">ci2p()</a></code></strong>: compute the p-value related with a provided confidence interval:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb10"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="fu"><a href="reference/ci2p.html">ci2p</a></span>(<span class="fl">1.125</span>, <span class="fl">0.634</span>,  <span class="fl">1.999</span>, log_transform = <span class="fl">TRUE</span>)
 <span class="co">#&gt; [1] 0.367902</span>
 </pre></div>
@@ -607,7 +641,7 @@
 <li>
 <strong><code><a href="reference/pb_len.html">pb_len()</a></code></strong>: Progress bar of given length, wrapper from the <code>{progress}</code> (Csárdi and FitzJohn 2019) package:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb11"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb12"><pre class="downlit">
 <span class="kw">pb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pb_len.html">pb_len</a></span>(<span class="fl">100</span>)
 
 <span class="co">for</span> (<span class="kw">i</span> <span class="co">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>) {
@@ -619,7 +653,7 @@
 <li>
 <strong><code><a href="reference/install_pkg_set.html">install_pkg_set()</a></code></strong>: Simple and polite wrapper to install sets of packages. Moreover, <code>{depigner}</code> provides some sets already defined for common scenario in R (analyses, production, documenting, …). See them by call <code>?pgk_sets</code>.</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb12"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="fu"><a href="reference/install_pkg_set.html">install_pkg_set</a></span>() <span class="co"># this install the whole `?pkg_all`</span>
 <span class="fu"><a href="reference/install_pkg_set.html">install_pkg_set</a></span>(<span class="kw">pkg_stan</span>)
 
@@ -633,7 +667,7 @@
 <li>
 <strong><code><a href="reference/use_ui.html">use_ui()</a></code></strong>: Use <code>{usethis}</code>’ user interface (Wickham and Bryan 2020) in your package</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb13"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="co"># in the initial setup steps of the development of a package</span>
 <span class="fu"><a href="reference/use_ui.html">use_ui</a></span>()
 </pre></div>
@@ -641,7 +675,7 @@
 <li>
 <strong><code>lease_install()</code></strong>: This is a polite wrapper to <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> inspired (= w/ very minimal modification) by a function Hadley showed us during a course.</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb14"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="kw">a_pkg_i_miss</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span>(<span class="fu"><a href="https://rdrr.io/r/utils/available.packages.html">available.packages</a></span>(), <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span>())[[<span class="fl">1</span>]]
 <span class="fu"><a href="reference/please_install.html">please_install</a></span>(<span class="kw">a_pkg_i_miss</span>)
 </pre></div>
@@ -649,7 +683,7 @@
 <li>
 <strong><code><a href="reference/imported_from.html">imported_from()</a></code></strong>: If you would like to know which packages are imported by a package (eg to know which packages are required for its installation or either installed during it) you can use this function</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb15"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb16"><pre class="downlit">
 <span class="fu"><a href="reference/imported_from.html">imported_from</a></span>(<span class="st">"depigner"</span>)
 <span class="co">#&gt;  [1] "broom"        "desc"         "dplyr"        "fs"           "ggplot2"     </span>
 <span class="co">#&gt;  [6] "Hmisc"        "magrittr"     "progress"     "purrr"        "rlang"       </span>
@@ -664,7 +698,7 @@
 <li>
 <strong>Wrappers to simple use of Telegram’s bots</strong>: wrappers from the <code>{telegram.bot}</code> package (Benedito 2019):</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb16"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb17"><pre class="downlit">
 <span class="co"># Set up a Telegram bot. read `?start_bot_for_chat`</span>
 <span class="fu"><a href="reference/start_bot_for_chat.html">start_bot_for_chat</a></span>()
 
@@ -691,7 +725,7 @@
 <li>
 <strong><code><a href="reference/gdp.html">gdp()</a></code></strong>: A wrapper to relax</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb17"><pre class="downlit">
+<!-- end list --><div class="sourceCode" id="cb18"><pre class="downlit">
 <span class="fu"><a href="reference/gdp.html">gdp</a></span>(<span class="fl">7</span>)
 </pre></div>
 </div>
@@ -715,7 +749,7 @@
 <div id="acknowledgements" class="section level1">
 <h1 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h1>
-<p>The <code>{depigner}</code>’s logo was designed by <a href="https://elisasovrano.it">Elisa Sovrano</a>.</p>
+<p>The <code>{depigner}</code>’s logo was lovely designed by <a href="https://elisasovrano.it">Elisa Sovrano</a>.</p>
 </div>
 <div id="reference" class="section level1">
 <h1 class="hasAnchor">
@@ -751,6 +785,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=depigner">https://​cloud.r-project.org/​package=depigner</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/CorradoLanera/depigner/">https://​github.com/​CorradoLanera/​depigner/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/CorradoLanera/depigner/issues">https://​github.com/​CorradoLanera/​depigner/​issues</a>
@@ -781,7 +817,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/CorradoLanera/depigner"><img src="https://img.shields.io/badge/devel%20version-0.7.0.9000-blue.svg" alt="Devel version"></a></li>
+<li><a href="https://github.com/CorradoLanera/depigner"><img src="https://img.shields.io/badge/devel%20version-0.8.1.9000-blue.svg" alt="Devel version"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
 <li><a href="https://github.com/CorradoLanera/depigner/commits/master"><img src="https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg" alt="last commit"></a></li>
 <li><a href="https://cran.r-project.org/package=depigner"><img src="https://www.r-pkg.org/badges/version/depigner" alt="CRAN status"></a></li>
