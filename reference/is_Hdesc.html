@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Checks for describe objects — is_Hdesc • depigner</title>
+<title>Checks for describe objects — is_hdesc • depigner</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Checks for describe objects — is_Hdesc" />
+<meta property="og:title" content="Checks for describe objects — is_hdesc" />
 <meta property="og:description" content="These two function are useful to test if an object is of class
 [Hmisc][Hmisc::describe]." />
 <meta property="og:image" content="/logo.png" />
@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -121,8 +121,8 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Checks for describe objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/Htypes.R'><code>R/Htypes.R</code></a></small>
-    <div class="hidden name"><code>is_Hdesc.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/htypes.R'><code>R/htypes.R</code></a></small>
+    <div class="hidden name"><code>is_hdesc.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -130,9 +130,9 @@
 [Hmisc][Hmisc::describe].</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_Hdesc</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/is_hdesc.html'>is_hdesc</a></span>(<span class='kw'>x</span>)
 
-<span class='fu'>is_single_Hdesc</span>(<span class='no'>x</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/is_hdesc.html'>is_single_hdesc</a></span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,19 +154,22 @@ of them are of class `describe`. In particular, even if
 `Hmisc::describe()` results in a single variable description, it is
  directly the "single" `describe` object and not a list of them with
  only a single `describe` object included!</p>
-<p>`is_Hdesc()` test for general inheritance.</p>
-<p>`is_single_Hdesc()` test for single instance of a
+<p>`is_hdesc()` test for general inheritance.</p>
+<p>`is_single_hdesc()` test for single instance of a
   `describe` object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>[describe][Hmisc::describe]</p>
-<p>[is_Hcat], [is_Hcon], [Htype], [Htypes]</p></div>
+<p>[is_hcat], [is_hcon], [htype], [htypes]</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>Hmisc</span>)
-<span class='no'>desc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/describe.html'>describe</a></span>(<span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://biostat.mc.vanderbilt.edu/Hmisc'>Hmisc</a></span>)
+  <span class='kw'>desc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/describe.html'>describe</a></span>(<span class='kw'>mtcars</span>)
 
-<span class='fu'>is_Hdesc</span>(<span class='no'>desc</span>) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_Hdesc</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='fl'>1</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_single_Hdesc</span>(<span class='no'>desc</span>) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_single_Hdesc</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='fl'>1</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div></pre>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/is_hdesc.html'>is_hdesc</a></span>(<span class='kw'>desc</span>) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/is_hdesc.html'>is_hdesc</a></span>(<span class='kw'>desc</span>[[<span class='fl'>1</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/is_hdesc.html'>is_single_hdesc</a></span>(<span class='kw'>desc</span>) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/is_hdesc.html'>is_single_hdesc</a></span>(<span class='kw'>desc</span>[[<span class='fl'>1</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

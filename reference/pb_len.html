@@ -82,7 +82,7 @@ percentage and time elapsed, and ETA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -132,9 +132,9 @@ and quickly ready progress bars; including messages, bar progression,
 percentage and time elapsed, and ETA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pb_len</span>(<span class='no'>.x</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>76</span>, <span class='kw'>show_after</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>clear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/pb_len.html'>pb_len</a></span>(<span class='kw'>.x</span>, width = <span class='fl'>76</span>, show_after = <span class='fl'>2</span>, clear = <span class='fl'>FALSE</span>)
 
-<span class='fu'>tick</span>(<span class='no'>pb</span>, <span class='kw'>what</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/pb_len.html'>tick</a></span>(<span class='kw'>pb</span>, what = <span class='st'>""</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,13 +179,13 @@ of the progressbar</p></td>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>pb</span> <span class='kw'>&lt;-</span> <span class='fu'>pb_len</span>(<span class='fl'>100</span>)
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>100</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/Sys.sleep.html'>Sys.sleep</a></span>(<span class='fl'>0.1</span>)
-  <span class='fu'>tick</span>(<span class='no'>pb</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"i = "</span>, <span class='no'>i</span>))
-}
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+  <span class='kw'>pb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/pb_len.html'>pb_len</a></span>(<span class='fl'>100</span>)
+  <span class='co'>for</span> (<span class='kw'>i</span> <span class='co'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>) {
+    <span class='fu'><a href='https://rdrr.io/r/base/Sys.sleep.html'>Sys.sleep</a></span>(<span class='fl'>0.1</span>)
+    <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/pb_len.html'>tick</a></span>(<span class='kw'>pb</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"i = "</span>, <span class='kw'>i</span>))
+  }
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

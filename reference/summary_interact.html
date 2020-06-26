@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -128,16 +128,16 @@
     <p>summary_interact</p>
     </div>
 
-    <pre class="usage"><span class='fu'>summary_interact</span>(
-  <span class='no'>model</span>,
-  <span class='no'>ref</span>,
-  <span class='no'>discrete</span>,
-  <span class='kw'>ref_min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ref_max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>level</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3L</span>,
-  <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(
+  <span class='kw'>model</span>,
+  <span class='kw'>ref</span>,
+  <span class='kw'>discrete</span>,
+  ref_min = <span class='kw'>NULL</span>,
+  ref_max = <span class='kw'>NULL</span>,
+  level = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>,
+  digits = <span class='fl'>3L</span>,
+  p = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -193,26 +193,27 @@ show all the possible levels for the discrete variable</p></td>
     <p>A data frame</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>rms</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: SparseM</span></div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://hbiostat.org/R/rms'>rms</a></span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: SparseM</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘SparseM’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    backsolve</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>datadist</span> <span class='kw'>=</span> <span class='st'>"dd"</span>)
+#&gt; <span class='message'>    backsolve</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(datadist = <span class='st'>"dd"</span>)
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"transplant"</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"transplant"</span>)
 
-<span class='no'>transplant</span> <span class='kw'>&lt;-</span> <span class='no'>transplant</span>[
-  <span class='no'>transplant</span><span class='kw'>[[</span><span class='st'>"event"</span>]] <span class='kw'>!=</span> <span class='st'>"censored"</span>, ,
-  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-]
-<span class='no'>dd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/datadist.html'>datadist</a></span>(<span class='no'>transplant</span>)
+  <span class='kw'>transplant</span> <span class='op'>&lt;-</span> <span class='kw'>transplant</span>[
+    <span class='kw'>transplant</span>[[<span class='st'>"event"</span>]] != <span class='st'>"censored"</span>, ,
+    drop = <span class='fl'>FALSE</span>
+  ]
+  <span class='kw'>dd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/datadist.html'>datadist</a></span>(<span class='kw'>transplant</span>)
 
-<span class='no'>lrm_mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/lrm.html'>lrm</a></span>(<span class='no'>event</span> ~ <span class='fu'><a href='https://rdrr.io/pkg/rms/man/rms.trans.html'>rcs</a></span>(<span class='no'>age</span>, <span class='fl'>3</span>) * (<span class='no'>sex</span> + <span class='no'>abo</span>) + <span class='fu'><a href='https://rdrr.io/pkg/rms/man/rms.trans.html'>rcs</a></span>(<span class='no'>year</span>, <span class='fl'>3</span>),
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>transplant</span>
-)</div><div class='output co'>#&gt; <span class='error'>Error in Design(eval.parent(m)): dataset dd not found for options(datadist=)</span></div><div class='input'>
-<span class='no'>lrm_mod</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'lrm_mod' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>lrm_mod</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary(lrm_mod): object 'lrm_mod' not found</span></div><div class='input'><span class='fu'>summary_interact</span>(<span class='no'>lrm_mod</span>, <span class='no'>age</span>, <span class='no'>sex</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, sex): object 'lrm_mod' not found</span></div><div class='input'><span class='fu'>summary_interact</span>(<span class='no'>lrm_mod</span>, <span class='no'>age</span>, <span class='no'>sex</span>, <span class='kw'>ref_min</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>ref_max</span> <span class='kw'>=</span> <span class='fl'>80</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80): object 'lrm_mod' not found</span></div><div class='input'><span class='fu'>summary_interact</span>(<span class='no'>lrm_mod</span>, <span class='no'>age</span>, <span class='no'>sex</span>,
-  <span class='kw'>ref_min</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>ref_max</span> <span class='kw'>=</span> <span class='fl'>80</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>5L</span>
-)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80,     digits = 5L): object 'lrm_mod' not found</span></div><div class='input'>
-<span class='fu'>summary_interact</span>(<span class='no'>lrm_mod</span>, <span class='no'>age</span>, <span class='no'>abo</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, abo): object 'lrm_mod' not found</span></div><div class='input'><span class='fu'>summary_interact</span>(<span class='no'>lrm_mod</span>, <span class='no'>age</span>, <span class='no'>abo</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"AB"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, abo, level = c("A", "AB")): object 'lrm_mod' not found</span></div><div class='input'><span class='fu'>summary_interact</span>(<span class='no'>lrm_mod</span>, <span class='no'>age</span>, <span class='no'>abo</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"AB"</span>), <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE): object 'lrm_mod' not found</span></div></pre>
+  <span class='kw'>lrm_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/lrm.html'>lrm</a></span>(<span class='kw'>event</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/rms.trans.html'>rcs</a></span>(<span class='kw'>age</span>, <span class='fl'>3</span>) <span class='op'>*</span> (<span class='kw'>sex</span> <span class='op'>+</span> <span class='kw'>abo</span>) <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/rms.trans.html'>rcs</a></span>(<span class='kw'>year</span>, <span class='fl'>3</span>),
+    data = <span class='kw'>transplant</span>
+  )</div><div class='output co'>#&gt; <span class='error'>Error in Design(eval.parent(m)): dataset dd not found for options(datadist=)</span></div><div class='input'>
+  <span class='kw'>lrm_mod</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'lrm_mod' not found</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>lrm_mod</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary(lrm_mod): object 'lrm_mod' not found</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(<span class='kw'>lrm_mod</span>, <span class='kw'>age</span>, <span class='kw'>sex</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, sex): object 'lrm_mod' not found</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(<span class='kw'>lrm_mod</span>, <span class='kw'>age</span>, <span class='kw'>sex</span>, ref_min = <span class='fl'>60</span>, ref_max = <span class='fl'>80</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80): object 'lrm_mod' not found</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(<span class='kw'>lrm_mod</span>, <span class='kw'>age</span>, <span class='kw'>sex</span>,
+    ref_min = <span class='fl'>60</span>, ref_max = <span class='fl'>80</span>, digits = <span class='fl'>5L</span>
+  )</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80,     digits = 5L): object 'lrm_mod' not found</span></div><div class='input'>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(<span class='kw'>lrm_mod</span>, <span class='kw'>age</span>, <span class='kw'>abo</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, abo): object 'lrm_mod' not found</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(<span class='kw'>lrm_mod</span>, <span class='kw'>age</span>, <span class='kw'>abo</span>, level = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"AB"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, abo, level = c("A", "AB")): object 'lrm_mod' not found</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/summary_interact.html'>summary_interact</a></span>(<span class='kw'>lrm_mod</span>, <span class='kw'>age</span>, <span class='kw'>abo</span>, level = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"AB"</span>), p = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE): object 'lrm_mod' not found</span></div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

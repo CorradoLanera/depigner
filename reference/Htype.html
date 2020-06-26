@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Type's checks accordingly to [Hmisc] package — Htype • depigner</title>
+<title>Type's checks accordingly to [Hmisc] package — htype • depigner</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Type's checks accordingly to [Hmisc] package — Htype" />
+<meta property="og:title" content="Type's checks accordingly to [Hmisc] package — htype" />
 <meta property="og:description" content="These functions decide and report if a single variable represented by
 a single instance of an `Hmisc`'s [describe][Hmisc::describe] object
 will considered a categorical variable or a continuous one." />
@@ -82,7 +82,7 @@ will considered a categorical variable or a continuous one." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -122,8 +122,8 @@ will considered a categorical variable or a continuous one." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Type's checks accordingly to [Hmisc] package</h1>
-    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/Htypes.R'><code>R/Htypes.R</code></a></small>
-    <div class="hidden name"><code>Htype.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/htypes.R'><code>R/htypes.R</code></a></small>
+    <div class="hidden name"><code>htype.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -132,19 +132,19 @@ a single instance of an `Hmisc`'s [describe][Hmisc::describe] object
 will considered a categorical variable or a continuous one.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Htype</span>(<span class='no'>x</span>, <span class='kw'>n.unique</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
 
-<span class='fu'>Htypes</span>(<span class='no'>x</span>, <span class='kw'>n.unique</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
 
 <span class='co'># S3 method for describe</span>
-<span class='fu'>Htypes</span>(<span class='no'>x</span>, <span class='kw'>n.unique</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>Htypes</span>(<span class='no'>x</span>, <span class='kw'>n.unique</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
 
-<span class='fu'>is_Hcat</span>(<span class='no'>x</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcat</a></span>(<span class='kw'>x</span>)
 
-<span class='fu'>is_Hcon</span>(<span class='no'>x</span>, <span class='kw'>n.unique</span> <span class='kw'>=</span> <span class='fl'>10</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcon</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,7 +152,7 @@ will considered a categorical variable or a continuous one.</p>
     <tr>
       <th>x</th>
       <td><p>an instance of the class [describe][Hmisc::describe], in the
-cases of "singular" functions (ie `is_*()` or `Htype()`) it must
+cases of "singular" functions (ie `is_*()` or `htype()`) it must
 be a single-variable [describe][Hmisc::describe] object.</p></td>
     </tr>
     <tr>
@@ -165,17 +165,17 @@ continuous variable plot.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(chr) `Htype` returns one of "cat" (if `x` will be considered
+    <p>(chr) `htype` returns one of "cat" (if `x` will be considered
   categorical), "con" (if `x` will be considered continuous), "none"
   (if `x` will be not considered categorical nor continuous, and
   hence it will be not plotted), or "both" (with a warning, if the
   variable will be considered both categorical and continuous. This
   would possibly never happen).</p>
-<p>(chr) character vector of the types identified by [Htype] for
+<p>(chr) character vector of the types identified by [htype] for
   every variable represented in (each element of) `x`.</p>
-<p>(lgl) `is_Hcat` returns TRUE if x will be considered
+<p>(lgl) `is_hcat` returns TRUE if x will be considered
   categorical.</p>
-<p>(lgl) `is_Hcon` returns TRUE if x will be considered
+<p>(lgl) `is_hcon` returns TRUE if x will be considered
   continuous.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -198,32 +198,39 @@ continuous variable plot.</p></td>
 
     
 <ul>
-<li><p><code>Htypes</code>: Report types for multi-variables objects</p></li>
-<li><p><code>is_Hcat</code>: Check if a single-instance of a
+<li><p><code>htypes</code>: Report types for multi-variables objects</p></li>
+<li><p><code>is_hcat</code>: Check if a single-instance of a
 [describe][Hmisc::describe] object is categorical.</p></li>
-<li><p><code>is_Hcon</code>: Check if a single-instance of a
+<li><p><code>is_hcon</code>: Check if a single-instance of a
 [describe][Hmisc::describe] object is continuous.</p></li>
 </ul>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>[describe][Hmisc::describe],</p>
-<p>[is_Hdesc], [is_single_Hdesc]</p>
-<p>Gist with test and usage examples: https://bit.ly/Htype-gist</p></div>
+<p>[is_hdesc], [is_single_hdesc]</p>
+<p>Gist with test and usage examples: https://bit.ly/htype-gist</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>Hmisc</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: lattice</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: survival</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Formula</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘Hmisc’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    format.pval, units</span></div><div class='input'><span class='no'>desc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/describe.html'>describe</a></span>(<span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://biostat.mc.vanderbilt.edu/Hmisc'>Hmisc</a></span>)
+  <span class='kw'>desc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/describe.html'>describe</a></span>(<span class='kw'>mtcars</span>)
 
-<span class='fu'>Htype</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"vs"</span>]]) <span class='co'># "cat"</span></div><div class='output co'>#&gt; [1] "cat"</div><div class='input'><span class='fu'>Htype</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"mpg"</span>]]) <span class='co'># "con"</span></div><div class='output co'>#&gt; [1] "con"</div><div class='input'><span class='fu'>Htype</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"cyl"</span>]]) <span class='co'># "none"</span></div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='fu'>Htypes</span>(<span class='no'>desc</span>) <span class='co'># c(</span></div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
-#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'><span class='co'>#   mpg = "con", cyl = "none", disp = "con",</span>
-<span class='co'>#   hp = "con", drat = "con", wt = "con", qsec = "con",</span>
-<span class='co'>#   vs = "cat", am = "cat", gear = "none",</span>
-<span class='co'>#   carb = "none"</span>
-<span class='co'># )</span>
-<span class='fu'>Htypes</span>(<span class='no'>mtcars</span>) <span class='co'># Htypes(desc)</span></div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
-#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'><span class='fu'>Htypes</span>(<span class='no'>letters</span>) <span class='co'># "none"</span></div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='fu'>is_Hcat</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"vs"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_Hcat</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"mpg"</span>]]) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_Hcon</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"vs"</span>]]) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_Hcon</span>(<span class='no'>desc</span><span class='kw'>[[</span><span class='st'>"mpg"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div></pre>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>desc</span>[[<span class='st'>"vs"</span>]]) <span class='co'># "cat"</span></div><div class='output co'>#&gt; [1] "cat"</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>desc</span>[[<span class='st'>"mpg"</span>]]) <span class='co'># "con"</span></div><div class='output co'>#&gt; [1] "con"</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>desc</span>[[<span class='st'>"cyl"</span>]]) <span class='co'># "none"</span></div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>desc</span>) <span class='co'># c(</span></div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
+#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'>  <span class='co'>#   mpg = "con", cyl = "none", disp = "con",</span>
+  <span class='co'>#   hp = "con", drat = "con", wt = "con", qsec = "con",</span>
+  <span class='co'>#   vs = "cat", am = "cat", gear = "none",</span>
+  <span class='co'>#   carb = "none"</span>
+  <span class='co'># )</span>
+<span class='co'># }</span>
+<span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>mtcars</span>) <span class='co'># htypes(desc)</span></div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
+#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>letters</span>) <span class='co'># "none"</span></div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcat</a></span>(<span class='kw'>desc</span>[[<span class='st'>"vs"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcat</a></span>(<span class='kw'>desc</span>[[<span class='st'>"mpg"</span>]]) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcon</a></span>(<span class='kw'>desc</span>[[<span class='st'>"vs"</span>]]) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcon</a></span>(<span class='kw'>desc</span>[[<span class='st'>"mpg"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

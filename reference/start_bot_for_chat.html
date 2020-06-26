@@ -82,7 +82,7 @@ the depigner." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -132,9 +132,9 @@ package to be used in a more easy way by the function provided by
 the depigner.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>start_bot_for_chat</span>(
-  <span class='kw'>chat_name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"R_telegram_default_chat_name"</span>),
-  <span class='kw'>bot_name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"depigner.bot_name"</span>)
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/start_bot_for_chat.html'>start_bot_for_chat</a></span>(
+  chat_name = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"R_telegram_default_chat_name"</span>),
+  bot_name = <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"depigner.bot_name"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -163,7 +163,7 @@ related to the bot).</p></td>
     <p>invisible()</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Before you can use the <code><a href='depigner-package.html'>depigner</a></code> facilities (or the
+    <p>Before you can use the <code><a href='https://rdrr.io/pkg/depigner/man/depigner-package.html'>depigner</a></code> facilities (or the
 <code>telegram.bot</code> ones) to use your bot to chat with
 Telegram from R, you have to set the bot up.</p>
 <p>To set up a bot in telegram, find <code>@BotFather</code> on telegram. Send
@@ -175,20 +175,20 @@ token and never share it publicly!!</p>
 send the message <code>\start</code>.</p>
 <p>Now you can return to R and put both the bot's name and token into
 the .Renviron file. To access to it you can use
-<code><a href='https://usethis.r-lib.org/reference/edit.html'>edit_r_environ</a></code> which will open the `.Renviron`
-file, ready to be modified.</p>
+<code><a href='https://usethis.r-lib.org/reference/edit.html'>edit</a>_r_environ</code> which will open the
+`.Renviron` file, ready to be modified.</p>
 <p>You need to insert two lines, namely the one for your bot's name:</p>
 <p>`R_telegram_bot_name=&lt;name_of_my_bot&gt;`</p>
 <p>and one for its token:</p>
-<p>`R_TELEGRAM_BOT_&lt;name_of_my_bot&gt;="1234567879:AbcDeF_GH1IlM_nmoP2rSTUvzyABCDefG5"</p>
+<p>`R_TELEGRAM_BOT_&lt;name_of_my_bot&gt;="1234567879:AbcD..."</p>
 <p>Next, restart R and you are ready to use al the (simple)
-functionality of the <code><a href='depigner-package.html'>depigner</a></code> package, or the flexible
+functionality of the <code><a href='https://rdrr.io/pkg/depigner/man/depigner-package.html'>depigner</a></code> package, or the flexible
 and complete ones from the <code>telegram.bot</code> package.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>depigner</span>)
-<span class='fu'>start_bot_for_chat</span>()
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://corradolanera.github.io/depigner'>depigner</a></span>)
+  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/start_bot_for_chat.html'>start_bot_for_chat</a></span>()
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

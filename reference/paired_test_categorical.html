@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -128,7 +128,7 @@
     <p>Statistical tests for paired categorical variable.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>paired_test_categorical</span>(<span class='no'>tab</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/paired_test_categorical.html'>paired_test_categorical</a></span>(<span class='kw'>tab</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,17 +165,18 @@ based on Cochran-Mantel-Haenzen for repeated measures is used
 <code><a href='https://rdrr.io/pkg/Hmisc/man/summary.formula.html'>summary.formula</a></code> with method `reverse`.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>Hmisc</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://biostat.mc.vanderbilt.edu/Hmisc'>Hmisc</a></span>)
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>Arthritis</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>Arthritis</span>)
 
-<span class='co'>## two groups</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>Treatment</span> ~ <span class='no'>Sex</span>,
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>Arthritis</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"reverse"</span>,
-  <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>catTest</span> <span class='kw'>=</span> <span class='no'>paired_test_categorical</span>
-)</div><div class='output co'>#&gt; 
+  <span class='co'>## two groups</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>Treatment</span> <span class='op'>~</span> <span class='kw'>Sex</span>,
+    data = <span class='kw'>Arthritis</span>,
+    method = <span class='st'>"reverse"</span>,
+    test = <span class='fl'>TRUE</span>,
+    catTest = <span class='kw'>paired_test_categorical</span>
+  )</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; Descriptive Statistics by Treatment
 #&gt; 
@@ -185,13 +186,13 @@ based on Cochran-Mantel-Haenzen for repeated measures is used
 #&gt; +----------+--------------------+--------------------+------------------------------+
 #&gt; |Sex : Male|           26%  (11)|           34%  (14)|Chi-square=5.92 d.f.=1 P=0.015|
 #&gt; +----------+--------------------+--------------------+------------------------------+</div><div class='input'>
-<span class='co'>## more than two groups</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>Improved</span> ~ <span class='no'>Sex</span>,
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>Arthritis</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"reverse"</span>,
-  <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>catTest</span> <span class='kw'>=</span> <span class='no'>paired_test_categorical</span>
-)</div><div class='output co'>#&gt; 
+  <span class='co'>## more than two groups</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>Improved</span> <span class='op'>~</span> <span class='kw'>Sex</span>,
+    data = <span class='kw'>Arthritis</span>,
+    method = <span class='st'>"reverse"</span>,
+    test = <span class='fl'>TRUE</span>,
+    catTest = <span class='kw'>paired_test_categorical</span>
+  )</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; Descriptive Statistics by Improved
 #&gt; 
@@ -200,7 +201,7 @@ based on Cochran-Mantel-Haenzen for repeated measures is used
 #&gt; |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |
 #&gt; +----------+---------------+---------------+---------------+---------------------+
 #&gt; |Sex : Male|      40%  (17)|      14%  ( 2)|      21%  ( 6)|t=1.03 d.f.=2 P=0.412|
-#&gt; +----------+---------------+---------------+---------------+---------------------+</div></pre>
+#&gt; +----------+---------------+---------------+---------------+---------------------+</div><div class='input'><span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

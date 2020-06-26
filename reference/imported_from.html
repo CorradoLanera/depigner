@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ci2p — ci2p • depigner</title>
+<title>Packages imported by a package — imported_from • depigner</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,8 @@
 
 
 
-<meta property="og:title" content="ci2p — ci2p" />
-<meta property="og:description" content="ci2p compute the p-value related with a provided confidence
-interval. It considers a symmetric distribution (by default standard
-normal)." />
+<meta property="og:title" content="Packages imported by a package — imported_from" />
+<meta property="og:description" content="Packages imported by a package" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -121,72 +119,40 @@ normal)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ci2p</h1>
-    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/ci2p.R'><code>R/ci2p.R</code></a></small>
-    <div class="hidden name"><code>ci2p.Rd</code></div>
+    <h1>Packages imported by a package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/imported_from.R'><code>R/imported_from.R</code></a></small>
+    <div class="hidden name"><code>imported_from.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>ci2p</code> compute the p-value related with a provided confidence
-interval. It considers a symmetric distribution (by default standard
-normal).</p>
+    <p>Packages imported by a package</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/ci2p.html'>ci2p</a></span>(
-  <span class='kw'>est</span>,
-  <span class='kw'>lower</span>,
-  <span class='kw'>upper</span>,
-  log_transform = <span class='fl'>FALSE</span>,
-  conf = <span class='fl'>0.95</span>,
-  qdist = <span class='kw'>stats</span>::<span class='kw'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span>,
-  pdist = <span class='kw'>stats</span>::<span class='kw'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span>
-)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/imported_from.html'>imported_from</a></span>(<span class='kw'>x</span>, include_self = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>est</th>
-      <td><p>estimated value</p></td>
+      <th>x</th>
+      <td><p>(chr) the package you would like to see its imports</p></td>
     </tr>
     <tr>
-      <th>lower</th>
-      <td><p>lower bound of the confidence level</p></td>
-    </tr>
-    <tr>
-      <th>upper</th>
-      <td><p>upper bound of the confidence level</p></td>
-    </tr>
-    <tr>
-      <th>log_transform</th>
-      <td><p>(default `FALSE`) flag indicating if a log
-transformation as to apply to the data</p></td>
-    </tr>
-    <tr>
-      <th>conf</th>
-      <td><p>(default `95%`) confidence level</p></td>
-    </tr>
-    <tr>
-      <th>qdist</th>
-      <td><p>(default `qnorm`) quantile function</p></td>
-    </tr>
-    <tr>
-      <th>pdist</th>
-      <td><p>(default `pnorm`) distribution function</p></td>
+      <th>include_self</th>
+      <td><p>(lgl, FALSE) do you like to include `x` itself in
+the output?</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a p-value</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Confidence level can be customize (by default 95<!-- %) and it is also -->
-possible to apply a log transformation in case of proportions.</p>
+    <p>(chr) vector of packages imported by `x`</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/ci2p.html'>ci2p</a></span>(<span class='fl'>1.125</span>, <span class='fl'>0.634</span>, <span class='fl'>1.999</span>, log_transform = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 0.367902</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/ci2p.html'>ci2p</a></span>(<span class='fl'>1.257</span>, <span class='fl'>1.126</span>, <span class='fl'>1.403</span>, log_transform = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 0.0003118063</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/imported_from.html'>imported_from</a></span>(<span class='st'>"depigner"</span>)</div><div class='output co'>#&gt;  [1] "broom"        "desc"         "dplyr"        "fs"           "ggplot2"     
+#&gt;  [6] "Hmisc"        "magrittr"     "progress"     "purrr"        "rlang"       
+#&gt; [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
+#&gt; [16] "tidyr"        "usethis"      "utils"       </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

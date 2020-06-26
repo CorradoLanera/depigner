@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ci2p — ci2p • depigner</title>
+<title>Packages' sets — pkg_sets • depigner</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,9 @@
 
 
 
-<meta property="og:title" content="ci2p — ci2p" />
-<meta property="og:description" content="ci2p compute the p-value related with a provided confidence
-interval. It considers a symmetric distribution (by default standard
-normal)." />
+<meta property="og:title" content="Packages' sets — pkg_sets" />
+<meta property="og:description" content="These are presets of packages which can be used to easily prepare
+systems installing them in groups or all together (using `pkg_all`)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -121,72 +120,91 @@ normal)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ci2p</h1>
-    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/ci2p.R'><code>R/ci2p.R</code></a></small>
-    <div class="hidden name"><code>ci2p.Rd</code></div>
+    <h1>Packages' sets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/R/pkg_sets.R'><code>R/pkg_sets.R</code></a></small>
+    <div class="hidden name"><code>pkg_sets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>ci2p</code> compute the p-value related with a provided confidence
-interval. It considers a symmetric distribution (by default standard
-normal).</p>
+    <p>These are presets of packages which can be used to easily prepare
+systems installing them in groups or all together (using `pkg_all`).</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/ci2p.html'>ci2p</a></span>(
-  <span class='kw'>est</span>,
-  <span class='kw'>lower</span>,
-  <span class='kw'>upper</span>,
-  log_transform = <span class='fl'>FALSE</span>,
-  conf = <span class='fl'>0.95</span>,
-  qdist = <span class='kw'>stats</span>::<span class='kw'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span>,
-  pdist = <span class='kw'>stats</span>::<span class='kw'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span>
-)</pre>
+    <pre class="usage"><span class='kw'>pkg_misc</span>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>est</th>
-      <td><p>estimated value</p></td>
-    </tr>
-    <tr>
-      <th>lower</th>
-      <td><p>lower bound of the confidence level</p></td>
-    </tr>
-    <tr>
-      <th>upper</th>
-      <td><p>upper bound of the confidence level</p></td>
-    </tr>
-    <tr>
-      <th>log_transform</th>
-      <td><p>(default `FALSE`) flag indicating if a log
-transformation as to apply to the data</p></td>
-    </tr>
-    <tr>
-      <th>conf</th>
-      <td><p>(default `95%`) confidence level</p></td>
-    </tr>
-    <tr>
-      <th>qdist</th>
-      <td><p>(default `qnorm`) quantile function</p></td>
-    </tr>
-    <tr>
-      <th>pdist</th>
-      <td><p>(default `pnorm`) distribution function</p></td>
-    </tr>
-    </table>
+<span class='kw'>pkg_utils</span>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+<span class='kw'>pkg_speed</span>
 
-    <p>a p-value</p>
+<span class='kw'>pkg_mlt</span>
+
+<span class='kw'>pkg_stat</span>
+
+<span class='kw'>pkg_stan</span>
+
+<span class='kw'>pkg_devel</span>
+
+<span class='kw'>pkg_docs</span>
+
+<span class='kw'>pkg_prod</span>
+
+<span class='kw'>pkg_all</span></pre>
+
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>character</code> of length 3.</p>
+<p>An object of class <code>character</code> of length 4.</p>
+<p>An object of class <code>character</code> of length 4.</p>
+<p>An object of class <code>character</code> of length 6.</p>
+<p>An object of class <code>character</code> of length 7.</p>
+<p>An object of class <code>character</code> of length 2.</p>
+<p>An object of class <code>character</code> of length 12.</p>
+<p>An object of class <code>character</code> of length 4.</p>
+<p>An object of class <code>character</code> of length 4.</p>
+<p>An object of class <code>character</code> of length 44.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Confidence level can be customize (by default 95<!-- %) and it is also -->
-possible to apply a log transformation in case of proportions.</p>
+    <p>Packages imported by the mentioned packages are not included into
+the sets (that is the reason why, e.g., you do not see `shiny` or
+`knitr`, ...).</p>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/ci2p.html'>ci2p</a></span>(<span class='fl'>1.125</span>, <span class='fl'>0.634</span>, <span class='fl'>1.999</span>, log_transform = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 0.367902</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/ci2p.html'>ci2p</a></span>(<span class='fl'>1.257</span>, <span class='fl'>1.126</span>, <span class='fl'>1.403</span>, log_transform = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 0.0003118063</div></pre>
+    
+<ul>
+<li><p><code>pkg_misc</code>: Packages for side-interest purposes, including
+`beepr`, `fortunes`, and `telegram.bot`.</p></li>
+<li><p><code>pkg_utils</code>: Utilities for data analyses, including `here`,
+`lobstr`, `progress`, and `tidyverse`.</p></li>
+<li><p><code>pkg_speed</code>: Are you in a hurry?! This includes `furrr`,
+`parallel`, `snow`, and `tidyfast`.</p></li>
+<li><p><code>pkg_mlt</code>: Machine Learning in R (we do not include
+`keras` nor `tensorflow` which require _ad hoc_ configuration).
+ This includes `caret`, `glmnet`, `mlr3`, `snow`,
+ `tidymodels`, `tidytext`, and `tm`.</p></li>
+<li><p><code>pkg_stat</code>: (Clinical oriented) statistical analyses in R.
+This includes `CBPS`, `cobalt`, `MatchIt`, `mice`, `rms`,
+`twang`, and `WeightIt`.</p></li>
+<li><p><code>pkg_stan</code>: Stan analyses in R (Alert: these packages
+require `stan` be installed into the system. They are not included
+into `pkg_all`). This includes `rstanarm`, and `brms`.</p></li>
+<li><p><code>pkg_devel</code>: Develop stuff in R. This includes `assertive`,
+`covr`, `lintr`, `fs`, `profvis`, `pryr`, `renv`,
+`roxygen2`, `styler`, `testthat`, `spelling`, and
+`usethis`.</p></li>
+<li><p><code>pkg_docs</code>: Write and render things in R. This includes
+`blogdown`, `DT`, `pander`, and `pkgdown`.</p></li>
+<li><p><code>pkg_prod</code>: for develop and put in production stuffs
+(`shiny` app included). This includes `golem`, `docopt`,
+`plumbr`, and `shinyjs`.</p></li>
+<li><p><code>pkg_all</code>: Union of the `pkg_misc`, `pkg_utils`, `pkg_speed`,
+`pkg_mlt`, `pkg_stat`, `pkg_devel`, `pkg_docs`, and `pkg_prod`
+ pkg_* sets.</p></li>
+</ul>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>install_pkg_set</p></div>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
