@@ -9,8 +9,8 @@ A utility package to help you deal with ***pigne***
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
 | :-------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
-| **Development** |          [![Devel version](https://img.shields.io/badge/devel%20version-0.7.0.9000-blue.svg)](https://github.com/CorradoLanera/depigner)          |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
-| **CRAN**        |                 [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner) yet…                 |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
+| **Development** |          [![Devel version](https://img.shields.io/badge/devel%20version-0.8.1.9000-blue.svg)](https://github.com/CorradoLanera/depigner)          |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+| **CRAN**        |                   [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                    |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |     [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)      |
 
 <!-- badges: end -->
@@ -49,6 +49,13 @@ solved using quick-and-dirty (ugly and maybe even wrong) patches.
 | [Why not?\!](#why-not)                   | `gdp()`                   | Do you have TOO much pignas in your back?\! … try this out ;-)           |
 
 # Installation
+
+You can install the released version of `{depigner}` from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("depigner")
+```
 
 You can install the development version from
 [GitHub](https://github.com/) calling:
@@ -102,6 +109,8 @@ dd <- datadist(iris)
 my_summary <- summary(Species ~., data = iris, method = "reverse")
 tidy_summary(my_summary) %>% 
   pander()
+#> Warning in seq.default(along = mat.names.width): partial argument match of
+#> 'along' to 'along.with'
 ```
 
 |   |   setosa (N=50)   | versicolor (N=50) | virginica (N=50)  |
@@ -118,7 +127,29 @@ dd <<- datadist(heart) # this to face a package build issue,
                        # use standard `<-` into analyses
 surv <- Surv(heart$start, heart$stop, heart$event)
 f    <- cph(surv ~ age + year + surgery, data = heart)
+#> Warning in seq.default(length = n): partial argument match of 'length' to
+#> 'length.out'
+#> Warning in seq.default(1L, by = 2L, length = lastrow.length): partial argument
+#> match of 'length' to 'length.out'
+#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
+#> 'length' to 'length.out'
+
+#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
+#> 'length' to 'length.out'
+
+#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
+#> 'length' to 'length.out'
+
+#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
+#> 'length' to 'length.out'
+
+#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
+#> 'length' to 'length.out'
+
+#> Warning in seq.default(1L, by = 2L, length = start): partial argument match of
+#> 'length' to 'length.out'
 my_summary <- summary(f)
+#> Warning: partial match of 'coef' to 'coefficients'
 tidy_summary(my_summary) %>% 
   pander()
 ```
@@ -148,7 +179,8 @@ summary(Treatment ~ Sex,
 #> 
 #> 
 #> Descriptive Statistics by Treatment
-#> 
+#> Warning in seq.default(along = mat.names.width): partial argument match of
+#> 'along' to 'along.with'
 #> +----------+--------------------+--------------------+------------------------------+
 #> |          |Placebo             |Treated             |  Test                        |
 #> |          |(N=43)              |(N=41)              |Statistic                     |
@@ -165,7 +197,8 @@ summary(Improved ~ Sex,
 #> 
 #> 
 #> Descriptive Statistics by Improved
-#> 
+#> Warning in seq.default(along = mat.names.width): partial argument match of
+#> 'along' to 'along.with'
 #> +----------+---------------+---------------+---------------+---------------------+
 #> |          |None           |Some           |Marked         |  Test               |
 #> |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |
@@ -184,7 +217,8 @@ summary(Species ~.,
 #> 
 #> 
 #> Descriptive Statistics by Species
-#> 
+#> Warning in seq.default(along = mat.names.width): partial argument match of
+#> 'along' to 'along.with'
 #> +------------+---------------------+---------------------+------------------------+
 #> |            |versicolor           |virginica            |  Test                  |
 #> |            |(N=50)               |(N=50)               |Statistic               |
@@ -207,7 +241,8 @@ summary(Species ~.,
 #> 
 #> 
 #> Descriptive Statistics by Species
-#> 
+#> Warning in seq.default(along = mat.names.width): partial argument match of
+#> 'along' to 'along.with'
 #> +------------+--------------------+--------------------+--------------------+-----------------------+
 #> |            |setosa              |versicolor          |virginica           |  Test                 |
 #> |            |(N=50)              |(N=50)              |(N=50)              |Statistic              |
@@ -231,6 +266,8 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
 
   tidy_summary(my_summary) %>%
       adjust_p()
+#> Warning in seq.default(along = mat.names.width): partial argument match of
+#> 'along' to 'along.with'
 #> Warning: Unknown or uninitialised column: `P-value`.
 #> x   The object `x` does not have a P-value column.
 #>     Have you select `test = TRUE` into `summary()`?
@@ -440,7 +477,7 @@ By contributing to this project, you agree to abide by its terms.
 
 # Acknowledgements
 
-The `{depigner}`’s logo was designed by [Elisa
+The `{depigner}`’s logo was lovely designed by [Elisa
 Sovrano](https://elisasovrano.it).
 
 # Reference
