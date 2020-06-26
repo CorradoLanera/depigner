@@ -24,32 +24,34 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' library(rms)
-#' options(datadist = "dd")
+#' \donttest{
+#'   library(rms)
+#'   options(datadist = "dd")
 #'
-#' data("transplant")
+#'   data("transplant")
 #'
-#' transplant <- transplant[
-#'   transplant[["event"]] != "censored", ,
-#'   drop = FALSE
-#' ]
-#' dd <- datadist(transplant)
+#'   transplant <- transplant[
+#'     transplant[["event"]] != "censored", ,
+#'     drop = FALSE
+#'   ]
+#'   dd <- datadist(transplant)
 #'
-#' lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
-#'   data = transplant
-#' )
+#'   lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
+#'     data = transplant
+#'   )
 #'
-#' lrm_mod
-#' summary(lrm_mod)
-#' summary_interact(lrm_mod, age, sex)
-#' summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
-#' summary_interact(lrm_mod, age, sex,
-#'   ref_min = 60, ref_max = 80, digits = 5L
-#' )
+#'   lrm_mod
+#'   summary(lrm_mod)
+#'   summary_interact(lrm_mod, age, sex)
+#'   summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80)
+#'   summary_interact(lrm_mod, age, sex,
+#'     ref_min = 60, ref_max = 80, digits = 5L
+#'   )
 #'
-#' summary_interact(lrm_mod, age, abo)
-#' summary_interact(lrm_mod, age, abo, level = c("A", "AB"))
-#' summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE)
+#'   summary_interact(lrm_mod, age, abo)
+#'   summary_interact(lrm_mod, age, abo, level = c("A", "AB"))
+#'   summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE)
+#' }
 summary_interact <- function(model, ref, discrete,
                              ref_min = NULL, ref_max = NULL,
                              level = NULL,
@@ -63,12 +65,9 @@ summary_interact <- function(model, ref, discrete,
 
   discrete <- rlang::enquo(discrete)
   discrete_name <- rlang::quo_name(discrete)
-  # print(discrete_name)
-  # print(level)
 
   ref <- rlang::enquo(ref)
   ref_name <- rlang::quo_name(ref)
-  # print(ref_name)
 
   dd <- getOption("datadist") %>%
     as.name() %>%
@@ -92,17 +91,17 @@ summary_interact <- function(model, ref, discrete,
     level <- dd[["values"]][[discrete_name]]
   }
 
-  suppressWarnings(
+  suppressWarnings({
     res <- purrr::map_df(.x = level, ~ {
       interact <- .x
-      eval(parse(text = glue::glue(
-        "summary(model,",
-        "    {discrete_name} = interact,",
-        "    {ref_name}      = c(ref_min, ref_max)",
+      eval(parse(text = paste0(
+        "summary(model, ",
+          discrete_name, " = interact, ",
+          ref_name, " = c(ref_min, ref_max)",
         ")"
       ))) %>%
         broom::tidy() %>%
-        dplyr::mutate(.rownames = Hmisc::Lag(.data$.rownames)) %>%
+        dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
         dplyr::filter(Type == 2) %>%
         dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
@@ -116,7 +115,7 @@ summary_interact <- function(model, ref, discrete,
           .rownames = stringr::str_replace(.data$.rownames, " -+.*$", "")
         ) %>%
         dplyr::mutate(
-          .rownames = glue::glue("{.rownames} - {interact}")
+          .rownames = paste0(.data$.rownames, " - ", interact)
         ) %>%
         dplyr::rename(
           `&nbsp;` = .data$.rownames,
@@ -125,7 +124,7 @@ summary_interact <- function(model, ref, discrete,
           `Upper 95% CI` = .data$Upper.0.95
         )
     })
-  )
+  })
   if (p) {
     res["P-value"] <- purrr::pmap_dbl(
       list(

@@ -8,3 +8,6 @@
 ^data-raw$
 ^LICENSE\.md$
 ^pkgdown$
+^cran-comments\.md$
+^dev$
+^CRAN-RELEASE$

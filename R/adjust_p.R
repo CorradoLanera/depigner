@@ -10,11 +10,13 @@
 #' @export
 #'
 #' @examples
-#' library(Hmisc)
-#' my_summary <- summary(Species ~ ., data = iris, method = "reverse")
+#' \donttest{
+#'   library(Hmisc)
+#'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'
-#' tidy_summary(my_summary) %>%
-#'   adjust_p()
+#'   tidy_summary(my_summary) %>%
+#'     adjust_p()
+#' }
 adjust_p <- function(x, method) {
   UseMethod("adjust_p")
 }
@@ -34,10 +36,10 @@ adjust_p <- function(x, method) {
 #' @export
 adjust_p.tidy_summary <- function(x, method = "BH") {
   if (is.null(x$`P-value`)) {
-    ui_oops(
-      "The object {ui_code('x')} does not have a {ui_field('P-value')} column.
-      Have you select {ui_code('test = TRUE')} in the {ui_code('summary')} call?"
-    )
+    ui_oops("
+      The object {ui_code('x')} does not have a {ui_field('P-value')} column.
+      Have you select {ui_code('test = TRUE')} into {ui_code('summary()')}?
+    ")
     ui_oops("{ui_code('x')} is returned without changes.")
     return(x)
   }

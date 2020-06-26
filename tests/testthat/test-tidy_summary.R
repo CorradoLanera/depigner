@@ -1,10 +1,11 @@
 context("test-tidy_summary")
 
-my_summary <- Hmisc:::summary.formula(Species ~ .,
-  data = iris, method = "reverse"
-)
-
 test_that("output classes are correct", {
+  testthat::skip_on_cran()
+  my_summary <- Hmisc:::summary.formula(Species ~ .,
+                                        data = iris, method = "reverse"
+  )
+
   expect_is(tidy_summary(my_summary), "tbl_df")
   expect_is(tidy_summary(my_summary), "data.frame")
 })
@@ -25,14 +26,16 @@ dt <- -log(runif(n)) / h
 e <- ifelse(dt <= cens, 1, 0)
 dt <- pmin(dt, cens)
 
-dd <- rms::datadist(age, sex)
-options(datadist = "dd")
-s <- survival::Surv(dt, e)
-f <- rms::cph(s ~ rms::rcs(age, 4) + sex)
-
-my_summary <- summary(f)
-
 
 test_that("correct class", {
+  skip_on_cran()
+
+  dd <- rms::datadist(age, sex)
+  options(datadist = "dd")
+  s <- survival::Surv(dt, e)
+  f <- rms::cph(s ~ rms::rcs(age, 4) + sex)
+
+  my_summary <- summary(f)
+
   expect_is(tidy_summary(my_summary), "data.frame")
 })

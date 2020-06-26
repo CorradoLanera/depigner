@@ -13,13 +13,14 @@ Thoracic and Vascular sciences at the university of Padova.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://corradolanera.github.io/depigner/}
   \item \url{https://github.com/CorradoLanera/depigner}
   \item Report bugs at \url{https://github.com/CorradoLanera/depigner/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Corrado Lanera \email{corrado.lanera@gmail.com}
+\strong{Maintainer}: Corrado Lanera \email{corrado.lanera@gmail.com} [copyright holder]
 
 }
 \keyword{internal}

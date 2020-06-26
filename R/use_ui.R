@@ -21,7 +21,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' use_ui()
+#'   # while setup of a package
+#'   use_ui()
 #' }
 use_ui <- function() {
   # check if package (adapted from usethis:::is_package())
@@ -53,18 +54,18 @@ use_ui <- function() {
       Adding {ui_value('usethis')} to {ui_field('Imports')} field
       in DESCRIPTION.
     ")
-    desc::desc_set_dep('usethis', 'imports', file = this_proj)
+    desc::desc_set_dep("usethis", "imports", file = this_proj)
   }
 
   existing_type <- setdiff(existing_type, "LinkingTo")
   types <- c("Depends", "Imports", "Suggests", "Enhances", "LinkingTo")
-  if (sign(match(existing_type, types) - match('Imports', types)) > 0) {
+  if (sign(match(existing_type, types) - match("Imports", types)) > 0) {
     ui_done("
       Moving {ui_value('usethis)} from {ui_field(existing_type)}
       to {ui_field('Imports')} field in DESCRIPTION.
     ")
-    desc::desc_del_dep('usethis', existing_type, file = this_proj)
-    desc::desc_set_dep('usethis', 'Imports', file = this_proj)
+    desc::desc_del_dep("usethis", existing_type, file = this_proj)
+    desc::desc_set_dep("usethis", "Imports", file = this_proj)
   }
 
   # Paste is needed because roxygen2 reads those lines as

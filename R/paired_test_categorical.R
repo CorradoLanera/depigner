@@ -30,68 +30,36 @@
 #'
 #' @importFrom rlang .data
 #' @examples
-#' library(Hmisc)
+#' \donttest{
+#'   library(Hmisc)
 #'
-#' data(Arthritis)
+#'   data(Arthritis)
 #'
-#' ## two groups
-#' summary(Treatment ~ Sex,
-#'   data = Arthritis,
-#'   method = "reverse",
-#'   test = TRUE,
-#'   catTest = paired_test_categorical
-#' )
+#'   ## two groups
+#'   summary(Treatment ~ Sex,
+#'     data = Arthritis,
+#'     method = "reverse",
+#'     test = TRUE,
+#'     catTest = paired_test_categorical
+#'   )
 #'
-#' ## more than two groups
-#' summary(Improved ~ Sex,
-#'   data = Arthritis,
-#'   method = "reverse",
-#'   test = TRUE,
-#'   catTest = paired_test_categorical
-#' )
+#'   ## more than two groups
+#'   summary(Improved ~ Sex,
+#'     data = Arthritis,
+#'     method = "reverse",
+#'     test = TRUE,
+#'     catTest = paired_test_categorical
+#'   )
+#' }
 paired_test_categorical <- function(tab) {
 
 
   # input check -----------------------------------------------------
-
-  if (!is.matrix(tab) || nrow(tab) < 2 || ncol(tab) < 2) {
-    return(list(
-      # values (mandatory)
-      P = NA,
-      stat = NA,
-      df = NA,
-
-      # names (mandatory)
-      testname = "notestname",
-      statname = "nostatname",
-      namefun = "nonamefun",
-
-      # special labels (optional)
-      note = "tab is not a proper matrix. No test is done"
-    ))
-  }
-
+  if (!is_proper_matrix(tab)) return(empty_h_test())
 
   rowcounts <- tab %*% rep(1, ncol(tab))
   tab <- tab[rowcounts > 0, ]
-  if (!is.matrix(tab) || nrow(tab) < 2) {
-    ui_warn("tab is not a proper matrix. No test is done")
-    return(list(
-      # values (mandatory)
-      P = NA,
-      stat = NA,
-      df = NA,
-
-      # names (mandatory)
-      testname = "notestname",
-      statname = "nostatname",
-      namefun = "nonamefun",
-
-      # special labels (optional)
-      note = "tab is not a proper matrix. No test is done"
-    ))
-  }
-
+  if (!is_proper_matrix(tab)) return(empty_h_test())
 
   # due = McNemar ---------------------------------------------------
 
@@ -118,49 +86,47 @@ paired_test_categorical <- function(tab) {
 
   #  molti = glm ---------------------------------
 
-  if (nrow(tab) > 2 || ncol(tab) > 2) {
-    dimnames(tab) <- stats::setNames(
-      dimnames(tab),
-      c("var_levels", "grouping_var")
+  dimnames(tab) <- stats::setNames(
+    dimnames(tab),
+    c("var_levels", "grouping_var")
+  )
+
+  group_id <- stats::setNames(seq_along(colnames(tab)), colnames(tab))
+  lev_id <- stats::setNames(seq_along(rownames(tab)), rownames(tab))
+
+  tab_df <- dplyr::as_tibble(tab) %>%
+    dplyr::mutate(
+      lev_id = lev_id[.data$var_levels],
+      group_id = group_id[.data$grouping_var]
+    ) %>%
+    dplyr::group_by(.data$grouping_var) %>%
+    dplyr::mutate(prop = .data$n / sum(.data$n)) %>%
+    dplyr::ungroup()
+
+  st <- summary(stats::glm(
+    formula = stats::as.formula("prop ~ var_levels*group_id"),
+    data = tab_df,
+    family = "quasibinomial"
+  ))
+
+  list(
+    # values (mandatory)
+    P = stats::setNames(st$coefficients["group_id", "Pr(>|t|)"], "P"),
+    stat = stats::setNames(st$coefficients["group_id", "t value"], "t"),
+    df = stats::setNames(st$df.residual, "df"),
+
+    # names (mandatory)
+    testname = "t test for group in a GLM",
+    statname = "t",
+    namefun = "glm_t_test",
+
+    # special labels (optional)
+    latexstat = "\\t_{df}",
+    plotmathstat = "t[df]^2",
+    note = paste(
+      "Overdispersed quasi-binomial GLM is fitted using both",
+      "the ranked groups and the categorical covariate of interest.",
+      "The test reported is the t test of the groups' coefficient."
     )
-
-    group_id <- stats::setNames(seq_along(colnames(tab)), colnames(tab))
-    lev_id <- stats::setNames(seq_along(rownames(tab)), rownames(tab))
-
-    tab_df <- dplyr::as_tibble(tab) %>%
-      dplyr::mutate(
-        lev_id = lev_id[.data$var_levels],
-        group_id = group_id[.data$grouping_var]
-      ) %>%
-      dplyr::group_by(.data$grouping_var) %>%
-      dplyr::mutate(prop = .data$n / sum(.data$n)) %>%
-      dplyr::ungroup()
-
-    st <- summary(stats::glm(
-      formula = stats::as.formula("prop ~ var_levels*group_id"),
-      data = tab_df,
-      family = "quasibinomial"
-    ))
-
-    return(list(
-      # values (mandatory)
-      P = stats::setNames(st$coefficients["group_id", "Pr(>|t|)"], "P"),
-      stat = stats::setNames(st$coefficients["group_id", "t value"], "t"),
-      df = stats::setNames(st$df.residual, "df"),
-
-      # names (mandatory)
-      testname = "t test for group in a GLM",
-      statname = "t",
-      namefun = "glm_t_test",
-
-      # special labels (optional)
-      latexstat = "\\t_{df}",
-      plotmathstat = "t[df]^2",
-      note = paste(
-        "Overdispersed quasi-binomial GLM is fitted using both",
-        "the ranked groups and the categorical covariate of interest.",
-        "The test reported is the t test of the groups' coefficient."
-      )
-    ))
-  }
+  )
 }

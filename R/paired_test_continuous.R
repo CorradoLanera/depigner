@@ -38,32 +38,34 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' library(Hmisc)
+#' \donttest{
+#'   library(Hmisc)
 #'
-#' ## two groups
-#' summary(Species ~ .,
-#'   data = iris[iris$Species != "setosa", ],
-#'   method = "reverse",
-#'   test = TRUE,
-#'   conTest = paired_test_continuous
-#' )
+#'   ## two groups
+#'   summary(Species ~ .,
+#'     data = iris[iris$Species != "setosa", ],
+#'     method = "reverse",
+#'     test = TRUE,
+#'     conTest = paired_test_continuous
+#'   )
 #'
-#' ## more than two groups
-#' summary(Species ~ .,
-#'   data = iris,
-#'   method = "reverse",
-#'   test = TRUE,
-#'   conTest = paired_test_continuous
-#' )
+#'   ## more than two groups
+#'   summary(Species ~ .,
+#'     data = iris,
+#'     method = "reverse",
+#'     test = TRUE,
+#'     conTest = paired_test_continuous
+#'   )
 #'
-#' ## without Hmisc
-#' two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
-#' two_groups <- iris$Species[iris$Species != "setosa"]
-#' paired_test_continuous(two_groups, two_obs)
+#'   ## without Hmisc
+#'   two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
+#'   two_groups <- iris$Species[iris$Species != "setosa"]
+#'   paired_test_continuous(two_groups, two_obs)
 #'
-#' obs <- iris$Sepal.Length
-#' many_groups <- iris$Species
-#' paired_test_continuous(many_groups, obs)
+#'   obs <- iris$Sepal.Length
+#'   many_groups <- iris$Species
+#'   paired_test_continuous(many_groups, obs)
+#' }
 paired_test_continuous <- function(group, x) {
   # Imput adjustment and checks -------------------------------------
   len_g <- length(group)
@@ -88,12 +90,10 @@ paired_test_continuous <- function(group, x) {
 
 
   # main constants --------------------------------------------------
-
   original_levels <- levels(group)
 
 
   # Recreate ids (if possible) --------------------------------------
-
   rle_g <- rle(as.integer(group))$lengths
 
   ids <- vector("integer", len_g)
@@ -114,9 +114,9 @@ paired_test_continuous <- function(group, x) {
     }
     # observation sorted by groups with the same length
     ids <- rep(seq_len(rle_g[[1]]), length(rle_g))
-  }
 
-  if (length(rle_g) != length(original_levels)) {
+  } else {
+
     # this means observation are sorted by ids
     for (i in seq_along(group)) {
       actual_lev <- which(original_levels == group[[i]])
@@ -131,11 +131,9 @@ paired_test_continuous <- function(group, x) {
 
 
   # main data frame creation ----------------------------------------
-
   data_db <- dplyr::tibble(ids, x, group) %>%
     dplyr::distinct() %>%
     tidyr::spread("group", "x") %>%
-    janitor::remove_empty("cols") %>%
     ggplot2::remove_missing() %>%
     tidyr::gather("group", "x", -ids) %>%
     dplyr::mutate(group = factor(group,
@@ -150,29 +148,10 @@ paired_test_continuous <- function(group, x) {
 
 
   # Less Than Two groups --------------------------------------------
-
-  if (group_n < 2 || n_subjects <= group_n) {
-    ui_warn("Only one group with data, no paired test is done")
-    # `return()` exits from the function here!
-    return(list(
-      # values (mandatory)
-      P = stats::setNames(1, "P"),
-      stat = stats::setNames(Inf, "XXX"),
-      df = stats::setNames(0, "df"),
-
-      # names (mandatory)
-      testname = "notestname",
-      statname = "nostatname",
-      namefun = "nonamefun",
-
-      # special labels (optional)
-      note = "Only one group with data, no paired test is done."
-    ))
-  }
+  if (group_n < 2 || n_subjects <= group_n) return(fake_h_group_test())
 
 
   # Two groups ------------------------------------------------------
-
   if (group_n == 2) {
     data_two <- data_db %>%
       tidyr::spread("group", "x")

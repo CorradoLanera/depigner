@@ -9,7 +9,7 @@
 #'  directly the "single" `describe` object and not a list of them with
 #'  only a single `describe` object included!
 #'
-#' `is_Hdesc()` test for general inheritance.
+#' `is_hdesc()` test for general inheritance.
 #'
 #' @param x an object to test if it is of class `describe`.
 #'
@@ -19,27 +19,31 @@
 #' @export
 #'
 #' @seealso [describe][Hmisc::describe]
-#' @seealso [is_Hcat], [is_Hcon], [Htype], [Htypes]
+#' @seealso [is_hcat], [is_hcon], [htype], [htypes]
 #'
 #' @examples
-#' library(Hmisc)
-#' desc <- describe(mtcars)
+#' \donttest{
+#'   library(Hmisc)
+#'   desc <- describe(mtcars)
 #'
-#' is_Hdesc(desc) # TRUE
-#' is_Hdesc(desc[[1]]) # TRUE
-is_Hdesc <- function(x) {
+#'   is_hdesc(desc) # TRUE
+#'   is_hdesc(desc[[1]]) # TRUE
+#' }
+is_hdesc <- function(x) {
   class(x) == "describe"
 }
 
-#' @rdname is_Hdesc
-#' @details `is_single_Hdesc()` test for single instance of a
+#' @rdname is_hdesc
+#' @details `is_single_hdesc()` test for single instance of a
 #'   `describe` object.
 #'
 #' @export
 #' @examples
-#' is_single_Hdesc(desc) # FALSE
-#' is_single_Hdesc(desc[[1]]) # TRUE
-is_single_Hdesc <- function(x) {
+#' \donttest{
+#'   is_single_hdesc(desc) # FALSE
+#'   is_single_hdesc(desc[[1]]) # TRUE
+#' }
+is_single_hdesc <- function(x) {
   (class(x) == "describe") && (class(x[[1L]]) != "describe")
 }
 
@@ -72,13 +76,13 @@ is_single_Hdesc <- function(x) {
 #'   names/code/logic that I found there.
 #'
 #' @param x an instance of the class [describe][Hmisc::describe], in the
-#'   cases of "singular" functions (ie `is_*()` or `Htype()`) it must
+#'   cases of "singular" functions (ie `is_*()` or `htype()`) it must
 #'   be a single-variable [describe][Hmisc::describe] object.
 #' @param n.unique (int, 10) the minimum number of distinct values a
 #'   numeric variable must have before plot.describe uses it in a
 #'   continuous variable plot.
 #'
-#' @return (chr) `Htype` returns one of "cat" (if `x` will be considered
+#' @return (chr) `htype` returns one of "cat" (if `x` will be considered
 #'   categorical), "con" (if `x` will be considered continuous), "none"
 #'   (if `x` will be not considered categorical nor continuous, and
 #'   hence it will be not plotted), or "both" (with a warning, if the
@@ -86,20 +90,22 @@ is_single_Hdesc <- function(x) {
 #'   would possibly never happen).
 #'
 #' @seealso [describe][Hmisc::describe],
-#' @seealso [is_Hdesc], [is_single_Hdesc]
-#' @seealso Gist with test and usage examples: https://bit.ly/Htype-gist
+#' @seealso [is_hdesc], [is_single_hdesc]
+#' @seealso Gist with test and usage examples: https://bit.ly/htype-gist
 #'
 #' @export
 #' @examples
-#' library(Hmisc)
-#' desc <- describe(mtcars)
+#' \donttest{
+#'   library(Hmisc)
+#'   desc <- describe(mtcars)
 #'
-#' Htype(desc[["vs"]]) # "cat"
-#' Htype(desc[["mpg"]]) # "con"
-#' Htype(desc[["cyl"]]) # "none"
-Htype <- function(x, n.unique = 10) {
-  is_con <- is_Hcon(x, n.unique = n.unique)
-  is_cat <- is_Hcat(x)
+#'   htype(desc[["vs"]]) # "cat"
+#'   htype(desc[["mpg"]]) # "con"
+#'   htype(desc[["cyl"]]) # "none"
+#' }
+htype <- function(x, n.unique = 10) {
+  is_con <- is_hcon(x, n.unique = n.unique)
+  is_cat <- is_hcat(x)
 
   htype <- c("cat", "con")[c(is_cat, is_con)]
 
@@ -120,109 +126,93 @@ Htype <- function(x, n.unique = 10) {
 }
 
 
-#' @describeIn Htype Report types for multi-variables objects
-#' @return (chr) character vector of the types identified by [Htype] for
+#' @describeIn htype Report types for multi-variables objects
+#' @return (chr) character vector of the types identified by [htype] for
 #'   every variable represented in (each element of) `x`.
 #' @export
-Htypes <- function(x, n.unique = 10) {
-  UseMethod("Htypes", x)
+htypes <- function(x, n.unique = 10) {
+  UseMethod("htypes", x)
 }
 
-#' @rdname Htype
-#' @method Htypes describe
+#' @rdname htype
+#' @method htypes describe
 #' @export
 #' @examples
-#' Htypes(desc) # c(
-#' #   mpg = "con", cyl = "none", disp = "con",
-#' #   hp = "con", drat = "con", wt = "con", qsec = "con",
-#' #   vs = "cat", am = "cat", gear = "none",
-#' #   carb = "none"
-#' # )
-Htypes.describe <- function(x, n.unique = 10) {
-  if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_Hdesc(x))
-  } else {
-    stopifnot(
-      `x must be an Hmisc::describe() object (or one of its elements)` =
-        is_Hdesc(x)
-    )
-  }
+#' \donttest{
+#'   htypes(desc) # c(
+#'   #   mpg = "con", cyl = "none", disp = "con",
+#'   #   hp = "con", drat = "con", wt = "con", qsec = "con",
+#'   #   vs = "cat", am = "cat", gear = "none",
+#'   #   carb = "none"
+#'   # )
+#' }
+htypes.describe <- function(x, n.unique = 10) {
+  assert_is_h_desc(x)
 
-  if (is_single_Hdesc(x)) {
-    return(Htype(x, n.unique = n.unique))
+  if (is_single_hdesc(x)) {
+    return(htype(x, n.unique = n.unique))
   }
-  vapply(x, Htype, FUN.VALUE = character(1))
+  vapply(x, htype, FUN.VALUE = character(1))
 }
 
-#' @rdname Htype
-#' @method Htypes default
+#' @rdname htype
+#' @method htypes default
 #' @export
 #' @examples
-#' Htypes(mtcars) # Htypes(desc)
-#' Htypes(letters) # "none"
-Htypes.default <- function(x, n.unique = 10) {
-  Htypes(Hmisc::describe(x))
+#' \donttest{
+#'   htypes(mtcars) # htypes(desc)
+#'   htypes(letters) # "none"
+#' }
+htypes.default <- function(x, n.unique = 10) {
+  htypes(Hmisc::describe(x))
 }
 
-#' @describeIn Htype Check if a single-instance of a
+#' @describeIn htype Check if a single-instance of a
 #'   [describe][Hmisc::describe] object is categorical.
-#' @return (lgl) `is_Hcat` returns TRUE if x will be considered
+#' @return (lgl) `is_hcat` returns TRUE if x will be considered
 #'   categorical.
 #'
 #' @export
 #' @examples
-#' is_Hcat(desc[["vs"]]) # TRUE
-#' is_Hcat(desc[["mpg"]]) # FALSE
-is_Hcat <- function(x) {
-  if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_single_Hdesc(x))
-  } else {
-    stopifnot(
-      `x must be a single Hmisc::describe() object` =
-        is_single_Hdesc(x)
-    )
-  }
+#' \donttest{
+#'   is_hcat(desc[["vs"]]) # TRUE
+#'   is_hcat(desc[["mpg"]]) # FALSE
+#' }
+is_hcat <- function(x) {
+  assert_is_single_h_desc(x)
 
   s <- x$counts
   v <- x$values
 
-  (("Sum" %in% names(s)) && (as.numeric(s["Sum"]) > 0)) ||
-    (
-      length(v) &&
-        is.list(v) &&
-        all(names(v) == c("value", "frequency")) &&
-        length(v$frequency) &&
-        is.character(v$value) && (length(v$value) <= 20)
-    )
+  ok_counts <- ("Sum" %in% names(s)) && (as.numeric(s["Sum"]) > 0)
+  ok_values <- is_val_freq_list(v) &&
+    length(v$frequency) &&
+    is.character(v$value) &&
+    (length(v$value) <= 20)
+
+  ok_counts || ok_values
 }
 
 
-#' @describeIn Htype Check if a single-instance of a
+#' @describeIn htype Check if a single-instance of a
 #'   [describe][Hmisc::describe] object is continuous.
 #'
-#' @return (lgl) `is_Hcon` returns TRUE if x will be considered
+#' @return (lgl) `is_hcon` returns TRUE if x will be considered
 #'   continuous.
 #' @export
 #'
 #' @examples
-#' is_Hcon(desc[["vs"]]) # FALSE
-#' is_Hcon(desc[["mpg"]]) # TRUE
-is_Hcon <- function(x, n.unique = 10) {
-  if (as.integer(R.Version()$major) < 4) {
-    stopifnot(is_single_Hdesc(x))
-  } else {
-    stopifnot(
-      `x must be a single Hmisc::describe() object` =
-        is_single_Hdesc(x)
-    )
-  }
+#' \donttest{
+#'   is_hcon(desc[["vs"]]) # FALSE
+#'   is_hcon(desc[["mpg"]]) # TRUE
+#' }
+is_hcon <- function(x, n.unique = 10) {
+  assert_is_single_h_desc(x)
 
   s <- x$counts
   v <- x$values
 
-  length(v) &&
-    is.list(v) &&
-    all(names(v) == c("value", "frequency")) &&
+  is_val_freq_list(v) &&
     ("distinct" %in% names(s)) &&
     (as.numeric(s["distinct"]) >= n.unique) &&
     (is.numeric(v$value) || Hmisc::testDateTime(v$value, "either"))

@@ -21,8 +21,8 @@ a
 Divert output errors to the telegram bot
 }
 \examples{
-\dontrun{
-library(depigner)
-errors_to_telegram()
+if (interactive()) {
+  library(depigner)
+  errors_to_telegram()
 }
 }

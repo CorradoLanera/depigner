@@ -46,30 +46,32 @@ This function could be used as `conTest` option in the
 \code{\link[Hmisc]{summary.formula}} with method `reverse`.
 }
 \examples{
-library(Hmisc)
+\donttest{
+  library(Hmisc)
 
-## two groups
-summary(Species ~ .,
-  data = iris[iris$Species != "setosa", ],
-  method = "reverse",
-  test = TRUE,
-  conTest = paired_test_continuous
-)
+  ## two groups
+  summary(Species ~ .,
+    data = iris[iris$Species != "setosa", ],
+    method = "reverse",
+    test = TRUE,
+    conTest = paired_test_continuous
+  )
 
-## more than two groups
-summary(Species ~ .,
-  data = iris,
-  method = "reverse",
-  test = TRUE,
-  conTest = paired_test_continuous
-)
+  ## more than two groups
+  summary(Species ~ .,
+    data = iris,
+    method = "reverse",
+    test = TRUE,
+    conTest = paired_test_continuous
+  )
 
-## without Hmisc
-two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
-two_groups <- iris$Species[iris$Species != "setosa"]
-paired_test_continuous(two_groups, two_obs)
+  ## without Hmisc
+  two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
+  two_groups <- iris$Species[iris$Species != "setosa"]
+  paired_test_continuous(two_groups, two_obs)
 
-obs <- iris$Sepal.Length
-many_groups <- iris$Species
-paired_test_continuous(many_groups, obs)
+  obs <- iris$Sepal.Length
+  many_groups <- iris$Species
+  paired_test_continuous(many_groups, obs)
+}
 }
