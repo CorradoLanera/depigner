@@ -48,7 +48,7 @@ solved using quick-and-dirty (ugly and maybe even wrong) patches.
 
  Tools Category                         | Function(s)              | Aim                                                                     |
 :---------------------------------------|:-------------------------|:------------------------------------------------------------------------|
-[Harrell's verse](#harrells-verse-tools)| `tidy_summary()`         | _`pander`-ready_ data frame from `Hmisc::sumamry()`                     |
+[Harrell's verse](#harrells-verse-tools)| `tidy_summary()`         | _`pander`-ready_ data frame from `Hmisc::summary()`                     |
 &nbsp;                                  | `paired_test_continuous` | Paired test for continuous variable into `Hmisc::summary`               |
 &nbsp;                                  | `paired_test_categorical`| Paired test for categorical variable into `Hmisc::summary`              |
 &nbsp;                                  | `adjust_p()`             | Adjusts P-values for multiplicity of tests at `tidy_summary()`          |
