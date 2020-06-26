@@ -1,3 +1,5 @@
+# depigner (development version)
+
 # depigner 0.8.1
 
 * Changed `installed.packages()` using `find.package()` to speed up 
