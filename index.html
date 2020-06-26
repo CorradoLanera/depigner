@@ -126,7 +126,7 @@
 <td align="left"><a href="#harrells-verse-tools">Harrell’s verse</a></td>
 <td align="left"><code><a href="reference/tidy_summary.html">tidy_summary()</a></code></td>
 <td align="left">
-<em><code>pander</code>-ready</em> data frame from <code>Hmisc::sumamry()</code>
+<em><code>pander</code>-ready</em> data frame from <code>Hmisc::summary()</code>
 </td>
 </tr>
 <tr class="even">
@@ -266,8 +266,6 @@
 <span class="kw">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">Species</span> <span class="op">~</span><span class="kw">.</span>, data = <span class="kw">iris</span>, method = <span class="st">"reverse"</span>)
 <span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span>(<span class="kw">my_summary</span>) <span class="op">%&gt;%</span> 
   <span class="fu">pander</span>()
-<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
-<span class="co">#&gt; 'along' to 'along.with'</span>
 </pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -310,29 +308,7 @@
                        <span class="co"># use standard `&lt;-` into analyses</span>
 <span class="kw">surv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span>(<span class="kw">heart</span><span class="op">$</span><span class="kw">start</span>, <span class="kw">heart</span><span class="op">$</span><span class="kw">stop</span>, <span class="kw">heart</span><span class="op">$</span><span class="kw">event</span>)
 <span class="kw">f</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/cph.html">cph</a></span>(<span class="kw">surv</span> <span class="op">~</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">year</span> <span class="op">+</span> <span class="kw">surgery</span>, data = <span class="kw">heart</span>)
-<span class="co">#&gt; Warning in seq.default(length = n): partial argument match of 'length' to</span>
-<span class="co">#&gt; 'length.out'</span>
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = lastrow.length): partial argument</span>
-<span class="co">#&gt; match of 'length' to 'length.out'</span>
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
-<span class="co">#&gt; 'length' to 'length.out'</span>
-
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
-<span class="co">#&gt; 'length' to 'length.out'</span>
-
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
-<span class="co">#&gt; 'length' to 'length.out'</span>
-
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
-<span class="co">#&gt; 'length' to 'length.out'</span>
-
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
-<span class="co">#&gt; 'length' to 'length.out'</span>
-
-<span class="co">#&gt; Warning in seq.default(1L, by = 2L, length = start): partial argument match of</span>
-<span class="co">#&gt; 'length' to 'length.out'</span>
 <span class="kw">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">f</span>)
-<span class="co">#&gt; Warning: partial match of 'coef' to 'coefficients'</span>
 <span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span>(<span class="kw">my_summary</span>) <span class="op">%&gt;%</span> 
   <span class="fu">pander</span>()
 </pre></div>
@@ -385,8 +361,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Treatment</span>
-<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
-<span class="co">#&gt; 'along' to 'along.with'</span>
+<span class="co">#&gt; </span>
 <span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span>
 <span class="co">#&gt; |          |Placebo             |Treated             |  Test                        |</span>
 <span class="co">#&gt; |          |(N=43)              |(N=41)              |Statistic                     |</span>
@@ -403,8 +378,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Improved</span>
-<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
-<span class="co">#&gt; 'along' to 'along.with'</span>
+<span class="co">#&gt; </span>
 <span class="co">#&gt; +----------+---------------+---------------+---------------+---------------------+</span>
 <span class="co">#&gt; |          |None           |Some           |Marked         |  Test               |</span>
 <span class="co">#&gt; |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |</span>
@@ -423,8 +397,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Species</span>
-<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
-<span class="co">#&gt; 'along' to 'along.with'</span>
+<span class="co">#&gt; </span>
 <span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
 <span class="co">#&gt; |            |versicolor           |virginica            |  Test                  |</span>
 <span class="co">#&gt; |            |(N=50)               |(N=50)               |Statistic               |</span>
@@ -447,8 +420,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Descriptive Statistics by Species</span>
-<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
-<span class="co">#&gt; 'along' to 'along.with'</span>
+<span class="co">#&gt; </span>
 <span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
 <span class="co">#&gt; |            |setosa              |versicolor          |virginica           |  Test                 |</span>
 <span class="co">#&gt; |            |(N=50)              |(N=50)              |(N=50)              |Statistic              |</span>
@@ -471,8 +443,6 @@
 
   <span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span>(<span class="kw">my_summary</span>) <span class="op">%&gt;%</span>
       <span class="fu"><a href="reference/adjust_p.html">adjust_p</a></span>()
-<span class="co">#&gt; Warning in seq.default(along = mat.names.width): partial argument match of</span>
-<span class="co">#&gt; 'along' to 'along.with'</span>
 <span class="co">#&gt; Warning: Unknown or uninitialised column: `P-value`.</span>
 <span class="co">#&gt; x   The object `x` does not have a P-value column.</span>
 <span class="co">#&gt;     Have you select `test = TRUE` into `summary()`?</span>
