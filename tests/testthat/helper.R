@@ -27,6 +27,15 @@ scoped_temporary_project <- function(dir = fs::file_temp(pattern = pattern),
   scoped_temporary_thing(dir, env, rstudio, "project")
 }
 
+
+scoped_temporary_package <- function(dir = fs::file_temp(pattern = pattern),
+                                     env = parent.frame(),
+                                     rstudio = FALSE) {
+  scoped_temporary_thing(dir, env, rstudio, "package")
+}
+
+
+
 scoped_temporary_thing <- function(dir = fs::file_temp(pattern = pattern),
                                    env = parent.frame(),
                                    rstudio = FALSE,

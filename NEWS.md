@@ -1,4 +1,14 @@
-# depigner (development version)
+# depigner 0.8.2
+
+* Fix a bug, caused to an updated version of `as_tibble`, that prevent
+  to variables names used in `summary()` to be showed when passed to
+  `tidy_summary()` (#17).
+* To avoid collision with `{usethis}` namespace itself, `use_ui` now
+  use its own `R/utils-depigner.R` template which incorporate the 
+  roxygen2 comments to update the `NAMESPACE` by depigner. Currently
+  this is used to activate the `{usethis}`' User Interface functions
+  only (fixes #18).
+* Fixed a typo in `use_ui` that prevents it to work correctly (#18).
 
 # depigner 0.8.1
 

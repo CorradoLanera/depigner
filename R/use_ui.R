@@ -54,18 +54,27 @@ use_ui <- function() {
       Adding {ui_value('usethis')} to {ui_field('Imports')} field
       in DESCRIPTION.
     ")
-    desc::desc_set_dep("usethis", "imports", file = this_proj)
+    desc::desc_set_dep("usethis", "Imports", file = this_proj)
   }
 
   existing_type <- setdiff(existing_type, "LinkingTo")
   types <- c("Depends", "Imports", "Suggests", "Enhances", "LinkingTo")
-  if (sign(match(existing_type, types) - match("Imports", types)) > 0) {
+
+  if (length(existing_type) &&
+    (match(existing_type, types) > match("Imports", types))
+  ) {
     ui_done("
       Moving {ui_value('usethis)} from {ui_field(existing_type)}
       to {ui_field('Imports')} field in DESCRIPTION.
     ")
     desc::desc_del_dep("usethis", existing_type, file = this_proj)
     desc::desc_set_dep("usethis", "Imports", file = this_proj)
+  }
+
+  path <- fs::path("R", "utils-depigner", ext = "R")
+
+  if (!fs::file_exists(path)) {
+    usethis::use_template("utils-depigner.R", path, package = "depigner")
   }
 
   # Paste is needed because roxygen2 reads those lines as
@@ -80,7 +89,10 @@ use_ui <- function() {
     sep = "\n"
   )
 
-  success <- block_append(tag, path = usethis::proj_path())
+  success <- block_append(
+    tag,
+    path = fs::path(usethis::proj_path(), path)
+  )
   if (success) ui_todo("
     Run {ui_code('devtools::document()')} to update {ui_path('NAMESPACE')}
   ")

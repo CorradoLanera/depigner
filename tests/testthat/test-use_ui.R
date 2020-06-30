@@ -6,3 +6,8 @@ test_that("use_ui() requires a package", {
     "designed to work with packages", class = "usethis_error"
   )
 })
+
+test_that("use_ui() works", {
+  scoped_temporary_package()
+  expect_true(use_ui())
+})
