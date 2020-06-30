@@ -39,3 +39,27 @@ test_that("correct class", {
 
   expect_is(tidy_summary(my_summary), "data.frame")
 })
+
+
+
+
+
+
+
+
+
+test_that("tidy_summary return var names too (#17)", {
+
+  result <- tidy_summary(
+    summary(Species ~ ., data = iris, method = "reverse")
+  )
+
+  expect_equal(
+    result[[1]],
+    c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
+  )
+
+})
+
+
+
