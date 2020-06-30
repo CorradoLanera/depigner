@@ -16,7 +16,7 @@ devtools::check()
 # devtools::check() # from RStudio button too: non interactive session!
 
 
-## Befor CRAN
+## Before CRAN
 devtools::build_readme()
 devtools::check(remote = TRUE, manual = TRUE)
 devtools::check_win_devel()
