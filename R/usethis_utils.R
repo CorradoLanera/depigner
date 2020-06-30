@@ -150,9 +150,9 @@ block_find <- function(lines, block_start, block_end) {
 block_append <- function(value, path) {
   # adapted from usethis:::block_append to be used in use_ui()
 
-  block_start <- "## usethis namespace: start"
+  block_start <- "## depigner namespace: start"
   block_lines <- NULL
-  block_end   <- "## usethis namespace: end"
+  block_end   <- "## depigner namespace: end"
 
   if (fs::file_exists(path)) {
     lines <- readLines(path, encoding = "UTF-8", warn = FALSE)
