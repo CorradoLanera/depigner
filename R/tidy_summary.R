@@ -42,15 +42,13 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
   }))
 
   colnames(printed) <- printed[1, ]
-  printed <- dplyr::as_tibble(printed)
+  printed <- dplyr::as_tibble(printed, rownames = "&nbsp;") %>%
+    dplyr::mutate(
+      `&nbsp;` = .data[["&nbsp;"]] %>%
+        stringr::str_replace_all(" ", "&nbsp;")
+    )
 
-  printed[["&nbsp;"]] <- row.names(printed) %>%
-    stringr::str_replace_all(" ", "&nbsp;")
-
-  ordered_cols <- c("&nbsp;", setdiff(names(printed), "&nbsp;"))
-
-  res <- printed[ordered_cols] %>%
-    dplyr::filter(dplyr::row_number() != 1)
+  res <- printed[-1L, ]
 
   class(res) <- c("tidy_summary", class(res))
   res

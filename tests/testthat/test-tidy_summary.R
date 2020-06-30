@@ -60,6 +60,3 @@ test_that("tidy_summary return var names too (#17)", {
   )
 
 })
-
-
-
