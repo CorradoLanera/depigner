@@ -1,4 +1,4 @@
-# depigner (development version)
+# depigner 0.8.2
 
 * Fix a bug, caused to an updated version of `as_tibble`, that prevent
   to variables names used in `summary()` to be showed when passed to
