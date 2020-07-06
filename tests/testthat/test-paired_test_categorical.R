@@ -58,3 +58,9 @@ test_that("singular matrix were managed", {
   expect_is(out, "list")
   expect_true(is.na(out[["P"]]))
 })
+
+
+test_that("matrices are converted to table with a warning", {
+  mat_test <- matrix(1:9, nrow = 3, dimnames = list(a = 1:3, b = 1:3))
+  expect_warning(paired_test_categorical(mat_test))
+})
