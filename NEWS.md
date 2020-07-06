@@ -1,8 +1,12 @@
 # depigner (development version)
 
+* Fixed a bug that prevent to `paired_test_categorical()` to work 
+  properly when (possibly unnamed) matrices are provided to it instead
+  of tables (#22, #23). 
+
 # depigner 0.8.2
 
-* Fix a bug, caused to an updated version of `as_tibble`, that prevent
+* Fixed a bug, caused to an updated version of `as_tibble`, that prevent
   to variables names used in `summary()` to be showed when passed to
   `tidy_summary()` (#17).
 * To avoid collision with `{usethis}` namespace itself, `use_ui` now

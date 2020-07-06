@@ -13,7 +13,8 @@
 #' \code{\link[Hmisc]{summary.formula}} with method `reverse`.
 #'
 #'
-#' @param tab a frequency table (an integer matrix)
+#' @param tab a frequency table (an integer `table`, if a `matrix` is
+#'   provided, it will be coerced to a `table` internally)
 #'
 #' @return A list with components
 #'         `P` (the computed P-value),
@@ -56,6 +57,14 @@ paired_test_categorical <- function(tab) {
 
   # input check -----------------------------------------------------
   if (!is_proper_matrix(tab)) return(empty_h_test())
+
+  if (!inherits(tab, "table")) {
+    ui_warn("{ui_field(tab)} is not a table.
+      It will be coerced to a table by {ui_code('as.table()')}.
+      If not sure the coercion is correct, please provide a table directly.
+    ")
+    tab <- as.table(tab)
+  }
 
   rowcounts <- tab %*% rep(1, ncol(tab))
   tab <- tab[rowcounts > 0, ]
