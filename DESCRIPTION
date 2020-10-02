@@ -1,6 +1,6 @@
 Package: depigner
 Title: A Utility Package to Help you Deal with "Pignas"
-Version: 0.8.3
+Version: 0.8.3.9000
 Authors@R: 
     person(given = "Corrado",
            family = "Lanera",
@@ -49,10 +49,10 @@ Imports:
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1),
     usethis (>= 1.5.0),
+    rms (>= 5.1.2),
     utils
 Suggests: 
     covr (>= 3.1.0),
-    rms (>= 5.1.2),
     spelling,
     survival,
     testthat (>= 2.1.0),
