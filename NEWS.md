@@ -1,5 +1,8 @@
 # depigner (development version)
 
+* Fixed `summary_interact()` after stop of support from `{broom}` to 
+  `summary.rms` objects (#27).
+
 * Fixed a bug that prevent to `paired_test_categorical()` to work 
   properly when (possibly unnamed) matrices are provided to it instead
   of tables (#22, #23). 
