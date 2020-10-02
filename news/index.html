@@ -79,19 +79,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -102,6 +96,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.corradolanera.it/2020/10/02/depigner-0-8-3/">Version 0.8.3</a>
+    </li>
     <li>
       <a href="https://www.corradolanera.it/2020/06/26/depigner-0-8-1/">Version 0.8.1</a>
     </li>
@@ -136,13 +133,32 @@
       <small>Source: <a href='https://github.com/CorradoLanera/depigner/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="depigner-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="development version">
+<a href="#depigner-development-version" class="anchor"></a>depigner (development version)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Move <a href="https://hbiostat.org/R/rms">rms</a> to IMPORTS.</li>
+</ul>
+</div>
+    <div id="depigner-083" class="section level1">
+<h1 class="page-header" data-toc-text="0.8.3">
+<a href="#depigner-083" class="anchor"></a>depigner 0.8.3<small> 2020-10-02 </small>
+</h1>
+<ul>
+<li>Fixed a bug in <code><a href="../reference/paired_test_categorical.html">paired_test_categorical()</a></code> that happen when only one value is zero from one group to another (<a href='https://github.com/CorradoLanera/depigner/issues/24'>#24</a>).</li>
+<li>Fixed a bug related to temporary project and packages in testing environments (<a href='https://github.com/CorradoLanera/depigner/issues/28'>#28</a>).</li>
+<li>Fixed <code><a href="../reference/summary_interact.html">summary_interact()</a></code> after stop of support from <code>{broom}</code> to <code>summary.rms</code> objects (<a href='https://github.com/CorradoLanera/depigner/issues/27'>#27</a>).</li>
+<li>Fixed a bug that prevent to <code><a href="../reference/paired_test_categorical.html">paired_test_categorical()</a></code> to work properly when (possibly unnamed) matrices are provided to it instead of tables (<a href='https://github.com/CorradoLanera/depigner/issues/22'>#22</a>, <a href='https://github.com/CorradoLanera/depigner/issues/23'>#23</a>).</li>
+</ul>
+</div>
     <div id="depigner-082" class="section level1">
 <h1 class="page-header" data-toc-text="0.8.2">
 <a href="#depigner-082" class="anchor"></a>depigner 0.8.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>Fix a bug, caused to an updated version of <code>as_tibble</code>, that prevent to variables names used in <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> to be showed when passed to <code><a href="https://rdrr.io/pkg/depigner/man/tidy_summary.html">tidy_summary()</a></code> (<a href='https://github.com/CorradoLanera/depigner/issues/17'>#17</a>).</li>
-<li>To avoid collision with <code>{usethis}</code> namespace itself, <code>use_ui</code> now use its own <code>R/utils-depigner.R</code> template which incorporate the roxygen2 comments to update the <code>NAMESPACE</code> by depigner. Currently this is used to activate the <code>{usethis}</code>’ User Interface functions only (fixes <a href='https://github.com/CorradoLanera/depigner/issues/18'>#18</a>).</li>
+<li>Fixed a bug, caused to an updated version of <code>as_tibble</code>, that prevent to variables names used in <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> to be showed when passed to <code><a href="../reference/tidy_summary.html">tidy_summary()</a></code> (<a href='https://github.com/CorradoLanera/depigner/issues/17'>#17</a>).</li>
+<li>To avoid collision with <a href="https://usethis.r-lib.org">usethis</a> namespace itself, <code>use_ui</code> now use its own <code>R/utils-depigner.R</code> template which incorporate the roxygen2 comments to update the <code>NAMESPACE</code> by depigner. Currently this is used to activate the <a href="https://usethis.r-lib.org">usethis</a>’ User Interface functions only (fixes <a href='https://github.com/CorradoLanera/depigner/issues/18'>#18</a>).</li>
 <li>Fixed a typo in <code>use_ui</code> that prevents it to work correctly (<a href='https://github.com/CorradoLanera/depigner/issues/18'>#18</a>).</li>
 </ul>
 </div>
@@ -152,7 +168,7 @@
 </h1>
 <ul>
 <li>Changed <code><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages()</a></code> using <code><a href="https://rdrr.io/r/base/find.package.html">find.package()</a></code> to speed up the evaluation considerably, especially when thousand of packages are installed into the system. In the <code>README</code>’s example is still used <code><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages()</a></code> because that example have to know all the names of the installed packages.</li>
-<li>Changed <code>\dontrun{}</code> with <code>\donttest{}</code> in the examples which can “run” but should not be tested. Telegram’s related examples and the <code><a href="https://rdrr.io/pkg/depigner/man/use_ui.html">use_ui()</a></code> one still report <code>\dontrun{}</code> because they require special environments (Telegram configuration and package-like project) to be executed without errors (<a href='https://github.com/CorradoLanera/depigner/issues/16'>#16</a>)</li>
+<li>Changed <code>\dontrun{}</code> with <code>\donttest{}</code> in the examples which can “run” but should not be tested. Telegram’s related examples and the <code><a href="../reference/use_ui.html">use_ui()</a></code> one still report <code>\dontrun{}</code> because they require special environments (Telegram configuration and package-like project) to be executed without errors (<a href='https://github.com/CorradoLanera/depigner/issues/16'>#16</a>)</li>
 </ul>
 </div>
     <div id="depigner-080" class="section level1">
@@ -161,19 +177,19 @@
 </h1>
 <ul>
 <li>Reduced cyclocomp up to 15.</li>
-<li>Improved and execute <code>if (interactive())</code> only, the <code><a href="https://rdrr.io/pkg/depigner/man/gdp.html">gdp()</a></code> examples.</li>
-<li>Removed <code>{usethis}</code> interface for message startup to make it able to be suppressed.</li>
-<li>Added <code><a href="https://rdrr.io/pkg/depigner/man/imported_from.html">imported_from()</a></code> function to get the list of imported packages by a package.</li>
-<li>Changed interface to package installers and sets of packages. Introduced <code>pkg_*</code> sets, changed <code>check_pkg()</code> to <code><a href="https://rdrr.io/pkg/depigner/man/install_pkg_set.html">install_pkg_set()</a></code>, exported <code><a href="https://rdrr.io/pkg/depigner/man/please_install.html">please_install()</a></code>
+<li>Improved and execute <code>if (interactive())</code> only, the <code><a href="../reference/gdp.html">gdp()</a></code> examples.</li>
+<li>Removed <a href="https://usethis.r-lib.org">usethis</a> interface for message startup to make it able to be suppressed.</li>
+<li>Added <code><a href="../reference/imported_from.html">imported_from()</a></code> function to get the list of imported packages by a package.</li>
+<li>Changed interface to package installers and sets of packages. Introduced <code>pkg_*</code> sets, changed <code>check_pkg()</code> to <code><a href="../reference/install_pkg_set.html">install_pkg_set()</a></code>, exported <code><a href="../reference/please_install.html">please_install()</a></code>
 </li>
 <li>Updated <code>README</code> including a table of contents, some badges, and reordering the sections</li>
 <li>Moved <code>fs</code> to Imports</li>
-<li>Added dependencies from packages <code>{lattice}</code>, <code>{survival}</code>, and <code>{Formula}</code>, which <code>Hmisc</code> depends on (require for checks).</li>
-<li>Fix <code>{progress}</code> reference into <code>README</code>.</li>
-<li>Isolate <code><a href="https://rdrr.io/pkg/depigner/man/use_ui.html">use_ui()</a></code> from unexported functions of <code>{usethis}</code> package.</li>
+<li>Added dependencies from packages <a href="http://lattice.r-forge.r-project.org/">lattice</a>, <a href="https://github.com/therneau/survival">survival</a>, and <code>{Formula}</code>, which <code>Hmisc</code> depends on (require for checks).</li>
+<li>Fix <a href="https://github.com/r-lib/progress#readme">progress</a> reference into <code>README</code>.</li>
+<li>Isolate <code><a href="../reference/use_ui.html">use_ui()</a></code> from unexported functions of <a href="https://usethis.r-lib.org">usethis</a> package.</li>
 <li>Reformat <code>DESCRIPTION</code> purging some unused imports dependencies, and rewriting pkg title and description accordingly to the new corresponding entries in the <code>README</code>
 </li>
-<li>Fixed a typo in the call of the generic <code><a href="https://rdrr.io/pkg/depigner/man/tidy_summary.html">tidy_summary()</a></code>, and refactor it <code><a href="https://rdrr.io/pkg/depigner/man/tidy_summary.html">tidy_summary.summary.formula.reverse()</a></code> method.</li>
+<li>Fixed a typo in the call of the generic <code><a href="../reference/tidy_summary.html">tidy_summary()</a></code>, and refactor it <code><a href="../reference/tidy_summary.html">tidy_summary.summary.formula.reverse()</a></code> method.</li>
 </ul>
 </div>
     <div id="depigner-070" class="section level1">
@@ -181,7 +197,7 @@
 <a href="#depigner-070" class="anchor"></a>depigner 0.7.0<small> Unreleased </small>
 </h1>
 <ul>
-<li>Change compatibility requiring R3.6+ (because of package <code>{latticeExtra}</code>, required by <code>{Hmisc}</code>, which depends on it).</li>
+<li>Change compatibility requiring R3.6+ (because of package <a href="http://latticeextra.r-forge.r-project.org/">latticeExtra</a>, required by <a href="https://hbiostat.org/R/Hmisc/">Hmisc</a>, which depends on it).</li>
 <li>Update gh-actions to tidy ones.</li>
 <li>Update <code>README</code>.</li>
 </ul>
@@ -203,7 +219,7 @@
 </h1>
 <ul>
 <li>Update <code>README</code> including examples for all the exported functions.</li>
-<li>Added <code>Htypes()</code>, <code>Htype()</code> and complementary functions and relative. tests, to get/check when a variable is considered categorical or continuous by the <code>{Hmisc}</code> ecosystem.</li>
+<li>Added <code>Htypes()</code>, <code>Htype()</code> and complementary functions and relative. tests, to get/check when a variable is considered categorical or continuous by the <a href="https://hbiostat.org/R/Hmisc/">Hmisc</a> ecosystem.</li>
 </ul>
 </div>
     <div id="depigner-050" class="section level1">
@@ -213,8 +229,8 @@
 <ul>
 <li>Introduce <code><a href="https://rlang.r-lib.org/reference/tidyeval-data.html">rlang::.data</a></code> to remove notes on CMD check for tidyeval missing variables.</li>
 <li>Update all the UIs to usethis’ ones.</li>
-<li>Exported <code><a href="https://rdrr.io/pkg/depigner/man/ci2p.html">ci2p()</a></code> (issue <a href='https://github.com/CorradoLanera/depigner/issues/6'>#6</a>).</li>
-<li>Add <code><a href="https://rdrr.io/pkg/depigner/man/use_ui.html">use_ui()</a></code> to add what is necessary to use the usethis’ user interfaces in a package.</li>
+<li>Exported <code><a href="../reference/ci2p.html">ci2p()</a></code> (issue <a href='https://github.com/CorradoLanera/depigner/issues/6'>#6</a>).</li>
+<li>Add <code><a href="../reference/use_ui.html">use_ui()</a></code> to add what is necessary to use the usethis’ user interfaces in a package.</li>
 </ul>
 </div>
     <div id="depigner-041" class="section level1">
@@ -222,8 +238,8 @@
 <a href="#depigner-041" class="anchor"></a>depigner 0.4.1<small> Unreleased </small>
 </h1>
 <ul>
-<li>Add <code><a href="https://rdrr.io/pkg/depigner/man/pb_len.html">tick()</a></code> as a wrapper to update a progress bar.</li>
-<li>Add <code><a href="https://rdrr.io/pkg/depigner/man/pb_len.html">pb_len()</a></code> as a wrapper to <code><a href="https://rdrr.io/pkg/progress/man/progress_bar.html">progress::progress_bar()</a></code> for a quick and ready to use progress bar with default options.</li>
+<li>Add <code><a href="../reference/pb_len.html">tick()</a></code> as a wrapper to update a progress bar.</li>
+<li>Add <code><a href="../reference/pb_len.html">pb_len()</a></code> as a wrapper to <code><a href="https://rdrr.io/pkg/progress/man/progress_bar.html">progress::progress_bar()</a></code> for a quick and ready to use progress bar with default options.</li>
 </ul>
 </div>
     <div id="depigner-040" class="section level1">
@@ -232,8 +248,8 @@
 </h1>
 <ul>
 <li>Minor (warnings) fixes to the tests.</li>
-<li>Add <code><a href="https://rdrr.io/pkg/depigner/man/adjust_p.html">adjust_p()</a></code> function to adjust the P-values from a <code>tidy_summary</code> summary using methods provided by <code><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust()</a></code>.</li>
-<li>Add <code><a href="https://rdrr.io/pkg/depigner/man/errors_to_telegram.html">errors_to_telegram()</a></code> function to automatically parrot all the error messages to a chat from a Telegram bot.</li>
+<li>Add <code><a href="../reference/adjust_p.html">adjust_p()</a></code> function to adjust the P-values from a <code>tidy_summary</code> summary using methods provided by <code><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust()</a></code>.</li>
+<li>Add <code><a href="../reference/errors_to_telegram.html">errors_to_telegram()</a></code> function to automatically parrot all the error messages to a chat from a Telegram bot.</li>
 </ul>
 </div>
     <div id="depigner-031" class="section level1">
@@ -252,7 +268,7 @@
 <ul>
 <li>Introduce dependency from R &gt;= 3.5 because of the package <strong>mvtnorm</strong> which is in the tree of <strong>rms</strong> and <strong>Hmisc</strong> and depends on the version of R 3.5.</li>
 <li>Moved <strong>survival</strong>, <strong>rms</strong> and <strong>Hmisc</strong> from Imports to Suggests.</li>
-<li>Added <code><a href="https://rdrr.io/pkg/depigner/man/start_bot_for_chat.html">start_bot_for_chat()</a></code> function, <code><a href="https://rdrr.io/pkg/depigner/man/send_to_telegram.html">send_to_telegram()</a></code> generics with methods for string and ggplot plots, and not exported functionalities as a wrappers to the main functions of the <strong>telegram.bot</strong> package.</li>
+<li>Added <code><a href="../reference/start_bot_for_chat.html">start_bot_for_chat()</a></code> function, <code><a href="../reference/send_to_telegram.html">send_to_telegram()</a></code> generics with methods for string and ggplot plots, and not exported functionalities as a wrappers to the main functions of the <strong>telegram.bot</strong> package.</li>
 <li>Added tests to paired tests functions’ tests.</li>
 <li>Remove dependencies from <strong>vcd</strong> package.</li>
 </ul>
@@ -262,8 +278,8 @@
 <a href="#depigner-020" class="anchor"></a>depigner 0.2.0<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added <code><a href="https://rdrr.io/pkg/depigner/man/paired_test_categorical.html">paired_test_categorical()</a></code> function to implement paired test for categorical variable accordingly to the number of groups, in a suitable way to be used in the <strong>Hmisc</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with <code>method = "reverse"</code>.</li>
-<li>Added <code><a href="https://rdrr.io/pkg/depigner/man/paired_test_continuous.html">paired_test_continuous()</a></code> function to implement paired test for continuous variable accordingly to the number of groups, in a suitable way to be used in the <strong>Hmisc</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with <code>method = "reverse"</code>.</li>
+<li>Added <code><a href="../reference/paired_test_categorical.html">paired_test_categorical()</a></code> function to implement paired test for categorical variable accordingly to the number of groups, in a suitable way to be used in the <strong>Hmisc</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with <code>method = "reverse"</code>.</li>
+<li>Added <code><a href="../reference/paired_test_continuous.html">paired_test_continuous()</a></code> function to implement paired test for continuous variable accordingly to the number of groups, in a suitable way to be used in the <strong>Hmisc</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with <code>method = "reverse"</code>.</li>
 </ul>
 </div>
     <div id="depigner-010" class="section level1">
@@ -272,10 +288,10 @@
 </h1>
 <ul>
 <li>Some variable names updated.</li>
-<li>Bug fixed in <code><a href="https://rdrr.io/pkg/depigner/man/summary_interact.html">summary_interact()</a></code>.</li>
+<li>Bug fixed in <code><a href="../reference/summary_interact.html">summary_interact()</a></code>.</li>
 <li>Add some tests.</li>
 <li>Added support for <code>tibble</code>s.</li>
-<li>Added <code><a href="https://rdrr.io/pkg/depigner/man/tidy_summary.html">tidy_summary()</a></code> generics function and method for <strong>Hmisc</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with <code>method = "reverse"</code>.</li>
+<li>Added <code><a href="../reference/tidy_summary.html">tidy_summary()</a></code> generics function and method for <strong>Hmisc</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with <code>method = "reverse"</code>.</li>
 </ul>
 </div>
     <div id="depigner-002" class="section level1">
@@ -283,8 +299,8 @@
 <a href="#depigner-002" class="anchor"></a>depigner 0.0.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>Fixed <code><a href="https://rdrr.io/pkg/depigner/man/summary_interact.html">summary_interact()</a></code> function.</li>
-<li>Added <code><a href="https://rdrr.io/pkg/depigner/man/gdp.html">gdp()</a></code> function.</li>
+<li>Fixed <code><a href="../reference/summary_interact.html">summary_interact()</a></code> function.</li>
+<li>Added <code><a href="../reference/gdp.html">gdp()</a></code> function.</li>
 <li>Added basic infrastructure to the package.</li>
 </ul>
 </div>
@@ -305,7 +321,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

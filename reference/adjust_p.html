@@ -80,19 +80,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -103,6 +97,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.corradolanera.it/2020/10/02/depigner-0-8-3/">Version 0.8.3</a>
+    </li>
     <li>
       <a href="https://www.corradolanera.it/2020/06/26/depigner-0-8-1/">Version 0.8.1</a>
     </li>
@@ -139,20 +136,20 @@
     </div>
 
     <div class="ref-description">
-    <p>Adjust P-values of a <code><a href='https://rdrr.io/pkg/depigner/man/tidy_summary.html'>tidy_summary</a></code> object</p>
+    <p>Adjust P-values of a <code><a href='tidy_summary.html'>tidy_summary</a></code> object</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/adjust_p.html'>adjust_p</a></span>(<span class='kw'>x</span>, <span class='kw'>method</span>)
+    <pre class="usage"><span class='fu'>adjust_p</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>method</span><span class='op'>)</span>
 
 <span class='co'># S3 method for tidy_summary</span>
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/adjust_p.html'>adjust_p</a></span>(<span class='kw'>x</span>, method = <span class='st'>"BH"</span>)</pre>
+<span class='fu'>adjust_p</span><span class='op'>(</span><span class='va'>x</span>, method <span class='op'>=</span> <span class='st'>"BH"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a <code><a href='https://rdrr.io/pkg/depigner/man/tidy_summary.html'>tidy_summary</a></code> object.</p></td>
+      <td><p>a <code><a href='tidy_summary.html'>tidy_summary</a></code> object.</p></td>
     </tr>
     <tr>
       <th>method</th>
@@ -163,24 +160,29 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code><a href='https://rdrr.io/pkg/depigner/man/tidy_summary.html'>tidy_summary</a></code> object with the Ps adjusted</p>
+    <p>a <code><a href='tidy_summary.html'>tidy_summary</a></code> object with the Ps adjusted</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://biostat.mc.vanderbilt.edu/Hmisc'>Hmisc</a></span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: lattice</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: survival</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Formula</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'></span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://hbiostat.org/R/Hmisc/'>Hmisc</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Loading required package: lattice</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: survival</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Formula</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘Hmisc’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    format.pval, units</span></div><div class='input'>  <span class='kw'>my_summary</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>Species</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>iris</span>, method = <span class='st'>"reverse"</span>)
+#&gt; <span class='message'>    format.pval, units</span></div><div class='input'>  <span class='va'>my_summary</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Species</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>iris</span>,
+    method <span class='op'>=</span> <span class='st'>"reverse"</span>,
+    test <span class='op'>=</span> <span class='cn'>TRUE</span>
+  <span class='op'>)</span>
 
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/tidy_summary.html'>tidy_summary</a></span>(<span class='kw'>my_summary</span>) <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/adjust_p.html'>adjust_p</a></span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `P-value`.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #BB0000;'>✖</span><span>   The object </span><span style='color: #555555;'>`x`</span><span> does not have a </span><span style='color: #00BB00;'>P-value</span><span> column.</span>
-#&gt; <span class='message'>    Have you select </span><span style='color: #555555;'>`test = TRUE`</span><span> into </span><span style='color: #555555;'>`summary()`</span><span>?</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>✖</span><span> </span><span style='color: #555555;'>`x`</span><span> is returned without changes.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
-#&gt;   `&amp;nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` `virginica \n(N=50)`
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               
-#&gt; </span><span style='color: #555555;'>1</span><span> Sepal.Length </span><span style='color: #555555;'>"</span><span>4.800/5.000/5.200</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>5.600/5.900/6.300</span><span style='color: #555555;'>"</span><span>   </span><span style='color: #555555;'>"</span><span>6.225/6.500/6.900</span><span style='color: #555555;'>"</span><span> 
-#&gt; </span><span style='color: #555555;'>2</span><span> Sepal.Width  </span><span style='color: #555555;'>"</span><span>3.200/3.400/3.675</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>2.525/2.800/3.000</span><span style='color: #555555;'>"</span><span>   </span><span style='color: #555555;'>"</span><span>2.800/3.000/3.175</span><span style='color: #555555;'>"</span><span> 
-#&gt; </span><span style='color: #555555;'>3</span><span> Petal.Length </span><span style='color: #555555;'>"</span><span>1.400/1.500/1.575</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>4.000/4.350/4.600</span><span style='color: #555555;'>"</span><span>   </span><span style='color: #555555;'>"</span><span>5.100/5.550/5.875</span><span style='color: #555555;'>"</span><span> 
-#&gt; </span><span style='color: #555555;'>4</span><span> Petal.Width  </span><span style='color: #555555;'>"</span><span>   0.2/0.2/0.3</span><span style='color: #555555;'>"</span><span>    </span><span style='color: #555555;'>"</span><span>   1.2/1.3/1.5</span><span style='color: #555555;'>"</span><span>      </span><span style='color: #555555;'>"</span><span>   1.8/2.0/2.3</span><span style='color: #555555;'>"</span><span>    </div><div class='input'><span class='co'># }</span></div></span></pre>
+  <span class='fu'><a href='tidy_summary.html'>tidy_summary</a></span><span class='op'>(</span><span class='va'>my_summary</span>, prtest <span class='op'>=</span> <span class='st'>"P"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>adjust_p</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> P adjusted with BH method.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 5</span><span>
+#&gt;   `&amp;nbsp;`   `setosa \n(N=50)`  `versicolor \n(N=… `virginica \n(N=… `P-value`  
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'>1</span><span> Sepal.Len… </span><span style='color: #555555;'>"</span><span>4.800/5.000/5.20… </span><span style='color: #555555;'>"</span><span>5.600/5.900/6.30… </span><span style='color: #555555;'>"</span><span>6.225/6.500/6.9… </span><span style='color: #555555;'>"</span><span>      &lt;0.…
+#&gt; </span><span style='color: #555555;'>2</span><span> Sepal.Wid… </span><span style='color: #555555;'>"</span><span>3.200/3.400/3.67… </span><span style='color: #555555;'>"</span><span>2.525/2.800/3.00… </span><span style='color: #555555;'>"</span><span>2.800/3.000/3.1… </span><span style='color: #555555;'>"</span><span>     &lt;=0.…
+#&gt; </span><span style='color: #555555;'>3</span><span> Petal.Len… </span><span style='color: #555555;'>"</span><span>1.400/1.500/1.57… </span><span style='color: #555555;'>"</span><span>4.000/4.350/4.60… </span><span style='color: #555555;'>"</span><span>5.100/5.550/5.8… </span><span style='color: #555555;'>"</span><span>     &lt;=0.…
+#&gt; </span><span style='color: #555555;'>4</span><span> Petal.Wid… </span><span style='color: #555555;'>"</span><span>   0.2/0.2/0.3</span><span style='color: #555555;'>"</span><span>   </span><span style='color: #555555;'>"</span><span>   1.2/1.3/1.5</span><span style='color: #555555;'>"</span><span>   </span><span style='color: #555555;'>"</span><span>   1.8/2.0/2.3</span><span style='color: #555555;'>"</span><span>  </span><span style='color: #555555;'>"</span><span>     &lt;=0.…</div><div class='input'><span class='co'># }</span>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -196,7 +198,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

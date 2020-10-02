@@ -82,19 +82,13 @@ will considered a categorical variable or a continuous one." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -105,6 +99,9 @@ will considered a categorical variable or a continuous one." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.corradolanera.it/2020/10/02/depigner-0-8-3/">Version 0.8.3</a>
+    </li>
     <li>
       <a href="https://www.corradolanera.it/2020/06/26/depigner-0-8-1/">Version 0.8.1</a>
     </li>
@@ -146,19 +143,19 @@ a single instance of an `Hmisc`'s [describe][Hmisc::describe] object
 will considered a categorical variable or a continuous one.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
+    <pre class="usage"><span class='fu'>htype</span><span class='op'>(</span><span class='va'>x</span>, n_unique <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
+<span class='fu'>htypes</span><span class='op'>(</span><span class='va'>x</span>, n_unique <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 
 <span class='co'># S3 method for describe</span>
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
+<span class='fu'>htypes</span><span class='op'>(</span><span class='va'>x</span>, n_unique <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)
+<span class='fu'>htypes</span><span class='op'>(</span><span class='va'>x</span>, n_unique <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcat</a></span>(<span class='kw'>x</span>)
+<span class='fu'>is_hcat</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcon</a></span>(<span class='kw'>x</span>, n.unique = <span class='fl'>10</span>)</pre>
+<span class='fu'>is_hcon</span><span class='op'>(</span><span class='va'>x</span>, n_unique <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,7 +167,7 @@ cases of "singular" functions (ie `is_*()` or `htype()`) it must
 be a single-variable [describe][Hmisc::describe] object.</p></td>
     </tr>
     <tr>
-      <th>n.unique</th>
+      <th>n_unique</th>
       <td><p>(int, 10) the minimum number of distinct values a
 numeric variable must have before plot.describe uses it in a
 continuous variable plot.</p></td>
@@ -226,12 +223,16 @@ continuous variable plot.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://biostat.mc.vanderbilt.edu/Hmisc'>Hmisc</a></span>)
-  <span class='kw'>desc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/describe.html'>describe</a></span>(<span class='kw'>mtcars</span>)
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://hbiostat.org/R/Hmisc/'>Hmisc</a></span><span class='op'>)</span>
+  <span class='va'>desc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/describe.html'>describe</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>desc</span>[[<span class='st'>"vs"</span>]]) <span class='co'># "cat"</span></div><div class='output co'>#&gt; [1] "cat"</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>desc</span>[[<span class='st'>"mpg"</span>]]) <span class='co'># "con"</span></div><div class='output co'>#&gt; [1] "con"</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htype</a></span>(<span class='kw'>desc</span>[[<span class='st'>"cyl"</span>]]) <span class='co'># "none"</span></div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='co'># }</span>
+  <span class='fu'>htype</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"vs"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># "cat"</span>
+</div><div class='output co'>#&gt; [1] "cat"</div><div class='input'>  <span class='fu'>htype</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"mpg"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># "con"</span>
+</div><div class='output co'>#&gt; [1] "con"</div><div class='input'>  <span class='fu'>htype</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"cyl"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># "none"</span>
+</div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>desc</span>) <span class='co'># c(</span></div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
+  <span class='fu'>htypes</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>)</span> <span class='co'># c(</span>
+</div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
 #&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'>  <span class='co'>#   mpg = "con", cyl = "none", disp = "con",</span>
   <span class='co'>#   hp = "con", drat = "con", wt = "con", qsec = "con",</span>
   <span class='co'>#   vs = "cat", am = "cat", gear = "none",</span>
@@ -239,12 +240,19 @@ continuous variable plot.</p></td>
   <span class='co'># )</span>
 <span class='co'># }</span>
 <span class='co'># \donttest{</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>mtcars</span>) <span class='co'># htypes(desc)</span></div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
-#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>htypes</a></span>(<span class='kw'>letters</span>) <span class='co'># "none"</span></div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='co'># }</span>
+  <span class='fu'>htypes</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span> <span class='co'># htypes(desc)</span>
+</div><div class='output co'>#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb 
+#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none" </div><div class='input'>  <span class='fu'>htypes</span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span> <span class='co'># "none"</span>
+</div><div class='output co'>#&gt; [1] "none"</div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcat</a></span>(<span class='kw'>desc</span>[[<span class='st'>"vs"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcat</a></span>(<span class='kw'>desc</span>[[<span class='st'>"mpg"</span>]]) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='co'># }</span>
+  <span class='fu'>is_hcat</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"vs"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  <span class='fu'>is_hcat</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"mpg"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># FALSE</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcon</a></span>(<span class='kw'>desc</span>[[<span class='st'>"vs"</span>]]) <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/htype.html'>is_hcon</a></span>(<span class='kw'>desc</span>[[<span class='st'>"mpg"</span>]]) <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># }</span></div></pre>
+  <span class='fu'>is_hcon</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"vs"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># FALSE</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>  <span class='fu'>is_hcon</span><span class='op'>(</span><span class='va'>desc</span><span class='op'>[[</span><span class='st'>"mpg"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -260,7 +268,7 @@ continuous variable plot.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

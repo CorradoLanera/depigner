@@ -81,19 +81,13 @@ packages. It is intended to be used in interactive sessions only." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -104,6 +98,9 @@ packages. It is intended to be used in interactive sessions only." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.corradolanera.it/2020/10/02/depigner-0-8-3/">Version 0.8.3</a>
+    </li>
     <li>
       <a href="https://www.corradolanera.it/2020/06/26/depigner-0-8-1/">Version 0.8.1</a>
     </li>
@@ -144,7 +141,7 @@ packages. It is intended to be used in interactive sessions only." />
 packages. It is intended to be used in interactive sessions only.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/depigner/man/install_pkg_set.html'>install_pkg_set</a></span>(set = <span class='kw'>pkg_all</span>, dependencies = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>install_pkg_set</span><span class='op'>(</span>set <span class='op'>=</span> <span class='va'>pkg_all</span>, dependencies <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,9 +175,10 @@ can use some sets already prepared and included into `depigner`
     <div class='dont-index'><p>please_install, pkg_sets</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='fu'><a href='https://rdrr.io/pkg/depigner/man/install_pkg_set.html'>install_pkg_set</a></span>() <span class='co'># to install all the `?pkg_all`</span>
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'>install_pkg_set</span><span class='op'>(</span><span class='op'>)</span> <span class='co'># to install all the `?pkg_all`</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -196,7 +194,7 @@ can use some sets already prepared and included into `depigner`
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
