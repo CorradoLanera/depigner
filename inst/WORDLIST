@@ -51,6 +51,7 @@ https
 htype
 htypes
 ie
+img
 io
 jpeg
 keras
@@ -107,6 +108,7 @@ Sovrano
 stan
 statname
 styler
+svg
 tensorflow
 testname
 testthat
