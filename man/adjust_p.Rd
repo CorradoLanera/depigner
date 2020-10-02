@@ -24,9 +24,12 @@ Adjust P-values of a \code{\link{tidy_summary}} object
 \examples{
 \donttest{
   library(Hmisc)
-  my_summary <- summary(Species ~ ., data = iris, method = "reverse")
+  my_summary <- summary(Species ~ ., data = iris,
+    method = "reverse",
+    test = TRUE
+  )
 
-  tidy_summary(my_summary) \%>\%
+  tidy_summary(my_summary, prtest = "P") \%>\%
     adjust_p()
 }
 }

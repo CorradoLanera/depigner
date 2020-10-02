@@ -144,10 +144,13 @@ summary(Species ~.,
 -   **`adjust_p()`**: Adjust P-values of a `tidy_summary` objects:
 
 ```{r}
-my_summary <- summary(Species ~., data = iris, method = "reverse")
+my_summary <- summary(Species ~., data = iris,
+  method = "reverse",
+  test = TRUE
+)
 
-  tidy_summary(my_summary) %>%
-      adjust_p()
+tidy_summary(my_summary) %>%
+  adjust_p()
 ```
 
 -   **`summary_interact()`**: Produce a data frame of OR (with the corresponding CI95%) for the interactions between different combination of a continuous variable (for which it is possible to define the reference and the target values) and (every or a selection of levels of) a categorical one in a logistic model provided by `lrm()` (from the `{rms}` package [\@R-rms]):

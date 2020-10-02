@@ -17,9 +17,6 @@
 #'     test = TRUE
 #'   )
 #'
-#'   tidy_summary(my_summary) %>%
-#'     adjust_p()
-#'
 #'   tidy_summary(my_summary, prtest = "P") %>%
 #'     adjust_p()
 #' }
