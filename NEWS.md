@@ -1,4 +1,4 @@
-# depigner (development version)
+# depigner 0.8.3
 
 * Fixed a bug in `paired_test_categorical()` that happen when only one
   value is zero from one group to another (#24).
