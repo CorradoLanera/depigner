@@ -182,7 +182,7 @@ a categorical one in a logistic model provided by `lrm()` (from the
 ```{r, include = FALSE}
 data('transplant')
 censor_rows <- transplant[['event']] != 'censored' 
-transplant <- transplant[censor_rows, , drop = FALSE]
+transplant <- droplevels(transplant[censor_rows, ])
 
 dd <<- datadist(transplant) # this to face a package build issue,
                             # use standard `<-` into analyses

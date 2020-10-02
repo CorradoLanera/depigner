@@ -56,10 +56,8 @@ summary_interact
 
   data("transplant")
 
-  transplant <- transplant[
-    transplant[["event"]] != "censored", ,
-    drop = FALSE
-  ]
+  transplant <- transplant[transplant[["event"]] != "censored", ] \%>\%
+   droplevels()
   dd <- datadist(transplant)
 
   lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
