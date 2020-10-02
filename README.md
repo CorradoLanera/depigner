@@ -77,9 +77,9 @@ library(depigner)
 ## Harrell’s Verse Tools
 
   - **`tidy_summary()`**: produces a data frame from the `summary()`
-    functions provided by `{Hmisc}` (Harrell Jr, Charles Dupont, and
-    others. 2020) and `{rms}` (Harrell Jr 2020) packages ready to be
-    `pander::pander()`ed (Daróczi and Tsegelskyi 2018).
+    functions provided by `{Hmisc}` (Harrell 2020) and `{rms}` (Harrell,
+    Jr. 2020) packages ready to be `pander::pander()`ed (Daróczi and
+    Tsegelskyi 2018).
 
 Currently it is tested for method *reverse* only:
 
@@ -138,7 +138,7 @@ tidy_summary(my_summary) %>%
 
   - **`paired_test_*()`**: Paired test for categorical/continuous
     variables to be used in the `summary()` of the `{Hmisc}` (Harrell
-    Jr, Charles Dupont, and others. 2020) package:
+    2020) package:
 
 <!-- end list -->
 
@@ -173,12 +173,12 @@ summary(Improved ~ Sex,
 #> 
 #> Descriptive Statistics by Improved
 #> 
-#> +----------+---------------+---------------+---------------+---------------------+
-#> |          |None           |Some           |Marked         |  Test               |
-#> |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |
-#> +----------+---------------+---------------+---------------+---------------------+
-#> |Sex : Male|      40%  (17)|      14%  ( 2)|      21%  ( 6)|t=1.03 d.f.=2 P=0.412|
-#> +----------+---------------+---------------+---------------+---------------------+
+#> +----------+-----------------+-----------------+-----------------+------------------------+
+#> |          |None             |Some             |Marked           |  Test                  |
+#> |          |(N=42)           |(N=14)           |(N=28)           |Statistic               |
+#> +----------+-----------------+-----------------+-----------------+------------------------+
+#> |Sex : Male|        40%  (17)|        14%  ( 2)|        21%  ( 6)|chi2=1.71 d.f.=3 P=0.634|
+#> +----------+-----------------+-----------------+-----------------+------------------------+
 
 # continuous --------------------------
 ## two groups
@@ -256,13 +256,25 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
     combination of a continuous variable (for which it is possible to
     define the reference and the target values) and (every or a
     selection of levels of) a categorical one in a logistic model
-    provided by `lrm()` (from the `{rms}` package (Harrell Jr 2020)):
+    provided by `lrm()` (from the `{rms}` package (Harrell, Jr. 2020)):
 
 <!-- end list -->
 
 ``` r
 summary_interact(lrm_mod, age, abo) %>%
   pander()
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
 ```
 
 |          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI |
@@ -276,6 +288,18 @@ summary_interact(lrm_mod, age, abo) %>%
 
 summary_interact(lrm_mod, age, abo, p = TRUE) %>%
   pander()
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
 ```
 
 |          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI | P-value |
@@ -286,8 +310,7 @@ summary_interact(lrm_mod, age, abo, p = TRUE) %>%
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |  0.883  |
 
   - **`htypes()`** and friends: get/check types of variable with respect
-    to the `{Hmisc}` ecosystem (Harrell Jr, Charles Dupont, and others.
-    2020).
+    to the `{Hmisc}` ecosystem (Harrell 2020).
 
 <!-- end list -->
 
@@ -382,10 +405,10 @@ please_install(a_pkg_i_miss)
 
 ``` r
 imported_from("depigner")
-#>  [1] "broom"        "desc"         "dplyr"        "fs"           "ggplot2"     
-#>  [6] "Hmisc"        "magrittr"     "progress"     "purrr"        "rlang"       
-#> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
-#> [16] "tidyr"        "usethis"      "utils"
+#>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
+#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rprojroot"   
+#> [11] "stats"        "stringr"      "telegram.bot" "tibble"       "tidyr"       
+#> [16] "usethis"      "utils"
 ```
 
 ## Telegram Tools
@@ -452,48 +475,47 @@ Sovrano](https://elisasovrano.it).
 
 # Reference
 
-<div id="refs" class="references">
+<div id="refs" class="references hanging-indent">
 
 <div id="ref-R-telegram.bot">
 
-Benedito, Ernest. 2019. *Telegram.bot: Develop a ’Telegram Bot’ with R*.
-<https://CRAN.R-project.org/package=telegram.bot>.
+Benedito, Ernest. 2019. *Telegram.bot: Develop a Telegram Bot with R*.
+<http://github.com/ebeneditos/telegram.bot>.
 
 </div>
 
 <div id="ref-R-progress">
 
 Csárdi, Gábor, and Rich FitzJohn. 2019. *Progress: Terminal Progress
-Bars*. <https://CRAN.R-project.org/package=progress>.
+Bars*. <https://github.com/r-lib/progress#readme>.
 
 </div>
 
 <div id="ref-R-pander">
 
-Daróczi, Gergely, and Roman Tsegelskyi. 2018. *Pander: An R ’Pandoc’
-Writer*. <https://CRAN.R-project.org/package=pander>.
-
-</div>
-
-<div id="ref-R-rms">
-
-Harrell Jr, Frank E. 2020. *Rms: Regression Modeling Strategies*.
-<https://CRAN.R-project.org/package=rms>.
+Daróczi, Gergely, and Roman Tsegelskyi. 2018. *Pander: An R Pandoc
+Writer*. <http://rapporter.github.io/pander>.
 
 </div>
 
 <div id="ref-R-Hmisc">
 
-Harrell Jr, Frank E, with contributions from Charles Dupont, and many
-others. 2020. *Hmisc: Harrell Miscellaneous*.
+Harrell, Frank E, Jr. 2020. *Hmisc: Harrell Miscellaneous*.
 <https://CRAN.R-project.org/package=Hmisc>.
+
+</div>
+
+<div id="ref-R-rms">
+
+Harrell, Jr., Frank E. 2020. *Rms: Regression Modeling Strategies*.
+<https://CRAN.R-project.org/package=rms>.
 
 </div>
 
 <div id="ref-R-usethis">
 
 Wickham, Hadley, and Jennifer Bryan. 2020. *Usethis: Automate Package
-and Project Setup*.
+and Project Setup*. <https://CRAN.R-project.org/package=usethis>.
 
 </div>
 
