@@ -1,8 +1,11 @@
 # depigner (development version)
 
+* Fixed a bug in `paired_test_categorical()` that happen when only one
+  value is zero from one group to another (#24).
+* Fixed a bug related to temporary project and packages in testing 
+  environments (#28).
 * Fixed `summary_interact()` after stop of support from `{broom}` to 
   `summary.rms` objects (#27).
-
 * Fixed a bug that prevent to `paired_test_categorical()` to work 
   properly when (possibly unnamed) matrices are provided to it instead
   of tables (#22, #23). 
