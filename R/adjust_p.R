@@ -12,9 +12,15 @@
 #' @examples
 #' \donttest{
 #'   library(Hmisc)
-#'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
+#'   my_summary <- summary(Species ~ ., data = iris,
+#'     method = "reverse",
+#'     test = TRUE
+#'   )
 #'
 #'   tidy_summary(my_summary) %>%
+#'     adjust_p()
+#'
+#'   tidy_summary(my_summary, prtest = "P") %>%
 #'     adjust_p()
 #' }
 adjust_p <- function(x, method) {
