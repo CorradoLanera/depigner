@@ -77,3 +77,16 @@ test_that("one group is managed", {
     "Only one group with data, no paired test is done"
   )
 })
+
+
+test_that("many groups works properly", {
+  data_db <- iris %>% dplyr::select(Sepal.Length, Species, id)
+
+  expect_equal(
+    paired_test_continuous(many_groups, obs)[["P"]][[1]],
+    summary(
+      stats::aov(Sepal.Length ~ Species + Error(id / Species),
+                 data = data_db)
+    )[["Error: Within"]][[1]][1, "Pr(>F)"]
+  )
+})

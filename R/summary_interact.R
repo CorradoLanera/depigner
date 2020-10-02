@@ -30,10 +30,8 @@
 #'
 #'   data("transplant")
 #'
-#'   transplant <- transplant[
-#'     transplant[["event"]] != "censored", ,
-#'     drop = FALSE
-#'   ]
+#'   transplant <- transplant[transplant[["event"]] != "censored", ] %>%
+#'    droplevels()
 #'   dd <- datadist(transplant)
 #'
 #'   lrm_mod <- lrm(event ~ rcs(age, 3) * (sex + abo) + rcs(year, 3),
@@ -100,7 +98,10 @@ summary_interact <- function(model, ref, discrete,
           ref_name, " = c(ref_min, ref_max)",
         ")"
       ))) %>%
-        broom::tidy() %>%
+        tibble::as_tibble(
+          rownames = ".rownames",
+          .name_repair = "universal"
+        ) %>%
         dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
         dplyr::filter(Type == 2) %>%
         dplyr::select(-"Type", -"S.E.") %>%
@@ -112,6 +113,9 @@ summary_interact <- function(model, ref, discrete,
             stringr::str_extract(.data$.rownames, " - .*$") %>%
               stringr::str_replace(" - ", "")
           ),
+          Effect = as.numeric(Effect),
+          Lower.0.95 = as.numeric(Lower.0.95),
+          Upper.0.95 = as.numeric(Upper.0.95),
           .rownames = stringr::str_replace(.data$.rownames, " -+.*$", "")
         ) %>%
         dplyr::mutate(

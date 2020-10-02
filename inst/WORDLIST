@@ -1,7 +1,5 @@
 ’
-’Pandoc’
 ’s
-’Telegram
 AbcD
 Acknowledgements
 al
@@ -13,7 +11,6 @@ Biostatistics
 blogdown
 bmp
 bot's
-Bot’
 brms
 catTest
 CBPS
@@ -29,7 +26,7 @@ Daróczi
 df
 docopt
 DT
-Dupont
+ebeneditos
 eg
 fct
 FitzJohn
@@ -40,6 +37,7 @@ Gergely
 ggplot
 gh
 GH
+github
 glmnet
 golem
 Hadley
@@ -48,10 +46,13 @@ hcat
 hcon
 hdesc
 Hmisc
+http
 https
 htype
 htypes
 ie
+img
+io
 jpeg
 keras
 knitr
@@ -68,6 +69,7 @@ mvtnorm
 namefun
 num
 Padova
+Pandoc
 pigna
 Pigna
 pignas
@@ -89,6 +91,8 @@ progressbar
 pryr
 Ps
 qnorm
+rapporter
+readme
 renv
 Renviron
 reprex
@@ -104,6 +108,7 @@ Sovrano
 stan
 statname
 styler
+svg
 tensorflow
 testname
 testthat
