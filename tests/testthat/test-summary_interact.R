@@ -2,7 +2,8 @@ old_opt <- options(datadist = "dd")
 on.exit(options(old_opt))
 
 data("transplant", package = "survival")
-transplant <- transplant[transplant[["event"]] != "censored", , drop = FALSE]
+transplant <- transplant[transplant[["event"]] != "censored", ] %>%
+  droplevels()
 
 test_that("expectation class", {
   skip_on_cran()

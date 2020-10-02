@@ -7,7 +7,8 @@
 paired_test_categorical(tab)
 }
 \arguments{
-\item{tab}{a frequency table (an integer matrix)}
+\item{tab}{a frequency table (an integer `table`, if a `matrix` is
+provided, it will be coerced to a `table` internally)}
 }
 \value{
 A list with components

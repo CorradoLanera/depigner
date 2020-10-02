@@ -13,7 +13,8 @@
 #' \code{\link[Hmisc]{summary.formula}} with method `reverse`.
 #'
 #'
-#' @param tab a frequency table (an integer matrix)
+#' @param tab a frequency table (an integer `table`, if a `matrix` is
+#'   provided, it will be coerced to a `table` internally)
 #'
 #' @return A list with components
 #'         `P` (the computed P-value),
@@ -56,6 +57,14 @@ paired_test_categorical <- function(tab) {
 
   # input check -----------------------------------------------------
   if (!is_proper_matrix(tab)) return(empty_h_test())
+
+  if (!inherits(tab, "table")) {
+    ui_warn("{ui_field(tab)} is not a table.
+      It will be coerced to a table by {ui_code('as.table()')}.
+      If not sure the coercion is correct, please provide a table directly.
+    ")
+    tab <- as.table(tab)
+  }
 
   rowcounts <- tab %*% rep(1, ncol(tab))
   tab <- tab[rowcounts > 0, ]
@@ -103,30 +112,35 @@ paired_test_categorical <- function(tab) {
     dplyr::mutate(prop = .data$n / sum(.data$n)) %>%
     dplyr::ungroup()
 
-  st <- summary(stats::glm(
-    formula = stats::as.formula("prop ~ var_levels*group_id"),
-    data = tab_df,
-    family = "quasibinomial"
-  ))
+    st <- rms::Glm(
+      formula = stats::as.formula("prop ~ var_levels*group_id"),
+      data = tab_df,
+      family = "quasibinomial"
+    )
+    cof <- stats::coef(st)
+    df <- st$rank - (names(cof)[1] == "Intercept")
+    lr <- st$null.deviance - st$deviance
+    pval <- 1 - stats::pchisq(lr, df)
 
   list(
     # values (mandatory)
-    P = stats::setNames(st$coefficients["group_id", "Pr(>|t|)"], "P"),
-    stat = stats::setNames(st$coefficients["group_id", "t value"], "t"),
-    df = stats::setNames(st$df.residual, "df"),
+    P = stats::setNames(pval, "P"),
+    stat = stats::setNames(lr, "chi2"),
+    df = stats::setNames(df, "df"),
 
     # names (mandatory)
-    testname = "t test for group in a GLM",
-    statname = "t",
-    namefun = "glm_t_test",
+    testname = "LR test for a group in a GLM model",
+    statname = "chi2",
+    namefun = "glm_chi2_test",
 
     # special labels (optional)
     latexstat = "\\t_{df}",
     plotmathstat = "t[df]^2",
     note = paste(
-      "Overdispersed quasi-binomial GLM is fitted using both",
-      "the ranked groups and the categorical covariate of interest.",
-      "The test reported is the t test of the groups' coefficient."
+      "Overdispersed binomial GLM is fitted using both ranked groups",
+      "and the covariate of interest. Differences are assessed using a",
+      "Likelihood-Ratio test that assumes a Chi^2 distribution for the",
+      "test statistic."
     )
   )
 }

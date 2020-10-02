@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# depigner [![](https://img.shields.io/badge/WEB%20site-click%20me-orange.svg)](https://corradolanera.github.io/depigner/) <img src='man/figures/logo.png' align="right" height="138.5" />
+# depigner [![](https://img.shields.io/badge/WEB%20site-click%20me-orange.svg)](https://corradolanera.github.io/depigner/) <img src="man/figures/logo.png" align="right" height="138.5"/>
 
 A utility package to help you deal with ***pigne***
 
@@ -77,9 +77,8 @@ library(depigner)
 ## Harrell’s Verse Tools
 
   - **`tidy_summary()`**: produces a data frame from the `summary()`
-    functions provided by `{Hmisc}` (Harrell Jr, Charles Dupont, and
-    others. 2020) and `{rms}` (Harrell Jr 2020) packages ready to be
-    `pander::pander()`ed (Daróczi and Tsegelskyi 2018).
+    functions provided by `{Hmisc}` \[@R-Hmisc\] and `{rms}` \[@R-rms\]
+    packages ready to be `pander::pander()`ed \[@R-pander\].
 
 Currently it is tested for method *reverse* only:
 
@@ -137,8 +136,8 @@ tidy_summary(my_summary) %>%
 | surgery |   1   | 0.5286 |    0.2574    |    1.085     |
 
   - **`paired_test_*()`**: Paired test for categorical/continuous
-    variables to be used in the `summary()` of the `{Hmisc}` (Harrell
-    Jr, Charles Dupont, and others. 2020) package:
+    variables to be used in the `summary()` of the `{Hmisc}`
+    \[@R-Hmisc\] package:
 
 <!-- end list -->
 
@@ -173,12 +172,12 @@ summary(Improved ~ Sex,
 #> 
 #> Descriptive Statistics by Improved
 #> 
-#> +----------+---------------+---------------+---------------+---------------------+
-#> |          |None           |Some           |Marked         |  Test               |
-#> |          |(N=42)         |(N=14)         |(N=28)         |Statistic            |
-#> +----------+---------------+---------------+---------------+---------------------+
-#> |Sex : Male|      40%  (17)|      14%  ( 2)|      21%  ( 6)|t=1.03 d.f.=2 P=0.412|
-#> +----------+---------------+---------------+---------------+---------------------+
+#> +----------+-----------------+-----------------+-----------------+------------------------+
+#> |          |None             |Some             |Marked           |  Test                  |
+#> |          |(N=42)           |(N=14)           |(N=28)           |Statistic               |
+#> +----------+-----------------+-----------------+-----------------+------------------------+
+#> |Sex : Male|        40%  (17)|        14%  ( 2)|        21%  ( 6)|chi2=1.71 d.f.=3 P=0.634|
+#> +----------+-----------------+-----------------+-----------------+------------------------+
 
 # continuous --------------------------
 ## two groups
@@ -234,21 +233,24 @@ summary(Species ~.,
 <!-- end list -->
 
 ``` r
-my_summary <- summary(Species ~., data = iris, method = "reverse")
+my_summary <- summary(Species ~., data = iris,
+  method = "reverse",
+  test = TRUE
+)
 
-  tidy_summary(my_summary) %>%
-      adjust_p()
+tidy_summary(my_summary) %>%
+  adjust_p()
 #> Warning: Unknown or uninitialised column: `P-value`.
 #> x   The object `x` does not have a P-value column.
 #>     Have you select `test = TRUE` into `summary()`?
 #> x `x` is returned without changes.
-#> # A tibble: 4 x 4
-#>   `&nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` `virginica \n(N=50)`
-#>   <chr>        <chr>               <chr>                 <chr>               
-#> 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.300"   "6.225/6.500/6.900" 
-#> 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.000"   "2.800/3.000/3.175" 
-#> 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.600"   "5.100/5.550/5.875" 
-#> 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"      "   1.8/2.0/2.3"
+#> # A tibble: 4 x 5
+#>   `&nbsp;`  `setosa \n(N=50)` `versicolor \n(… `virginica \n(N… `  Test\nStatis…
+#>   <chr>     <chr>             <chr>            <chr>            <chr>           
+#> 1 Sepal.Le… "     4.800/5.00… "     5.600/5.9… "     6.225/6.5… "F=136.85 d.f.=…
+#> 2 Sepal.Wi… "     3.200/3.40… "     2.525/2.8… "     2.800/3.0… " F=54.69 d.f.=…
+#> 3 Petal.Le… "     1.400/1.50… "     4.000/4.3… "     5.100/5.5… "F=515.64 d.f.=…
+#> 4 Petal.Wi… "        0.2/0.2… "        1.2/1.… "        1.8/2.… "F=541.25 d.f.=…
 ```
 
   - **`summary_interact()`**: Produce a data frame of OR (with the
@@ -256,13 +258,25 @@ my_summary <- summary(Species ~., data = iris, method = "reverse")
     combination of a continuous variable (for which it is possible to
     define the reference and the target values) and (every or a
     selection of levels of) a categorical one in a logistic model
-    provided by `lrm()` (from the `{rms}` package (Harrell Jr 2020)):
+    provided by `lrm()` (from the `{rms}` package \[@R-rms\]):
 
 <!-- end list -->
 
 ``` r
 summary_interact(lrm_mod, age, abo) %>%
   pander()
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
 ```
 
 |          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI |
@@ -276,6 +290,18 @@ summary_interact(lrm_mod, age, abo) %>%
 
 summary_interact(lrm_mod, age, abo, p = TRUE) %>%
   pander()
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
+#> New names:
+#> * `Lower 0.95` -> Lower.0.95
+#> * `Upper 0.95` -> Upper.0.95
 ```
 
 |          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI | P-value |
@@ -286,8 +312,7 @@ summary_interact(lrm_mod, age, abo, p = TRUE) %>%
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |  0.883  |
 
   - **`htypes()`** and friends: get/check types of variable with respect
-    to the `{Hmisc}` ecosystem (Harrell Jr, Charles Dupont, and others.
-    2020).
+    to the `{Hmisc}` ecosystem \[@R-Hmisc\].
 
 <!-- end list -->
 
@@ -323,7 +348,7 @@ ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
 ## Programming Tools
 
   - **`pb_len()`**: Progress bar of given length, wrapper from the
-    `{progress}` (Csárdi and FitzJohn 2019) package:
+    `{progress}` \[@R-progress\] package:
 
 <!-- end list -->
 
@@ -352,8 +377,8 @@ install_pkg_set(pkg_stan)
 
 ## Development Tools
 
-  - **`use_ui()`**: Use `{usethis}`’ user interface (Wickham and Bryan
-    2020) in your package
+  - **`use_ui()`**: Use `{usethis}`’ user interface \[@R-usethis\] in
+    your package
 
 <!-- end list -->
 
@@ -382,8 +407,8 @@ please_install(a_pkg_i_miss)
 
 ``` r
 imported_from("depigner")
-#>  [1] "broom"        "desc"         "dplyr"        "fs"           "ggplot2"     
-#>  [6] "Hmisc"        "magrittr"     "progress"     "purrr"        "rlang"       
+#>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
+#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         
 #> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
 #> [16] "tidyr"        "usethis"      "utils"
 ```
@@ -391,7 +416,7 @@ imported_from("depigner")
 ## Telegram Tools
 
   - **Wrappers to simple use of Telegram’s bots**: wrappers from the
-    `{telegram.bot}` package (Benedito 2019):
+    `{telegram.bot}` package \[@R-telegram.bot\]:
 
 <!-- end list -->
 
@@ -448,59 +473,12 @@ By contributing to this project, you agree to abide by its terms.
 # Acknowledgements
 
 The `{depigner}`’s logo was lovely designed by [Elisa
-Sovrano](https://elisasovrano.it).
+Sovrano](https://www.elisasovrano.it).
 
 # Reference
 
-<div id="refs" class="references">
-
-<div id="ref-R-telegram.bot">
-
-Benedito, Ernest. 2019. *Telegram.bot: Develop a ’Telegram Bot’ with R*.
-<https://CRAN.R-project.org/package=telegram.bot>.
-
-</div>
-
-<div id="ref-R-progress">
-
-Csárdi, Gábor, and Rich FitzJohn. 2019. *Progress: Terminal Progress
-Bars*. <https://CRAN.R-project.org/package=progress>.
-
-</div>
-
-<div id="ref-R-pander">
-
-Daróczi, Gergely, and Roman Tsegelskyi. 2018. *Pander: An R ’Pandoc’
-Writer*. <https://CRAN.R-project.org/package=pander>.
-
-</div>
-
-<div id="ref-R-rms">
-
-Harrell Jr, Frank E. 2020. *Rms: Regression Modeling Strategies*.
-<https://CRAN.R-project.org/package=rms>.
-
-</div>
-
-<div id="ref-R-Hmisc">
-
-Harrell Jr, Frank E, with contributions from Charles Dupont, and many
-others. 2020. *Hmisc: Harrell Miscellaneous*.
-<https://CRAN.R-project.org/package=Hmisc>.
-
-</div>
-
-<div id="ref-R-usethis">
-
-Wickham, Hadley, and Jennifer Bryan. 2020. *Usethis: Automate Package
-and Project Setup*.
-
-</div>
-
-</div>
-
 1.  You can find all the possible meanings of *pigna*
-    [here](http://www.treccani.it/vocabolario/pigna/), and you can
+    [here](https://www.treccani.it/vocabolario/pigna/), and you can
     listen how to pronounce it
     [here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
     Note: the Italian plural for “pigna” is “pigne” \[*pìn’n’e*\].

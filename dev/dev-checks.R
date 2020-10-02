@@ -20,4 +20,18 @@ devtools::check()
 devtools::build_readme()
 devtools::check(remote = TRUE, manual = TRUE)
 devtools::check_win_devel()
-cran_prep <- rhub::check_for_cran()
+rhub_check <- devtools::check_rhub(
+  # see: https://community.rstudio.com/t/r-hub-builder-there-is-no-package-called-utf8/65694
+  env_vars = c(
+    R_COMPILE_AND_INSTALL_PACKAGES = "always",
+    `_R_CHECK_FORCE_SUGGESTS_` = "true",
+    `_R_CHECK_CRAN_INCOMING_USE_ASPELL_` = "true"
+  )
+)
+cran_prep <- rhub::check_for_cran(
+  env_vars = c(
+    R_COMPILE_AND_INSTALL_PACKAGES = "always",
+    `_R_CHECK_FORCE_SUGGESTS_` = "true",
+    `_R_CHECK_CRAN_INCOMING_USE_ASPELL_` = "true"
+  )
+)
