@@ -117,10 +117,10 @@ paired_test_categorical <- function(tab) {
       data = tab_df,
       family = "quasibinomial"
     )
-    cof <- coef(st)
+    cof <- stats::coef(st)
     df <- st$rank - (names(cof)[1] == "Intercept")
     lr <- st$null.deviance - st$deviance
-    pval <- 1 - pchisq(lr, df)
+    pval <- 1 - stats::pchisq(lr, df)
 
   list(
     # values (mandatory)
