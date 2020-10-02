@@ -85,7 +85,7 @@ test_that("many groups works properly", {
   expect_equal(
     paired_test_continuous(many_groups, obs)[["P"]][[1]],
     summary(
-      stats::aov(Sepal.Length ~ Species + Error(id/Species),
+      stats::aov(Sepal.Length ~ Species + Error(id / Species),
                  data = data_db)
     )[["Error: Within"]][[1]][1, "Pr(>F)"]
   )

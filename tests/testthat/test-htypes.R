@@ -40,7 +40,7 @@ test_that("original check works", {
   test_nunique <- Hmisc::describe(airquality)
   expect_false(is_hcon(test_nunique[["Month"]]))
   expect_true(
-    is_hcon(test_nunique[["Month"]], n.unique = 4)
+    is_hcon(test_nunique[["Month"]], n_unique = 4)
   )
 
   skip_if(as.integer(R.Version()$major) < 4)
@@ -56,7 +56,7 @@ test_that("htype works", {
   expect_equal(htype(test_desc[["mpg"]]), "con")
   expect_equal(htype(test_desc[["carb"]]), "none")
   expect_equal(
-    htype(test_desc[["carb"]], n.unique = 4),
+    htype(test_desc[["carb"]], n_unique = 4),
     "con"
   )
 
