@@ -408,9 +408,9 @@ please_install(a_pkg_i_miss)
 ``` r
 imported_from("depigner")
 #>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
-#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rprojroot"   
-#> [11] "stats"        "stringr"      "telegram.bot" "tibble"       "tidyr"       
-#> [16] "usethis"      "utils"
+#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         
+#> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
+#> [16] "tidyr"        "usethis"      "utils"
 ```
 
 ## Telegram Tools
