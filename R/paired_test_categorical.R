@@ -129,7 +129,7 @@ paired_test_categorical <- function(tab) {
     df = stats::setNames(df, "df"),
 
     # names (mandatory)
-    testname = "chi2 for group in a GLM",
+    testname = "LR test for a group in a GLM model",
     statname = "chi2",
     namefun = "glm_chi2_test",
 
@@ -137,9 +137,10 @@ paired_test_categorical <- function(tab) {
     latexstat = "\\t_{df}",
     plotmathstat = "t[df]^2",
     note = paste(
-      "Overdispersed quasi-binomial GLM is fitted using both",
-      "the ranked groups and the categorical covariate of interest.",
-      "The test reported is the chi2 test of the groups' coefficient."
+      "Overdispersed binomial GLM is fitted using both ranked groups",
+      "and the covariate of interest. Differences are assessed using a",
+      "Likelihood-Ratio test that assumes a Chi^2 distribution for the",
+      "test statistic."
     )
   )
 }
