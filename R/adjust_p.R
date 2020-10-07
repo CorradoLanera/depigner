@@ -41,7 +41,10 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
   if (is.null(x$`P-value`)) {
     ui_oops("
       The object {ui_code('x')} does not have a {ui_field('P-value')} column.
-      Have you select {ui_code('test = TRUE')} into {ui_code('summary()')}?
+      Have you select {ui_code('test = TRUE')} into {ui_code('summary()')}
+      and set argument {ui_code('prtest = \"P\"')} into the
+      {ui_code('print()')} or the {ui_code('summary_interact()')}
+      function?
     ")
     ui_oops("{ui_code('x')} is returned without changes.")
     return(x)
