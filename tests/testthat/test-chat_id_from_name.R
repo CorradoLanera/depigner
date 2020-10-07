@@ -1,5 +1,3 @@
-context("test-chat_id_from_name")
-
 test_that("it stops if bot is not setup", {
   expect_usethis_error(chat_id_from_name(), "bot")
 })

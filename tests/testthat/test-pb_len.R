@@ -7,5 +7,5 @@ test_that("return error if not integer", {
 
 test_that("tick return a progressbar", {
   pb <- pb_len(1)
-  expect_is(tick(pb), "progress_bar")
+  expect_s3_class(tick(pb), "progress_bar")
 })

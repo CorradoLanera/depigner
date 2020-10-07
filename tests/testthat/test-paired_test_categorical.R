@@ -1,5 +1,3 @@
-context("test-paired_test_categorical")
-
 data(Arthritis)
 
 tab_two <- table(Arthritis$Sex, Arthritis$Treatment)
@@ -8,8 +6,8 @@ tab_more <- table(Arthritis$Sex, Arthritis$Improved)
 test_that("output class is correct", {
   skip_on_cran()
 
-  expect_is(paired_test_categorical(tab_two), "list")
-  expect_is(paired_test_categorical(tab_more), "list")
+  expect_type(paired_test_categorical(tab_two), "list")
+  expect_type(paired_test_categorical(tab_more), "list")
 })
 
 test_that("output structure is correct", {
@@ -30,32 +28,31 @@ test_that("wrong input return NA list", {
     out <- paired_test_categorical(c(1, 2)),
     "not a proper matrix"
   )
-  expect_is(out, "list")
+  expect_type(out, "list")
   expect_true(is.na(out[["P"]]))
 
   expect_warning(
     out <- paired_test_categorical(matrix(c(1, 2))),
     "not a proper matrix"
   )
-  expect_is(out, "list")
+  expect_type(out, "list")
   expect_true(is.na(out[["P"]]))
 
   expect_warning(
     out <- paired_test_categorical(matrix(c(1, 2), ncol = 2)),
     "not a proper matrix"
   )
-  expect_is(out, "list")
+  expect_type(out, "list")
   expect_true(is.na(out[["P"]]))
 })
 
 
 test_that("singular matrix were managed", {
-  expect_warning(
+  expect_warning(expect_warning(
     out <- paired_test_categorical(matrix(c(1, 0, 2, 0), ncol = 2)),
-    "is not a proper matrix"
-  )
+    "is not a table"), "is not a proper matrix")
 
-  expect_is(out, "list")
+  expect_type(out, "list")
   expect_true(is.na(out[["P"]]))
 })
 

@@ -38,7 +38,7 @@ test_that("empty_h_test works", {
     out <- empty_h_test(),
     "not a proper matrix"
   )
-  expect_is(out, "list")
+  expect_type(out, "list")
   expect_equal(out[["P"]], NA)
 })
 
@@ -47,6 +47,6 @@ test_that("fake_h_group_test works", {
     out <- fake_h_group_test(),
     "Only one group"
   )
-  expect_is(out, "list")
+  expect_type(out, "list")
   expect_equal(out[["P"]], c(P = 1))
 })

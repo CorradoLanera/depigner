@@ -1,5 +1,3 @@
-context("test-paired_test_continuous")
-
 iris <- dplyr::group_by(iris, Species) %>%
   dplyr::mutate(id = dplyr::row_number()) %>%
   dplyr::ungroup() %>%
@@ -15,8 +13,8 @@ many_groups <- iris$Species
 test_that("output class is correct", {
   skip_on_cran()
 
-  expect_is(paired_test_continuous(two_groups, two_obs), "list")
-  expect_is(paired_test_continuous(many_groups, obs), "list")
+  expect_type(paired_test_continuous(two_groups, two_obs), "list")
+  expect_type(paired_test_continuous(many_groups, obs), "list")
 })
 
 test_that("output structure is correct", {
@@ -40,7 +38,9 @@ test_that("wrong input are managed", {
     paired_test_continuous(factor(c(1, 2)), 1),
     "length"
   )
-  expect_warning(paired_test_continuous(c(1, 2), c(1, 2)), "factor")
+  expect_warning(expect_warning(
+    paired_test_continuous(c(1, 2), c(1, 2)),
+    "factor"), "one group")
 })
 
 
@@ -49,7 +49,7 @@ test_that("data by groups are managed", {
 
   ord <- order(two_groups)
 
-  expect_is(
+  expect_type(
     paired_test_continuous(two_groups[ord], two_obs[ord]),
     "list"
   )

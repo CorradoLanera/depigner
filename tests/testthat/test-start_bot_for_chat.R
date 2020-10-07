@@ -1,5 +1,3 @@
-context("test-start_bot_for_chat")
-
 test_that("stops on wrong chat name", {
   skip_if(!getOption("depigner.dev.test_telegram_bot"))
   skip_if(Sys.getenv("R_telegram_bot_name") != "clr_telegram_bot")
@@ -36,8 +34,8 @@ test_that("setup options", {
 
   start_bot_for_chat("Depigner test")
 
-  expect_is(getOption("depigner.bot"), "Bot")
-  expect_equal(getOption("depigner.chat_id"), -297554410)
+  expect_s3_class(getOption("depigner.bot"), "Bot")
+  expect_equal(getOption("depigner.chat_id"), -414181402)
 
   options(depigner.bot = "")
   options(depigner.chat_id = "")

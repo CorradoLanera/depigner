@@ -1,5 +1,3 @@
-context("test-send_to_telegram")
-
 test_that("returns the message sent", {
   skip_if(!getOption("depigner.dev.test_telegram_bot"))
   skip_if(Sys.getenv("R_telegram_bot_name") != "clr_telegram_bot")
