@@ -89,7 +89,7 @@ summary_interact <- function(model, ref, discrete,
     level <- dd[["values"]][[discrete_name]]
   }
 
-  suppressWarnings({
+  suppressMessages({
     res <- purrr::map_df(.x = level, ~ {
       interact <- .x
       eval(parse(text = paste0(
