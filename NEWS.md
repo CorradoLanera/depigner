@@ -1,5 +1,10 @@
 # depigner (development version)
 
+-   fix an error in the the example of `tidy_summary()` (\#38)
+
+```{=html}
+<!-- -->
+```
 -   Improved error messages for `adjust_p()` when `tidy_summary()` is called without `prtest = TRUE` option.
 
 -   Updated test tests for testthat 3rd edition (\#32)
