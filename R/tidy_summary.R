@@ -76,7 +76,7 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #' @examples
 #' \donttest{
 #'   library(rms)
-#'   options(dd = "datadist")
+#'   options(datadist = "dd")
 #'   n <- 1000
 #'   set.seed(731)
 #'   age <- 50 + 12 * rnorm(n)
