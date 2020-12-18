@@ -1,5 +1,12 @@
 # depigner (development version)
 
+-   Improved error messages for `adjust_p()` when `tidy_summary()` is called without `prtest = TRUE` option.
+
+-   Updated test tests for testthat 3rd edition (\#32)
+
+```{=html}
+<!-- -->
+```
 -   Move `{rms}` to IMPORTS.
 
 # depigner 0.8.3

@@ -32,10 +32,10 @@ chat_id_from_name <- function(.title = NA) {
     unique()
 
   if (length(res) == 0) {
-    ui_stop(
+    ui_stop(c(
       "The chat name {.title} provided does not exist in the chat for ",
       "which your bot has access."
-    )
+    ))
   }
 
   res

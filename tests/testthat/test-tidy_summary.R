@@ -1,13 +1,11 @@
-context("test-tidy_summary")
-
 test_that("output classes are correct", {
   testthat::skip_on_cran()
   my_summary <- Hmisc:::summary.formula(Species ~ .,
                                         data = iris, method = "reverse"
   )
 
-  expect_is(tidy_summary(my_summary), "tbl_df")
-  expect_is(tidy_summary(my_summary), "data.frame")
+  expect_s3_class(tidy_summary(my_summary), "tbl_df")
+  expect_s3_class(tidy_summary(my_summary), "data.frame")
 })
 
 
@@ -37,7 +35,7 @@ test_that("correct class", {
 
   my_summary <- summary(f)
 
-  expect_is(tidy_summary(my_summary), "data.frame")
+  expect_s3_class(tidy_summary(my_summary), "data.frame")
 })
 
 

@@ -1,5 +1,3 @@
-context("test-gdp")
-
 test_that("time is correct", {
   tmp <- tempfile()
   sink(tmp)

@@ -17,23 +17,23 @@ test_that("expectation class", {
     x = TRUE, y = TRUE
   )
 
-  expect_is(summary_interact(lrm_mod, age, sex), "data.frame")
-  expect_is(
+  expect_s3_class(summary_interact(lrm_mod, age, sex), "data.frame")
+  expect_s3_class(
     summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80),
     "data.frame"
   )
-  expect_is(
+  expect_s3_class(
     summary_interact(
       lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L
     ),
     "data.frame"
   )
-  expect_is(summary_interact(lrm_mod, age, abo), "data.frame")
-  expect_is(
+  expect_s3_class(summary_interact(lrm_mod, age, abo), "data.frame")
+  expect_s3_class(
     summary_interact(lrm_mod, age, abo, level = c("A", "AB")),
     "data.frame"
   )
-  expect_is(summary_interact(lrm_mod, age, abo, p = TRUE), "data.frame")
+  expect_s3_class(summary_interact(lrm_mod, age, abo, p = TRUE), "data.frame")
 })
 
 

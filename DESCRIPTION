@@ -55,9 +55,11 @@ Suggests:
     covr (>= 3.1.0),
     spelling,
     survival,
-    testthat (>= 2.1.0),
+    testthat (>= 3.0.0),
     withr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3
+

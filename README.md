@@ -9,7 +9,7 @@ A utility package to help you deal with ***pigne***
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
 | :-------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
-| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.2-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.3-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
 | **CRAN**        |                   [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                    |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |     [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)      |
 
@@ -238,19 +238,16 @@ my_summary <- summary(Species ~., data = iris,
   test = TRUE
 )
 
-tidy_summary(my_summary) %>%
+tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
-#> Warning: Unknown or uninitialised column: `P-value`.
-#> x   The object `x` does not have a P-value column.
-#>     Have you select `test = TRUE` into `summary()`?
-#> x `x` is returned without changes.
+#> ✓ P adjusted with BH method.
 #> # A tibble: 4 x 5
-#>   `&nbsp;`  `setosa \n(N=50)` `versicolor \n(… `virginica \n(N… `  Test\nStatis…
-#>   <chr>     <chr>             <chr>            <chr>            <chr>           
-#> 1 Sepal.Le… "     4.800/5.00… "     5.600/5.9… "     6.225/6.5… "F=136.85 d.f.=…
-#> 2 Sepal.Wi… "     3.200/3.40… "     2.525/2.8… "     2.800/3.0… " F=54.69 d.f.=…
-#> 3 Petal.Le… "     1.400/1.50… "     4.000/4.3… "     5.100/5.5… "F=515.64 d.f.=…
-#> 4 Petal.Wi… "        0.2/0.2… "        1.2/1.… "        1.8/2.… "F=541.25 d.f.=…
+#>   `&nbsp;`   `setosa \n(N=50)`  `versicolor \n(N=… `virginica \n(N=… `P-value`  
+#>   <chr>      <chr>              <chr>              <chr>             <chr>      
+#> 1 Sepal.Len… "4.800/5.000/5.20… "5.600/5.900/6.30… "6.225/6.500/6.9… "      <0.…
+#> 2 Sepal.Wid… "3.200/3.400/3.67… "2.525/2.800/3.00… "2.800/3.000/3.1… "     <=0.…
+#> 3 Petal.Len… "1.400/1.500/1.57… "4.000/4.350/4.60… "5.100/5.550/5.8… "     <=0.…
+#> 4 Petal.Wid… "   0.2/0.2/0.3"   "   1.2/1.3/1.5"   "   1.8/2.0/2.3"  "     <=0.…
 ```
 
   - **`summary_interact()`**: Produce a data frame of OR (with the
