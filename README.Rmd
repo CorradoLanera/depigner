@@ -149,7 +149,7 @@ my_summary <- summary(Species ~., data = iris,
   test = TRUE
 )
 
-tidy_summary(my_summary) %>%
+tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
 ```
 
