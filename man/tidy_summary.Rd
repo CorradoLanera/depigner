@@ -58,7 +58,7 @@ print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 }
 \donttest{
   library(rms)
-  options(dd = "datadist")
+  options(datadist = "dd")
   n <- 1000
   set.seed(731)
   age <- 50 + 12 * rnorm(n)
