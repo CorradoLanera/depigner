@@ -260,6 +260,16 @@ tidy_summary(my_summary, prtest = "P") %>%
 <!-- end list -->
 
 ``` r
+data('transplant')
+censor_rows <- transplant[['event']] != 'censored' 
+transplant <- droplevels(transplant[censor_rows, ])
+
+dd <<- datadist(transplant) # this to face a package build issue,
+                            # use standard `<-` into analyses
+
+lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
+  data = transplant
+)
 summary_interact(lrm_mod, age, abo) %>%
   pander()
 #> New names:
