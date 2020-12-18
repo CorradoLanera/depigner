@@ -1,5 +1,10 @@
 # depigner (development version)
 
+-   update README making all the code visible (\#39)
+
+```{=html}
+<!-- -->
+```
 -   fix an error in the the example of `tidy_summary()` (\#38)
 
 ```{=html}
