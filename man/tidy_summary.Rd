@@ -6,11 +6,11 @@
 \alias{tidy_summary.summary.rms}
 \title{tidy_summary}
 \usage{
-tidy_summary(x, ...)
+tidy_summary(x, ..., digits = 3L)
 
-\method{tidy_summary}{summary.formula.reverse}(x, ...)
+\method{tidy_summary}{summary.formula.reverse}(x, ..., digits = 3L)
 
-\method{tidy_summary}{summary.rms}(x, diff_digits = 2, ...)
+\method{tidy_summary}{summary.rms}(x, ..., digits = 3L)
 }
 \arguments{
 \item{x}{an object used to select a method, output of some summary
@@ -18,9 +18,7 @@ by \code{Hmisc}.}
 
 \item{...}{further arguments passed to or from other methods}
 
-\item{diff_digits}{number of significant digits to use (default 2)
-for the step-difference between continuous variable HR
-computation.}
+\item{digits}{number of significant digits to use (default 3).}
 }
 \value{
 a [tibble][tibble::tibble-package]

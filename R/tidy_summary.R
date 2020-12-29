@@ -66,9 +66,7 @@ tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
 #'             referred to (i.e. without \eqn{\beta}s, Low, High, S.E.
 #'             and Type).
 #'
-#' @param diff_digits number of significant digits to use (default 2)
-#'        for the step-difference between continuous variable HR
-#'        computation.
+#' @param digits number of significant digits to use (default 3).
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
