@@ -13,32 +13,32 @@ messages.
 
 ### provided by
 
--   usethis::use_tidy_github_actions() (including Ubuntu 16.04,
+-   `usethis::use_tidy_github_actions()` (including Ubuntu 16.04,
       18.04, and 20.04)
--   devtools::check()
--   devtools::check(remote = TRUE, manual = TRUE)
--   devtools::check_win_devel()
--   rhub::check_for_cran()
+-   `devtools::check()`
+-   `devtools::check(remote = TRUE, manual = TRUE)`
+-   `devtools::check_win_devel()`
+-   `devtools::check_rhub(env_vars = c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))
 
 ### Configurations
 
 -   local:
 
-    -   Debian 10 Bulseye (Linux 5.9.0), R 4.0.3
+    -   Debian Bulseye (Linux 5.9.0), R 4.0.3
     -   Windows 10 workstation, R 4.0.3
 
 -   remote:
 
-    -   MacOS 10.15.6: R 4.0.3, R-devel
-    -   Ubuntu Linux 16.04 LTS: R 4.0.3, R-oldrel, GCC
-    -   Ubuntu Linux 18.04 LTS, 20.04 LTS: R 4.0.3, GCC
-    -   Fedora Linux, R-devel, clang, gfortran
-    -   Windows 10.0.17763: R 4.0.3
-    -   Windows Server 2008 R2 SP1: R-devel, 32/64 bit
+    -   MacOS 10.15.6: R 4.0.3 [GitHub Action]
+    -   Ubuntu Linux 20.04 LTS: R 4.0.3, r-devel, GCC [GitHub Action]
+    -   Fedora Linux, R-devel, clang, gfortran [rhub]
+    -   Windows 10.0.17763: R 4.0.3 [GitHub Action]
+    -   Windows Server 2008 R2 SP1: R-devel, 32/64 bit [rhub]
 
 ## R CDM check results
 
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
+
 
 
 # version 0.8.3 (including required correction)
