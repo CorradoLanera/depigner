@@ -89,7 +89,7 @@ send_to_telegram.gg <- function(
   tmp <- tempfile(fileext = paste0(".", fileext))
 
   ggplot2::ggsave(tmp, x)
-  bot$send_photo(chat_id = chat_id, photo = tmp)
+  bot[["send_photo"]](chat_id = chat_id, photo = tmp)
   unlink(tmp)
   invisible(x)
 }

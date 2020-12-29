@@ -80,16 +80,16 @@ summary_interact <- function(model, ref, discrete,
 
 
   if (is.null(ref_min)) {
-    ref_min <- dd[["limits"]][[ref_name]][[1]]
+    ref_min <- dd[["limits"]][[ref_name]][[1L]]
   }
   if (is.null(ref_max)) {
-    ref_max <- dd[["limits"]][[ref_name]][[3]]
+    ref_max <- dd[["limits"]][[ref_name]][[3L]]
   }
   if (is.null(level)) {
     level <- dd[["values"]][[discrete_name]]
   }
 
-  suppressWarnings({
+  suppressMessages({
     res <- purrr::map_df(.x = level, ~ {
       interact <- .x
       eval(parse(text = paste0(
@@ -102,35 +102,35 @@ summary_interact <- function(model, ref, discrete,
           rownames = ".rownames",
           .name_repair = "universal"
         ) %>%
-        dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
-        dplyr::filter(Type == 2) %>%
+        dplyr::mutate(.rownames = dplyr::lag(.data[[".rownames"]])) %>%
+        dplyr::filter(Type == 2L) %>%
         dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
         dplyr::mutate(
           Low = ifelse(is.na(Diff.), NA, Low),
           High = ifelse(is.na(Diff.), NA, High),
           Diff. = ifelse(!is.na(Diff.), Diff.,
-            stringr::str_extract(.data$.rownames, " - .*$") %>%
+            stringr::str_extract(.data[[".rownames"]], " - .*$") %>%
               stringr::str_replace(" - ", "")
           ),
           Effect = as.numeric(Effect),
           Lower.0.95 = as.numeric(Lower.0.95),
           Upper.0.95 = as.numeric(Upper.0.95),
-          .rownames = stringr::str_replace(.data$.rownames, " -+.*$", "")
+          .rownames = stringr::str_replace(.data[[".rownames"]], " -+.*$", "")
         ) %>%
         dplyr::mutate(
-          .rownames = paste0(.data$.rownames, " - ", interact)
+          .rownames = paste0(.data[[".rownames"]], " - ", interact)
         ) %>%
         dplyr::rename(
-          `&nbsp;` = .data$.rownames,
-          `Odds Ratio` = .data$Effect,
-          `Lower 95% CI` = .data$Lower.0.95,
-          `Upper 95% CI` = .data$Upper.0.95
+          `&nbsp;` = .data[[".rownames"]],
+          `Odds Ratio` = .data[["Effect"]],
+          `Lower 95% CI` = .data[["Lower.0.95"]],
+          `Upper 95% CI` = .data[["Upper.0.95"]]
         )
     })
   })
   if (p) {
-    res["P-value"] <- purrr::pmap_dbl(
+    res[["P-value"]] <- purrr::pmap_dbl(
       list(
         or = res[["Odds Ratio"]],
         low = res[["Lower 95% CI"]],

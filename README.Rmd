@@ -13,7 +13,7 @@ A utility package to help you deal with ***pigne***
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------:|
-| **Development** |              [![Devel version](https://img.shields.io/badge/devel version-0.8.3-blue.svg)](https://github.com/CorradoLanera/depigner)             |                      [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                     | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+| **Development** |              [![Devel version](https://img.shields.io/badge/devel version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |                      [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                     | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
 | **CRAN**        |                    [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                   |                   [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                  |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |      [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)     |
 
@@ -149,13 +149,13 @@ my_summary <- summary(Species ~., data = iris,
   test = TRUE
 )
 
-tidy_summary(my_summary) %>%
+tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
 ```
 
 -   **`summary_interact()`**: Produce a data frame of OR (with the corresponding CI95%) for the interactions between different combination of a continuous variable (for which it is possible to define the reference and the target values) and (every or a selection of levels of) a categorical one in a logistic model provided by `lrm()` (from the `{rms}` package [\@R-rms]):
 
-```{r, include = FALSE}
+```{r}
 data('transplant')
 censor_rows <- transplant[['event']] != 'censored' 
 transplant <- droplevels(transplant[censor_rows, ])
@@ -166,15 +166,11 @@ dd <<- datadist(transplant) # this to face a package build issue,
 lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
   data = transplant
 )
-```
-
-```{r}
 summary_interact(lrm_mod, age, abo) %>%
   pander()
 
 summary_interact(lrm_mod, age, abo, p = TRUE) %>%
   pander()
-
 ```
 
 -   **`htypes()`** and friends: get/check types of variable with respect to the `{Hmisc}` ecosystem [\@R-Hmisc].

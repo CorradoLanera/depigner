@@ -19,18 +19,18 @@
 #'   rate_of_anxiety <- 1/1000       # AKA: "mi girano a mille!"
 #'   gdp(required_seconds_of_relax, rate_of_anxiety)
 #' }
-gdp <- function(time = 4, freq = 0.05) {
+gdp <- function(time = 4L, freq = 0.05) {
   my_seq <- seq_len(time / freq)
 
-  pb <- progress::progress_bar$new(
+  pb <- progress::progress_bar[["new"]](
     format = "Please wait: :what :spin in corso...",
     total = length(my_seq),
     clear = TRUE,
-    width = 76
+    width = 76L
   )
 
   purrr::walk(my_seq, ~ {
-    pb$tick(tokens = list(what = "giramento di"))
+    pb[["tick"]](tokens = list(what = "giramento di"))
     Sys.sleep(freq)
   })
 

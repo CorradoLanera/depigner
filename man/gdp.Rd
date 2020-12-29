@@ -4,7 +4,7 @@
 \alias{gdp}
 \title{GDP}
 \usage{
-gdp(time = 4, freq = 0.05)
+gdp(time = 4L, freq = 0.05)
 }
 \arguments{
 \item{time}{[num] number of seconds needed to relax yourself

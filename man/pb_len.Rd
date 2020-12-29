@@ -5,7 +5,7 @@
 \alias{tick}
 \title{Progress bar of given length}
 \usage{
-pb_len(.x, width = 76, show_after = 2, clear = FALSE)
+pb_len(.x, width = 76L, show_after = 2L, clear = FALSE)
 
 tick(pb, what = "")
 }

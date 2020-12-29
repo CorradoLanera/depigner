@@ -47,8 +47,8 @@ use_ui <- function() {
 
   # add usethis to Imports (adapted from usethis:::use_dependency())
   deps <- desc::desc_get_deps(this_proj)
-  existing_dep  <- deps$package == "usethis"
-  existing_type <- deps$type[existing_dep]
+  existing_dep  <- deps[["package"]] == "usethis"
+  existing_type <- deps[["type"]][existing_dep]
   if (!any(existing_dep) || any(existing_type == "LinkingTo")) {
     ui_done("
       Adding {ui_value('usethis')} to {ui_field('Imports')} field

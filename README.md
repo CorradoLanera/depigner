@@ -8,14 +8,14 @@ A utility package to help you deal with ***pigne***
 <!-- badges: start -->
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
-| :-------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
-| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.3-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+|:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------:|
+| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
 | **CRAN**        |                   [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                    |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |     [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)      |
 
 <!-- badges: end -->
 
-> **Pigna** \[*pìn’n’a*\] is the Italian word for *pine cone*.\[1\] In
+> **Pigna** \[*pìn’n’a*\] is the Italian word for *pine cone*.[1] In
 > jargon, it’s used to identify something (like a task…) boring, banal,
 > annoying, painful, frustrating and maybe even with a not so beautiful
 > or rewarding result, just like the obstinate act of trying to
@@ -30,23 +30,23 @@ to provide solutions to that kind of problems which would be normally
 solved using quick-and-dirty (ugly and maybe even wrong) patches.
 
 | Tools Category                           | Function(s)               | Aim                                                                      |
-| :--------------------------------------- | :------------------------ | :----------------------------------------------------------------------- |
+|:-----------------------------------------|:--------------------------|:-------------------------------------------------------------------------|
 | [Harrell’s verse](#harrells-verse-tools) | `tidy_summary()`          | *`pander`-ready* data frame from `Hmisc::summary()`                      |
-|                                          | `paired_test_continuous`  | Paired test for continuous variable into `Hmisc::summary`                |
-|                                          | `paired_test_categorical` | Paired test for categorical variable into `Hmisc::summary`               |
-|                                          | `adjust_p()`              | Adjusts P-values for multiplicity of tests at `tidy_summary()`           |
-|                                          | `summary_interact()`      | data frame of OR for interaction from `rms::lrm()`                       |
-|                                          | `htypes()`                | Will be your variables continuous or categorical in `Hmisc::describe()`? |
+|                                          | `paired_test_continuous`  | Paired test for continuous variable into `Hmisc::summary`                |
+|                                          | `paired_test_categorical` | Paired test for categorical variable into `Hmisc::summary`               |
+|                                          | `adjust_p()`              | Adjusts P-values for multiplicity of tests at `tidy_summary()`           |
+|                                          | `summary_interact()`      | data frame of OR for interaction from `rms::lrm()`                       |
+|                                          | `htypes()`                | Will be your variables continuous or categorical in `Hmisc::describe()`? |
 | [Statistical](#statistical-tools)        | `ci2p()`                  | Get P-value form estimation and confidence interval                      |
 | [Programming](#programming-tools)        | `pb_len()`                | Quick set-up of a `progress::progress_bar()` progress bar                |
-|                                          | `install_pkg_set()`       | Politely install set of packages (topic-related sets at `?pkg_sets`)     |
+|                                          | `install_pkg_set()`       | Politely install set of packages (topic-related sets at `?pkg_sets`)     |
 | [Development](#development-tools)        | `use_ui()`                | Activate `{usethis}` user interface into your own package                |
-|                                          | `please_install()`        | Politely ask the user to install a package                               |
-|                                          | `imported_from()`         | List packages imported from a package (which has to be installed)        |
+|                                          | `please_install()`        | Politely ask the user to install a package                               |
+|                                          | `imported_from()`         | List packages imported from a package (which has to be installed)        |
 | [Telegram](#telegram-tools)              | `start_bot_for_chat()`    | Quick start of a `{telegram.bot}` Telegram’s bot                         |
-|                                          | `send_to_telegram()`      | Unified wrapper to send *someRthing* to a Telegram chat                  |
-|                                          | `errors_to_telegram()`    | Divert all your error messages from the console to a Telegram chat       |
-| [Why not?\!](#why-not)                   | `gdp()`                   | Do you have TOO much pignas in your back?\! … try this out ;-)           |
+|                                          | `send_to_telegram()`      | Unified wrapper to send *someRthing* to a Telegram chat                  |
+|                                          | `errors_to_telegram()`    | Divert all your error messages from the console to a Telegram chat       |
+| [Why not?!](#why-not)                    | `gdp()`                   | Do you have TOO much pignas in your back?! … try this out ;-)            |
 
 # Installation
 
@@ -76,7 +76,7 @@ library(depigner)
 
 ## Harrell’s Verse Tools
 
-  - **`tidy_summary()`**: produces a data frame from the `summary()`
+-   **`tidy_summary()`**: produces a data frame from the `summary()`
     functions provided by `{Hmisc}` \[@R-Hmisc\] and `{rms}` \[@R-rms\]
     packages ready to be `pander::pander()`ed \[@R-pander\].
 
@@ -110,15 +110,14 @@ tidy_summary(my_summary) %>%
   pander()
 ```
 
-|              |   setosa (N=50)   | versicolor (N=50) | virginica (N=50)  |
-| :----------: | :---------------: | :---------------: | :---------------: |
+|              |   setosa (N=50)   | versicolor (N=50) | virginica (N=50)  |
+|:------------:|:-----------------:|:-----------------:|:-----------------:|
 | Sepal.Length | 4.800/5.000/5.200 | 5.600/5.900/6.300 | 6.225/6.500/6.900 |
 | Sepal.Width  | 3.200/3.400/3.675 | 2.525/2.800/3.000 | 2.800/3.000/3.175 |
 | Petal.Length | 1.400/1.500/1.575 | 4.000/4.350/4.600 | 5.100/5.550/5.875 |
 | Petal.Width  |    0.2/0.2/0.3    |    1.2/1.3/1.5    |    1.8/2.0/2.3    |
 
 ``` r
-
 
 dd <<- datadist(heart) # this to face a package build issue,
                        # use standard `<-` into analyses
@@ -129,17 +128,15 @@ tidy_summary(my_summary) %>%
   pander()
 ```
 
-|         | Diff. |   HR   | Lower 95% CI | Upper 95% CI |
-| :-----: | :---: | :----: | :----------: | :----------: |
+|         | Diff. |   HR   | Lower 95% CI | Upper 95% CI |
+|:-------:|:-----:|:------:|:------------:|:------------:|
 |   age   | 10.69 | 1.336  |    1.009     |    1.767     |
-|  year   | 3.37  | 0.6104 |    0.3831    |    0.9727    |
+|  year   | 3.374 | 0.6104 |    0.3831    |    0.9727    |
 | surgery |   1   | 0.5286 |    0.2574    |    1.085     |
 
-  - **`paired_test_*()`**: Paired test for categorical/continuous
+-   **`paired_test_*()`**: Paired test for categorical/continuous
     variables to be used in the `summary()` of the `{Hmisc}`
     \[@R-Hmisc\] package:
-
-<!-- end list -->
 
 ``` r
 data(Arthritis)
@@ -228,9 +225,7 @@ summary(Species ~.,
 #> +------------+--------------------+--------------------+--------------------+-----------------------+
 ```
 
-  - **`adjust_p()`**: Adjust P-values of a `tidy_summary` objects:
-
-<!-- end list -->
+-   **`adjust_p()`**: Adjust P-values of a `tidy_summary` objects:
 
 ``` r
 my_summary <- summary(Species ~., data = iris,
@@ -238,83 +233,61 @@ my_summary <- summary(Species ~., data = iris,
   test = TRUE
 )
 
-tidy_summary(my_summary) %>%
+tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
-#> Warning: Unknown or uninitialised column: `P-value`.
-#> x   The object `x` does not have a P-value column.
-#>     Have you select `test = TRUE` into `summary()`?
-#> x `x` is returned without changes.
+#> ✓ P adjusted with BH method.
 #> # A tibble: 4 x 5
-#>   `&nbsp;`  `setosa \n(N=50)` `versicolor \n(… `virginica \n(N… `  Test\nStatis…
-#>   <chr>     <chr>             <chr>            <chr>            <chr>           
-#> 1 Sepal.Le… "     4.800/5.00… "     5.600/5.9… "     6.225/6.5… "F=136.85 d.f.=…
-#> 2 Sepal.Wi… "     3.200/3.40… "     2.525/2.8… "     2.800/3.0… " F=54.69 d.f.=…
-#> 3 Petal.Le… "     1.400/1.50… "     4.000/4.3… "     5.100/5.5… "F=515.64 d.f.=…
-#> 4 Petal.Wi… "        0.2/0.2… "        1.2/1.… "        1.8/2.… "F=541.25 d.f.=…
+#>   `&nbsp;`   `setosa \n(N=50)`  `versicolor \n(N=… `virginica \n(N=… `P-value`  
+#>   <chr>      <chr>              <chr>              <chr>             <chr>      
+#> 1 Sepal.Len… "4.800/5.000/5.20… "5.600/5.900/6.30… "6.225/6.500/6.9… "      <0.…
+#> 2 Sepal.Wid… "3.200/3.400/3.67… "2.525/2.800/3.00… "2.800/3.000/3.1… "     <=0.…
+#> 3 Petal.Len… "1.400/1.500/1.57… "4.000/4.350/4.60… "5.100/5.550/5.8… "     <=0.…
+#> 4 Petal.Wid… "   0.2/0.2/0.3"   "   1.2/1.3/1.5"   "   1.8/2.0/2.3"  "     <=0.…
 ```
 
-  - **`summary_interact()`**: Produce a data frame of OR (with the
+-   **`summary_interact()`**: Produce a data frame of OR (with the
     corresponding CI95%) for the interactions between different
     combination of a continuous variable (for which it is possible to
     define the reference and the target values) and (every or a
     selection of levels of) a categorical one in a logistic model
     provided by `lrm()` (from the `{rms}` package \[@R-rms\]):
 
-<!-- end list -->
-
 ``` r
+data('transplant')
+censor_rows <- transplant[['event']] != 'censored' 
+transplant <- droplevels(transplant[censor_rows, ])
+
+dd <<- datadist(transplant) # this to face a package build issue,
+                            # use standard `<-` into analyses
+
+lrm_mod <- lrm(event ~ rcs(age, 3)*(sex + abo) + rcs(year, 3),
+  data = transplant
+)
 summary_interact(lrm_mod, age, abo) %>%
   pander()
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
 ```
 
-|          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI |
-| :------: | :-: | :--: | :---: | :--------: | :----------: | :----------: |
+|          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI |
+|:--------:|:---:|:----:|:-----:|:----------:|:------------:|:------------:|
 | age - A  | 43  |  58  |  15   |   1.002    |    0.557     |    1.802     |
 | age - B  | 43  |  58  |  15   |   1.817    |     0.74     |    4.463     |
 | age - AB | 43  |  58  |  15   |   0.635    |    0.186     |    2.169     |
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |
 
 ``` r
-
 summary_interact(lrm_mod, age, abo, p = TRUE) %>%
   pander()
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
-#> New names:
-#> * `Lower 0.95` -> Lower.0.95
-#> * `Upper 0.95` -> Upper.0.95
 ```
 
-|          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI | P-value |
-| :------: | :-: | :--: | :---: | :--------: | :----------: | :----------: | :-----: |
+|          | Low | High | Diff. | Odds Ratio | Lower 95% CI | Upper 95% CI | P-value |
+|:--------:|:---:|:----:|:-----:|:----------:|:------------:|:------------:|:-------:|
 | age - A  | 43  |  58  |  15   |   1.002    |    0.557     |    1.802     |  0.498  |
 | age - B  | 43  |  58  |  15   |   1.817    |     0.74     |    4.463     |  0.137  |
 | age - AB | 43  |  58  |  15   |   0.635    |    0.186     |    2.169     |  0.728  |
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |  0.883  |
 
-  - **`htypes()`** and friends: get/check types of variable with respect
+-   **`htypes()`** and friends: get/check types of variable with respect
     to the `{Hmisc}` ecosystem \[@R-Hmisc\].
-
-<!-- end list -->
 
 ``` r
 htypes(mtcars)
@@ -335,10 +308,8 @@ is_hcon(desc[[1]])
 
 ## Statistical Tools
 
-  - **`ci2p()`**: compute the p-value related with a provided confidence
+-   **`ci2p()`**: compute the p-value related with a provided confidence
     interval:
-
-<!-- end list -->
 
 ``` r
 ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
@@ -347,10 +318,8 @@ ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
 
 ## Programming Tools
 
-  - **`pb_len()`**: Progress bar of given length, wrapper from the
+-   **`pb_len()`**: Progress bar of given length, wrapper from the
     `{progress}` \[@R-progress\] package:
-
-<!-- end list -->
 
 ``` r
 pb <- pb_len(100)
@@ -361,12 +330,10 @@ for (i in 1:100) {
 }
 ```
 
-  - **`install_pkg_set()`**: Simple and polite wrapper to install sets
+-   **`install_pkg_set()`**: Simple and polite wrapper to install sets
     of packages. Moreover, `{depigner}` provides some sets already
     defined for common scenario in R (analyses, production, documenting,
     …). See them by call `?pgk_sets`.
-
-<!-- end list -->
 
 ``` r
 install_pkg_set() # this install the whole `?pkg_all`
@@ -377,33 +344,27 @@ install_pkg_set(pkg_stan)
 
 ## Development Tools
 
-  - **`use_ui()`**: Use `{usethis}`’ user interface \[@R-usethis\] in
+-   **`use_ui()`**: Use `{usethis}`’ user interface \[@R-usethis\] in
     your package
-
-<!-- end list -->
 
 ``` r
 # in the initial setup steps of the development of a package
 use_ui()
 ```
 
-  - **`lease_install()`**: This is a polite wrapper to
+-   **`lease_install()`**: This is a polite wrapper to
     `install.packages()` inspired (= w/ very minimal modification) by a
     function Hadley showed us during a course.
-
-<!-- end list -->
 
 ``` r
 a_pkg_i_miss <- setdiff(available.packages(), installed.packages())[[1]]
 please_install(a_pkg_i_miss)
 ```
 
-  - **`imported_from()`**: If you would like to know which packages are
+-   **`imported_from()`**: If you would like to know which packages are
     imported by a package (eg to know which packages are required for
     its installation or either installed during it) you can use this
     function
-
-<!-- end list -->
 
 ``` r
 imported_from("depigner")
@@ -415,10 +376,8 @@ imported_from("depigner")
 
 ## Telegram Tools
 
-  - **Wrappers to simple use of Telegram’s bots**: wrappers from the
+-   **Wrappers to simple use of Telegram’s bots**: wrappers from the
     `{telegram.bot}` package \[@R-telegram.bot\]:
-
-<!-- end list -->
 
 ``` r
 # Set up a Telegram bot. read `?start_bot_for_chat`
@@ -440,11 +399,9 @@ send_to_telegram(gg)
 errors_to_telegram()
 ```
 
-## Why Not?\!
+## Why Not?!
 
-  - **`gdp()`**: A wrapper to relax
-
-<!-- end list -->
+-   **`gdp()`**: A wrapper to relax
 
 ``` r
 gdp(7)
@@ -477,8 +434,8 @@ Sovrano](https://www.elisasovrano.it).
 
 # Reference
 
-1.  You can find all the possible meanings of *pigna*
-    [here](https://www.treccani.it/vocabolario/pigna/), and you can
-    listen how to pronounce it
-    [here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
-    Note: the Italian plural for “pigna” is “pigne” \[*pìn’n’e*\].
+[1] You can find all the possible meanings of *pigna*
+[here](https://www.treccani.it/vocabolario/pigna/), and you can listen
+how to pronounce it
+[here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
+Note: the Italian plural for “pigna” is “pigne” \[*pìn’n’e*\].

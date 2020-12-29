@@ -35,7 +35,7 @@ install_pkg_set <- function(set = pkg_all, dependencies = TRUE) {
 
   needed <- set[are_missing]
 
-  if (length(needed) > 0) {
+  if (length(needed) > 0L) {
     please_install(needed, dependencies = dependencies)
   }
 
