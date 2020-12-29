@@ -1,4 +1,4 @@
-# depigner (development version)
+# depigner 0.8.4
 
 -   convert all implicit integers in explicit (e.g, 1L instead of 1).
 -   convert all `$` extraction in `[[`.

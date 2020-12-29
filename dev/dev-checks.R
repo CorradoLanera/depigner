@@ -10,7 +10,9 @@ devtools::test()
 covr::report()
 
 lintr::lint_package()
-goodpractice::gp()
+goodpractice::gp(
+  checks = setdiff(goodpractice::all_checks(), "covr")
+)
 
 devtools::check()
 # devtools::check() # from RStudio button too: non interactive session!

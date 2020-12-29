@@ -1,3 +1,46 @@
+# version 0.8.4 (including required correction)
+
+## Notes
+
+This submission basically resolve some user-reported error, and
+implement a wide refactoring of the code (converting `$` in `[[`
+and implicit integers to explicit ones, and set default stricter
+linters provided by `{lintr}`), and test suite (`{testthat}` 3ed).
+Next, it improves some documentation (README, and examples), and error
+messages.
+
+## Test environments
+
+### provided by
+
+-   usethis::use_tidy_github_actions() (including Ubuntu 16.04,
+      18.04, and 20.04)
+-   devtools::check()
+-   devtools::check(remote = TRUE, manual = TRUE)
+-   devtools::check_win_devel()
+-   rhub::check_for_cran()
+
+### Configurations
+
+-   local:
+
+    -   Debian 10 Bulseye (Linux 5.9.0), R 4.0.3
+    -   Windows 10 workstation, R 4.0.3
+
+-   remote:
+
+    -   MacOS 10.15.6: R 4.0.3, R-devel
+    -   Ubuntu Linux 16.04 LTS: R 4.0.3, R-oldrel, GCC
+    -   Ubuntu Linux 18.04 LTS, 20.04 LTS: R 4.0.3, GCC
+    -   Fedora Linux, R-devel, clang, gfortran
+    -   Windows 10.0.17763: R 4.0.3
+    -   Windows Server 2008 R2 SP1: R-devel, 32/64 bit
+
+## R CDM check results
+
+0 errors ✓ | 0 warnings ✓ | 0 notes ✓
+
+
 # version 0.8.3 (including required correction)
 
 ## Notes
@@ -16,12 +59,12 @@ The reported problems were all solved updating an auxiliary function used only f
 
 ### provided by
 
--   usethis::use\_tidy\_github\_actions() (including Ubuntu 16.04,
+-   usethis::use_tidy_github_actions() (including Ubuntu 16.04,
       18.04, and 20.04)
 -   devtools::check()
 -   devtools::check(remote = TRUE, manual = TRUE)
--   devtools::check\_win\_devel()
--   rhub::check\_for\_cran()
+-   devtools::check_win_devel()
+-   rhub::check_for_cran()
 
 ### Configurations
 
@@ -41,7 +84,7 @@ The reported problems were all solved updating an auxiliary function used only f
 
 ## R CDM check results
 
-0 errors ✓ \| 0 warnings ✓ \| 0 notes ✓
+0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 
 # version 0.8.1
 
@@ -74,11 +117,11 @@ It was caused by the fact that <https://elisasovrano.it> had not yet been activa
 
 ### provided by
 
--   usethis::use\_tidy\_github\_actions()
+-   usethis::use_tidy_github_actions()
 -   devtools::check()
 -   devtools::check(remote = TRUE, manual = TRUE)
--   devtools::check\_win\_devel()
--   rhub::check\_for\_cran()
+-   devtools::check_win_devel()
+-   rhub::check_for_cran()
 
 ### Configurations
 
@@ -97,7 +140,7 @@ It was caused by the fact that <https://elisasovrano.it> had not yet been activa
 
 ## R CDM check results
 
-0 errors ✓ \| 0 warnings ✓ \| 2 notes x
+0 errors ✓ | 0 warnings ✓ | 2 notes x
 
 -   Possibly mis-spelled words in DESCRIPTION: Pigna (9:14) Pignas (2:49) pìn'n'a (9:22)
 
@@ -107,6 +150,6 @@ It was caused by the fact that <https://elisasovrano.it> had not yet been activa
 
 ### Allert: isolate r-hub error
 
-Error for lack of system dependencies on r-hub only for \* Ubuntu Linux 16.04 LTS: R 4.0.1, GCC
+Error for lack of system dependencies on r-hub only for * Ubuntu Linux 16.04 LTS: R 4.0.1, GCC
 
 With the same configuration called from a GitHub Action defined like in <https://github.com/r-lib/actions/blob/master/examples/check-full.yaml>, it succeded (<https://github.com/CorradoLanera/depigner/pull/14>).
