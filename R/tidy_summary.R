@@ -8,10 +8,11 @@
 #' @param x an object used to select a method, output of some summary
 #'          by \code{Hmisc}.
 #' @param ... further arguments passed to or from other methods
+#' @param digits number of significant digits to print. Default is 3
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-tidy_summary <- function(x, ...) {
+tidy_summary <- function(x, ..., digits = 3L) {
   UseMethod("tidy_summary", x)
 }
 
@@ -35,7 +36,7 @@ tidy_summary <- function(x, ...) {
 #'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'   tidy_summary(my_summary)
 #' }
-tidy_summary.summary.formula.reverse <- function(x, ...) {
+tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
 
   invisible(utils::capture.output({
     printed <- print(x, ...)
@@ -51,7 +52,8 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
   res <- printed[-1L, ]
 
   class(res) <- c("tidy_summary", class(res))
-  res
+  res %>%
+    dplyr::mutate_if(is.double, round, digits = digits)
 }
 
 
@@ -99,15 +101,14 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'   my_summary <- summary(f)
 #'   tidy_summary(my_summary)
 #' }
-tidy_summary.summary.rms <- function(x, diff_digits = 2, ...) {
+tidy_summary.summary.rms <- function(x, ..., digits = 3L) {
   res <- as.data.frame(x) %>%
     tibble::as_tibble(rownames = ".rownames") %>%
     dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
     dplyr::filter(.data$Type == 2)
 
-  res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
+  res <- res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
     dplyr::mutate(
-      Diff. = round(.data$Diff., digits = diff_digits),
       Diff. = ifelse(!is.na(.data$Diff.), .data$Diff.,
         stringr::str_extract(.data$.rownames, "\\.\\.\\..*$") %>%
           stringr::str_replace("\\.\\.\\.", "") %>%
