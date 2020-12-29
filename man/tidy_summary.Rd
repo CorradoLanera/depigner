@@ -27,7 +27,7 @@ a [tibble][tibble::tibble-package]
 Converts a \code{summary()} object produced by \code{Hmisc} or
 by \code{rms} packages to a tidy data frame ready to be
 `{pander}`ed (e.g. printed on a word document after
-\code{\link[knitr]{knit}} the source.
+\code{knit}ting the source (with `{knitr}`).
 }
 \section{Methods (by class)}{
 \itemize{

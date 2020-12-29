@@ -3,7 +3,7 @@
 #' Converts a \code{summary()} object produced by \code{Hmisc} or
 #' by \code{rms} packages to a tidy data frame ready to be
 #' `{pander}`ed (e.g. printed on a word document after
-#' \code{\link[knitr]{knit}} the source.
+#' \code{knit}ting the source (with `{knitr}`).
 #'
 #' @param x an object used to select a method, output of some summary
 #'          by \code{Hmisc}.
