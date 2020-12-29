@@ -50,7 +50,7 @@
 <meta property="og:description" content="Converts a summary() object produced by Hmisc or
 by rms packages to a tidy data frame ready to be
 `pander`ed (e.g. printed on a word document after
-knit the source." />
+knitting the source (with `knitr`)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -83,7 +83,7 @@ knit the source." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@ knit the source." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/CorradoLanera/depigner/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -142,16 +142,16 @@ knit the source." />
     <p>Converts a <code><a href='https://rdrr.io/r/base/summary.html'>summary()</a></code> object produced by <code>Hmisc</code> or
 by <code>rms</code> packages to a tidy data frame ready to be
 `pander`ed (e.g. printed on a word document after
-<code><a href='https://rdrr.io/pkg/knitr/man/knit.html'>knit</a></code> the source.</p>
+<code>knit</code>ting the source (with `knitr`).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tidy_summary</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>tidy_summary</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, digits <span class='op'>=</span> <span class='fl'>3L</span><span class='op'>)</span>
 
 <span class='co'># S3 method for summary.formula.reverse</span>
-<span class='fu'>tidy_summary</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>tidy_summary</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, digits <span class='op'>=</span> <span class='fl'>3L</span><span class='op'>)</span>
 
 <span class='co'># S3 method for summary.rms</span>
-<span class='fu'>tidy_summary</span><span class='op'>(</span><span class='va'>x</span>, diff_digits <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>tidy_summary</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, digits <span class='op'>=</span> <span class='fl'>3L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,10 +166,8 @@ by <code>Hmisc</code>.</p></td>
       <td><p>further arguments passed to or from other methods</p></td>
     </tr>
     <tr>
-      <th>diff_digits</th>
-      <td><p>number of significant digits to use (default 2)
-for the step-difference between continuous variable HR
-computation.</p></td>
+      <th>digits</th>
+      <td><p>number of significant digits to use (default 3L).</p></td>
     </tr>
     </table>
 
@@ -209,19 +207,19 @@ print, see the print section in <code><a href='https://rdrr.io/pkg/Hmisc/man/sum
 #&gt; </span><span style='color: #555555;'>3</span><span> Petal.Length </span><span style='color: #555555;'>"</span><span>1.400/1.500/1.575</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>4.000/4.350/4.600</span><span style='color: #555555;'>"</span><span>   </span><span style='color: #555555;'>"</span><span>5.100/5.550/5.875</span><span style='color: #555555;'>"</span><span> 
 #&gt; </span><span style='color: #555555;'>4</span><span> Petal.Width  </span><span style='color: #555555;'>"</span><span>   0.2/0.2/0.3</span><span style='color: #555555;'>"</span><span>    </span><span style='color: #555555;'>"</span><span>   1.2/1.3/1.5</span><span style='color: #555555;'>"</span><span>      </span><span style='color: #555555;'>"</span><span>   1.8/2.0/2.3</span><span style='color: #555555;'>"</span><span>    </div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://hbiostat.org/R/rms'>rms</a></span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>dd <span class='op'>=</span> <span class='st'>"datadist"</span><span class='op'>)</span>
-  <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>1000</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>731</span><span class='op'>)</span>
-  <span class='va'>age</span> <span class='op'>&lt;-</span> <span class='fl'>50</span> <span class='op'>+</span> <span class='fl'>12</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://hbiostat.org/R/rms/'>rms</a></span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>datadist <span class='op'>=</span> <span class='st'>"dd"</span><span class='op'>)</span>
+  <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>1000L</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>731L</span><span class='op'>)</span>
+  <span class='va'>age</span> <span class='op'>&lt;-</span> <span class='fl'>50L</span> <span class='op'>+</span> <span class='fl'>12L</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
   <span class='va'>sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Male"</span>, <span class='st'>"Female"</span><span class='op'>)</span>, <span class='va'>n</span>,
     rep <span class='op'>=</span> <span class='cn'>TRUE</span>,
     prob <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.6</span>, <span class='fl'>.4</span><span class='op'>)</span>
   <span class='op'>)</span><span class='op'>)</span>
-  <span class='va'>cens</span> <span class='op'>&lt;-</span> <span class='fl'>15</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
-  <span class='va'>h</span> <span class='op'>&lt;-</span> <span class='fl'>.02</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fl'>.04</span> <span class='op'>*</span> <span class='op'>(</span><span class='va'>age</span> <span class='op'>-</span> <span class='fl'>50</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>.8</span> <span class='op'>*</span> <span class='op'>(</span><span class='va'>sex</span> <span class='op'>==</span> <span class='st'>"Female"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>cens</span> <span class='op'>&lt;-</span> <span class='fl'>15L</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
+  <span class='va'>h</span> <span class='op'>&lt;-</span> <span class='fl'>.02</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fl'>.04</span> <span class='op'>*</span> <span class='op'>(</span><span class='va'>age</span> <span class='op'>-</span> <span class='fl'>50L</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>.8</span> <span class='op'>*</span> <span class='op'>(</span><span class='va'>sex</span> <span class='op'>==</span> <span class='st'>"Female"</span><span class='op'>)</span><span class='op'>)</span>
   <span class='va'>dt</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>h</span>
-  <span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>dt</span> <span class='op'>&lt;=</span> <span class='va'>cens</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>
+  <span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>dt</span> <span class='op'>&lt;=</span> <span class='va'>cens</span>, <span class='fl'>1L</span>, <span class='fl'>0L</span><span class='op'>)</span>
   <span class='va'>dt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>dt</span>, <span class='va'>cens</span><span class='op'>)</span>
 
   <span class='va'>dd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rms/man/datadist.html'>datadist</a></span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>sex</span><span class='op'>)</span>
