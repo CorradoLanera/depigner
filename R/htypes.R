@@ -181,14 +181,14 @@ htypes.default <- function(x, n_unique = 10) {
 is_hcat <- function(x) {
   assert_is_single_h_desc(x)
 
-  s <- x$counts
-  v <- x$values
+  s <- x[["counts"]]
+  v <- x[["values"]]
 
-  ok_counts <- ("Sum" %in% names(s)) && (as.numeric(s["Sum"]) > 0)
+  ok_counts <- ("Sum" %in% names(s)) && (as.numeric(s[["Sum"]]) > 0)
   ok_values <- is_val_freq_list(v) &&
-    length(v$frequency) &&
-    is.character(v$value) &&
-    (length(v$value) <= 20)
+    length(v[["frequency"]]) &&
+    is.character(v[["value"]]) &&
+    (length(v[["value"]]) <= 20)
 
   ok_counts || ok_values
 }
@@ -209,11 +209,11 @@ is_hcat <- function(x) {
 is_hcon <- function(x, n_unique = 10) {
   assert_is_single_h_desc(x)
 
-  s <- x$counts
-  v <- x$values
+  s <- x[["counts"]]
+  v <- x[["values"]]
 
   is_val_freq_list(v) &&
     ("distinct" %in% names(s)) &&
-    (as.numeric(s["distinct"]) >= n_unique) &&
-    (is.numeric(v$value) || Hmisc::testDateTime(v$value, "either"))
+    (as.numeric(s[["distinct"]]) >= n_unique) &&
+    (is.numeric(v[["value"]]) || Hmisc::testDateTime(v[["value"]], "either"))
 }

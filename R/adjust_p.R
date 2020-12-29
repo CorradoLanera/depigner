@@ -38,13 +38,13 @@ adjust_p <- function(x, method) {
 #' @rdname adjust_p
 #' @export
 adjust_p.tidy_summary <- function(x, method = "BH") {
-  if (is.null(x$`P-value`)) {
+  if (is.null(x[["P-value"]])) {
     ui_oops("
       The object {ui_code('x')} does not have a {ui_field('P-value')} column.
       Have you select {ui_code('test = TRUE')} into {ui_code('summary()')}
       and set argument {ui_code('prtest = \"P\"')} into the
-      {ui_code('print()')} or the {ui_code('summary_interact()')}
-      function?
+      {ui_code('print()')}, the {ui_code('summary_interact()')}, or
+      the {ui_code('tidy_summary()')} function?
     ")
     ui_oops("{ui_code('x')} is returned without changes.")
     return(x)
@@ -64,11 +64,11 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
 
 
   # The first one is not empty because it is the header
-  are_ps <- x$`P-value` %>%
+  are_ps <- x[["P-value"]] %>%
     stringr::str_detect("^ +$", negate = TRUE) %>%
     `[<-`(1, FALSE)
 
-  ps <- x$`P-value` %>%
+  ps <- x[["P-value"]] %>%
     stringr::str_replace("<", "") %>%
     `[`(are_ps) %>%
     as.numeric()
@@ -80,10 +80,10 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
   ps_adj[ps_adj == 0.001] <- "<=0.001"
 
   # returned string-values must conserve the original lenght
-  nchar_ps <- nchar(x$`P-value`[[1]])
+  nchar_ps <- nchar(x[["P-value"]][[1]])
   ps_adj <- stringr::str_pad(ps_adj, nchar_ps)
 
-  x$`P-value`[are_ps] <- ps_adj
+  x[["P-value"]][are_ps] <- ps_adj
 
   ui_done("P adjusted with {method} method.")
   x

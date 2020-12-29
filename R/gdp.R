@@ -22,7 +22,7 @@
 gdp <- function(time = 4, freq = 0.05) {
   my_seq <- seq_len(time / freq)
 
-  pb <- progress::progress_bar$new(
+  pb <- progress::progress_bar[["new"]](
     format = "Please wait: :what :spin in corso...",
     total = length(my_seq),
     clear = TRUE,
@@ -30,7 +30,7 @@ gdp <- function(time = 4, freq = 0.05) {
   )
 
   purrr::walk(my_seq, ~ {
-    pb$tick(tokens = list(what = "giramento di"))
+    pb[["tick"]](tokens = list(what = "giramento di"))
     Sys.sleep(freq)
   })
 

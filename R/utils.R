@@ -1,5 +1,5 @@
 assert_is_single_h_desc <- function(x) {
-  if (as.integer(R.Version()$major) < 4) {
+  if (as.integer(R.Version()[["major"]]) < 4) {
     stopifnot(is_single_hdesc(x))
   } else {
     stopifnot(
@@ -12,7 +12,7 @@ assert_is_single_h_desc <- function(x) {
 
 
 assert_is_h_desc <- function(x) {
-  if (as.integer(R.Version()$major) < 4) {
+  if (as.integer(R.Version()[["major"]]) < 4) {
     stopifnot(is_hdesc(x))
   } else {
     stopifnot(

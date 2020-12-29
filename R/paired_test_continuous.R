@@ -43,7 +43,7 @@
 #'
 #'   ## two groups
 #'   summary(Species ~ .,
-#'     data = iris[iris$Species != "setosa", ],
+#'     data = iris[iris[["Species"]] != "setosa", ],
 #'     method = "reverse",
 #'     test = TRUE,
 #'     conTest = paired_test_continuous
@@ -58,12 +58,12 @@
 #'   )
 #'
 #'   ## without Hmisc
-#'   two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
-#'   two_groups <- iris$Species[iris$Species != "setosa"]
+#'   two_obs <- iris[["Sepal.Length"]][iris[["Species"]] != "setosa"]
+#'   two_groups <- iris[["Species"]][iris[["Species"]] != "setosa"]
 #'   paired_test_continuous(two_groups, two_obs)
 #'
-#'   obs <- iris$Sepal.Length
-#'   many_groups <- iris$Species
+#'   obs <- iris[["Sepal.Length"]]
+#'   many_groups <- iris[["Species"]]
 #'   paired_test_continuous(many_groups, obs)
 #' }
 paired_test_continuous <- function(group, x) {
@@ -94,14 +94,14 @@ paired_test_continuous <- function(group, x) {
 
 
   # Recreate ids (if possible) --------------------------------------
-  rle_g <- rle(as.integer(group))$lengths
+  rle_g <- rle(as.integer(group))[["lengths"]]
 
   ids <- vector("integer", len_g)
   id <- 0L
 
   if (length(rle_g) == length(original_levels)) {
     # this means that observation are sorted by group
-    if (diff(range(rle_g)) >= .Machine$double.eps^0.5) {
+    if (diff(range(rle_g)) >= .Machine[["double.eps"]]^0.5) {
       ui_warn(paste(
         "Data passed by groups and incomplete:\n",
         "    not same umber of observation among the groups.\n",
@@ -109,7 +109,7 @@ paired_test_continuous <- function(group, x) {
         "(9 is added to this P to identify the cases).\n\n"
       ))
       res <- Hmisc::conTestkw(group, x)
-      res$P <- res$P + 9
+      res[["P"]] <- res[["P"]] + 9
       return(res)
     }
     # observation sorted by groups with the same length
@@ -142,9 +142,9 @@ paired_test_continuous <- function(group, x) {
     dplyr::arrange(ids, group)
 
 
-  group_names <- levels(data_db$group)
+  group_names <- levels(data_db[["group"]])
   group_n <- length(group_names)
-  n_subjects <- length(unique(data_db$ids))
+  n_subjects <- length(unique(data_db[["ids"]]))
 
 
   # Less Than Two groups --------------------------------------------

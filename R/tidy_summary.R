@@ -102,22 +102,22 @@ tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
 tidy_summary.summary.rms <- function(x, ..., digits = 3L) {
   res <- as.data.frame(x) %>%
     tibble::as_tibble(rownames = ".rownames") %>%
-    dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
-    dplyr::filter(.data$Type == 2)
+    dplyr::mutate(.rownames = dplyr::lag(.data[[".rownames"]])) %>%
+    dplyr::filter(.data[["Type"]] == 2)
 
   res <- res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
     dplyr::mutate(
-      Diff. = ifelse(!is.na(.data$Diff.), .data$Diff.,
-        stringr::str_extract(.data$.rownames, "\\.\\.\\..*$") %>%
+      Diff. = ifelse(!is.na(.data[["Diff."]]), .data[["Diff."]],
+        stringr::str_extract(.data[[".rownames"]], "\\.\\.\\..*$") %>%
           stringr::str_replace("\\.\\.\\.", "") %>%
           stringr::str_replace("\\.", ":")
       ),
-      .rownames = stringr::str_replace(.data$.rownames, "\\.\\.\\..*$", "")
+      .rownames = stringr::str_replace(.data[[".rownames"]], "\\.\\.\\..*$", "")
     ) %>%
     dplyr::rename(
-      `&nbsp;` = .data$.rownames,
-      `HR` = .data$Effect,
-      `Lower 95% CI` = .data$`Lower 0.95`,
-      `Upper 95% CI` = .data$`Upper 0.95`
+      `&nbsp;` = .data[[".rownames"]],
+      `HR` = .data[["Effect"]],
+      `Lower 95% CI` = .data[["Lower 0.95"]],
+      `Upper 95% CI` = .data[["Upper 0.95"]]
     )
 }

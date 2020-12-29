@@ -25,7 +25,7 @@ test_that("cat check works", {
   expect_true(is_hcat(test_desc[["vs"]]))
   expect_false(is_hcat(test_desc[["mpg"]]))
 
-  skip_if(as.integer(R.Version()$major) < 4)
+  skip_if(as.integer(R.Version()[["major"]]) < 4)
   expect_error(is_hcat(test_desc), "must be a single|is not TRUE")
 })
 
@@ -43,7 +43,7 @@ test_that("original check works", {
     is_hcon(test_nunique[["Month"]], n_unique = 4)
   )
 
-  skip_if(as.integer(R.Version()$major) < 4)
+  skip_if(as.integer(R.Version()[["major"]]) < 4)
   expect_error(is_hcon(test_desc), "must be a single|is not TRUE")
 })
 
@@ -60,7 +60,7 @@ test_that("htype works", {
     "con"
   )
 
-  skip_if(as.integer(R.Version()$major) < 4)
+  skip_if(as.integer(R.Version()[["major"]]) < 4)
   expect_error(htype(test_desc), "must be a single|is not TRUE")
 })
 

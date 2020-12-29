@@ -1,7 +1,7 @@
 data(Arthritis)
 
-tab_two <- table(Arthritis$Sex, Arthritis$Treatment)
-tab_more <- table(Arthritis$Sex, Arthritis$Improved)
+tab_two <- table(Arthritis[["Sex"]], Arthritis[["Treatment"]])
+tab_more <- table(Arthritis[["Sex"]], Arthritis[["Improved"]])
 
 test_that("output class is correct", {
   skip_on_cran()
@@ -81,6 +81,6 @@ test_that("paired_test_categorical works with 0 data", {
   ))
 
   expect_false(
-    is.nan(depigner::paired_test_categorical(mat_1)$P)
+    is.nan(depigner::paired_test_categorical(mat_1)[["P"]])
   )
 })

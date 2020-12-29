@@ -27,7 +27,7 @@ pb_len <- function(.x, width = 76, show_after = 2, clear = FALSE) {
     ui_stop("{ui_code('.x')} must be an integer.")
   }
 
-  progress::progress_bar$new(
+  progress::progress_bar[["new"]](
     format =
       "evaluated: :what [:bar] :percent in :elapsed [ETA: :eta]",
     total = .x,
@@ -43,5 +43,5 @@ pb_len <- function(.x, width = 76, show_after = 2, clear = FALSE) {
 #'     of the progressbar
 #' @export
 tick <- function(pb, what = "") {
-  pb$tick(tokens = list(what = what))
+  pb[["tick"]](tokens = list(what = what))
 }

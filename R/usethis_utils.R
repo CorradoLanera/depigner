@@ -38,8 +38,8 @@ pkg_name <- function(base_path = usethis::proj_get()) {
     Please provide a package {ui_field('base_path')}.
   ")
 
-  desc <- desc::description$new(base_path)
-  as.list(desc$get(desc$fields()))[["Package"]]
+  desc <- desc::description[["new"]](base_path)
+  as.list(desc[["get"]](desc[["fields"]]()))[["Package"]]
 }
 
 
@@ -48,7 +48,7 @@ pkg_name <- function(base_path = usethis::proj_get()) {
 platform_line_ending <- function() {
   # copy-pasted from usethis:::platform_line_ending to be used in
   # pkg_line_ending() and in write_utf8()
-  if (.Platform$OS.type == "windows") "\r\n" else "\n"
+  if (.Platform[["OS.type"]] == "windows") "\r\n" else "\n"
 }
 
 

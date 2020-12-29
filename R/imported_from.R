@@ -21,7 +21,7 @@ imported_from <- function(x, include_self = FALSE) {
     )
   }
 
-  raw <- utils::packageDescription(x)$Imports
+  raw <- utils::packageDescription(x)[["Imports"]]
   if (length(raw) == 0) return(x[include_self])
 
   imports <- strsplit(raw, ",")[[1]]
