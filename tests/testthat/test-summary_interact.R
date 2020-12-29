@@ -11,7 +11,7 @@ test_that("expectation class", {
   dd <<- rms::datadist(transplant)
 
   lrm_mod <- rms::lrm(
-    event ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
+    event ~ rms::rcs(age, 3L) * (sex + abo) + rms::rcs(year, 3L),
     data = transplant,
     model = TRUE,
     x = TRUE, y = TRUE
@@ -19,12 +19,12 @@ test_that("expectation class", {
 
   expect_s3_class(summary_interact(lrm_mod, age, sex), "data.frame")
   expect_s3_class(
-    summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80),
+    summary_interact(lrm_mod, age, sex, ref_min = 60L, ref_max = 80L),
     "data.frame"
   )
   expect_s3_class(
     summary_interact(
-      lrm_mod, age, sex, ref_min = 60, ref_max = 80, digits = 5L
+      lrm_mod, age, sex, ref_min = 60L, ref_max = 80L, digits = 5L
     ),
     "data.frame"
   )
@@ -44,7 +44,7 @@ test_that("expectation throws error if input not an lrm", {
   dd <<- rms::datadist(transplant)
 
   ols_mod <- rms::ols(
-    futime ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
+    futime ~ rms::rcs(age, 3L) * (sex + abo) + rms::rcs(year, 3L),
     data = transplant,
     model = TRUE,
     x = TRUE,
@@ -65,7 +65,7 @@ test_that("Without refname in datadist it trows an error", {
   dd <<- rms::datadist(transplant)
 
   lrm_mod <- rms::lrm(
-    event ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
+    event ~ rms::rcs(age, 3L) * (sex + abo) + rms::rcs(year, 3L),
     data = transplant,
     model = TRUE,
     x = TRUE, y = TRUE
@@ -83,7 +83,7 @@ test_that("Without datadist it trows an error", {
   options(datadist = NULL)
 
   lrm_mod <- rms::lrm(
-    event ~ rms::rcs(age, 3) * (sex + abo) + rms::rcs(year, 3),
+    event ~ rms::rcs(age, 3L) * (sex + abo) + rms::rcs(year, 3L),
     data = transplant,
     model = TRUE,
     x = TRUE, y = TRUE

@@ -80,10 +80,10 @@ summary_interact <- function(model, ref, discrete,
 
 
   if (is.null(ref_min)) {
-    ref_min <- dd[["limits"]][[ref_name]][[1]]
+    ref_min <- dd[["limits"]][[ref_name]][[1L]]
   }
   if (is.null(ref_max)) {
-    ref_max <- dd[["limits"]][[ref_name]][[3]]
+    ref_max <- dd[["limits"]][[ref_name]][[3L]]
   }
   if (is.null(level)) {
     level <- dd[["values"]][[discrete_name]]
@@ -103,7 +103,7 @@ summary_interact <- function(model, ref, discrete,
           .name_repair = "universal"
         ) %>%
         dplyr::mutate(.rownames = dplyr::lag(.data[[".rownames"]])) %>%
-        dplyr::filter(Type == 2) %>%
+        dplyr::filter(Type == 2L) %>%
         dplyr::select(-"Type", -"S.E.") %>%
         dplyr::filter(.rownames == rlang::quo_name(ref)) %>%
         dplyr::mutate(

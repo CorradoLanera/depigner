@@ -18,7 +18,7 @@ by \code{Hmisc}.}
 
 \item{...}{further arguments passed to or from other methods}
 
-\item{digits}{number of significant digits to use (default 3).}
+\item{digits}{number of significant digits to use (default 3L).}
 }
 \value{
 a [tibble][tibble::tibble-package]
@@ -57,17 +57,17 @@ print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 \donttest{
   library(rms)
   options(datadist = "dd")
-  n <- 1000
-  set.seed(731)
-  age <- 50 + 12 * rnorm(n)
+  n <- 1000L
+  set.seed(731L)
+  age <- 50L + 12L * rnorm(n)
   sex <- factor(sample(c("Male", "Female"), n,
     rep = TRUE,
     prob = c(.6, .4)
   ))
-  cens <- 15 * runif(n)
-  h <- .02 * exp(.04 * (age - 50) + .8 * (sex == "Female"))
+  cens <- 15L * runif(n)
+  h <- .02 * exp(.04 * (age - 50L) + .8 * (sex == "Female"))
   dt <- -log(runif(n)) / h
-  e <- ifelse(dt <= cens, 1, 0)
+  e <- ifelse(dt <= cens, 1L, 0L)
   dt <- pmin(dt, cens)
 
   dd <- datadist(age, sex)

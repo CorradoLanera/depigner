@@ -42,7 +42,7 @@ tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
     printed <- print(x, ...)
   }))
 
-  colnames(printed) <- printed[1, ]
+  colnames(printed) <- printed[1L, ]
   printed <- dplyr::as_tibble(printed, rownames = "&nbsp;") %>%
     dplyr::mutate(
       `&nbsp;` = .data[["&nbsp;"]] %>%
@@ -66,7 +66,7 @@ tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
 #'             referred to (i.e. without \eqn{\beta}s, Low, High, S.E.
 #'             and Type).
 #'
-#' @param digits number of significant digits to use (default 3).
+#' @param digits number of significant digits to use (default 3L).
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
@@ -77,17 +77,17 @@ tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
 #' \donttest{
 #'   library(rms)
 #'   options(datadist = "dd")
-#'   n <- 1000
-#'   set.seed(731)
-#'   age <- 50 + 12 * rnorm(n)
+#'   n <- 1000L
+#'   set.seed(731L)
+#'   age <- 50L + 12L * rnorm(n)
 #'   sex <- factor(sample(c("Male", "Female"), n,
 #'     rep = TRUE,
 #'     prob = c(.6, .4)
 #'   ))
-#'   cens <- 15 * runif(n)
-#'   h <- .02 * exp(.04 * (age - 50) + .8 * (sex == "Female"))
+#'   cens <- 15L * runif(n)
+#'   h <- .02 * exp(.04 * (age - 50L) + .8 * (sex == "Female"))
 #'   dt <- -log(runif(n)) / h
-#'   e <- ifelse(dt <= cens, 1, 0)
+#'   e <- ifelse(dt <= cens, 1L, 0L)
 #'   dt <- pmin(dt, cens)
 #'
 #'   dd <- datadist(age, sex)
@@ -103,7 +103,7 @@ tidy_summary.summary.rms <- function(x, ..., digits = 3L) {
   res <- as.data.frame(x) %>%
     tibble::as_tibble(rownames = ".rownames") %>%
     dplyr::mutate(.rownames = dplyr::lag(.data[[".rownames"]])) %>%
-    dplyr::filter(.data[["Type"]] == 2)
+    dplyr::filter(.data[["Type"]] == 2L)
 
   res <- res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
     dplyr::mutate(

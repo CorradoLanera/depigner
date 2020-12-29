@@ -14,14 +14,14 @@ test_that("output classes are correct", {
 old_opt <- options(datadist = "dd")
 on.exit(options(old_opt))
 
-n <- 1000
-age <- 50 + 12 * rnorm(n)
+n <- 1000L
+age <- 50L + 12L * rnorm(n)
 sex <- factor(sample(c("m", "f"), n, rep = TRUE, prob = c(.6, .4)))
 
-cens <- 15 * runif(n)
-h <- .02 * exp(.04 * (age - 50) + .8 * (sex == "f"))
+cens <- 15L * runif(n)
+h <- .02 * exp(.04 * (age - 50L) + .8 * (sex == "f"))
 dt <- -log(runif(n)) / h
-e <- ifelse(dt <= cens, 1, 0)
+e <- ifelse(dt <= cens, 1L, 0L)
 dt <- pmin(dt, cens)
 
 
@@ -31,7 +31,7 @@ test_that("correct class", {
   dd <- rms::datadist(age, sex)
   options(datadist = "dd")
   s <- survival::Surv(dt, e)
-  f <- rms::cph(s ~ rms::rcs(age, 4) + sex)
+  f <- rms::cph(s ~ rms::rcs(age, 4L) + sex)
 
   my_summary <- summary(f)
 
@@ -53,7 +53,7 @@ test_that("tidy_summary return var names too (#17)", {
   )
 
   expect_equal(
-    result[[1]],
+    result[[1L]],
     c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 

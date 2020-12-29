@@ -56,7 +56,7 @@ platform_line_ending <- function() {
 
 detect_line_ending <- function(path) {
   # copy-pasted from usethis::detect_line_ending() to be used in
-  samp <- suppressWarnings(readChar(path, nchars = 500))
+  samp <- suppressWarnings(readChar(path, nchars = 500L))
   if (isTRUE(grepl("\r\n", samp))) "\r\n" else "\n"
 }
 
@@ -87,8 +87,8 @@ pkg_line_ending <- function() {
   r_path <- usethis::proj_path("R")
   if (fs::dir_exists(r_path)) {
     r_files <- fs::dir_ls(r_path, pattern = "\\.[rR]$")
-    if (length(r_files) > 0) {
-      return(detect_line_ending(r_files[[1]]))
+    if (length(r_files) > 0L) {
+      return(detect_line_ending(r_files[[1L]]))
     }
   }
 
@@ -131,9 +131,9 @@ block_find <- function(lines, block_start, block_end) {
   start <- which(lines == block_start)
   end   <- which(lines == block_end)
 
-  if (length(start) == 0 && length(end) == 0) return(NULL)
+  if (length(start) == 0L && length(end) == 0L) return(NULL)
 
-  if (!(length(start) == 1 && length(end) == 1 && start < end)) {
+  if (!(length(start) == 1L && length(end) == 1L && start < end)) {
     ui_stop("
       Invalid block specification.
       Must start with {ui_code(block_start)}
@@ -169,9 +169,9 @@ block_append <- function(value, path) {
 
   ui_done("Adding {ui_value(value)} to {ui_path(path)}")
 
-  end <- block_lines["end"]
+  end <- block_lines[["end"]]
   lines <- c(
-    lines[rlang::seq2(1, end)],
+    lines[rlang::seq2(1L, end)],
     value,
     lines[rlang::seq2(end + 1L, length(lines))]
   )

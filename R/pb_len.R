@@ -22,7 +22,7 @@
 #'     tick(pb, paste("i = ", i))
 #'   }
 #' }
-pb_len <- function(.x, width = 76, show_after = 2, clear = FALSE) {
+pb_len <- function(.x, width = 76L, show_after = 2L, clear = FALSE) {
   if (!is.numeric(.x) || (.x != trunc(.x))) {
     ui_stop("{ui_code('.x')} must be an integer.")
   }

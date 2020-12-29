@@ -66,7 +66,7 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
   # The first one is not empty because it is the header
   are_ps <- x[["P-value"]] %>%
     stringr::str_detect("^ +$", negate = TRUE) %>%
-    `[<-`(1, FALSE)
+    `[<-`(1L, FALSE)
 
   ps <- x[["P-value"]] %>%
     stringr::str_replace("<", "") %>%
@@ -74,13 +74,13 @@ adjust_p.tidy_summary <- function(x, method = "BH") {
     as.numeric()
 
   # (Can someone find an alternative method to conclude "<0.001"
-  # maintaining consistency round(3) for the other values, and with the
+  # maintaining consistency round(3L) for the other values, and with the
   # further padding that comes after? If so, please purpose it! :-)
-  ps_adj <- stats::p.adjust(ps, method = method) %>% round(3)
+  ps_adj <- stats::p.adjust(ps, method = method) %>% round(3L)
   ps_adj[ps_adj == 0.001] <- "<=0.001"
 
   # returned string-values must conserve the original lenght
-  nchar_ps <- nchar(x[["P-value"]][[1]])
+  nchar_ps <- nchar(x[["P-value"]][[1L]])
   ps_adj <- stringr::str_pad(ps_adj, nchar_ps)
 
   x[["P-value"]][are_ps] <- ps_adj

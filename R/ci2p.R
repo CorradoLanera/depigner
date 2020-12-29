@@ -43,6 +43,6 @@ ci2p <- function(
     upper <- log(upper)
   }
 
-  se <- (upper - lower) / (2 * qdist(conf))
-  1 - pdist(est / se)
+  se <- (upper - lower) / (2L * qdist(conf))
+  1L - pdist(est / se)
 }

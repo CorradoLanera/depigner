@@ -22,14 +22,14 @@ imported_from <- function(x, include_self = FALSE) {
   }
 
   raw <- utils::packageDescription(x)[["Imports"]]
-  if (length(raw) == 0) return(x[include_self])
+  if (length(raw) == 0L) return(x[include_self])
 
-  imports <- strsplit(raw, ",")[[1]]
+  imports <- strsplit(raw, ",")[[1L]]
   parsed <- gsub("^\\s+|\\s+$", "", imports)
   names <- vapply(
     X = strsplit(parsed, "\\s+"),
-    FUN = "[[", 1,
-    FUN.VALUE = character(1)
+    FUN = "[[", 1L,
+    FUN.VALUE = character(1L)
   )
   if (include_self) {
     names <- c(names, x)

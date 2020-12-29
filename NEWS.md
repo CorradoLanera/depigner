@@ -1,10 +1,12 @@
 # depigner (development version)
 
--   add `digits = 3` option to `tidy_sumamry()`
--   update README making all the code visible (\#39)
--   fix an error in the the example of `tidy_summary()` (\#38)
+-   convert all implicit integers in explicit (e.g, 1L instead of 1).
+-   convert all `$` extraction in `[[`.
+-   add `digits = 3` option to `tidy_sumamry()`.
+-   update README making all the code visible (\#39).
+-   fix an error in the the example of `tidy_summary()` (\#38).
 -   Improved error messages for `adjust_p()` when `tidy_summary()` is called without `prtest = TRUE` option.
--   Updated test tests for testthat 3rd edition (\#32)
+-   Updated test tests for testthat 3rd edition (\#32).
 -   Move `{rms}` to IMPORTS.
 
 # depigner 0.8.3

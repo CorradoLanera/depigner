@@ -66,13 +66,13 @@ paired_test_categorical <- function(tab) {
     tab <- as.table(tab)
   }
 
-  rowcounts <- tab %*% rep(1, ncol(tab))
-  tab <- tab[rowcounts > 0, ]
+  rowcounts <- tab %*% rep(1L, ncol(tab))
+  tab <- tab[rowcounts > 0L, ]
   if (!is_proper_matrix(tab)) return(empty_h_test())
 
   # due = McNemar ---------------------------------------------------
 
-  if (nrow(tab) == 2 && ncol(tab) == 2) {
+  if (nrow(tab) == 2L && ncol(tab) == 2L) {
     mn_test <- stats::mcnemar.test(tab)
 
     return(list(
@@ -118,9 +118,9 @@ paired_test_categorical <- function(tab) {
       family = "quasibinomial"
     )
     cof <- stats::coef(st)
-    df <- st[["rank"]] - (names(cof)[[1]] == "Intercept")
+    df <- st[["rank"]] - (names(cof)[[1L]] == "Intercept")
     lr <- st[["null.deviance"]] - st[["deviance"]]
-    pval <- 1 - stats::pchisq(lr, df)
+    pval <- 1L - stats::pchisq(lr, df)
 
   list(
     # values (mandatory)

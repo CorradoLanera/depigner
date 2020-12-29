@@ -31,7 +31,7 @@ chat_id_from_name <- function(.title = NA) {
   res <- dplyr::filter(bot_chats, .data[["title"]] == .title)[["id"]] %>%
     unique()
 
-  if (length(res) == 0) {
+  if (length(res) == 0L) {
     ui_stop(c(
       "The chat name {.title} provided does not exist in the chat for ",
       "which your bot has access."
