@@ -5,7 +5,7 @@ chat_id_from_name <- function(.title = NA) {
     )
   }
 
-  bot_updates <- getOption("depigner.bot")$get_updates()
+  bot_updates <- getOption("depigner.bot")[["get_updates"]]()
   bot_message <- purrr::map(bot_updates, "message")
   bot_message <- bot_message[!purrr::map_lgl(bot_message, is.null)]
   bot_chats <- purrr::map_df(bot_message, ~ dplyr::tibble(
@@ -28,10 +28,10 @@ chat_id_from_name <- function(.title = NA) {
     )
   }
 
-  res <- dplyr::filter(bot_chats, .data$title == .title)[["id"]] %>%
+  res <- dplyr::filter(bot_chats, .data[["title"]] == .title)[["id"]] %>%
     unique()
 
-  if (length(res) == 0) {
+  if (length(res) == 0L) {
     ui_stop(c(
       "The chat name {.title} provided does not exist in the chat for ",
       "which your bot has access."

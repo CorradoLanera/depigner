@@ -43,7 +43,7 @@
 #'
 #'   ## two groups
 #'   summary(Species ~ .,
-#'     data = iris[iris$Species != "setosa", ],
+#'     data = iris[iris[["Species"]] != "setosa", ],
 #'     method = "reverse",
 #'     test = TRUE,
 #'     conTest = paired_test_continuous
@@ -58,12 +58,12 @@
 #'   )
 #'
 #'   ## without Hmisc
-#'   two_obs <- iris$Sepal.Length[iris$Species != "setosa"]
-#'   two_groups <- iris$Species[iris$Species != "setosa"]
+#'   two_obs <- iris[["Sepal.Length"]][iris[["Species"]] != "setosa"]
+#'   two_groups <- iris[["Species"]][iris[["Species"]] != "setosa"]
 #'   paired_test_continuous(two_groups, two_obs)
 #'
-#'   obs <- iris$Sepal.Length
-#'   many_groups <- iris$Species
+#'   obs <- iris[["Sepal.Length"]]
+#'   many_groups <- iris[["Species"]]
 #'   paired_test_continuous(many_groups, obs)
 #' }
 paired_test_continuous <- function(group, x) {
@@ -94,26 +94,26 @@ paired_test_continuous <- function(group, x) {
 
 
   # Recreate ids (if possible) --------------------------------------
-  rle_g <- rle(as.integer(group))$lengths
+  rle_g <- rle(as.integer(group))[["lengths"]]
 
   ids <- vector("integer", len_g)
   id <- 0L
 
   if (length(rle_g) == length(original_levels)) {
     # this means that observation are sorted by group
-    if (diff(range(rle_g)) >= .Machine$double.eps^0.5) {
+    if (diff(range(rle_g)) >= .Machine[["double.eps"]]^0.5) {
       ui_warn(paste(
         "Data passed by groups and incomplete:\n",
         "    not same umber of observation among the groups.\n",
         "P returned is the standard F statistics.\n",
-        "(9 is added to this P to identify the cases).\n\n"
+        "(9L is added to this P to identify the cases).\n\n"
       ))
       res <- Hmisc::conTestkw(group, x)
-      res$P <- res$P + 9
+      res[["P"]] <- res[["P"]] + 9L
       return(res)
     }
     # observation sorted by groups with the same length
-    ids <- rep(seq_len(rle_g[[1]]), length(rle_g))
+    ids <- rep(seq_len(rle_g[[1L]]), length(rle_g))
 
   } else {
 
@@ -121,8 +121,8 @@ paired_test_continuous <- function(group, x) {
     for (i in seq_along(group)) {
       actual_lev <- which(original_levels == group[[i]])
 
-      is_new_id <- (i == 1) ||
-        (group[[i - 1]] %in% original_levels[actual_lev:n_lev])
+      is_new_id <- (i == 1L) ||
+        (group[[i - 1L]] %in% original_levels[actual_lev:n_lev])
 
       id <- id + is_new_id
       ids[[i]] <- id
@@ -142,22 +142,22 @@ paired_test_continuous <- function(group, x) {
     dplyr::arrange(ids, group)
 
 
-  group_names <- levels(data_db$group)
+  group_names <- levels(data_db[["group"]])
   group_n <- length(group_names)
-  n_subjects <- length(unique(data_db$ids))
+  n_subjects <- length(unique(data_db[["ids"]]))
 
 
   # Less Than Two groups --------------------------------------------
-  if (group_n < 2 || n_subjects <= group_n) return(fake_h_group_test())
+  if (group_n < 2L || n_subjects <= group_n) return(fake_h_group_test())
 
 
   # Two groups ------------------------------------------------------
-  if (group_n == 2) {
+  if (group_n == 2L) {
     data_two <- data_db %>%
       tidyr::spread("group", "x")
 
 
-    test_out <- stats::t.test(data_two[[2]], data_two[[3]],
+    test_out <- stats::t.test(data_two[[2L]], data_two[[3L]],
       paired    = TRUE,
       var.equal = TRUE
     )
@@ -187,13 +187,13 @@ paired_test_continuous <- function(group, x) {
 
   test_out <- summary(
     stats::aov(x ~ group + Error(ids / group), data = data_db)
-  )[["Error: Within"]][[1]]
+  )[["Error: Within"]][[1L]]
 
   list(
     # values (mandatory)
-    P = stats::setNames(test_out[1, "Pr(>F)"], "P"),
-    stat = stats::setNames(test_out[1, "F value"], "F"),
-    df = stats::setNames(test_out[1, "Df"], "df"),
+    P = stats::setNames(test_out[1L, "Pr(>F)"], "P"),
+    stat = stats::setNames(test_out[1L, "F value"], "F"),
+    df = stats::setNames(test_out[1L, "Df"], "df"),
 
     # names (mandatory)
     testname = "Repeated-measure AOV",

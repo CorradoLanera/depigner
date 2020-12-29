@@ -20,7 +20,7 @@ test_that("correct know id", {
   skip_if(Sys.getenv("R_telegram_bot_name") != "cl_r_bot")
 
   start_bot_for_chat("Depigner test")
-  expect_equal(chat_id_from_name("Depigner test"), -414181402)
+  expect_equal(chat_id_from_name("Depigner test"), -414181402L)
 
   options(depigner.bot = NULL)
   options(depigner.chat_id = NULL)

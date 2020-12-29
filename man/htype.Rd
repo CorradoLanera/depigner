@@ -9,24 +9,24 @@
 \alias{is_hcon}
 \title{Type's checks accordingly to [Hmisc] package}
 \usage{
-htype(x, n_unique = 10)
+htype(x, n_unique = 10L)
 
-htypes(x, n_unique = 10)
+htypes(x, n_unique = 10L)
 
-\method{htypes}{describe}(x, n_unique = 10)
+\method{htypes}{describe}(x, n_unique = 10L)
 
-\method{htypes}{default}(x, n_unique = 10)
+\method{htypes}{default}(x, n_unique = 10L)
 
 is_hcat(x)
 
-is_hcon(x, n_unique = 10)
+is_hcon(x, n_unique = 10L)
 }
 \arguments{
 \item{x}{an instance of the class [describe][Hmisc::describe], in the
 cases of "singular" functions (ie `is_*()` or `htype()`) it must
 be a single-variable [describe][Hmisc::describe] object.}
 
-\item{n_unique}{(int, 10) the minimum number of distinct values a
+\item{n_unique}{(int, 10L) the minimum number of distinct values a
 numeric variable must have before plot.describe uses it in a
 continuous variable plot.}
 }

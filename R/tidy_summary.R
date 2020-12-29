@@ -8,10 +8,11 @@
 #' @param x an object used to select a method, output of some summary
 #'          by \code{Hmisc}.
 #' @param ... further arguments passed to or from other methods
+#' @param digits number of significant digits to print. Default is 3
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-tidy_summary <- function(x, ...) {
+tidy_summary <- function(x, ..., digits = 3L) {
   UseMethod("tidy_summary", x)
 }
 
@@ -35,13 +36,13 @@ tidy_summary <- function(x, ...) {
 #'   my_summary <- summary(Species ~ ., data = iris, method = "reverse")
 #'   tidy_summary(my_summary)
 #' }
-tidy_summary.summary.formula.reverse <- function(x, ...) {
+tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
 
   invisible(utils::capture.output({
     printed <- print(x, ...)
   }))
 
-  colnames(printed) <- printed[1, ]
+  colnames(printed) <- printed[1L, ]
   printed <- dplyr::as_tibble(printed, rownames = "&nbsp;") %>%
     dplyr::mutate(
       `&nbsp;` = .data[["&nbsp;"]] %>%
@@ -51,7 +52,8 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
   res <- printed[-1L, ]
 
   class(res) <- c("tidy_summary", class(res))
-  res
+  res %>%
+    dplyr::mutate_if(is.double, round, digits = digits)
 }
 
 
@@ -64,9 +66,7 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'             referred to (i.e. without \eqn{\beta}s, Low, High, S.E.
 #'             and Type).
 #'
-#' @param diff_digits number of significant digits to use (default 2)
-#'        for the step-difference between continuous variable HR
-#'        computation.
+#' @param digits number of significant digits to use (default 3L).
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
@@ -77,17 +77,17 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #' \donttest{
 #'   library(rms)
 #'   options(datadist = "dd")
-#'   n <- 1000
-#'   set.seed(731)
-#'   age <- 50 + 12 * rnorm(n)
+#'   n <- 1000L
+#'   set.seed(731L)
+#'   age <- 50L + 12L * rnorm(n)
 #'   sex <- factor(sample(c("Male", "Female"), n,
 #'     rep = TRUE,
 #'     prob = c(.6, .4)
 #'   ))
-#'   cens <- 15 * runif(n)
-#'   h <- .02 * exp(.04 * (age - 50) + .8 * (sex == "Female"))
+#'   cens <- 15L * runif(n)
+#'   h <- .02 * exp(.04 * (age - 50L) + .8 * (sex == "Female"))
 #'   dt <- -log(runif(n)) / h
-#'   e <- ifelse(dt <= cens, 1, 0)
+#'   e <- ifelse(dt <= cens, 1L, 0L)
 #'   dt <- pmin(dt, cens)
 #'
 #'   dd <- datadist(age, sex)
@@ -99,26 +99,25 @@ tidy_summary.summary.formula.reverse <- function(x, ...) {
 #'   my_summary <- summary(f)
 #'   tidy_summary(my_summary)
 #' }
-tidy_summary.summary.rms <- function(x, diff_digits = 2, ...) {
+tidy_summary.summary.rms <- function(x, ..., digits = 3L) {
   res <- as.data.frame(x) %>%
     tibble::as_tibble(rownames = ".rownames") %>%
-    dplyr::mutate(.rownames = dplyr::lag(.data$.rownames)) %>%
-    dplyr::filter(.data$Type == 2)
+    dplyr::mutate(.rownames = dplyr::lag(.data[[".rownames"]])) %>%
+    dplyr::filter(.data[["Type"]] == 2L)
 
-  res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
+  res <- res[!names(res) %in% c("Low", "High", "S.E.", "Type")] %>%
     dplyr::mutate(
-      Diff. = round(.data$Diff., digits = diff_digits),
-      Diff. = ifelse(!is.na(.data$Diff.), .data$Diff.,
-        stringr::str_extract(.data$.rownames, "\\.\\.\\..*$") %>%
+      Diff. = ifelse(!is.na(.data[["Diff."]]), .data[["Diff."]],
+        stringr::str_extract(.data[[".rownames"]], "\\.\\.\\..*$") %>%
           stringr::str_replace("\\.\\.\\.", "") %>%
           stringr::str_replace("\\.", ":")
       ),
-      .rownames = stringr::str_replace(.data$.rownames, "\\.\\.\\..*$", "")
+      .rownames = stringr::str_replace(.data[[".rownames"]], "\\.\\.\\..*$", "")
     ) %>%
     dplyr::rename(
-      `&nbsp;` = .data$.rownames,
-      `HR` = .data$Effect,
-      `Lower 95% CI` = .data$`Lower 0.95`,
-      `Upper 95% CI` = .data$`Upper 0.95`
+      `&nbsp;` = .data[[".rownames"]],
+      `HR` = .data[["Effect"]],
+      `Lower 95% CI` = .data[["Lower 0.95"]],
+      `Upper 95% CI` = .data[["Upper 0.95"]]
     )
 }

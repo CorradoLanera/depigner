@@ -38,11 +38,11 @@ of them are of class `describe`. In particular, even if
   desc <- describe(mtcars)
 
   is_hdesc(desc) # TRUE
-  is_hdesc(desc[[1]]) # TRUE
+  is_hdesc(desc[[1L]]) # TRUE
 }
 \donttest{
   is_single_hdesc(desc) # FALSE
-  is_single_hdesc(desc[[1]]) # TRUE
+  is_single_hdesc(desc[[1L]]) # TRUE
 }
 }
 \seealso{

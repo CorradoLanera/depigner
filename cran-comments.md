@@ -16,7 +16,8 @@ The reported problems were all solved updating an auxiliary function used only f
 
 ### provided by
 
--   usethis::use\_tidy\_github\_actions() (including Ubuntu 16.04, 18.04, and 20.04)
+-   usethis::use\_tidy\_github\_actions() (including Ubuntu 16.04,
+      18.04, and 20.04)
 -   devtools::check()
 -   devtools::check(remote = TRUE, manual = TRUE)
 -   devtools::check\_win\_devel()

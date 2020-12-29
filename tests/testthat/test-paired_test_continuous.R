@@ -3,12 +3,12 @@ iris <- dplyr::group_by(iris, Species) %>%
   dplyr::ungroup() %>%
   dplyr::arrange(id)
 
-which_selected <- iris$Species != "setosa"
-two_obs <- iris$Sepal.Length[which_selected]
-two_groups <- iris$Species[which_selected] %>% droplevels()
+which_selected <- iris[["Species"]] != "setosa"
+two_obs <- iris[["Sepal.Length"]][which_selected]
+two_groups <- iris[["Species"]][which_selected] %>% droplevels()
 
-obs <- iris$Sepal.Length
-many_groups <- iris$Species
+obs <- iris[["Sepal.Length"]]
+many_groups <- iris[["Species"]]
 
 test_that("output class is correct", {
   skip_on_cran()
@@ -35,11 +35,11 @@ test_that("wrong input are managed", {
   skip_on_cran()
 
   expect_usethis_error(
-    paired_test_continuous(factor(c(1, 2)), 1),
+    paired_test_continuous(factor(c(1L, 2L)), 1L),
     "length"
   )
   expect_warning(expect_warning(
-    paired_test_continuous(c(1, 2), c(1, 2)),
+    paired_test_continuous(c(1L, 2L), c(1L, 2L)),
     "factor"), "one group")
 })
 
@@ -55,15 +55,15 @@ test_that("data by groups are managed", {
   )
 
   expect_warning(
-    paired_test_continuous(two_groups[ord][-1], two_obs[ord][-1]),
+    paired_test_continuous(two_groups[ord][-1L], two_obs[ord][-1L]),
     "incomplete"
   )
 
   expect_gte(
     suppressWarnings(
-      paired_test_continuous(two_groups[ord][-1], two_obs[ord][-1])
+      paired_test_continuous(two_groups[ord][-1L], two_obs[ord][-1L])
     )[["P"]],
-    9
+    9L
   )
 })
 
@@ -73,7 +73,7 @@ test_that("one group is managed", {
   skip_on_cran()
 
   expect_warning(
-    paired_test_continuous(factor(c("a", "a", "a")), c(1, 2, 3)),
+    paired_test_continuous(factor(c("a", "a", "a")), c(1L, 2L, 3L)),
     "Only one group with data, no paired test is done"
   )
 })
@@ -83,10 +83,10 @@ test_that("many groups works properly", {
   data_db <- iris %>% dplyr::select(Sepal.Length, Species, id)
 
   expect_equal(
-    paired_test_continuous(many_groups, obs)[["P"]][[1]],
+    paired_test_continuous(many_groups, obs)[["P"]][[1L]],
     summary(
       stats::aov(Sepal.Length ~ Species + Error(id / Species),
                  data = data_db)
-    )[["Error: Within"]][[1]][1, "Pr(>F)"]
+    )[["Error: Within"]][[1L]][1L, "Pr(>F)"]
   )
 })

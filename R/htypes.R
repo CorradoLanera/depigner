@@ -27,7 +27,7 @@
 #'   desc <- describe(mtcars)
 #'
 #'   is_hdesc(desc) # TRUE
-#'   is_hdesc(desc[[1]]) # TRUE
+#'   is_hdesc(desc[[1L]]) # TRUE
 #' }
 is_hdesc <- function(x) {
   class(x) == "describe"
@@ -41,7 +41,7 @@ is_hdesc <- function(x) {
 #' @examples
 #' \donttest{
 #'   is_single_hdesc(desc) # FALSE
-#'   is_single_hdesc(desc[[1]]) # TRUE
+#'   is_single_hdesc(desc[[1L]]) # TRUE
 #' }
 is_single_hdesc <- function(x) {
   (class(x) == "describe") && (class(x[[1L]]) != "describe")
@@ -78,7 +78,7 @@ is_single_hdesc <- function(x) {
 #' @param x an instance of the class [describe][Hmisc::describe], in the
 #'   cases of "singular" functions (ie `is_*()` or `htype()`) it must
 #'   be a single-variable [describe][Hmisc::describe] object.
-#' @param n_unique (int, 10) the minimum number of distinct values a
+#' @param n_unique (int, 10L) the minimum number of distinct values a
 #'   numeric variable must have before plot.describe uses it in a
 #'   continuous variable plot.
 #'
@@ -103,19 +103,19 @@ is_single_hdesc <- function(x) {
 #'   htype(desc[["mpg"]]) # "con"
 #'   htype(desc[["cyl"]]) # "none"
 #' }
-htype <- function(x, n_unique = 10) {
+htype <- function(x, n_unique = 10L) {
   is_con <- is_hcon(x, n_unique = n_unique)
   is_cat <- is_hcat(x)
 
   htype <- c("cat", "con")[c(is_cat, is_con)]
 
-  if (length(htype) == 0) {
+  if (length(htype) == 0L) {
     return("none")
   }
-  if (length(htype) == 1) {
+  if (length(htype) == 1L) {
     return(htype)
   }
-  if (length(htype) == 2) {
+  if (length(htype) == 2L) {
     return({
       warning(
         "Strange behaviour: both cat and con! (this would never happen)"
@@ -130,7 +130,7 @@ htype <- function(x, n_unique = 10) {
 #' @return (chr) character vector of the types identified by [htype] for
 #'   every variable represented in (each element of) `x`.
 #' @export
-htypes <- function(x, n_unique = 10) {
+htypes <- function(x, n_unique = 10L) {
   UseMethod("htypes", x)
 }
 
@@ -146,13 +146,13 @@ htypes <- function(x, n_unique = 10) {
 #'   #   carb = "none"
 #'   # )
 #' }
-htypes.describe <- function(x, n_unique = 10) {
+htypes.describe <- function(x, n_unique = 10L) {
   assert_is_h_desc(x)
 
   if (is_single_hdesc(x)) {
     return(htype(x, n_unique = n_unique))
   }
-  vapply(x, htype, FUN.VALUE = character(1))
+  vapply(x, htype, FUN.VALUE = character(1L))
 }
 
 #' @rdname htype
@@ -163,7 +163,7 @@ htypes.describe <- function(x, n_unique = 10) {
 #'   htypes(mtcars) # htypes(desc)
 #'   htypes(letters) # "none"
 #' }
-htypes.default <- function(x, n_unique = 10) {
+htypes.default <- function(x, n_unique = 10L) {
   htypes(Hmisc::describe(x))
 }
 
@@ -181,14 +181,14 @@ htypes.default <- function(x, n_unique = 10) {
 is_hcat <- function(x) {
   assert_is_single_h_desc(x)
 
-  s <- x$counts
-  v <- x$values
+  s <- x[["counts"]]
+  v <- x[["values"]]
 
-  ok_counts <- ("Sum" %in% names(s)) && (as.numeric(s["Sum"]) > 0)
+  ok_counts <- ("Sum" %in% names(s)) && (as.numeric(s[["Sum"]]) > 0L)
   ok_values <- is_val_freq_list(v) &&
-    length(v$frequency) &&
-    is.character(v$value) &&
-    (length(v$value) <= 20)
+    length(v[["frequency"]]) &&
+    is.character(v[["value"]]) &&
+    (length(v[["value"]]) <= 20L)
 
   ok_counts || ok_values
 }
@@ -206,14 +206,14 @@ is_hcat <- function(x) {
 #'   is_hcon(desc[["vs"]]) # FALSE
 #'   is_hcon(desc[["mpg"]]) # TRUE
 #' }
-is_hcon <- function(x, n_unique = 10) {
+is_hcon <- function(x, n_unique = 10L) {
   assert_is_single_h_desc(x)
 
-  s <- x$counts
-  v <- x$values
+  s <- x[["counts"]]
+  v <- x[["values"]]
 
   is_val_freq_list(v) &&
     ("distinct" %in% names(s)) &&
-    (as.numeric(s["distinct"]) >= n_unique) &&
-    (is.numeric(v$value) || Hmisc::testDateTime(v$value, "either"))
+    (as.numeric(s[["distinct"]]) >= n_unique) &&
+    (is.numeric(v[["value"]]) || Hmisc::testDateTime(v[["value"]], "either"))
 }

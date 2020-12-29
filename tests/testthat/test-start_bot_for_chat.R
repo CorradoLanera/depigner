@@ -36,7 +36,7 @@ test_that("setup options", {
   start_bot_for_chat("Depigner test")
 
   expect_s3_class(getOption("depigner.bot"), "Bot")
-  expect_equal(getOption("depigner.chat_id"), -414181402)
+  expect_equal(getOption("depigner.chat_id"), -414181402L)
 
   options(depigner.bot = NULL)
   options(depigner.chat_id = NULL)
