@@ -9,7 +9,7 @@ A utility package to help you deal with ***pigne***
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------:|
-| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.3-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
 | **CRAN**        |                   [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                    |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |     [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)      |
 
@@ -84,17 +84,17 @@ Currently it is tested for method *reverse* only:
 
 ``` r
 library(rms)
-#> Carico il pacchetto richiesto: Hmisc
-#> Carico il pacchetto richiesto: lattice
-#> Carico il pacchetto richiesto: survival
-#> Carico il pacchetto richiesto: Formula
-#> Carico il pacchetto richiesto: ggplot2
+#> Loading required package: Hmisc
+#> Loading required package: lattice
+#> Loading required package: survival
+#> Loading required package: Formula
+#> Loading required package: ggplot2
 #> 
 #> Attaching package: 'Hmisc'
 #> The following objects are masked from 'package:base':
 #> 
 #>     format.pval, units
-#> Carico il pacchetto richiesto: SparseM
+#> Loading required package: SparseM
 #> 
 #> Attaching package: 'SparseM'
 #> The following object is masked from 'package:base':
