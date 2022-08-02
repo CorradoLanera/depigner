@@ -5,6 +5,10 @@
 #' `{pander}`ed (e.g. printed on a word document after
 #' \code{knit}ting the source (with `{knitr}`).
 #'
+#' @note The output is supposed to be used as input to
+#'       [pander][pander::pander], and contains few otherwise messy
+#'       characters included for an optimal (pander) formatting.
+#'
 #' @param x an object used to select a method, output of some summary
 #'          by \code{Hmisc}.
 #' @param ... further arguments passed to or from other methods

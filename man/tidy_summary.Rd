@@ -45,6 +45,10 @@ and Type).
 }}
 
 \note{
+The output is supposed to be used as input to
+      [pander][pander::pander], and contains few otherwise messy
+      characters included for an optimal (pander) formatting.
+
 to see the options you can pass to \code{...} for a custom
 print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 }

@@ -1,5 +1,6 @@
+- now the documentation for `tidy_summary` explicitly stated that the output is supposed to be used as input to `pander` (#50).
 - updated Roxygen Note for documentation settings to 7.2.0
-- added `{progress}`, `{readxl}`, and `{writexl}` to `pkg_utils`; `{ggpubr}` to `pkg_docs`; `{ggeffects}`, and `{dlnm}` to `pkg_stat`; `{tarchetypes}`, and `{checkmate}`, removing `{fs}` (included in `{tarchetypes}`), from `pkg_devel`.
+- added `{progress}`, `{readxl}`, and `{writexl}` to `pkg_utils`; `{ggpubr}` to `pkg_docs`; `{ggeffects}`, and `{dlnm}` to `pkg_stat`; `{tarchetypes}`, and `{checkmate}`, removing `{fs}` (included in `{tarchetypes}`), from `pkg_devel`. (#47, #48)
 
 # depigner 0.8.4
 
