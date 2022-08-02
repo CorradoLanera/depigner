@@ -22,13 +22,17 @@ pkg_misc <- purrr::set_names(c(
 ))
 
 #' @describeIn pkg_sets Utilities for data analyses, including `{here}`,
-#'   `{lobstr}`, `{progress}`, and `{tidyverse}`.
+#'   `{lobstr}`, `{progress}`, `{progressr}`, `{readxl}`, `{tidyverse}`,
+#'   and `{writexl}`.
 #' @export
 pkg_utils <- purrr::set_names(c(
   "here",
   "lobstr",
   "progress",
-  "tidyverse"
+  "progressr",
+  "readxl",
+  "tidyverse",
+  "writexl"
 ))
 
 #' @describeIn pkg_sets Are you in a hurry?! This includes `{furrr}`,
@@ -56,12 +60,14 @@ pkg_mlt <- purrr::set_names(c(
 ))
 
 #' @describeIn pkg_sets (Clinical oriented) statistical analyses in R.
-#'   This includes `{CBPS}`, `{cobalt}`, `{MatchIt}`, `{mice}`, `{rms}`,
-#'   `{twang}`, and `{WeightIt}`.
+#'   This includes `{CBPS}`, `{cobalt}`, `{dlnm}`, `{ggeffects}`,
+#'   `{MatchIt}`, `{mice}`, `{rms}`, `{twang}`, and `{WeightIt}`.
 #' @export
 pkg_stat <- purrr::set_names(c(
   "CBPS",
   "cobalt",
+  "dlnm",
+  "ggeffects",
   "MatchIt",
   "mice",
   "rms",
@@ -79,20 +85,21 @@ pkg_stan <- purrr::set_names(c(
 ))
 
 #' @describeIn pkg_sets Develop stuff in R. This includes `{assertive}`,
-#'   `{covr}`, `{lintr}`, `{fs}`, `{profvis}`, `{pryr}`, `{renv}`,
-#'   `{roxygen2}`, `{styler}`, `{testthat}`, `{spelling}`, and
-#'   `{usethis}`.
+#'   `{checkmate}`, `{covr}`, `{lintr}`, `{profvis}`, `{pryr}`,
+#'   `{renv}`, `{roxygen2}`, `{styler}`, `{tarchetypes}`, `{testthat}`,
+#'   `{spelling}`, and `{usethis}`.
 #' @export
 pkg_devel <- purrr::set_names(c(
   "assertive",
+  "checkmate",
   "covr",
   "lintr",
-  "fs",
   "profvis",
   "pryr",
   "renv",
   "roxygen2",
   "styler",
+  "tarchetypes",
   "testthat",
   "spelling",
   "usethis"
@@ -105,7 +112,8 @@ pkg_docs <- purrr::set_names(c(
   "blogdown",
   "DT",
   "pander",
-  "pkgdown"
+  "pkgdown",
+  "ggpubr"
 ))
 
 #' @describeIn pkg_sets for develop and put in production stuffs

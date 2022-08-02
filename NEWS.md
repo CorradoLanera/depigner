@@ -1,3 +1,6 @@
+- updated Roxygen Note for documentation settings to 7.2.0
+- added `{progress}`, `{readxl}`, and `{writexl}` to `pkg_utils`; `{ggpubr}` to `pkg_docs`; `{ggeffects}`, and `{dlnm}` to `pkg_stat`; `{tarchetypes}`, and `{checkmate}`, removing `{fs}` (included in `{tarchetypes}`), from `pkg_devel`.
+
 # depigner 0.8.4
 
 -   convert all implicit integers in explicit (e.g, 1L instead of 1).

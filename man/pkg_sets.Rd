@@ -17,23 +17,23 @@
 \format{
 An object of class \code{character} of length 3.
 
-An object of class \code{character} of length 4.
+An object of class \code{character} of length 7.
 
 An object of class \code{character} of length 4.
 
 An object of class \code{character} of length 6.
 
-An object of class \code{character} of length 7.
+An object of class \code{character} of length 9.
 
 An object of class \code{character} of length 2.
 
-An object of class \code{character} of length 12.
+An object of class \code{character} of length 13.
+
+An object of class \code{character} of length 5.
 
 An object of class \code{character} of length 4.
 
-An object of class \code{character} of length 4.
-
-An object of class \code{character} of length 44.
+An object of class \code{character} of length 51.
 }
 \usage{
 pkg_misc
@@ -71,7 +71,8 @@ the sets (that is the reason why, e.g., you do not see `{shiny}` or
 `{beepr}`, `{fortunes}`, and `{telegram.bot}`.
 
 \item \code{pkg_utils}: Utilities for data analyses, including `{here}`,
-`{lobstr}`, `{progress}`, and `{tidyverse}`.
+`{lobstr}`, `{progress}`, `{progressr}`, `{readxl}`, `{tidyverse}`,
+and `{writexl}`.
 
 \item \code{pkg_speed}: Are you in a hurry?! This includes `{furrr}`,
 `{parallel}`, `snow`, and `{tidyfast}`.
@@ -82,17 +83,17 @@ the sets (that is the reason why, e.g., you do not see `{shiny}` or
  `{tidymodels}`, `{tidytext}`, and `{tm}`.
 
 \item \code{pkg_stat}: (Clinical oriented) statistical analyses in R.
-This includes `{CBPS}`, `{cobalt}`, `{MatchIt}`, `{mice}`, `{rms}`,
-`{twang}`, and `{WeightIt}`.
+This includes `{CBPS}`, `{cobalt}`, `{dlnm}`, `{ggeffects}`,
+`{MatchIt}`, `{mice}`, `{rms}`, `{twang}`, and `{WeightIt}`.
 
 \item \code{pkg_stan}: Stan analyses in R (Alert: these packages
 require `stan` be installed into the system. They are not included
 into `pkg_all`). This includes `{rstanarm}`, and `{brms}`.
 
 \item \code{pkg_devel}: Develop stuff in R. This includes `{assertive}`,
-`{covr}`, `{lintr}`, `{fs}`, `{profvis}`, `{pryr}`, `{renv}`,
-`{roxygen2}`, `{styler}`, `{testthat}`, `{spelling}`, and
-`{usethis}`.
+`{checkmate}`, `{covr}`, `{lintr}`, `{profvis}`, `{pryr}`,
+`{renv}`, `{roxygen2}`, `{styler}`, `{tarchetypes}`, `{testthat}`,
+`{spelling}`, and `{usethis}`.
 
 \item \code{pkg_docs}: Write and render things in R. This includes
 `{blogdown}`, `{DT}`, `{pander}`, and `{pkgdown}`.
