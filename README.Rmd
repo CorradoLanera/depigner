@@ -46,6 +46,7 @@ This package aims to provide some useful functions to be used to solve small eve
 | [Statistical](#statistical-tools)        | `ci2p()`                  | Get P-value form estimation and confidence interval                      |
 | [Programming](#programming-tools)        | `pb_len()`                | Quick set-up of a `progress::progress_bar()` progress bar                |
 |                                          | `install_pkg_set()`       | Politely install set of packages (topic-related sets at `?pkg_sets`)     |
+|                                          | `view_in_excel()`         | Open a data frame in Excel, even in the middle of a pipe chain, on interactive session only     |
 | [Development](#development-tools)        | `use_ui()`                | Activate `{usethis}` user interface into your own package                |
 |                                          | `please_install()`        | Politely ask the user to install a package                               |
 |                                          | `imported_from()`         | List packages imported from a package (which has to be installed)        |
@@ -213,6 +214,17 @@ install_pkg_set() # this install the whole `?pkg_all`
 install_pkg_set(pkg_stan)
 
 ?pkg_sets
+```
+
+-   **`view_in_excel()`**: A pipe-friendly function to view a data frame in Excel, optimal when used in the middle of a pipe-chain to see intermediate results. It works in interactive session only, so it is Rmarkdown/Quarto friendly too!
+
+```{r, eval = FALSE}
+four_cyl_cars <- mtcars |>
+  view_in_excel() |>
+  dplyr::filter(cyl == 4) |>
+  view_in_excel()
+
+four_cyl_cars
 ```
 
 ## Development Tools

@@ -2,19 +2,16 @@ Package: depigner
 Title: A Utility Package to Help you Deal with "Pignas"
 Version: 0.8.4
 Authors@R: 
-    person(given = "Corrado",
-           family = "Lanera",
-           role = c("aut", "cre", "cph"),
-           email = "corrado.lanera@gmail.com")
-Description: Pigna [_pìn'n'a_] is the Italian word for pine
-    cone.  In jargon, it is used to identify a task which is boring,
-    banal, annoying, painful, frustrating and maybe even with a not so
-    beautiful or rewarding result, just like the obstinate act of trying
-    to challenge yourself in extracting pine nuts from a pine cone,
-    provided that, in the end, you will find at least one inside it. Here
-    you can find a backpack of functions to be used to solve small
-    everyday problems of coding or analyzing (clinical) data, which would
-    be normally solved using quick-and-dirty patches. You will be able to
+    person("Corrado", "Lanera", , "corrado.lanera@gmail.com", role = c("aut", "cre", "cph"))
+Description: Pigna [_pìn'n'a_] is the Italian word for pine cone.  In
+    jargon, it is used to identify a task which is boring, banal,
+    annoying, painful, frustrating and maybe even with a not so beautiful
+    or rewarding result, just like the obstinate act of trying to
+    challenge yourself in extracting pine nuts from a pine cone, provided
+    that, in the end, you will find at least one inside it. Here you can
+    find a backpack of functions to be used to solve small everyday
+    problems of coding or analyzing (clinical) data, which would be
+    normally solved using quick-and-dirty patches. You will be able to
     convert 'Hmisc' and 'rms' summary()es into data.frames ready to be
     rendered by 'pander' and 'knitr'. You can access easy-to-use wrappers
     to activate essential but useful progress bars (from 'progress') into
@@ -41,6 +38,7 @@ Imports:
     magrittr (>= 1.5),
     progress (>= 1.2.0),
     purrr (>= 0.2.5),
+    readr,
     rlang (>= 0.2.2),
     rms (>= 5.1.2),
     rprojroot,
