@@ -352,9 +352,9 @@ install_pkg_set(pkg_stan)
     RMarkdown/Quarto friendly too!
 
 ``` r
-four_cyl_cars <- mtcars |>
-  view_in_excel() |>
-  dplyr::filter(cyl == 4) |>
+four_cyl_cars <- mtcars %>%
+  view_in_excel() %>%
+  dplyr::filter(cyl == 4) %>%
   view_in_excel()
 
 four_cyl_cars
@@ -387,9 +387,9 @@ please_install(a_pkg_i_miss)
 ``` r
 imported_from("depigner")
 #>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
-#>  [6] "magrittr"     "progress"     "purrr"        "readr"        "rlang"       
-#> [11] "rms"          "rprojroot"    "stats"        "stringr"      "telegram.bot"
-#> [16] "tibble"       "tidyr"        "usethis"      "utils"
+#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         
+#> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
+#> [16] "tidyr"        "usethis"      "utils"
 ```
 
 ## Telegram Tools

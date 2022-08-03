@@ -23,9 +23,9 @@
 #'
 #' @examples
 #' \dontrun{
-#'   four_cyl_cars <- mtcars |>
-#'     view_in_excel() |>
-#'     dplyr::filter(cyl == 4) |>
+#'   four_cyl_cars <- mtcars %>%
+#'     view_in_excel() %>%
+#'     dplyr::filter(cyl == 4) %>%
 #'     view_in_excel()
 #'
 #'   four_cyl_cars

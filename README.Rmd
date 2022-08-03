@@ -219,9 +219,9 @@ install_pkg_set(pkg_stan)
 -   **`view_in_excel()`**: A pipe-friendly function to view a data frame in Excel, optimal when used in the middle of a pipe-chain to see intermediate results. It works in interactive session only, so it is RMarkdown/Quarto friendly too!
 
 ```{r, eval = FALSE}
-four_cyl_cars <- mtcars |>
-  view_in_excel() |>
-  dplyr::filter(cyl == 4) |>
+four_cyl_cars <- mtcars %>%
+  view_in_excel() %>%
+  dplyr::filter(cyl == 4) %>%
   view_in_excel()
 
 four_cyl_cars
