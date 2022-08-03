@@ -1,6 +1,6 @@
 Package: depigner
 Title: A Utility Package to Help you Deal with "Pignas"
-Version: 0.8.4
+Version: 0.8.4.9000
 Authors@R: 
     person("Corrado", "Lanera", , "corrado.lanera@gmail.com", role = c("aut", "cre", "cph"))
 Description: Pigna [_pìn'n'a_] is the Italian word for pine cone.  In
@@ -59,4 +59,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1

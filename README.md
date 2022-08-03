@@ -9,7 +9,7 @@ A utility package to help you deal with ***pigne***
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------:|
-| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |               [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)                | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
 | **CRAN**        |                   [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                    |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |     [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)      |
 
@@ -239,12 +239,13 @@ tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
 #> ✔ P adjusted with BH method.
 #> # A tibble: 4 × 5
-#>   `&nbsp;`     `setosa \n(N=50)`   `versicolor \n(N…` `virginica \n(…` `P-value`
-#>   <chr>        <chr>               <chr>              <chr>            <chr>    
-#> 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.30… "6.225/6.500/6.… "      <…
-#> 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.00… "2.800/3.000/3.… "     <=…
-#> 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.60… "5.100/5.550/5.… "     <=…
-#> 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"   "   1.8/2.0/2.3" "     <=…
+#>   `&nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` virginica \n(…¹ P-val…²
+#>   <chr>        <chr>               <chr>                 <chr>           <chr>  
+#> 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.300"   "6.225/6.500/6… "     …
+#> 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.000"   "2.800/3.000/3… "     …
+#> 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.600"   "5.100/5.550/5… "     …
+#> 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"      "   1.8/2.0/2.… "     …
+#> # … with abbreviated variable names ¹​`virginica \n(N=50)`, ²​`P-value`
 ```
 
 -   **`summary_interact()`**: Produce a data frame of OR (with the
@@ -348,7 +349,7 @@ install_pkg_set(pkg_stan)
 -   **`view_in_excel()`**: A pipe-friendly function to view a data frame
     in Excel, optimal when used in the middle of a pipe-chain to see
     intermediate results. It works in interactive session only, so it is
-    Rmarkdown/Quarto friendly too!
+    RMarkdown/Quarto friendly too!
 
 ``` r
 four_cyl_cars <- mtcars |>
@@ -386,9 +387,9 @@ please_install(a_pkg_i_miss)
 ``` r
 imported_from("depigner")
 #>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
-#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         
-#> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
-#> [16] "tidyr"        "usethis"      "utils"
+#>  [6] "magrittr"     "progress"     "purrr"        "readr"        "rlang"       
+#> [11] "rms"          "rprojroot"    "stats"        "stringr"      "telegram.bot"
+#> [16] "tibble"       "tidyr"        "usethis"      "utils"
 ```
 
 ## Telegram Tools
@@ -454,5 +455,5 @@ Sovrano](https://www.elisasovrano.it).
 [^1]: You can find all the possible meanings of *pigna*
     [here](https://www.treccani.it/vocabolario/pigna/), and you can
     listen how to pronounce it
-    [here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
-    Note: the Italian plural for “pigna” is “pigne” \[*pìn’n’e*\].
+    [here](https://it.forvo.com/word/pigna/#it). Note: the Italian
+    plural for “pigna” is “pigne” \[*pìn’n’e*\].

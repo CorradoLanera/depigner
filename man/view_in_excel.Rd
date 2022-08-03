@@ -28,7 +28,8 @@ element of the chain.
 }
 \note{
 this function was originated during the conversation on Twitter
-  started [here](https://twitter.com/brodriguesco/status/1447468259725434886?s=20)
+  started at
+  https://twitter.com/brodriguesco/status/1447468259725434886?s=20
 }
 \examples{
 \dontrun{

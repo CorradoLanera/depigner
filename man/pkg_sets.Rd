@@ -105,8 +105,8 @@ into `pkg_all`). This includes `{rstanarm}`, and `{brms}`.
 \item \code{pkg_all}: Union of the `pkg_misc`, `pkg_utils`, `pkg_speed`,
 `pkg_mlt`, `pkg_stat`, `pkg_devel`, `pkg_docs`, and `pkg_prod`
  pkg_* sets.
-}}
 
+}}
 \seealso{
 install_pkg_set
 }

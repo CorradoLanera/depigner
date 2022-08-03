@@ -35,9 +35,9 @@ percentage and time elapsed, and ETA.
 }
 \section{Functions}{
 \itemize{
-\item \code{tick}: wrapper function to update the progress bar
-}}
+\item \code{tick()}: wrapper function to update the progress bar
 
+}}
 \examples{
 \donttest{
   pb <- pb_len(100)

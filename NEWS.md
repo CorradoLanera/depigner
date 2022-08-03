@@ -1,3 +1,6 @@
+# depigner (development version)
+
+- updated the broken `README` links.
 - added `view_in_excel()` function to view/open a data frame in excel in the middle of a pipe chain without disturbing the execution of the chain itself. (#49)
 - now the documentation for `tidy_summary` explicitly stated that the output is supposed to be used as input to `pander` (#50).
 - updated Roxygen Note for documentation settings to 7.2.0

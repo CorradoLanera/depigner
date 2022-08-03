@@ -72,15 +72,15 @@ A "single" object of `Hmisc`'s [describe][Hmisc::describe]
 }
 \section{Functions}{
 \itemize{
-\item \code{htypes}: Report types for multi-variables objects
+\item \code{htypes()}: Report types for multi-variables objects
 
-\item \code{is_hcat}: Check if a single-instance of a
+\item \code{is_hcat()}: Check if a single-instance of a
 [describe][Hmisc::describe] object is categorical.
 
-\item \code{is_hcon}: Check if a single-instance of a
+\item \code{is_hcon()}: Check if a single-instance of a
 [describe][Hmisc::describe] object is continuous.
-}}
 
+}}
 \examples{
 \donttest{
   library(Hmisc)
