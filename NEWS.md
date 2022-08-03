@@ -1,4 +1,4 @@
-# depigner (development version)
+# depigner 0.9.0
 
 - updated the broken `README` links.
 - added `view_in_excel()` function to view/open a data frame in excel in the middle of a pipe chain without disturbing the execution of the chain itself. (#49)
