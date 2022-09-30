@@ -18,15 +18,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="A Utility Package to Help you Deal with " pignas>
-<meta property="og:description" content="Pigna [_pìnna_] is the Italian word for pine
-    cone.  In jargon, it is used to identify a task which is boring,
-    banal, annoying, painful, frustrating and maybe even with a not so
-    beautiful or rewarding result, just like the obstinate act of trying
-    to challenge yourself in extracting pine nuts from a pine cone,
-    provided that, in the end, you will find at least one inside it. Here
-    you can find a backpack of functions to be used to solve small
-    everyday problems of coding or analyzing (clinical) data, which would
-    be normally solved using quick-and-dirty patches. You will be able to
+<meta property="og:description" content="Pigna [_pìnna_] is the Italian word for pine cone.  In
+    jargon, it is used to identify a task which is boring, banal,
+    annoying, painful, frustrating and maybe even with a not so beautiful
+    or rewarding result, just like the obstinate act of trying to
+    challenge yourself in extracting pine nuts from a pine cone, provided
+    that, in the end, you will find at least one inside it. Here you can
+    find a backpack of functions to be used to solve small everyday
+    problems of coding or analyzing (clinical) data, which would be
+    normally solved using quick-and-dirty patches. You will be able to
     convert Hmisc and rms summary()es into data.frames ready to be
     rendered by pander and knitr. You can access easy-to-use wrappers
     to activate essential but useful progress bars (from progress) into
@@ -45,6 +45,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -57,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
       </span>
     </div>
 
@@ -67,7 +69,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -75,16 +77,17 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Releases</li>
     <li>
-      <a href="https://www.corradolanera.it/2021/01/11/depigner-0-8-4/">Version 0.8.4</a>
+      <a href="https://www.corradolanera.it/2021/01/11/depigner-0-8-4/" class="external-link">Version 0.8.4</a>
     </li>
     <li>
-      <a href="https://www.corradolanera.it/2020/10/02/depigner-0-8-3/">Version 0.8.3</a>
+      <a href="https://www.corradolanera.it/2020/10/02/depigner-0-8-3/" class="external-link">Version 0.8.3</a>
     </li>
     <li>
-      <a href="https://www.corradolanera.it/2020/06/26/depigner-0-8-1/">Version 0.8.1</a>
+      <a href="https://www.corradolanera.it/2020/06/26/depigner-0-8-1/" class="external-link">Version 0.8.1</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="news/index.html">Changelog</a>
     </li>
   </ul>
@@ -92,7 +95,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/CorradoLanera/depigner/">
+  <a href="https://github.com/CorradoLanera/depigner/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -110,25 +113,21 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="depigner--" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#depigner--" class="anchor"></a>depigner <a href="https://corradolanera.github.io/depigner/"><img src="https://img.shields.io/badge/WEB%20site-click%20me-orange.svg"></a> <img src="reference/figures/logo.png" align="right" height="138.5">
+<div class="section level1">
+<div class="page-header"><h1 id="depigner--">depigner <a href="https://corradolanera.github.io/depigner/" class="external-link"><img src="https://img.shields.io/badge/WEB%20site-click%20me-orange.svg"></a> <img src="reference/figures/logo.png" align="right" height="138.5"><a class="anchor" aria-label="anchor" href="#depigner--"></a>
 </h1></div>
 <p>A utility package to help you deal with <strong><em>pigne</em></strong></p>
-<!-- badges: start -->
-<!-- badges: end --><blockquote>
-<p><strong>Pigna</strong> <br><span class="math display"> * <em>p</em><em>ì</em><em>n</em>’<em>n</em>’<em>a</em>*</span><br> is the Italian word for <em>pine cone</em>.[1] In jargon, it’s used to identify something (like a task…) boring, banal, annoying, painful, frustrating and maybe even with a not so beautiful or rewarding result, just like the obstinate act of trying to challenge yourself in extracting pine nuts from a pine cone, provided that at the end you will find at least one inside it…</p>
-</blockquote>
+<!-- badges: start --><!-- badges: end --><blockquote><p><strong>Pigna</strong> [<em>pìn’n’a</em>] is the Italian word for <em>pine cone</em>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> In jargon, it’s used to identify something (like a task…) boring, banal, annoying, painful, frustrating and maybe even with a not so beautiful or rewarding result, just like the obstinate act of trying to challenge yourself in extracting pine nuts from a pine cone, provided that at the end you will find at least one inside it…</p></blockquote>
 </div>
-<div id="overview" class="section level1">
-<h1 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h1>
+<div class="section level1">
+<h1 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h1>
 <p>This package aims to provide some useful functions to be used to solve small everyday problems of coding or analyzing data with R. The hope is to provide solutions to that kind of problems which would be normally solved using quick-and-dirty (ugly and maybe even wrong) patches.</p>
 <table class="table">
 <colgroup>
-<col width="29%">
-<col width="18%">
-<col width="51%">
+<col width="25%">
+<col width="16%">
+<col width="57%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Tools Category</th>
@@ -164,13 +163,13 @@
 <tr class="odd">
 <td align="left"> </td>
 <td align="left"><code><a href="reference/summary_interact.html">summary_interact()</a></code></td>
-<td align="left">data frame of OR for interaction from <code><a href="https://rdrr.io/pkg/rms/man/lrm.html">rms::lrm()</a></code>
+<td align="left">data frame of OR for interaction from <code><a href="https://rdrr.io/pkg/rms/man/lrm.html" class="external-link">rms::lrm()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td align="left"> </td>
 <td align="left"><code><a href="reference/htype.html">htypes()</a></code></td>
-<td align="left">Will be your variables continuous or categorical in <code><a href="https://rdrr.io/pkg/Hmisc/man/describe.html">Hmisc::describe()</a></code>?</td>
+<td align="left">Will be your variables continuous or categorical in <code><a href="https://rdrr.io/pkg/Hmisc/man/describe.html" class="external-link">Hmisc::describe()</a></code>?</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="#statistical-tools">Statistical</a></td>
@@ -180,7 +179,7 @@
 <tr class="even">
 <td align="left"><a href="#programming-tools">Programming</a></td>
 <td align="left"><code><a href="reference/pb_len.html">pb_len()</a></code></td>
-<td align="left">Quick set-up of a <code><a href="https://rdrr.io/pkg/progress/man/progress_bar.html">progress::progress_bar()</a></code> progress bar</td>
+<td align="left">Quick set-up of a <code><a href="https://rdrr.io/pkg/progress/man/progress_bar.html" class="external-link">progress::progress_bar()</a></code> progress bar</td>
 </tr>
 <tr class="odd">
 <td align="left"> </td>
@@ -188,36 +187,41 @@
 <td align="left">Politely install set of packages (topic-related sets at <code><a href="reference/pkg_sets.html">?pkg_sets</a></code>)</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="#development-tools">Development</a></td>
-<td align="left"><code><a href="reference/use_ui.html">use_ui()</a></code></td>
-<td align="left">Activate <a href="https://usethis.r-lib.org">usethis</a> user interface into your own package</td>
+<td align="left"> </td>
+<td align="left"><code><a href="reference/view_in_excel.html">view_in_excel()</a></code></td>
+<td align="left">Open a data frame in Excel, even in the middle of a pipe chain, on interactive session only</td>
 </tr>
 <tr class="odd">
+<td align="left"><a href="#development-tools">Development</a></td>
+<td align="left"><code><a href="reference/use_ui.html">use_ui()</a></code></td>
+<td align="left">Activate <a href="https://usethis.r-lib.org" class="external-link">usethis</a> user interface into your own package</td>
+</tr>
+<tr class="even">
 <td align="left"> </td>
 <td align="left"><code><a href="reference/please_install.html">please_install()</a></code></td>
 <td align="left">Politely ask the user to install a package</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"> </td>
 <td align="left"><code><a href="reference/imported_from.html">imported_from()</a></code></td>
 <td align="left">List packages imported from a package (which has to be installed)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="#telegram-tools">Telegram</a></td>
 <td align="left"><code><a href="reference/start_bot_for_chat.html">start_bot_for_chat()</a></code></td>
-<td align="left">Quick start of a <a href="http://github.com/ebeneditos/telegram.bot">telegram.bot</a> Telegram’s bot</td>
+<td align="left">Quick start of a <a href="https://github.com/ebeneditos/telegram.bot" class="external-link">telegram.bot</a> Telegram’s bot</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"> </td>
 <td align="left"><code><a href="reference/send_to_telegram.html">send_to_telegram()</a></code></td>
 <td align="left">Unified wrapper to send <em>someRthing</em> to a Telegram chat</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"> </td>
 <td align="left"><code><a href="reference/errors_to_telegram.html">errors_to_telegram()</a></code></td>
 <td align="left">Divert all your error messages from the console to a Telegram chat</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="#why-not">Why not?!</a></td>
 <td align="left"><code><a href="reference/gdp.html">gdp()</a></code></td>
 <td align="left">Do you have TOO much pignas in your back?! … try this out ;-)</td>
@@ -225,58 +229,56 @@
 </tbody>
 </table>
 </div>
-<div id="installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h1>
-<p>You can install the released version of <a href="https://corradolanera.github.io/depigner/">depigner</a> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
+<p>You can install the released version of <a href="https://corradolanera.github.io/depigner/" class="external-link">depigner</a> from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"depigner"</span><span class="op">)</span></code></pre></div>
-<p>You can install the development version from <a href="https://github.com/">GitHub</a> calling:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"depigner"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> calling:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"CorradoLanera/depigner"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"CorradoLanera/depigner"</span><span class="op">)</span></span></code></pre></div>
 <p>Next, you can attach it to your session by:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://corradolanera.github.io/depigner/">depigner</a></span><span class="op">)</span>
-<span class="co">#&gt; Welcome to depigner: we are here to un-stress you!</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://corradolanera.github.io/depigner/" class="external-link">depigner</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Welcome to depigner: we are here to un-stress you!</span></span></code></pre></div>
 </div>
-<div id="provided-tools" class="section level1">
-<h1 class="hasAnchor">
-<a href="#provided-tools" class="anchor"></a>Provided Tools</h1>
-<div id="harrells-verse-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#harrells-verse-tools" class="anchor"></a>Harrell’s Verse Tools</h2>
-<ul>
-<li>
-<strong><code><a href="reference/tidy_summary.html">tidy_summary()</a></code></strong>: produces a data frame from the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> functions provided by <a href="https://hbiostat.org/R/Hmisc/">Hmisc</a> <br><span class="math display">@<em>R</em> − <em>H</em><em>m</em><em>i</em><em>s</em><em>c</em></span><br> and <a href="https://hbiostat.org/R/rms/">rms</a> <br><span class="math display">@<em>R</em> − <em>r</em><em>m</em><em>s</em></span><br> packages ready to be <code>pander::pander()</code>ed <br><span class="math display">@<em>R</em> − <em>p</em><em>a</em><em>n</em><em>d</em><em>e</em><em>r</em></span><br>.</li>
-</ul>
+<div class="section level1">
+<h1 id="provided-tools">Provided Tools<a class="anchor" aria-label="anchor" href="#provided-tools"></a>
+</h1>
+<div class="section level2">
+<h2 id="harrells-verse-tools">Harrell’s Verse Tools<a class="anchor" aria-label="anchor" href="#harrells-verse-tools"></a>
+</h2>
+<ul><li>
+<strong><code><a href="reference/tidy_summary.html">tidy_summary()</a></code></strong>: produces a data frame from the <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> functions provided by <a href="https://hbiostat.org/R/Hmisc/" class="external-link">Hmisc</a> [@R-Hmisc] and <a href="https://hbiostat.org/R/rms/" class="external-link">rms</a> [@R-rms] packages ready to be <code>pander::pander()</code>ed [@R-pander].</li></ul>
 <p>Currently it is tested for method <em>reverse</em> only:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://hbiostat.org/R/rms/">rms</a></span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: Hmisc</span>
-<span class="co">#&gt; Loading required package: lattice</span>
-<span class="co">#&gt; Loading required package: survival</span>
-<span class="co">#&gt; Loading required package: Formula</span>
-<span class="co">#&gt; Loading required package: ggplot2</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'Hmisc'</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     format.pval, units</span>
-<span class="co">#&gt; Loading required package: SparseM</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'SparseM'</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     backsolve</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>datadist <span class="op">=</span> <span class="st">'dd'</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pander</span><span class="op">)</span>
-
-<span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html">datadist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
-<span class="va">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, method <span class="op">=</span> <span class="st">"reverse"</span><span class="op">)</span>
-<span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span><span class="op">(</span><span class="va">my_summary</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://hbiostat.org/R/rms/" class="external-link">rms</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: Hmisc</span></span>
+<span><span class="co">#&gt; Loading required package: lattice</span></span>
+<span><span class="co">#&gt; Loading required package: survival</span></span>
+<span><span class="co">#&gt; Loading required package: Formula</span></span>
+<span><span class="co">#&gt; Loading required package: ggplot2</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'Hmisc'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     format.pval, units</span></span>
+<span><span class="co">#&gt; Loading required package: SparseM</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'SparseM'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     backsolve</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>datadist <span class="op">=</span> <span class="st">'dd'</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rapporter.github.io/pander/" class="external-link">pander</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html" class="external-link">datadist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="va">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>, method <span class="op">=</span> <span class="st">"reverse"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span><span class="op">(</span><span class="va">my_summary</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="center"> </th>
@@ -312,14 +314,15 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">dd</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html">datadist</a></span><span class="op">(</span><span class="va">heart</span><span class="op">)</span> <span class="co"># this to face a package build issue,</span>
-                       <span class="co"># use standard `&lt;-` into analyses</span>
-<span class="va">surv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">heart</span><span class="op">$</span><span class="va">start</span>, <span class="va">heart</span><span class="op">$</span><span class="va">stop</span>, <span class="va">heart</span><span class="op">$</span><span class="va">event</span><span class="op">)</span>
-<span class="va">f</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/cph.html">cph</a></span><span class="op">(</span><span class="va">surv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">year</span> <span class="op">+</span> <span class="va">surgery</span>, data <span class="op">=</span> <span class="va">heart</span><span class="op">)</span>
-<span class="va">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>
-<span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span><span class="op">(</span><span class="va">my_summary</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">dd</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html" class="external-link">datadist</a></span><span class="op">(</span><span class="va">heart</span><span class="op">)</span> <span class="co"># this to face a package build issue,</span></span>
+<span>                       <span class="co"># use standard `&lt;-` into analyses</span></span>
+<span><span class="va">surv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">heart</span><span class="op">$</span><span class="va">start</span>, <span class="va">heart</span><span class="op">$</span><span class="va">stop</span>, <span class="va">heart</span><span class="op">$</span><span class="va">event</span><span class="op">)</span></span>
+<span><span class="va">f</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/cph.html" class="external-link">cph</a></span><span class="op">(</span><span class="va">surv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">year</span> <span class="op">+</span> <span class="va">surgery</span>, data <span class="op">=</span> <span class="va">heart</span><span class="op">)</span></span>
+<span><span class="va">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span><span class="op">(</span><span class="va">my_summary</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="center"> </th>
@@ -352,132 +355,127 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li>
-<strong><code>paired_test_*()</code></strong>: Paired test for categorical/continuous variables to be used in the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of the <a href="https://hbiostat.org/R/Hmisc/">Hmisc</a> <br><span class="math display">@<em>R</em> − <em>H</em><em>m</em><em>i</em><em>s</em><em>c</em></span><br> package:</li>
-</ul>
+<ul><li>
+<strong><code>paired_test_*()</code></strong>: Paired test for categorical/continuous variables to be used in the <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> of the <a href="https://hbiostat.org/R/Hmisc/" class="external-link">Hmisc</a> [@R-Hmisc] package:</li></ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">Arthritis</span><span class="op">)</span>
-<span class="co"># categorical -------------------------</span>
-<span class="co">## two groups</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Treatment</span> <span class="op">~</span> <span class="va">Sex</span>,
-    data    <span class="op">=</span> <span class="va">Arthritis</span>,
-    method  <span class="op">=</span> <span class="st">"reverse"</span>,
-    test    <span class="op">=</span> <span class="cn">TRUE</span>,
-    catTest <span class="op">=</span> <span class="va">paired_test_categorical</span>
-<span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Descriptive Statistics by Treatment</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span>
-<span class="co">#&gt; |          |Placebo             |Treated             |  Test                        |</span>
-<span class="co">#&gt; |          |(N=43)              |(N=41)              |Statistic                     |</span>
-<span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span>
-<span class="co">#&gt; |Sex : Male|           26%  (11)|           34%  (14)|Chi-square=5.92 d.f.=1 P=0.015|</span>
-<span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span>
-<span class="co">## more than two groups</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Improved</span> <span class="op">~</span> <span class="va">Sex</span>,
-    data    <span class="op">=</span> <span class="va">Arthritis</span>,
-    method  <span class="op">=</span> <span class="st">"reverse"</span>,
-    test    <span class="op">=</span> <span class="cn">TRUE</span>,
-    catTest <span class="op">=</span> <span class="va">paired_test_categorical</span>
-<span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Descriptive Statistics by Improved</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; +----------+-----------------+-----------------+-----------------+------------------------+</span>
-<span class="co">#&gt; |          |None             |Some             |Marked           |  Test                  |</span>
-<span class="co">#&gt; |          |(N=42)           |(N=14)           |(N=28)           |Statistic               |</span>
-<span class="co">#&gt; +----------+-----------------+-----------------+-----------------+------------------------+</span>
-<span class="co">#&gt; |Sex : Male|        40%  (17)|        14%  ( 2)|        21%  ( 6)|chi2=1.71 d.f.=3 P=0.634|</span>
-<span class="co">#&gt; +----------+-----------------+-----------------+-----------------+------------------------+</span>
-
-<span class="co"># continuous --------------------------</span>
-<span class="co">## two groups</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>,
-    data    <span class="op">=</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">!=</span> <span class="st">"setosa"</span>,<span class="op">]</span>,
-    method  <span class="op">=</span> <span class="st">"reverse"</span>,
-    test    <span class="op">=</span> <span class="cn">TRUE</span>,
-    conTest <span class="op">=</span> <span class="va">paired_test_continuous</span>
-<span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Descriptive Statistics by Species</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
-<span class="co">#&gt; |            |versicolor           |virginica            |  Test                  |</span>
-<span class="co">#&gt; |            |(N=50)               |(N=50)               |Statistic               |</span>
-<span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
-<span class="co">#&gt; |Sepal.Length|    5.600/5.900/6.300|    6.225/6.500/6.900| t=-5.28 d.f.=49 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
-<span class="co">#&gt; |Sepal.Width |    2.525/2.800/3.000|    2.800/3.000/3.175| t=-3.08 d.f.=49 P=0.003|</span>
-<span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
-<span class="co">#&gt; |Petal.Length|    4.000/4.350/4.600|    5.100/5.550/5.875|t=-12.09 d.f.=49 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
-<span class="co">#&gt; |Petal.Width |       1.2/1.3/1.5   |       1.8/2.0/2.3   |t=-14.69 d.f.=49 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span>
-<span class="co">## more than two groups</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>,
-    data    <span class="op">=</span> <span class="va">iris</span>,
-    method  <span class="op">=</span> <span class="st">"reverse"</span>,
-    test    <span class="op">=</span> <span class="cn">TRUE</span>,
-    conTest <span class="op">=</span> <span class="va">paired_test_continuous</span>
-<span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Descriptive Statistics by Species</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
-<span class="co">#&gt; |            |setosa              |versicolor          |virginica           |  Test                 |</span>
-<span class="co">#&gt; |            |(N=50)              |(N=50)              |(N=50)              |Statistic              |</span>
-<span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
-<span class="co">#&gt; |Sepal.Length|   4.800/5.000/5.200|   5.600/5.900/6.300|   6.225/6.500/6.900| F=30.55 d.f.=2 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
-<span class="co">#&gt; |Sepal.Width |   3.200/3.400/3.675|   2.525/2.800/3.000|   2.800/3.000/3.175| F=12.63 d.f.=2 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
-<span class="co">#&gt; |Petal.Length|   1.400/1.500/1.575|   4.000/4.350/4.600|   5.100/5.550/5.875|F=322.89 d.f.=2 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span>
-<span class="co">#&gt; |Petal.Width |      0.2/0.2/0.3   |      1.2/1.3/1.5   |      1.8/2.0/2.3   |F=234.21 d.f.=2 P&lt;0.001|</span>
-<span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></code></pre></div>
-<ul>
-<li>
-<strong><code><a href="reference/adjust_p.html">adjust_p()</a></code></strong>: Adjust P-values of a <code>tidy_summary</code> objects:</li>
-</ul>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Arthritis</span><span class="op">)</span></span>
+<span><span class="co"># categorical -------------------------</span></span>
+<span><span class="co">## two groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Treatment</span> <span class="op">~</span> <span class="va">Sex</span>,</span>
+<span>    data    <span class="op">=</span> <span class="va">Arthritis</span>,</span>
+<span>    method  <span class="op">=</span> <span class="st">"reverse"</span>,</span>
+<span>    test    <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    catTest <span class="op">=</span> <span class="va">paired_test_categorical</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Descriptive Statistics by Treatment</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span></span>
+<span><span class="co">#&gt; |          |Placebo             |Treated             |  Test                        |</span></span>
+<span><span class="co">#&gt; |          |(N=43)              |(N=41)              |Statistic                     |</span></span>
+<span><span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span></span>
+<span><span class="co">#&gt; |Sex : Male|           26%  (11)|           34%  (14)|Chi-square=5.92 d.f.=1 P=0.015|</span></span>
+<span><span class="co">#&gt; +----------+--------------------+--------------------+------------------------------+</span></span>
+<span><span class="co">## more than two groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Improved</span> <span class="op">~</span> <span class="va">Sex</span>,</span>
+<span>    data    <span class="op">=</span> <span class="va">Arthritis</span>,</span>
+<span>    method  <span class="op">=</span> <span class="st">"reverse"</span>,</span>
+<span>    test    <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    catTest <span class="op">=</span> <span class="va">paired_test_categorical</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Descriptive Statistics by Improved</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; +----------+-----------------+-----------------+-----------------+------------------------+</span></span>
+<span><span class="co">#&gt; |          |None             |Some             |Marked           |  Test                  |</span></span>
+<span><span class="co">#&gt; |          |(N=42)           |(N=14)           |(N=28)           |Statistic               |</span></span>
+<span><span class="co">#&gt; +----------+-----------------+-----------------+-----------------+------------------------+</span></span>
+<span><span class="co">#&gt; |Sex : Male|        40%  (17)|        14%  ( 2)|        21%  ( 6)|chi2=1.71 d.f.=3 P=0.634|</span></span>
+<span><span class="co">#&gt; +----------+-----------------+-----------------+-----------------+------------------------+</span></span>
+<span></span>
+<span><span class="co"># continuous --------------------------</span></span>
+<span><span class="co">## two groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>,</span>
+<span>    data    <span class="op">=</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">!=</span> <span class="st">"setosa"</span>,<span class="op">]</span>,</span>
+<span>    method  <span class="op">=</span> <span class="st">"reverse"</span>,</span>
+<span>    test    <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    conTest <span class="op">=</span> <span class="va">paired_test_continuous</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Descriptive Statistics by Species</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span></span>
+<span><span class="co">#&gt; |            |versicolor           |virginica            |  Test                  |</span></span>
+<span><span class="co">#&gt; |            |(N=50)               |(N=50)               |Statistic               |</span></span>
+<span><span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span></span>
+<span><span class="co">#&gt; |Sepal.Length|    5.600/5.900/6.300|    6.225/6.500/6.900| t=-5.28 d.f.=49 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span></span>
+<span><span class="co">#&gt; |Sepal.Width |    2.525/2.800/3.000|    2.800/3.000/3.175| t=-3.08 d.f.=49 P=0.003|</span></span>
+<span><span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span></span>
+<span><span class="co">#&gt; |Petal.Length|    4.000/4.350/4.600|    5.100/5.550/5.875|t=-12.09 d.f.=49 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span></span>
+<span><span class="co">#&gt; |Petal.Width |       1.2/1.3/1.5   |       1.8/2.0/2.3   |t=-14.69 d.f.=49 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+---------------------+---------------------+------------------------+</span></span>
+<span><span class="co">## more than two groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>,</span>
+<span>    data    <span class="op">=</span> <span class="va">iris</span>,</span>
+<span>    method  <span class="op">=</span> <span class="st">"reverse"</span>,</span>
+<span>    test    <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    conTest <span class="op">=</span> <span class="va">paired_test_continuous</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Descriptive Statistics by Species</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></span>
+<span><span class="co">#&gt; |            |setosa              |versicolor          |virginica           |  Test                 |</span></span>
+<span><span class="co">#&gt; |            |(N=50)              |(N=50)              |(N=50)              |Statistic              |</span></span>
+<span><span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></span>
+<span><span class="co">#&gt; |Sepal.Length|   4.800/5.000/5.200|   5.600/5.900/6.300|   6.225/6.500/6.900| F=30.55 d.f.=2 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></span>
+<span><span class="co">#&gt; |Sepal.Width |   3.200/3.400/3.675|   2.525/2.800/3.000|   2.800/3.000/3.175| F=12.63 d.f.=2 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></span>
+<span><span class="co">#&gt; |Petal.Length|   1.400/1.500/1.575|   4.000/4.350/4.600|   5.100/5.550/5.875|F=322.89 d.f.=2 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></span>
+<span><span class="co">#&gt; |Petal.Width |      0.2/0.2/0.3   |      1.2/1.3/1.5   |      1.8/2.0/2.3   |F=234.21 d.f.=2 P&lt;0.001|</span></span>
+<span><span class="co">#&gt; +------------+--------------------+--------------------+--------------------+-----------------------+</span></span></code></pre></div>
+<ul><li>
+<strong><code><a href="reference/adjust_p.html">adjust_p()</a></code></strong>: Adjust P-values of a <code>tidy_summary</code> objects:</li></ul>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>,
-  method <span class="op">=</span> <span class="st">"reverse"</span>,
-  test <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span><span class="op">(</span><span class="va">my_summary</span>, prtest <span class="op">=</span> <span class="st">"P"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/adjust_p.html">adjust_p</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; ✓ P adjusted with BH method.</span>
-<span class="co">#&gt; # A tibble: 4 x 5</span>
-<span class="co">#&gt;   `&amp;nbsp;`   `setosa \n(N=50)`  `versicolor \n(N=… `virginica \n(N=… `P-value`  </span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;      </span>
-<span class="co">#&gt; 1 Sepal.Len… "4.800/5.000/5.20… "5.600/5.900/6.30… "6.225/6.500/6.9… "      &lt;0.…</span>
-<span class="co">#&gt; 2 Sepal.Wid… "3.200/3.400/3.67… "2.525/2.800/3.00… "2.800/3.000/3.1… "     &lt;=0.…</span>
-<span class="co">#&gt; 3 Petal.Len… "1.400/1.500/1.57… "4.000/4.350/4.60… "5.100/5.550/5.8… "     &lt;=0.…</span>
-<span class="co">#&gt; 4 Petal.Wid… "   0.2/0.2/0.3"   "   1.2/1.3/1.5"   "   1.8/2.0/2.3"  "     &lt;=0.…</span></code></pre></div>
-<ul>
-<li>
-<strong><code><a href="reference/summary_interact.html">summary_interact()</a></code></strong>: Produce a data frame of OR (with the corresponding CI95%) for the interactions between different combination of a continuous variable (for which it is possible to define the reference and the target values) and (every or a selection of levels of) a categorical one in a logistic model provided by <code><a href="https://rdrr.io/pkg/rms/man/lrm.html">lrm()</a></code> (from the <a href="https://hbiostat.org/R/rms/">rms</a> package <br><span class="math display">@<em>R</em> − <em>r</em><em>m</em><em>s</em></span><br>):</li>
-</ul>
+<code class="sourceCode R"><span><span class="va">my_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">iris</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"reverse"</span>,</span>
+<span>  test <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/tidy_summary.html">tidy_summary</a></span><span class="op">(</span><span class="va">my_summary</span>, prtest <span class="op">=</span> <span class="st">"P"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/adjust_p.html">adjust_p</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ P adjusted with BH method.</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 5</span></span>
+<span><span class="co">#&gt;   `&amp;nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` virginica \n(…¹ P-val…²</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;                 &lt;chr&gt;           &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.300"   "6.225/6.500/6… "     …</span></span>
+<span><span class="co">#&gt; 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.000"   "2.800/3.000/3… "     …</span></span>
+<span><span class="co">#&gt; 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.600"   "5.100/5.550/5… "     …</span></span>
+<span><span class="co">#&gt; 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"      "   1.8/2.0/2.… "     …</span></span>
+<span><span class="co">#&gt; # … with abbreviated variable names ¹​`virginica \n(N=50)`, ²​`P-value`</span></span></code></pre></div>
+<ul><li>
+<strong><code><a href="reference/summary_interact.html">summary_interact()</a></code></strong>: Produce a data frame of OR (with the corresponding CI95%) for the interactions between different combination of a continuous variable (for which it is possible to define the reference and the target values) and (every or a selection of levels of) a categorical one in a logistic model provided by <code><a href="https://rdrr.io/pkg/rms/man/lrm.html" class="external-link">lrm()</a></code> (from the <a href="https://hbiostat.org/R/rms/" class="external-link">rms</a> package [@R-rms]):</li></ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">'transplant'</span><span class="op">)</span>
-<span class="va">censor_rows</span> <span class="op">&lt;-</span> <span class="va">transplant</span><span class="op">[[</span><span class="st">'event'</span><span class="op">]</span><span class="op">]</span> <span class="op">!=</span> <span class="st">'censored'</span> 
-<span class="va">transplant</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html">droplevels</a></span><span class="op">(</span><span class="va">transplant</span><span class="op">[</span><span class="va">censor_rows</span>, <span class="op">]</span><span class="op">)</span>
-
-<span class="va">dd</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html">datadist</a></span><span class="op">(</span><span class="va">transplant</span><span class="op">)</span> <span class="co"># this to face a package build issue,</span>
-                            <span class="co"># use standard `&lt;-` into analyses</span>
-
-<span class="va">lrm_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/lrm.html">lrm</a></span><span class="op">(</span><span class="va">event</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/rms.trans.html">rcs</a></span><span class="op">(</span><span class="va">age</span>, <span class="fl">3</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">sex</span> <span class="op">+</span> <span class="va">abo</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/rms.trans.html">rcs</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">3</span><span class="op">)</span>,
-  data <span class="op">=</span> <span class="va">transplant</span>
-<span class="op">)</span>
-<span class="fu"><a href="reference/summary_interact.html">summary_interact</a></span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">'transplant'</span><span class="op">)</span></span>
+<span><span class="va">censor_rows</span> <span class="op">&lt;-</span> <span class="va">transplant</span><span class="op">[[</span><span class="st">'event'</span><span class="op">]</span><span class="op">]</span> <span class="op">!=</span> <span class="st">'censored'</span> </span>
+<span><span class="va">transplant</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="va">transplant</span><span class="op">[</span><span class="va">censor_rows</span>, <span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dd</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/datadist.html" class="external-link">datadist</a></span><span class="op">(</span><span class="va">transplant</span><span class="op">)</span> <span class="co"># this to face a package build issue,</span></span>
+<span>                            <span class="co"># use standard `&lt;-` into analyses</span></span>
+<span></span>
+<span><span class="va">lrm_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/lrm.html" class="external-link">lrm</a></span><span class="op">(</span><span class="va">event</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/rms.trans.html" class="external-link">rcs</a></span><span class="op">(</span><span class="va">age</span>, <span class="fl">3</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">sex</span> <span class="op">+</span> <span class="va">abo</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/rms/man/rms.trans.html" class="external-link">rcs</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">transplant</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/summary_interact.html">summary_interact</a></span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="center"> </th>
@@ -528,8 +526,9 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/summary_interact.html">summary_interact</a></span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span>, p <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="reference/summary_interact.html">summary_interact</a></span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span>, p <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">pander</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="center"> </th>
@@ -584,212 +583,215 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li>
-<strong><code><a href="reference/htype.html">htypes()</a></code></strong> and friends: get/check types of variable with respect to the <a href="https://hbiostat.org/R/Hmisc/">Hmisc</a> ecosystem <br><span class="math display">@<em>R</em> − <em>H</em><em>m</em><em>i</em><em>s</em><em>c</em></span><br>.</li>
-</ul>
+<ul><li>
+<strong><code><a href="reference/htype.html">htypes()</a></code></strong> and friends: get/check types of variable with respect to the <a href="https://hbiostat.org/R/Hmisc/" class="external-link">Hmisc</a> ecosystem [@R-Hmisc].</li></ul>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/htype.html">htypes</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
-<span class="co">#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb </span>
-<span class="co">#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"</span>
-
-<span class="va">desc</span> <span class="op">&lt;-</span> <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/describe.html">describe</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
-<span class="fu"><a href="reference/htype.html">htypes</a></span><span class="op">(</span><span class="va">desc</span><span class="op">)</span>
-<span class="co">#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb </span>
-<span class="co">#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"</span>
-<span class="fu"><a href="reference/htype.html">htype</a></span><span class="op">(</span><span class="va">desc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] "con"</span>
-<span class="fu"><a href="reference/htype.html">is_hcat</a></span><span class="op">(</span><span class="va">desc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] FALSE</span>
-<span class="fu"><a href="reference/htype.html">is_hcon</a></span><span class="op">(</span><span class="va">desc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/htype.html">htypes</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb </span></span>
+<span><span class="co">#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"</span></span>
+<span></span>
+<span><span class="va">desc</span> <span class="op">&lt;-</span> <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/describe.html" class="external-link">describe</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/htype.html">htypes</a></span><span class="op">(</span><span class="va">desc</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear   carb </span></span>
+<span><span class="co">#&gt;  "con" "none"  "con"  "con"  "con"  "con"  "con"  "cat"  "cat" "none" "none"</span></span>
+<span><span class="fu"><a href="reference/htype.html">htype</a></span><span class="op">(</span><span class="va">desc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "con"</span></span>
+<span><span class="fu"><a href="reference/htype.html">is_hcat</a></span><span class="op">(</span><span class="va">desc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="fu"><a href="reference/htype.html">is_hcon</a></span><span class="op">(</span><span class="va">desc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
-<div id="statistical-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#statistical-tools" class="anchor"></a>Statistical Tools</h2>
-<ul>
-<li>
-<strong><code><a href="reference/ci2p.html">ci2p()</a></code></strong>: compute the p-value related with a provided confidence interval:</li>
-</ul>
+<div class="section level2">
+<h2 id="statistical-tools">Statistical Tools<a class="anchor" aria-label="anchor" href="#statistical-tools"></a>
+</h2>
+<ul><li>
+<strong><code><a href="reference/ci2p.html">ci2p()</a></code></strong>: compute the p-value related with a provided confidence interval:</li></ul>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ci2p.html">ci2p</a></span><span class="op">(</span><span class="fl">1.125</span>, <span class="fl">0.634</span>,  <span class="fl">1.999</span>, log_transform <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.367902</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ci2p.html">ci2p</a></span><span class="op">(</span><span class="fl">1.125</span>, <span class="fl">0.634</span>,  <span class="fl">1.999</span>, log_transform <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.367902</span></span></code></pre></div>
 </div>
-<div id="programming-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#programming-tools" class="anchor"></a>Programming Tools</h2>
-<ul>
-<li>
-<strong><code><a href="reference/pb_len.html">pb_len()</a></code></strong>: Progress bar of given length, wrapper from the <a href="https://github.com/r-lib/progress#readme">progress</a> <br><span class="math display">@<em>R</em> − <em>p</em><em>r</em><em>o</em><em>g</em><em>r</em><em>e</em><em>s</em><em>s</em></span><br> package:</li>
-</ul>
+<div class="section level2">
+<h2 id="programming-tools">Programming Tools<a class="anchor" aria-label="anchor" href="#programming-tools"></a>
+</h2>
+<ul><li>
+<strong><code><a href="reference/pb_len.html">pb_len()</a></code></strong>: Progress bar of given length, wrapper from the <a href="https://github.com/r-lib/progress#readme" class="external-link">progress</a> [@R-progress] package:</li></ul>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pb_len.html">pb_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span>
-    <span class="fu"><a href="reference/pb_len.html">tick</a></span><span class="op">(</span><span class="va">pb</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"i = "</span>, <span class="va">i</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<ul>
-<li>
-<strong><code><a href="reference/install_pkg_set.html">install_pkg_set()</a></code></strong>: Simple and polite wrapper to install sets of packages. Moreover, <a href="https://corradolanera.github.io/depigner/">depigner</a> provides some sets already defined for common scenario in R (analyses, production, documenting, …). See them by call <code>?pgk_sets</code>.</li>
-</ul>
+<code class="sourceCode R"><span><span class="va">pb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pb_len.html">pb_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="reference/pb_len.html">tick</a></span><span class="op">(</span><span class="va">pb</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"i = "</span>, <span class="va">i</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<ul><li>
+<strong><code><a href="reference/install_pkg_set.html">install_pkg_set()</a></code></strong>: Simple and polite wrapper to install sets of packages. Moreover, <a href="https://corradolanera.github.io/depigner/" class="external-link">depigner</a> provides some sets already defined for common scenario in R (analyses, production, documenting, …). See them by call <code>?pgk_sets</code>.</li></ul>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/install_pkg_set.html">install_pkg_set</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># this install the whole `?pkg_all`</span>
-<span class="fu"><a href="reference/install_pkg_set.html">install_pkg_set</a></span><span class="op">(</span><span class="va">pkg_stan</span><span class="op">)</span>
-
-<span class="op">?</span><span class="va">pkg_sets</span></code></pre></div>
-</div>
-<div id="development-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#development-tools" class="anchor"></a>Development Tools</h2>
-<ul>
-<li>
-<strong><code><a href="reference/use_ui.html">use_ui()</a></code></strong>: Use <a href="https://usethis.r-lib.org">usethis</a>’ user interface <br><span class="math display">@<em>R</em> − <em>u</em><em>s</em><em>e</em><em>t</em><em>h</em><em>i</em><em>s</em></span><br> in your package</li>
-</ul>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/install_pkg_set.html">install_pkg_set</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># this install the whole `?pkg_all`</span></span>
+<span><span class="fu"><a href="reference/install_pkg_set.html">install_pkg_set</a></span><span class="op">(</span><span class="va">pkg_stan</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">?</span><span class="va">pkg_sets</span></span></code></pre></div>
+<ul><li>
+<strong><code><a href="reference/view_in_excel.html">view_in_excel()</a></code></strong>: A pipe-friendly function to view a data frame in Excel, optimal when used in the middle of a pipe-chain to see intermediate results. It works in interactive session only, so it is RMarkdown/Quarto friendly too!</li></ul>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># in the initial setup steps of the development of a package</span>
-<span class="fu"><a href="reference/use_ui.html">use_ui</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<ul>
-<li>
-<strong><code>lease_install()</code></strong>: This is a polite wrapper to <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> inspired (= w/ very minimal modification) by a function Hadley showed us during a course.</li>
-</ul>
+<code class="sourceCode R"><span><span class="va">four_cyl_cars</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/view_in_excel.html">view_in_excel</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/view_in_excel.html">view_in_excel</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">four_cyl_cars</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="development-tools">Development Tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
+</h2>
+<ul><li>
+<strong><code><a href="reference/use_ui.html">use_ui()</a></code></strong>: Use <a href="https://usethis.r-lib.org" class="external-link">usethis</a>’ user interface [@R-usethis] in your package</li></ul>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">a_pkg_i_miss</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/available.packages.html">available.packages</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="fu"><a href="reference/please_install.html">please_install</a></span><span class="op">(</span><span class="va">a_pkg_i_miss</span><span class="op">)</span></code></pre></div>
-<ul>
-<li>
-<strong><code><a href="reference/imported_from.html">imported_from()</a></code></strong>: If you would like to know which packages are imported by a package (eg to know which packages are required for its installation or either installed during it) you can use this function</li>
-</ul>
+<code class="sourceCode R"><span><span class="co"># in the initial setup steps of the development of a package</span></span>
+<span><span class="fu"><a href="reference/use_ui.html">use_ui</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<ul><li>
+<strong><code>lease_install()</code></strong>: This is a polite wrapper to <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code> inspired (= w/ very minimal modification) by a function Hadley showed us during a course.</li></ul>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/imported_from.html">imported_from</a></span><span class="op">(</span><span class="st">"depigner"</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       </span>
-<span class="co">#&gt;  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         </span>
-<span class="co">#&gt; [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      </span>
-<span class="co">#&gt; [16] "tidyr"        "usethis"      "utils"</span></code></pre></div>
-</div>
-<div id="telegram-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#telegram-tools" class="anchor"></a>Telegram Tools</h2>
-<ul>
-<li>
-<strong>Wrappers to simple use of Telegram’s bots</strong>: wrappers from the <a href="http://github.com/ebeneditos/telegram.bot">telegram.bot</a> package <br><span class="math display">@<em>R</em> − <em>t</em><em>e</em><em>l</em><em>e</em><em>g</em><em>r</em><em>a</em><em>m</em>.<em>b</em><em>o</em><em>t</em></span><br>:</li>
-</ul>
+<code class="sourceCode R"><span><span class="va">a_pkg_i_miss</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/available.packages.html" class="external-link">available.packages</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="fu"><a href="reference/please_install.html">please_install</a></span><span class="op">(</span><span class="va">a_pkg_i_miss</span><span class="op">)</span></span></code></pre></div>
+<ul><li>
+<strong><code><a href="reference/imported_from.html">imported_from()</a></code></strong>: If you would like to know which packages are imported by a package (eg to know which packages are required for its installation or either installed during it) you can use this function</li></ul>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Set up a Telegram bot. read `?start_bot_for_chat`</span>
-<span class="fu"><a href="reference/start_bot_for_chat.html">start_bot_for_chat</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Send something to telegram</span>
-<span class="fu"><a href="reference/send_to_telegram.html">send_to_telegram</a></span><span class="op">(</span><span class="st">"hello world"</span><span class="op">)</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">hp</span>, colour <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="reference/send_to_telegram.html">send_to_telegram</a></span><span class="op">(</span>
-  <span class="st">"following an `mtcars` coloured plot"</span>,
-  parse_mode <span class="op">=</span> <span class="st">"Markdown"</span>
-<span class="op">)</span>
-<span class="fu"><a href="reference/send_to_telegram.html">send_to_telegram</a></span><span class="op">(</span><span class="va">gg</span><span class="op">)</span>
-
-<span class="co"># Divert output errors to the telegram bot</span>
-<span class="fu"><a href="reference/errors_to_telegram.html">errors_to_telegram</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/imported_from.html">imported_from</a></span><span class="op">(</span><span class="st">"depigner"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       </span></span>
+<span><span class="co">#&gt;  [6] "magrittr"     "progress"     "purrr"        "readr"        "rlang"       </span></span>
+<span><span class="co">#&gt; [11] "rms"          "rprojroot"    "stats"        "stringr"      "telegram.bot"</span></span>
+<span><span class="co">#&gt; [16] "tibble"       "tidyr"        "usethis"      "utils"</span></span></code></pre></div>
 </div>
-<div id="why-not" class="section level2">
-<h2 class="hasAnchor">
-<a href="#why-not" class="anchor"></a>Why Not?!</h2>
-<ul>
-<li>
-<strong><code><a href="reference/gdp.html">gdp()</a></code></strong>: A wrapper to relax</li>
-</ul>
+<div class="section level2">
+<h2 id="telegram-tools">Telegram Tools<a class="anchor" aria-label="anchor" href="#telegram-tools"></a>
+</h2>
+<ul><li>
+<strong>Wrappers to simple use of Telegram’s bots</strong>: wrappers from the <a href="https://github.com/ebeneditos/telegram.bot" class="external-link">telegram.bot</a> package [@R-telegram.bot]:</li></ul>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/gdp.html">gdp</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Set up a Telegram bot. read `?start_bot_for_chat`</span></span>
+<span><span class="fu"><a href="reference/start_bot_for_chat.html">start_bot_for_chat</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Send something to telegram</span></span>
+<span><span class="fu"><a href="reference/send_to_telegram.html">send_to_telegram</a></span><span class="op">(</span><span class="st">"hello world"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">hp</span>, colour <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/send_to_telegram.html">send_to_telegram</a></span><span class="op">(</span></span>
+<span>  <span class="st">"following an `mtcars` coloured plot"</span>,</span>
+<span>  parse_mode <span class="op">=</span> <span class="st">"Markdown"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/send_to_telegram.html">send_to_telegram</a></span><span class="op">(</span><span class="va">gg</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Divert output errors to the telegram bot</span></span>
+<span><span class="fu"><a href="reference/errors_to_telegram.html">errors_to_telegram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="why-not">Why Not?!<a class="anchor" aria-label="anchor" href="#why-not"></a>
+</h2>
+<ul><li>
+<strong><code><a href="reference/gdp.html">gdp()</a></code></strong>: A wrapper to relax</li></ul>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/gdp.html">gdp</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="feature-request" class="section level1">
-<h1 class="hasAnchor">
-<a href="#feature-request" class="anchor"></a>Feature request</h1>
-<p>If you need some more features, please open an issue <a href="https://github.com/CorradoLanera/depigner/issues">here</a>.</p>
+<div class="section level1">
+<h1 id="feature-request">Feature request<a class="anchor" aria-label="anchor" href="#feature-request"></a>
+</h1>
+<p>If you need some more features, please open an issue <a href="https://github.com/CorradoLanera/depigner/issues" class="external-link">here</a>.</p>
 </div>
-<div id="bug-reports" class="section level1">
-<h1 class="hasAnchor">
-<a href="#bug-reports" class="anchor"></a>Bug reports</h1>
-<p>If you encounter a bug, please file a <a href="https://github.com/tidyverse/reprex">reprex</a> (minimal reproducible example) <a href="https://github.com/CorradoLanera/depigner/issues">here</a>.</p>
+<div class="section level1">
+<h1 id="bug-reports">Bug reports<a class="anchor" aria-label="anchor" href="#bug-reports"></a>
+</h1>
+<p>If you encounter a bug, please file a <a href="https://github.com/tidyverse/reprex" class="external-link">reprex</a> (minimal reproducible example) <a href="https://github.com/CorradoLanera/depigner/issues" class="external-link">here</a>.</p>
 </div>
-<div id="code-of-conduct" class="section level1">
-<h1 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h1>
-<p>Please note that the depigner project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level1">
+<h1 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h1>
+<p>Please note that the depigner project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 <!--=================================================================-->
 </div>
-<div id="acknowledgements" class="section level1">
-<h1 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h1>
-<p>The <a href="https://corradolanera.github.io/depigner/">depigner</a>’s logo was lovely designed by <a href="https://www.elisasovrano.it">Elisa Sovrano</a>.</p>
+<div class="section level1">
+<h1 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h1>
+<p>The <a href="https://corradolanera.github.io/depigner/" class="external-link">depigner</a>’s logo was lovely designed by <a href="https://www.elisasovrano.it" class="external-link">Elisa Sovrano</a>.</p>
 </div>
-<div id="reference" class="section level1">
-<h1 class="hasAnchor">
-<a href="#reference" class="anchor"></a>Reference</h1>
-<p>[1] You can find all the possible meanings of <em>pigna</em> <a href="https://www.treccani.it/vocabolario/pigna/">here</a>, and you can listen how to pronounce it <a href="http://www.dizionario.rai.it/poplemma.aspx?lid=27556&amp;r=43587">here</a>. Note: the Italian plural for “pigna” is “pigne” <br><span class="math display"> * <em>p</em><em>ì</em><em>n</em>’<em>n</em>’<em>e</em>*</span><br>.</p>
+<div class="section level1"><h1 id="reference">Reference<a class="anchor" aria-label="anchor" href="#reference"></a>
+</h1></div>
+<div class="footnotes">
+<hr>
+<ol><li id="fn1"><p>You can find all the possible meanings of <em>pigna</em> <a href="https://www.treccani.it/vocabolario/pigna/" class="external-link">here</a>, and you can listen how to pronounce it <a href="https://it.forvo.com/word/pigna/#it" class="external-link">here</a>. Note: the Italian plural for “pigna” is “pigne” [<em>pìn’n’e</em>].<a href="#fnref1" class="footnote-back">↩︎</a></p></li></ol>
 </div>
 
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=depigner">https://​cloud.r-project.org/​package=depigner</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/CorradoLanera/depigner/">https://​github.com/​CorradoLanera/​depigner/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/CorradoLanera/depigner/issues">https://​github.com/​CorradoLanera/​depigner/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=depigner" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/CorradoLanera/depigner/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/CorradoLanera/depigner/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing depigner</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Corrado Lanera <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/CorradoLanera/depigner"><img src="https://img.shields.io/badge/devel%20version-0.8.4-blue.svg" alt="Devel version"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
-<li><a href="https://github.com/CorradoLanera/depigner/commits/master"><img src="https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg" alt="last commit"></a></li>
-<li><a href="https://cran.r-project.org/package=depigner"><img src="https://www.r-pkg.org/badges/version/depigner" alt="CRAN status"></a></li>
-<li><a href="https://cran.r-project.org/package=depigner"><img src="http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue" alt="downloads"></a></li>
-<li><a href="https://cran.r-project.org/package=depigner"><img src="http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue" alt="downloads"></a></li>
-<li><a href="https://github.com/CorradoLanera/depigner/actions"><img src="https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/github/CorradoLanera/depigner?branch=master"><img src="https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://github.com/CorradoLanera/depigner"><img src="https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg" alt="code size"></a></li>
+<li><a href="https://github.com/CorradoLanera/depigner" class="external-link"><img src="https://img.shields.io/badge/devel%20version-0.8.4-blue.svg" alt="Devel version"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
+<li><a href="https://github.com/CorradoLanera/depigner/commits/master" class="external-link"><img src="https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg" alt="last commit"></a></li>
+<li><a href="https://cran.r-project.org/package=depigner" class="external-link"><img src="https://www.r-pkg.org/badges/version/depigner" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/package=depigner" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue" alt="downloads"></a></li>
+<li><a href="https://cran.r-project.org/package=depigner" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue" alt="downloads"></a></li>
+<li><a href="https://github.com/CorradoLanera/depigner/actions" class="external-link"><img src="https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/github/CorradoLanera/depigner?branch=master" class="external-link"><img src="https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://github.com/CorradoLanera/depigner" class="external-link"><img src="https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg" alt="code size"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Corrado Lanera.</p>
+  <p></p>
+<p>Developed by Corrado Lanera.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer>
@@ -797,6 +799,8 @@
 
   
 
+
+  
 
   </body>
 </html>
