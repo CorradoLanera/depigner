@@ -9,13 +9,13 @@ A utility package to help you deal with ***pigne***
 
 |                 |                                                                                                                                                   |                                                                                                                                                                  |                                                                                                                                                  |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------:|
-| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |                     [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                      | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
+| **Development** |            [![Devel version](https://img.shields.io/badge/devel%20version-0.8.4-blue.svg)](https://github.com/CorradoLanera/depigner)             |               [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)                | [![last commit](https://img.shields.io/github/last-commit/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner/commits/master) |
 | **CRAN**        |                   [![CRAN status](https://www.r-pkg.org/badges/version/depigner)](https://cran.r-project.org/package=depigner)                    |                  [![downloads](http://cranlogs.r-pkg.org/badges/grand-total/depigner?color=blue)](https://cran.r-project.org/package=depigner)                   |           [![downloads](http://cranlogs.r-pkg.org/badges/last-month/depigner?color=blue)](https://cran.r-project.org/package=depigner)           |
 | **CI**          | [![R build status](https://github.com/CorradoLanera/depigner/workflows/R-CMD-check/badge.svg)](https://github.com/CorradoLanera/depigner/actions) | [![Coverage status](https://codecov.io/gh/CorradoLanera/depigner/branch/master/graph/badge.svg)](https://codecov.io/github/CorradoLanera/depigner?branch=master) |     [![code size](https://img.shields.io/github/languages/code-size/CorradoLanera/depigner.svg)](https://github.com/CorradoLanera/depigner)      |
 
 <!-- badges: end -->
 
-> **Pigna** \[*pìn’n’a*\] is the Italian word for *pine cone*.[1] In
+> **Pigna** \[*pìn’n’a*\] is the Italian word for *pine cone*.[^1] In
 > jargon, it’s used to identify something (like a task…) boring, banal,
 > annoying, painful, frustrating and maybe even with a not so beautiful
 > or rewarding result, just like the obstinate act of trying to
@@ -29,24 +29,25 @@ small everyday problems of coding or analyzing data with R. The hope is
 to provide solutions to that kind of problems which would be normally
 solved using quick-and-dirty (ugly and maybe even wrong) patches.
 
-| Tools Category                           | Function(s)               | Aim                                                                      |
-|:-----------------------------------------|:--------------------------|:-------------------------------------------------------------------------|
-| [Harrell’s verse](#harrells-verse-tools) | `tidy_summary()`          | *`pander`-ready* data frame from `Hmisc::summary()`                      |
-|                                          | `paired_test_continuous`  | Paired test for continuous variable into `Hmisc::summary`                |
-|                                          | `paired_test_categorical` | Paired test for categorical variable into `Hmisc::summary`               |
-|                                          | `adjust_p()`              | Adjusts P-values for multiplicity of tests at `tidy_summary()`           |
-|                                          | `summary_interact()`      | data frame of OR for interaction from `rms::lrm()`                       |
-|                                          | `htypes()`                | Will be your variables continuous or categorical in `Hmisc::describe()`? |
-| [Statistical](#statistical-tools)        | `ci2p()`                  | Get P-value form estimation and confidence interval                      |
-| [Programming](#programming-tools)        | `pb_len()`                | Quick set-up of a `progress::progress_bar()` progress bar                |
-|                                          | `install_pkg_set()`       | Politely install set of packages (topic-related sets at `?pkg_sets`)     |
-| [Development](#development-tools)        | `use_ui()`                | Activate `{usethis}` user interface into your own package                |
-|                                          | `please_install()`        | Politely ask the user to install a package                               |
-|                                          | `imported_from()`         | List packages imported from a package (which has to be installed)        |
-| [Telegram](#telegram-tools)              | `start_bot_for_chat()`    | Quick start of a `{telegram.bot}` Telegram’s bot                         |
-|                                          | `send_to_telegram()`      | Unified wrapper to send *someRthing* to a Telegram chat                  |
-|                                          | `errors_to_telegram()`    | Divert all your error messages from the console to a Telegram chat       |
-| [Why not?!](#why-not)                    | `gdp()`                   | Do you have TOO much pignas in your back?! … try this out ;-)            |
+| Tools Category                           | Function(s)               | Aim                                                                                         |
+|:-----------------------------------------|:--------------------------|:--------------------------------------------------------------------------------------------|
+| [Harrell’s verse](#harrells-verse-tools) | `tidy_summary()`          | *`pander`-ready* data frame from `Hmisc::summary()`                                         |
+|                                          | `paired_test_continuous`  | Paired test for continuous variable into `Hmisc::summary`                                   |
+|                                          | `paired_test_categorical` | Paired test for categorical variable into `Hmisc::summary`                                  |
+|                                          | `adjust_p()`              | Adjusts P-values for multiplicity of tests at `tidy_summary()`                              |
+|                                          | `summary_interact()`      | data frame of OR for interaction from `rms::lrm()`                                          |
+|                                          | `htypes()`                | Will be your variables continuous or categorical in `Hmisc::describe()`?                    |
+| [Statistical](#statistical-tools)        | `ci2p()`                  | Get P-value form estimation and confidence interval                                         |
+| [Programming](#programming-tools)        | `pb_len()`                | Quick set-up of a `progress::progress_bar()` progress bar                                   |
+|                                          | `install_pkg_set()`       | Politely install set of packages (topic-related sets at `?pkg_sets`)                        |
+|                                          | `view_in_excel()`         | Open a data frame in Excel, even in the middle of a pipe chain, on interactive session only |
+| [Development](#development-tools)        | `use_ui()`                | Activate `{usethis}` user interface into your own package                                   |
+|                                          | `please_install()`        | Politely ask the user to install a package                                                  |
+|                                          | `imported_from()`         | List packages imported from a package (which has to be installed)                           |
+| [Telegram](#telegram-tools)              | `start_bot_for_chat()`    | Quick start of a `{telegram.bot}` Telegram’s bot                                            |
+|                                          | `send_to_telegram()`      | Unified wrapper to send *someRthing* to a Telegram chat                                     |
+|                                          | `errors_to_telegram()`    | Divert all your error messages from the console to a Telegram chat                          |
+| [Why not?!](#why-not)                    | `gdp()`                   | Do you have TOO much pignas in your back?! … try this out ;-)                               |
 
 # Installation
 
@@ -118,6 +119,7 @@ tidy_summary(my_summary) %>%
 | Petal.Width  |    0.2/0.2/0.3    |    1.2/1.3/1.5    |    1.8/2.0/2.3    |
 
 ``` r
+
 
 dd <<- datadist(heart) # this to face a package build issue,
                        # use standard `<-` into analyses
@@ -235,14 +237,15 @@ my_summary <- summary(Species ~., data = iris,
 
 tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
-#> ✓ P adjusted with BH method.
-#> # A tibble: 4 x 5
-#>   `&nbsp;`   `setosa \n(N=50)`  `versicolor \n(N=… `virginica \n(N=… `P-value`  
-#>   <chr>      <chr>              <chr>              <chr>             <chr>      
-#> 1 Sepal.Len… "4.800/5.000/5.20… "5.600/5.900/6.30… "6.225/6.500/6.9… "      <0.…
-#> 2 Sepal.Wid… "3.200/3.400/3.67… "2.525/2.800/3.00… "2.800/3.000/3.1… "     <=0.…
-#> 3 Petal.Len… "1.400/1.500/1.57… "4.000/4.350/4.60… "5.100/5.550/5.8… "     <=0.…
-#> 4 Petal.Wid… "   0.2/0.2/0.3"   "   1.2/1.3/1.5"   "   1.8/2.0/2.3"  "     <=0.…
+#> ✔ P adjusted with BH method.
+#> # A tibble: 4 × 5
+#>   `&nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` virginica \n(…¹ P-val…²
+#>   <chr>        <chr>               <chr>                 <chr>           <chr>  
+#> 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.300"   "6.225/6.500/6… "     …
+#> 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.000"   "2.800/3.000/3… "     …
+#> 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.600"   "5.100/5.550/5… "     …
+#> 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"      "   1.8/2.0/2.… "     …
+#> # … with abbreviated variable names ¹​`virginica \n(N=50)`, ²​`P-value`
 ```
 
 -   **`summary_interact()`**: Produce a data frame of OR (with the
@@ -275,6 +278,7 @@ summary_interact(lrm_mod, age, abo) %>%
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |
 
 ``` r
+
 summary_interact(lrm_mod, age, abo, p = TRUE) %>%
   pander()
 ```
@@ -342,6 +346,20 @@ install_pkg_set(pkg_stan)
 ?pkg_sets
 ```
 
+-   **`view_in_excel()`**: A pipe-friendly function to view a data frame
+    in Excel, optimal when used in the middle of a pipe-chain to see
+    intermediate results. It works in interactive session only, so it is
+    RMarkdown/Quarto friendly too!
+
+``` r
+four_cyl_cars <- mtcars %>%
+  view_in_excel() %>%
+  dplyr::filter(cyl == 4) %>%
+  view_in_excel()
+
+four_cyl_cars
+```
+
 ## Development Tools
 
 -   **`use_ui()`**: Use `{usethis}`’ user interface \[@R-usethis\] in
@@ -369,9 +387,9 @@ please_install(a_pkg_i_miss)
 ``` r
 imported_from("depigner")
 #>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
-#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         
-#> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
-#> [16] "tidyr"        "usethis"      "utils"
+#>  [6] "magrittr"     "progress"     "purrr"        "readr"        "rlang"       
+#> [11] "rms"          "rprojroot"    "stats"        "stringr"      "telegram.bot"
+#> [16] "tibble"       "tidyr"        "usethis"      "utils"
 ```
 
 ## Telegram Tools
@@ -434,8 +452,8 @@ Sovrano](https://www.elisasovrano.it).
 
 # Reference
 
-[1] You can find all the possible meanings of *pigna*
-[here](https://www.treccani.it/vocabolario/pigna/), and you can listen
-how to pronounce it
-[here](http://www.dizionario.rai.it/poplemma.aspx?lid=27556&r=43587).
-Note: the Italian plural for “pigna” is “pigne” \[*pìn’n’e*\].
+[^1]: You can find all the possible meanings of *pigna*
+    [here](https://www.treccani.it/vocabolario/pigna/), and you can
+    listen how to pronounce it
+    [here](https://it.forvo.com/word/pigna/#it). Note: the Italian
+    plural for “pigna” is “pigne” \[*pìn’n’e*\].

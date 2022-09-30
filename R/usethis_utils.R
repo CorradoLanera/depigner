@@ -108,8 +108,7 @@ write_utf8 <- function(path, lines, append = FALSE) {
 
   if (!is.null(proj_find(path))) {
     line_ending <- pkg_line_ending()
-  }
-  else {
+  } else {
     line_ending <- platform_line_ending()
   }
 

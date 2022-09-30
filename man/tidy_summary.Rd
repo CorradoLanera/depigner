@@ -31,20 +31,24 @@ by \code{rms} packages to a tidy data frame ready to be
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{summary.formula.reverse}: Tidies a summary reverse output from the
+\item \code{tidy_summary(summary.formula.reverse)}: Tidies a summary reverse output from the
 \code{\link[Hmisc]{summary.formula}} called with
 \code{method = "reverse"}.
 
-\item \code{summary.rms}: Convert the output of the
+\item \code{tidy_summary(summary.rms)}: Convert the output of the
 \code{\link[rms]{summary.rms}} into a data frame,
 reporting only the Hazard Ratio with the .95 CI and the
 incremental step (for continuous variables) reference
 (for categorical variables) for which the Hazard is
 referred to (i.e. without \eqn{\beta}s, Low, High, S.E.
 and Type).
-}}
 
+}}
 \note{
+The output is supposed to be used as input to
+      [pander][pander::pander], and contains few otherwise messy
+      characters included for an optimal (pander) formatting.
+
 to see the options you can pass to \code{...} for a custom
 print, see the print section in \code{\link[Hmisc]{summary.formula}}.
 }

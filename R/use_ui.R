@@ -30,9 +30,11 @@ use_ui <- function() {
     this_proj <- usethis::proj_get()
     rprojroot::find_package_root_file(path = this_proj)
   },
-    error = function(e) ui_stop(
-      "{ui_code('use_ui')} is designed to work with packages.",
-    )
+    error = function(e) {
+      ui_stop(
+        "{ui_code('use_ui')} is designed to work with packages.",
+      )
+    }
   )
 
   # check if package (adapted from usethis:::uses_roxygen())

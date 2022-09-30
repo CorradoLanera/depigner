@@ -1,6 +1,7 @@
 AbcD
 Acknowledgements
 BH
+BOM
 Biostatistics
 CBPS
 CMD
@@ -15,8 +16,10 @@ Pigna
 Pignas
 Ps
 README
+RMarkdown
 RStudio
 Renviron
+Roxygen
 Sovrano
 UIs
 WeightIt
@@ -28,6 +31,7 @@ blogdown
 bmp
 bot's
 brms
+brodriguesco
 catTest
 chr
 ci
@@ -36,11 +40,12 @@ conf
 covr
 cyclocomp
 df
+dlnm
 docopt
 eg
 fct
-fs
 furrr
+ggeffects
 ggplot
 gh
 glmnet
@@ -80,12 +85,14 @@ png
 pnorm
 profvis
 progressbar
+progressr
 pryr
 pìn'n'a
 pìn'n'e
 pìn’n’a
 pìn’n’e
 qnorm
+readxl
 renv
 reprex
 rms
@@ -98,6 +105,7 @@ stan
 statname
 styler
 svg
+tarchetypes
 tensorflow
 testname
 testthat
@@ -115,6 +123,7 @@ usethis'ui
 vcd
 versicolor
 virginica
+writexl
 yourbotname
 ’
 ’s

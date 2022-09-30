@@ -8,16 +8,16 @@
 .onLoad <- function(libname, pkgname) {
   op <- options()
 
-  op.depigner <- list(
+  op_depigner <- list(
     depigner.dev.test_telegram_bot = FALSE,
 
     depigner.bot_name = NULL,
     depigner.chat_id = NULL
   )
 
-  toset <- !(names(op.depigner) %in% names(op))
+  toset <- !(names(op_depigner) %in% names(op))
 
-  if (any(toset)) options(op.depigner[toset])
+  if (any(toset)) options(op_depigner[toset])
 
   invisible(TRUE)
 }
