@@ -1,3 +1,79 @@
+# version 0.9.0
+
+## Overview
+
+This submission add some packages to the "common" sets provided, and
+adds a pipe-able function to view/open data frames in Excel in the
+middle of a pipe chain. Minor improvements provided to the
+documentation.
+
+## Test environments
+
+### provided by
+
+-   `usethis::use_tidy_github_actions()` (including Ubuntu 16.04,
+      18.04, and 20.04)
+-   `devtools::check()`
+-   `devtools::check(remote = TRUE, manual = TRUE)`
+-   `devtools::check_win_devel()`
+-   `devtools::check_rhub(env_vars = c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))`
+
+### Configurations
+
+-   local:
+
+    -   Debian Bulseye (Linux 5.9.0), R 4.2.1
+    -   Windows 11 workstation, R 4.2.1
+
+-   remote:
+
+    -   MacOS 11.6.8: R 4.2.1 [GitHub Action]
+    -   Ubuntu Linux 20.04.4 LTS: R 4.2.1, r-devel, GCC [GitHub Action]
+    -   Fedora Linux, R-devel, clang, gfortran [rhub]
+    -   Windows 10.0.20348: R 4.2.1 [GitHub Action]
+    -   Windows Server 2022: R-devel, 64 bit [rhub]
+
+    
+## R CDM check results
+
+0 errors ✓ | 0 warnings ✓ | 0 notes ✓
+
+### Notes
+
+- There is one PREPERROR reported for Ubuntu Linux 20.04.1 LTS, R-release, GCC: with no explanation at all. Following the report ([HTML](https://builder.r-hub.io/status/depigner_0.9.0.tar.gz-02cc772fd32b4cf8996d9a99ad95ec46)) there aren't errors and the reported status is green: "passed". As noted in [R-hub issue #448](https://github.com/r-hub/rhub/issues/448), this could be due to a bug/crash r-hub reporting system (caused by a truncation of internal logs) and can likely be ignored.
+
+- There is one NOTE that is only found on Windows Server 2022, R-devel 64-bit: A possible invalid url on the README.md (https://www.treccani.it/vocabolario/pigna/). I have checked the url and it is valid and active (20220930). (https://builder.r-hub.io/status/depigner_0.9.0.tar.gz-b614502f1b2b4a8d85d62cc9cec9c327#L2492)
+
+- There is a NOTE that is only found in Fedora Linux, R-devel, clang, gfortran: 
+  "Skipping checking HTML validation: no command 'tidy' found"
+  "Skipping checking math rendering: package 'V8' unavailable".
+  I do not have any "tidy" command on my documentation at all, and any equation neither; so, I suppose is only a system configuration lack that does not depend on my package.
+
+```
+* Found the following (possibly) invalid URLs:
+URL: https://www.treccani.it/vocabolario/pigna/
+From: README.md
+Status: Error
+Message: libcurl error code 35:
+schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error usually occurs when a fatal SSL/TLS alert is received (e.g. handshake failed). More detail may be available in the Windows System event log.
+```
+
+- There is one NOTE that is only found on Windows (Server 2022, R-devel 64-bit): 
+
+```
+* checking for detritus in the temp directory ... NOTE
+Found the following files/directories:
+  'lastMiKTeXException'
+```
+As noted in [R-hub issue #503](https://github.com/r-hub/rhub/issues/503), this could be due to a bug/crash in MiKTeX and can likely be ignored.
+
+
+
+
+
+
+
+
 # version 0.8.4 (including required correction)
 
 ## Notes
@@ -38,6 +114,11 @@ messages.
 ## R CDM check results
 
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
+
+
+
+
+
 
 
 
@@ -85,6 +166,13 @@ The reported problems were all solved updating an auxiliary function used only f
 ## R CDM check results
 
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
+
+
+
+
+
+
+
 
 # version 0.8.1
 
