@@ -1,4 +1,6 @@
 # depigner 0.9.1
+- updated `data(transplant)` to
+ `data("transplant", package = "survival")`
 
 # depigner 0.9.0
 

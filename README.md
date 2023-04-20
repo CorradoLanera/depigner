@@ -77,24 +77,23 @@ library(depigner)
 
 ## Harrell’s Verse Tools
 
--   **`tidy_summary()`**: produces a data frame from the `summary()`
-    functions provided by `{Hmisc}` \[@R-Hmisc\] and `{rms}` \[@R-rms\]
-    packages ready to be `pander::pander()`ed \[@R-pander\].
+- **`tidy_summary()`**: produces a data frame from the `summary()`
+  functions provided by `{Hmisc}` \[@R-Hmisc\] and `{rms}` \[@R-rms\]
+  packages ready to be `pander::pander()`ed \[@R-pander\].
 
 Currently it is tested for method *reverse* only:
 
 ``` r
 library(rms)
 #> Loading required package: Hmisc
-#> Loading required package: lattice
-#> Loading required package: survival
-#> Loading required package: Formula
-#> Loading required package: ggplot2
 #> 
 #> Attaching package: 'Hmisc'
 #> The following objects are masked from 'package:base':
 #> 
 #>     format.pval, units
+#> Loading required package: survival
+#> Loading required package: lattice
+#> Loading required package: ggplot2
 #> Loading required package: SparseM
 #> 
 #> Attaching package: 'SparseM'
@@ -136,9 +135,9 @@ tidy_summary(my_summary) %>%
 |  year   | 3.374 | 0.6104 |    0.3831    |    0.9727    |
 | surgery |   1   | 0.5286 |    0.2574    |    1.085     |
 
--   **`paired_test_*()`**: Paired test for categorical/continuous
-    variables to be used in the `summary()` of the `{Hmisc}`
-    \[@R-Hmisc\] package:
+- **`paired_test_*()`**: Paired test for categorical/continuous
+  variables to be used in the `summary()` of the `{Hmisc}` \[@R-Hmisc\]
+  package:
 
 ``` r
 data(Arthritis)
@@ -227,7 +226,7 @@ summary(Species ~.,
 #> +------------+--------------------+--------------------+--------------------+-----------------------+
 ```
 
--   **`adjust_p()`**: Adjust P-values of a `tidy_summary` objects:
+- **`adjust_p()`**: Adjust P-values of a `tidy_summary` objects:
 
 ``` r
 my_summary <- summary(Species ~., data = iris,
@@ -239,24 +238,24 @@ tidy_summary(my_summary, prtest = "P") %>%
   adjust_p()
 #> ✔ P adjusted with BH method.
 #> # A tibble: 4 × 5
-#>   `&nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` virginica \n(…¹ P-val…²
-#>   <chr>        <chr>               <chr>                 <chr>           <chr>  
-#> 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.300"   "6.225/6.500/6… "     …
-#> 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.000"   "2.800/3.000/3… "     …
-#> 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.600"   "5.100/5.550/5… "     …
-#> 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"      "   1.8/2.0/2.… "     …
-#> # … with abbreviated variable names ¹​`virginica \n(N=50)`, ²​`P-value`
+#>   `&nbsp;`     `setosa \n(N=50)`   `versicolor \n(N=50)` `virginica \n(N=50)`
+#>   <chr>        <chr>               <chr>                 <chr>               
+#> 1 Sepal.Length "4.800/5.000/5.200" "5.600/5.900/6.300"   "6.225/6.500/6.900" 
+#> 2 Sepal.Width  "3.200/3.400/3.675" "2.525/2.800/3.000"   "2.800/3.000/3.175" 
+#> 3 Petal.Length "1.400/1.500/1.575" "4.000/4.350/4.600"   "5.100/5.550/5.875" 
+#> 4 Petal.Width  "   0.2/0.2/0.3"    "   1.2/1.3/1.5"      "   1.8/2.0/2.3"    
+#> # ℹ 1 more variable: `P-value` <chr>
 ```
 
--   **`summary_interact()`**: Produce a data frame of OR (with the
-    corresponding CI95%) for the interactions between different
-    combination of a continuous variable (for which it is possible to
-    define the reference and the target values) and (every or a
-    selection of levels of) a categorical one in a logistic model
-    provided by `lrm()` (from the `{rms}` package \[@R-rms\]):
+- **`summary_interact()`**: Produce a data frame of OR (with the
+  corresponding CI95%) for the interactions between different
+  combination of a continuous variable (for which it is possible to
+  define the reference and the target values) and (every or a selection
+  of levels of) a categorical one in a logistic model provided by
+  `lrm()` (from the `{rms}` package \[@R-rms\]):
 
 ``` r
-data('transplant')
+data("transplant", package = "survival")
 censor_rows <- transplant[['event']] != 'censored' 
 transplant <- droplevels(transplant[censor_rows, ])
 
@@ -290,8 +289,8 @@ summary_interact(lrm_mod, age, abo, p = TRUE) %>%
 | age - AB | 43  |  58  |  15   |   0.635    |    0.186     |    2.169     |  0.728  |
 | age - O  | 43  |  58  |  15   |   0.645    |    0.352     |    1.182     |  0.883  |
 
--   **`htypes()`** and friends: get/check types of variable with respect
-    to the `{Hmisc}` ecosystem \[@R-Hmisc\].
+- **`htypes()`** and friends: get/check types of variable with respect
+  to the `{Hmisc}` ecosystem \[@R-Hmisc\].
 
 ``` r
 htypes(mtcars)
@@ -312,8 +311,8 @@ is_hcon(desc[[1]])
 
 ## Statistical Tools
 
--   **`ci2p()`**: compute the p-value related with a provided confidence
-    interval:
+- **`ci2p()`**: compute the p-value related with a provided confidence
+  interval:
 
 ``` r
 ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
@@ -322,8 +321,8 @@ ci2p(1.125, 0.634,  1.999, log_transform = TRUE)
 
 ## Programming Tools
 
--   **`pb_len()`**: Progress bar of given length, wrapper from the
-    `{progress}` \[@R-progress\] package:
+- **`pb_len()`**: Progress bar of given length, wrapper from the
+  `{progress}` \[@R-progress\] package:
 
 ``` r
 pb <- pb_len(100)
@@ -334,10 +333,10 @@ for (i in 1:100) {
 }
 ```
 
--   **`install_pkg_set()`**: Simple and polite wrapper to install sets
-    of packages. Moreover, `{depigner}` provides some sets already
-    defined for common scenario in R (analyses, production, documenting,
-    …). See them by call `?pgk_sets`.
+- **`install_pkg_set()`**: Simple and polite wrapper to install sets of
+  packages. Moreover, `{depigner}` provides some sets already defined
+  for common scenario in R (analyses, production, documenting, …). See
+  them by call `?pgk_sets`.
 
 ``` r
 install_pkg_set() # this install the whole `?pkg_all`
@@ -346,10 +345,10 @@ install_pkg_set(pkg_stan)
 ?pkg_sets
 ```
 
--   **`view_in_excel()`**: A pipe-friendly function to view a data frame
-    in Excel, optimal when used in the middle of a pipe-chain to see
-    intermediate results. It works in interactive session only, so it is
-    RMarkdown/Quarto friendly too!
+- **`view_in_excel()`**: A pipe-friendly function to view a data frame
+  in Excel, optimal when used in the middle of a pipe-chain to see
+  intermediate results. It works in interactive session only, so it is
+  RMarkdown/Quarto friendly too!
 
 ``` r
 four_cyl_cars <- mtcars %>%
@@ -362,40 +361,39 @@ four_cyl_cars
 
 ## Development Tools
 
--   **`use_ui()`**: Use `{usethis}`’ user interface \[@R-usethis\] in
-    your package
+- **`use_ui()`**: Use `{usethis}`’ user interface \[@R-usethis\] in your
+  package
 
 ``` r
 # in the initial setup steps of the development of a package
 use_ui()
 ```
 
--   **`lease_install()`**: This is a polite wrapper to
-    `install.packages()` inspired (= w/ very minimal modification) by a
-    function Hadley showed us during a course.
+- **`lease_install()`**: This is a polite wrapper to
+  `install.packages()` inspired (= w/ very minimal modification) by a
+  function Hadley showed us during a course.
 
 ``` r
 a_pkg_i_miss <- setdiff(available.packages(), installed.packages())[[1]]
 please_install(a_pkg_i_miss)
 ```
 
--   **`imported_from()`**: If you would like to know which packages are
-    imported by a package (eg to know which packages are required for
-    its installation or either installed during it) you can use this
-    function
+- **`imported_from()`**: If you would like to know which packages are
+  imported by a package (eg to know which packages are required for its
+  installation or either installed during it) you can use this function
 
 ``` r
 imported_from("depigner")
 #>  [1] "desc"         "dplyr"        "fs"           "ggplot2"      "Hmisc"       
-#>  [6] "magrittr"     "progress"     "purrr"        "rlang"        "rms"         
-#> [11] "rprojroot"    "stats"        "stringr"      "telegram.bot" "tibble"      
-#> [16] "tidyr"        "usethis"      "utils"
+#>  [6] "magrittr"     "progress"     "purrr"        "readr"        "rlang"       
+#> [11] "rms"          "rprojroot"    "stats"        "stringr"      "telegram.bot"
+#> [16] "tibble"       "tidyr"        "usethis"      "utils"
 ```
 
 ## Telegram Tools
 
--   **Wrappers to simple use of Telegram’s bots**: wrappers from the
-    `{telegram.bot}` package \[@R-telegram.bot\]:
+- **Wrappers to simple use of Telegram’s bots**: wrappers from the
+  `{telegram.bot}` package \[@R-telegram.bot\]:
 
 ``` r
 # Set up a Telegram bot. read `?start_bot_for_chat`
@@ -419,7 +417,7 @@ errors_to_telegram()
 
 ## Why Not?!
 
--   **`gdp()`**: A wrapper to relax
+- **`gdp()`**: A wrapper to relax
 
 ``` r
 gdp(7)
