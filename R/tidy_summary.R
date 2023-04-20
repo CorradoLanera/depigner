@@ -49,8 +49,11 @@ tidy_summary.summary.formula.reverse <- function(x, ..., digits = 3L) {
   colnames(printed) <- printed[1L, ]
   printed <- dplyr::as_tibble(printed, rownames = "&nbsp;") %>%
     dplyr::mutate(
-      `&nbsp;` = .data[["&nbsp;"]] %>%
-        stringr::str_replace_all(" ", "&nbsp;")
+      `&nbsp;` =  stringr::str_replace_all(
+        .data[["&nbsp;"]],
+        " ",
+        "&nbsp;"
+      )
     )
 
   res <- printed[-1L, ]
@@ -119,9 +122,9 @@ tidy_summary.summary.rms <- function(x, ..., digits = 3L) {
       .rownames = stringr::str_replace(.data[[".rownames"]], "\\.\\.\\..*$", "")
     ) %>%
     dplyr::rename(
-      `&nbsp;` = .data[[".rownames"]],
-      `HR` = .data[["Effect"]],
-      `Lower 95% CI` = .data[["Lower 0.95"]],
-      `Upper 95% CI` = .data[["Upper 0.95"]]
+      `&nbsp;` = dplyr::all_of(".rownames"),
+      `HR` = dplyr::all_of("Effect"),
+      `Lower 95% CI` = dplyr::all_of("Lower 0.95"),
+      `Upper 95% CI` = dplyr::all_of("Upper 0.95")
     )
 }

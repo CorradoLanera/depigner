@@ -29,10 +29,10 @@ gdp <- function(time = 4L, freq = 0.05) {
     width = 76L
   )
 
-  purrr::walk(my_seq, ~ {
+  for (i in my_seq) {
     pb[["tick"]](tokens = list(what = "giramento di"))
     Sys.sleep(freq)
-  })
+  }
 
   cat("\014")
 

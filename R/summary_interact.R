@@ -110,7 +110,7 @@ summary_interact <- function(model, ref, discrete,
           Low = ifelse(is.na(Diff.), NA, Low),
           High = ifelse(is.na(Diff.), NA, High),
           Diff. = ifelse(!is.na(Diff.), Diff.,
-            stringr::str_extract(.data[[".rownames"]], " - .*$") %>%
+            stringr::str_extract(dplyr::all_of(".rownames"), " - .*$") %>%
               stringr::str_replace(" - ", "")
           ),
           Effect = as.numeric(Effect),
@@ -122,10 +122,10 @@ summary_interact <- function(model, ref, discrete,
           .rownames = paste0(.data[[".rownames"]], " - ", interact)
         ) %>%
         dplyr::rename(
-          `&nbsp;` = .data[[".rownames"]],
-          `Odds Ratio` = .data[["Effect"]],
-          `Lower 95% CI` = .data[["Lower.0.95"]],
-          `Upper 95% CI` = .data[["Upper.0.95"]]
+          `&nbsp;` = dplyr::all_of(".rownames"),
+          `Odds Ratio` = dplyr::all_of("Effect"),
+          `Lower 95% CI` = dplyr::all_of("Lower.0.95"),
+          `Upper 95% CI` = dplyr::all_of("Upper.0.95")
         )
     })
   })

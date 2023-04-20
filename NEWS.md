@@ -1,4 +1,9 @@
 # depigner 0.9.1
+- .data is not use anymore in tidyselect operations
+- fix lintr test namespace
+- simplified gdp (lintr)
+- updated GHA to newer version and updated checks to linux 22.04, and
+  win olderel
 - updated `data(transplant)` to
  `data("transplant", package = "survival")`
 
