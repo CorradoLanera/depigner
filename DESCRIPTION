@@ -28,7 +28,7 @@ URL: https://corradolanera.github.io/depigner/,
     https://github.com/CorradoLanera/depigner
 BugReports: https://github.com/CorradoLanera/depigner/issues
 Depends: 
-    R (>= 3.6)
+    R (>= 4.1)
 Imports: 
     desc,
     dplyr (>= 0.7.7),
