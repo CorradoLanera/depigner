@@ -6,7 +6,6 @@ transplant <- transplant[transplant[["event"]] != "censored", ] %>%
   droplevels()
 
 test_that("expectation class", {
-  skip_on_cran()
   # strong assignment because the scope of test <https://goo.gl/LJn9rF>
   dd <<- rms::datadist(transplant)
 
@@ -39,7 +38,6 @@ test_that("expectation class", {
 
 
 test_that("expectation throws error if input not an lrm", {
-  skip_on_cran()
   # strong assignment because the scope of test <https://goo.gl/LJn9rF>
   dd <<- rms::datadist(transplant)
 
@@ -60,7 +58,6 @@ test_that("expectation throws error if input not an lrm", {
 
 
 test_that("Without refname in datadist it trows an error", {
-  skip_on_cran()
   # strong assignment because the scope of test <https://goo.gl/LJn9rF>
   dd <<- rms::datadist(transplant)
 
@@ -78,8 +75,6 @@ test_that("Without refname in datadist it trows an error", {
 
 
 test_that("Without datadist it trows an error", {
-  skip_on_cran()
-
   options(datadist = NULL)
 
   lrm_mod <- rms::lrm(

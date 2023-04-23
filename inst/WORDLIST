@@ -7,6 +7,7 @@ CBPS
 CMD
 DT
 GH
+GHA
 Hadley
 Haenzen
 Hmisc
@@ -45,6 +46,7 @@ docopt
 eg
 fct
 furrr
+gdp
 ggeffects
 ggplot
 gh
@@ -66,13 +68,16 @@ latexstat
 lgl
 lifecycle
 lintr
+linux
 lobstr
 ly
 mlr
 mlt
 mvtnorm
+n'n'a
 namefun
 num
+olderel
 pigna
 pignas
 pigne
@@ -113,6 +118,7 @@ tibble
 tidyeval
 tidyfast
 tidymodels
+tidyselect
 tidytext
 tidyverse
 tm

@@ -1,5 +1,4 @@
 test_that("adjust_p return the correct class", {
-  skip_on_cran()
   withr::local_package("Hmisc")
   adj <- summary(Species ~ .,
     data = iris,
@@ -13,7 +12,6 @@ test_that("adjust_p return the correct class", {
 })
 
 test_that("warning and return if test is not set", {
-  skip_on_cran()
   withr::local_package("Hmisc")
   no_test_adj <- summary(Species ~ .,
     data = iris,
