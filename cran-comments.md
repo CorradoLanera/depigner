@@ -2,10 +2,7 @@
 
 ## Overview
 
-This submission add some packages to the "common" sets provided, and
-adds a pipe-able function to view/open data frames in Excel in the
-middle of a pipe chain. Minor improvements provided to the
-documentation.
+This update includes minor improvements in code refactoring, bug fixes, and now requires a minimum of R 4.1 to allow for the internal usage of the native pipe operator.
 
 ## Test environments
 
@@ -28,11 +25,12 @@ documentation.
 
 -   remote:
 
-    # -   MacOS 11.6.8: R 4.2.1 [GitHub Action]
-    # -   Ubuntu Linux 20.04.4 LTS: R 4.2.1, r-devel, GCC [GitHub Action]
-    # -   Fedora Linux, R-devel, clang, gfortran [rhub]
-    # -   Windows 10.0.20348: R 4.2.1 [GitHub Action]
-    -   Windows Server 2022 x64: R-devel, 64 bit [win_devel]
+    -   MacOS 11.6.8 [GitHub Action (GHA)]: R 4.2.3
+    -   Ubuntu Linux 20.04.4 LTS [GHA]: r-oldrel, r-release [rhub too], r-devel, GCC
+    -   Ubuntu Linux 22.04.4 LTS [GHA]: r-oldrel, r-release, r-devel, GCC
+    -   Fedora Linux [rhub]: R-devel, clang, gfortran
+    -   Windows 10.0.20348 [GHA]: r-oldrel; r-release
+    -   Windows Server 2022 x64 [win_devel]: r-devel, 64 bit
 
     
 ## R CDM check results
@@ -40,10 +38,6 @@ documentation.
 0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 
 ### Notes
-
-- There is one PREPERROR reported for Ubuntu Linux 20.04.1 LTS, R-release, GCC: with no explanation at all. Following the report ([HTML](https://builder.r-hub.io/status/depigner_0.9.0.tar.gz-02cc772fd32b4cf8996d9a99ad95ec46)) there aren't errors and the reported status is green: "passed". As noted in [R-hub issue #448](https://github.com/r-hub/rhub/issues/448), this could be due to a bug/crash r-hub reporting system (caused by a truncation of internal logs) and can likely be ignored.
-
-- There is one NOTE that is only found on Windows Server 2022, R-devel 64-bit: A possible invalid url on the README.md (https://www.treccani.it/vocabolario/pigna/). I have checked the url and it is valid and active (20220930). (https://builder.r-hub.io/status/depigner_0.9.0.tar.gz-b614502f1b2b4a8d85d62cc9cec9c327#L2492)
 
 - There is a NOTE that is only found in Fedora Linux, R-devel, clang, gfortran: 
   "Skipping checking HTML validation: no command 'tidy' found"
