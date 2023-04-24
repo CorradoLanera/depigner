@@ -2,6 +2,54 @@
 
 ## Overview
 
+This update includes minor improvements in code refactoring, bug fixes, and now requires a minimum of R 4.1 to allow for the internal usage of the native pipe operator.
+
+## Test environments
+
+### provided by
+
+-   modification of `usethis::use_tidy_github_actions()` (including
+  R devel, releas, and oldrel on Ubuntu 20.04, and 22.04; R release and
+  oldrel on win latest; R release on mac os)
+-   `devtools::check()`
+-   `devtools::check(remote = TRUE, manual = TRUE)`
+-   `devtools::check_win_devel()`
+-   `devtools::check_rhub(env_vars = c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))`
+
+### Configurations
+
+-   local:
+
+    -   Ububtu 22.04 LTS, R 4.2.3
+    -   Windows 11 pro insider preview, R 4.2.3
+
+-   remote:
+
+    -   MacOS 11.6.8 [GitHub Action (GHA)]: R 4.2.3
+    -   Ubuntu Linux 20.04.4 LTS [GHA]: r-oldrel, r-release [rhub too], r-devel, GCC
+    -   Ubuntu Linux 22.04.4 LTS [GHA]: r-oldrel, r-release, r-devel, GCC
+    -   Fedora Linux [rhub]: R-devel, clang, gfortran
+    -   Windows 10.0.20348 [GHA]: r-oldrel; r-release
+    -   Windows Server 2022 x64 [win_devel]: r-devel, 64 bit
+
+    
+## R CDM check results
+
+0 errors ✓ | 0 warnings ✓ | 0 notes ✓
+
+### Notes
+
+- There is a NOTE that is only found in Fedora Linux, R-devel, clang, gfortran: 
+  "Skipping checking HTML validation: no command 'tidy' found"
+  "Skipping checking math rendering: package 'V8' unavailable".
+  I do not have any "tidy" command on my documentation at all, and any equation neither; so, I suppose is only a system configuration lack that does not depend on my package.
+
+
+
+# version 0.9.0
+
+## Overview
+
 This submission add some packages to the "common" sets provided, and
 adds a pipe-able function to view/open data frames in Excel in the
 middle of a pipe chain. Minor improvements provided to the

@@ -1,7 +1,6 @@
 test_that("adjust_p return the correct class", {
-  skip_on_cran()
-
-  adj <- Hmisc:::summary.formula(Species ~ .,
+  withr::local_package("Hmisc")
+  adj <- summary(Species ~ .,
     data = iris,
     method = "reverse",
     test = TRUE
@@ -13,9 +12,8 @@ test_that("adjust_p return the correct class", {
 })
 
 test_that("warning and return if test is not set", {
-  skip_on_cran()
-
-  no_test_adj <- Hmisc:::summary.formula(Species ~ .,
+  withr::local_package("Hmisc")
+  no_test_adj <- summary(Species ~ .,
     data = iris,
     method = "reverse"
   ) %>%

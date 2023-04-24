@@ -81,5 +81,5 @@ scoped_temporary_thing <- function(dir = fs::file_temp(pattern = "aaa"),
 
 
 expect_usethis_error <- function(...) {
-  expect_error(..., class = "usethis_error")
+  testthat::expect_error(..., class = "usethis_error")
 }

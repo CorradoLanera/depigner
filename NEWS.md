@@ -1,3 +1,13 @@
+# depigner 0.9.1
+- R 4.1+ is now required to allow for native pipe operator to be used in the source code.
+- .data is not use anymore in tidyselect operations
+- fix lintr test namespace
+- simplified gdp (lintr)
+- updated GHA to newer version and updated checks to linux 22.04, and
+  win olderel
+- updated `data(transplant)` to
+ `data("transplant", package = "survival")`
+
 # depigner 0.9.0
 
 - updated the broken `README` links.

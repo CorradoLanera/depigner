@@ -1,6 +1,4 @@
 test_that("single check works", {
-  skip_on_cran()
-
   test_desc <- Hmisc::describe(mtcars)
   expect_false(is_single_hdesc(test_desc))
   expect_true(is_single_hdesc(test_desc[[1L]]))
@@ -9,8 +7,6 @@ test_that("single check works", {
 
 
 test_that("original check works", {
-  skip_on_cran()
-
   test_desc <- Hmisc::describe(mtcars)
   expect_true(is_hdesc(test_desc))
   expect_true(is_hdesc(test_desc[[1L]]))
@@ -19,8 +15,6 @@ test_that("original check works", {
 
 
 test_that("cat check works", {
-  skip_on_cran()
-
   test_desc <- Hmisc::describe(mtcars)
   expect_true(is_hcat(test_desc[["vs"]]))
   expect_false(is_hcat(test_desc[["mpg"]]))
@@ -31,8 +25,6 @@ test_that("cat check works", {
 
 
 test_that("original check works", {
-  skip_on_cran()
-
   test_desc <- Hmisc::describe(mtcars)
   expect_false(is_hcon(test_desc[["vs"]]))
   expect_true(is_hcon(test_desc[["mpg"]]))
@@ -49,8 +41,6 @@ test_that("original check works", {
 
 
 test_that("htype works", {
-  skip_on_cran()
-
   test_desc <- Hmisc::describe(mtcars)
   expect_equal(htype(test_desc[["vs"]]), "cat")
   expect_equal(htype(test_desc[["mpg"]]), "con")
@@ -66,8 +56,6 @@ test_that("htype works", {
 
 
 test_that("htypes works", {
-  skip_on_cran()
-
   test_desc <- Hmisc::describe(mtcars)
 
   # Note: the following expectation was deduced from the output of

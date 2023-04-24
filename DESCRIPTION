@@ -1,6 +1,6 @@
 Package: depigner
 Title: A Utility Package to Help you Deal with "Pignas"
-Version: 0.9.0
+Version: 0.9.1
 Authors@R: 
     person("Corrado", "Lanera", , "corrado.lanera@gmail.com", role = c("aut", "cre", "cph"))
 Description: Pigna [_pìn'n'a_] is the Italian word for pine cone.  In
@@ -28,7 +28,7 @@ URL: https://corradolanera.github.io/depigner/,
     https://github.com/CorradoLanera/depigner
 BugReports: https://github.com/CorradoLanera/depigner/issues
 Depends: 
-    R (>= 3.6)
+    R (>= 4.1)
 Imports: 
     desc,
     dplyr (>= 0.7.7),
@@ -59,4 +59,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3

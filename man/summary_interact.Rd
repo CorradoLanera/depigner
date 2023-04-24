@@ -54,7 +54,7 @@ summary_interact
   library(rms)
   options(datadist = "dd")
 
-  data("transplant")
+  data("transplant", package = "survival")
 
   transplant <- transplant[transplant[["event"]] != "censored", ] \%>\%
    droplevels()
