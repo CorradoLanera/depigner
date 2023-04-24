@@ -8,6 +8,5 @@ linters: linters_with_defaults(
     absolute_path_linter(),
     nonportable_path_linter(),
     semicolon_linter(),
-    unneeded_concatenation_linter(),
-    undesirable_operator_linter()
+    unneeded_concatenation_linter()
   )
