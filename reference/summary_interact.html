@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">depigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.1</span>
       </span>
     </div>
 
@@ -140,15 +140,9 @@ show all the possible levels for the discrete variable</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://hbiostat.org/R/rms/" class="external-link">rms</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: SparseM</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘SparseM’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:base’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     backsolve</span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>datadist <span class="op">=</span> <span class="st">"dd"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"transplant"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"transplant"</span>, package <span class="op">=</span> <span class="st">"survival"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">transplant</span> <span class="op">&lt;-</span> <span class="va">transplant</span><span class="op">[</span><span class="va">transplant</span><span class="op">[[</span><span class="st">"event"</span><span class="op">]</span><span class="op">]</span> <span class="op">!=</span> <span class="st">"censored"</span>, <span class="op">]</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="op">)</span></span></span>
@@ -162,22 +156,22 @@ show all the possible levels for the discrete variable</p></dd>
 <span class="r-in"><span>  <span class="va">lrm_mod</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">lrm_mod</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary(lrm_mod):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span>  <span class="fu">summary_interact</span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">sex</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary_interact(lrm_mod, age, sex):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span>  <span class="fu">summary_interact</span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">sex</span>, ref_min <span class="op">=</span> <span class="fl">60</span>, ref_max <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span>  <span class="fu">summary_interact</span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">sex</span>,</span></span>
 <span class="r-in"><span>    ref_min <span class="op">=</span> <span class="fl">60</span>, ref_max <span class="op">=</span> <span class="fl">80</span>, digits <span class="op">=</span> <span class="fl">5L</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary_interact(lrm_mod, age, sex, ref_min = 60, ref_max = 80,     digits = 5L):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="fu">summary_interact</span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary_interact(lrm_mod, age, abo):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span>  <span class="fu">summary_interact</span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"AB"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary_interact(lrm_mod, age, abo, level = c("A", "AB")):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span>  <span class="fu">summary_interact</span><span class="op">(</span><span class="va">lrm_mod</span>, <span class="va">age</span>, <span class="va">abo</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"AB"</span><span class="op">)</span>, p <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary_interact(lrm_mod, age, abo, level = c("A", "AB"), p = TRUE):</span> object 'lrm_mod' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'lrm_mod' not found</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -193,7 +187,7 @@ show all the possible levels for the discrete variable</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
